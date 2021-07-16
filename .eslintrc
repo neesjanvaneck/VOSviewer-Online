@@ -1,0 +1,85 @@
+{
+  "extends": ["eslint-config-airbnb"],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "plugins": [
+    "emotion",
+    "import",
+    "dependencies",
+    "react"
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": [ "./src/", "./" ]
+      }
+    }
+  },
+  "rules": {
+    "linebreak-style": 0,
+    "emotion/syntax-preference": [2, "object"],
+    "jsx-a11y/mouse-events-have-key-events": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/anchor-is-valid": [ "error", {
+      "components": [ "Link" ],
+      "specialLink": [ "to", "hrefLeft", "hrefRight" ],
+      "aspects": [ "noHref", "invalidHref", "preferButton" ]
+    }],
+    "arrow-parens": 0,
+    "class-methods-use-this": 0,
+    "comma-dangle": 0,
+    "dependencies/case-sensitive": "error",
+    "dependencies/no-cycles": "error",
+    "dependencies/no-unresolved": 0,
+    "dependencies/require-json-ext": "error",
+    "global-require": 0,
+    "import/extensions": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/no-unresolved": [2, {"commonjs": true, "amd": true}],
+    "import/prefer-default-export": 0,
+    "indent": ["error", 2, { "ignoredNodes": ["ConditionalExpression"], "SwitchCase": 1 }],
+    "jsx-a11y/no-static-element-interactions": 0,
+    "max-len": 0,
+    "no-console": 0,
+    "no-const-assign": "error",
+    "no-else-return": 0,
+    "no-redeclare": "error",
+    "no-restricted-globals": 0,
+    "no-restricted-syntax": 0,
+    "no-shadow": 0,
+    "no-undef": "error",
+    "no-unused-vars": 1,
+    "no-underscore-dangle": 0,
+    "no-use-before-define": 0,
+    "object-curly-newline": ["warn", { "minProperties": 6, "consistent": true }],
+    "no-param-reassign": ["error", { "props": false }],
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "prefer-const": "error",
+    "prefer-default-export": 0,
+    "quotes": 0,
+    "react/forbid-prop-types": 0,
+    "react/jsx-filename-extension": 0,
+    "react/jsx-indent": ["error", 2],
+    "react/jsx-pascal-case": 2,
+    "react/prefer-stateless-function": 0,
+    "react/prop-types": 0,
+    "space-in-parens": 0,
+    "no-mixed-operators": 0,
+    "no-nested-ternary": "off",
+    "no-unused-expressions": [
+      "error",
+      {
+        "allowShortCircuit": true, "allowTernary": true
+      }
+    ],
+  }
+}

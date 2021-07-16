@@ -1,0 +1,3261 @@
+﻿{
+    "network": {
+        "items": [
+            {
+                "id": 14,
+                "label": "abramo, giovanni",
+                "x": -0.7539,
+                "y": -0.8101,
+                "cluster": 17,
+                "weights": {
+                    "Links": 1.0000,
+                    "Total link strength": 4.0000,
+                    "Documents": 4.0000,
+                    "Citations": 4.0000,
+                    "Norm. citations": 1.3716
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.2500,
+                    "Avg. citations": 1.0000,
+                    "Avg. norm. citations": 0.3429
+                }
+            },
+            {
+                "id": 23,
+                "label": "ahlgren, per",
+                "x": -0.9482,
+                "y": -0.6666,
+                "cluster": 5,
+                "weights": {
+                    "Links": 2.0000,
+                    "Total link strength": 3.0000,
+                    "Documents": 4.0000,
+                    "Citations": 15.0000,
+                    "Norm. citations": 5.1437
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.2500,
+                    "Avg. citations": 3.7500,
+                    "Avg. norm. citations": 1.2859
+                }
+            },
+            {
+                "id": 39,
+                "label": "alelyani, salem",
+                "x": 1.0774,
+                "y": -0.5388,
+                "cluster": 1,
+                "weights": {
+                    "Links": 8.0000,
+                    "Total link strength": 12.0000,
+                    "Documents": 3.0000,
+                    "Citations": 6.0000,
+                    "Norm. citations": 2.0575
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.3333,
+                    "Avg. citations": 2.0000,
+                    "Avg. norm. citations": 0.6858
+                }
+            },
+            {
+                "id": 44,
+                "label": "aljohani, naif r.",
+                "x": 1.2582,
+                "y": -0.4243,
+                "cluster": 1,
+                "weights": {
+                    "Links": 5.0000,
+                    "Total link strength": 7.0000,
+                    "Documents": 2.0000,
+                    "Citations": 8.0000,
+                    "Norm. citations": 2.7433
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 4.0000,
+                    "Avg. norm. citations": 1.3716
+                }
+            },
+            {
+                "id": 45,
+                "label": "aljohani, naif radi",
+                "x": 0.9567,
+                "y": -0.4230,
+                "cluster": 1,
+                "weights": {
+                    "Links": 8.0000,
+                    "Total link strength": 14.0000,
+                    "Documents": 4.0000,
+                    "Citations": 4.0000,
+                    "Norm. citations": 6.2927
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.7500,
+                    "Avg. citations": 1.0000,
+                    "Avg. norm. citations": 1.5732
+                }
+            },
+            {
+                "id": 60,
+                "label": "amjad, tehmina",
+                "x": -0.4144,
+                "y": -0.6051,
+                "cluster": 13,
+                "weights": {
+                    "Links": 1.0000,
+                    "Total link strength": 1.0000,
+                    "Documents": 2.0000,
+                    "Citations": 2.0000,
+                    "Norm. citations": 0.6858
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 1.0000,
+                    "Avg. norm. citations": 0.3429
+                }
+            },
+            {
+                "id": 133,
+                "label": "beaudry, catherine",
+                "x": -0.8225,
+                "y": -0.1072,
+                "cluster": 3,
+                "weights": {
+                    "Links": 2.0000,
+                    "Total link strength": 2.0000,
+                    "Documents": 2.0000,
+                    "Citations": 0.0000,
+                    "Norm. citations": 0.0000
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 0.0000,
+                    "Avg. norm. citations": 0.0000
+                }
+            },
+            {
+                "id": 180,
+                "label": "bornmann, lutz",
+                "x": 0.3792,
+                "y": -0.3786,
+                "cluster": 16,
+                "weights": {
+                    "Links": 16.0000,
+                    "Total link strength": 28.0000,
+                    "Documents": 19.0000,
+                    "Citations": 41.0000,
+                    "Norm. citations": 14.0593
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.2632,
+                    "Avg. citations": 2.1579,
+                    "Avg. norm. citations": 0.7400
+                }
+            },
+            {
+                "id": 184,
+                "label": "boufarss, mohamed",
+                "x": 0.8160,
+                "y": 0.2235,
+                "cluster": 6,
+                "weights": {
+                    "Links": 1.0000,
+                    "Total link strength": 1.0000,
+                    "Documents": 2.0000,
+                    "Citations": 5.0000,
+                    "Norm. citations": 1.7146
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 2.5000,
+                    "Avg. norm. citations": 0.8573
+                }
+            },
+            {
+                "id": 189,
+                "label": "boyack, kevin w.",
+                "x": -0.7214,
+                "y": -0.5066,
+                "cluster": 5,
+                "weights": {
+                    "Links": 3.0000,
+                    "Total link strength": 3.0000,
+                    "Documents": 2.0000,
+                    "Citations": 19.0000,
+                    "Norm. citations": 6.5153
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 9.5000,
+                    "Avg. norm. citations": 3.2577
+                }
+            },
+            {
+                "id": 209,
+                "label": "bu, yi",
+                "x": -0.4339,
+                "y": -0.3358,
+                "cluster": 13,
+                "weights": {
+                    "Links": 7.0000,
+                    "Total link strength": 8.0000,
+                    "Documents": 4.0000,
+                    "Citations": 4.0000,
+                    "Norm. citations": 3.8322
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.7500,
+                    "Avg. citations": 1.0000,
+                    "Avg. norm. citations": 0.9580
+                }
+            },
+            {
+                "id": 228,
+                "label": "cai, xiaojing",
+                "x": -0.0112,
+                "y": -0.4054,
+                "cluster": 4,
+                "weights": {
+                    "Links": 5.0000,
+                    "Total link strength": 6.0000,
+                    "Documents": 3.0000,
+                    "Citations": 3.0000,
+                    "Norm. citations": 5.9497
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.3333,
+                    "Avg. citations": 1.0000,
+                    "Avg. norm. citations": 1.9832
+                }
+            },
+            {
+                "id": 251,
+                "label": "catalano, giuseppe",
+                "x": -0.3405,
+                "y": 0.4141,
+                "cluster": 11,
+                "weights": {
+                    "Links": 5.0000,
+                    "Total link strength": 7.0000,
+                    "Documents": 2.0000,
+                    "Citations": 0.0000,
+                    "Norm. citations": 0.0000
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 0.0000,
+                    "Avg. norm. citations": 0.0000
+                }
+            },
+            {
+                "id": 256,
+                "label": "chacko, george",
+                "x": 0.2301,
+                "y": -0.1680,
+                "cluster": 15,
+                "weights": {
+                    "Links": 5.0000,
+                    "Total link strength": 17.0000,
+                    "Documents": 6.0000,
+                    "Citations": 15.0000,
+                    "Norm. citations": 5.1437
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.1667,
+                    "Avg. citations": 2.5000,
+                    "Avg. norm. citations": 0.8573
+                }
+            },
+            {
+                "id": 271,
+                "label": "chen, bikun",
+                "x": -0.8111,
+                "y": 0.1826,
+                "cluster": 9,
+                "weights": {
+                    "Links": 5.0000,
+                    "Total link strength": 5.0000,
+                    "Documents": 2.0000,
+                    "Citations": 14.0000,
+                    "Norm. citations": 4.8007
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 7.0000,
+                    "Avg. norm. citations": 2.4004
+                }
+            },
+            {
+                "id": 290,
+                "label": "chen, yue",
+                "x": 0.1071,
+                "y": 0.5727,
+                "cluster": 8,
+                "weights": {
+                    "Links": 6.0000,
+                    "Total link strength": 8.0000,
+                    "Documents": 5.0000,
+                    "Citations": 8.0000,
+                    "Norm. citations": 2.7433
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.2000,
+                    "Avg. citations": 1.6000,
+                    "Avg. norm. citations": 0.5487
+                }
+            },
+            {
+                "id": 307,
+                "label": "chinchilla-rodríguez, zaida",
+                "x": -0.4183,
+                "y": 0.0554,
+                "cluster": 7,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 4.0000,
+                    "Documents": 2.0000,
+                    "Citations": 1.0000,
+                    "Norm. citations": 0.3429
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 0.5000,
+                    "Avg. norm. citations": 0.1715
+                }
+            },
+            {
+                "id": 333,
+                "label": "colavizza, giovanni",
+                "x": -0.7767,
+                "y": -0.4416,
+                "cluster": 5,
+                "weights": {
+                    "Links": 3.0000,
+                    "Total link strength": 3.0000,
+                    "Documents": 4.0000,
+                    "Citations": 18.0000,
+                    "Norm. citations": 6.1724
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.2500,
+                    "Avg. citations": 4.5000,
+                    "Avg. norm. citations": 1.5431
+                }
+            },
+            {
+                "id": 344,
+                "label": "costas, rodrigo",
+                "x": -0.1350,
+                "y": -0.0569,
+                "cluster": 14,
+                "weights": {
+                    "Links": 5.0000,
+                    "Total link strength": 7.0000,
+                    "Documents": 6.0000,
+                    "Citations": 30.0000,
+                    "Norm. citations": 10.2873
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.1667,
+                    "Avg. citations": 5.0000,
+                    "Avg. norm. citations": 1.7146
+                }
+            },
+            {
+                "id": 353,
+                "label": "cuxac, pascal",
+                "x": 0.1541,
+                "y": 0.3584,
+                "cluster": 8,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 6.0000,
+                    "Documents": 2.0000,
+                    "Citations": 2.0000,
+                    "Norm. citations": 0.6858
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 1.0000,
+                    "Avg. norm. citations": 0.3429
+                }
+            },
+            {
+                "id": 359,
+                "label": "daraio, cinzia",
+                "x": -0.3531,
+                "y": 0.3045,
+                "cluster": 11,
+                "weights": {
+                    "Links": 5.0000,
+                    "Total link strength": 8.0000,
+                    "Documents": 5.0000,
+                    "Citations": 5.0000,
+                    "Norm. citations": 1.7146
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 1.0000,
+                    "Avg. norm. citations": 0.3429
+                }
+            },
+            {
+                "id": 371,
+                "label": "de moya-anegon, felix",
+                "x": -0.5915,
+                "y": 0.5687,
+                "cluster": 7,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 10.0000,
+                    "Documents": 3.0000,
+                    "Citations": 7.0000,
+                    "Norm. citations": 4.8609
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.3333,
+                    "Avg. citations": 2.3333,
+                    "Avg. norm. citations": 1.6203
+                }
+            },
+            {
+                "id": 399,
+                "label": "devarakonda, sitaram",
+                "x": 0.3312,
+                "y": -0.2198,
+                "cluster": 15,
+                "weights": {
+                    "Links": 5.0000,
+                    "Total link strength": 15.0000,
+                    "Documents": 5.0000,
+                    "Citations": 15.0000,
+                    "Norm. citations": 5.1437
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 3.0000,
+                    "Avg. norm. citations": 1.0287
+                }
+            },
+            {
+                "id": 427,
+                "label": "donner, paul",
+                "x": -0.9564,
+                "y": -0.4968,
+                "cluster": 5,
+                "weights": {
+                    "Links": 2.0000,
+                    "Total link strength": 2.0000,
+                    "Documents": 4.0000,
+                    "Citations": 8.0000,
+                    "Norm. citations": 2.7433
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 2.0000,
+                    "Avg. norm. citations": 0.6858
+                }
+            },
+            {
+                "id": 439,
+                "label": "drongstrup, dorte",
+                "x": 0.9650,
+                "y": -0.5531,
+                "cluster": 1,
+                "weights": {
+                    "Links": 3.0000,
+                    "Total link strength": 3.0000,
+                    "Documents": 2.0000,
+                    "Citations": 2.0000,
+                    "Norm. citations": 0.6858
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 1.0000,
+                    "Avg. norm. citations": 0.3429
+                }
+            },
+            {
+                "id": 443,
+                "label": "du, jian",
+                "x": -0.0631,
+                "y": 1.1141,
+                "cluster": 12,
+                "weights": {
+                    "Links": 2.0000,
+                    "Total link strength": 2.0000,
+                    "Documents": 3.0000,
+                    "Citations": 1.0000,
+                    "Norm. citations": 0.3429
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.6667,
+                    "Avg. citations": 0.3333,
+                    "Avg. norm. citations": 0.1143
+                }
+            },
+            {
+                "id": 453,
+                "label": "dugué, nicolas",
+                "x": 0.0574,
+                "y": 0.3906,
+                "cluster": 8,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 6.0000,
+                    "Documents": 2.0000,
+                    "Citations": 2.0000,
+                    "Norm. citations": 0.6858
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 1.0000,
+                    "Avg. norm. citations": 0.3429
+                }
+            },
+            {
+                "id": 462,
+                "label": "d’angelo, ciriaco andrea",
+                "x": -0.7723,
+                "y": -0.7328,
+                "cluster": 17,
+                "weights": {
+                    "Links": 2.0000,
+                    "Total link strength": 5.0000,
+                    "Documents": 6.0000,
+                    "Citations": 13.0000,
+                    "Norm. citations": 4.4578
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.1667,
+                    "Avg. citations": 2.1667,
+                    "Avg. norm. citations": 0.7430
+                }
+            },
+            {
+                "id": 466,
+                "label": "egghe, leo",
+                "x": 0.1149,
+                "y": 0.9312,
+                "cluster": 12,
+                "weights": {
+                    "Links": 1.0000,
+                    "Total link strength": 2.0000,
+                    "Documents": 3.0000,
+                    "Citations": 4.0000,
+                    "Norm. citations": 1.3716
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.3333,
+                    "Avg. citations": 1.3333,
+                    "Avg. norm. citations": 0.4572
+                }
+            },
+            {
+                "id": 471,
+                "label": "engels, tim c. e.",
+                "x": 0.5205,
+                "y": 0.0711,
+                "cluster": 6,
+                "weights": {
+                    "Links": 2.0000,
+                    "Total link strength": 3.0000,
+                    "Documents": 2.0000,
+                    "Citations": 0.0000,
+                    "Norm. citations": 0.0000
+                },
+                "scores": {
+                    "Avg. pub. year": 2021.0000,
+                    "Avg. citations": 0.0000,
+                    "Avg. norm. citations": 0.0000
+                }
+            },
+            {
+                "id": 488,
+                "label": "fang, zhichao",
+                "x": -0.0450,
+                "y": -0.0014,
+                "cluster": 14,
+                "weights": {
+                    "Links": 3.0000,
+                    "Total link strength": 4.0000,
+                    "Documents": 2.0000,
+                    "Citations": 22.0000,
+                    "Norm. citations": 7.5440
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 11.0000,
+                    "Avg. norm. citations": 3.7720
+                }
+            },
+            {
+                "id": 500,
+                "label": "fayoumi, ayman",
+                "x": 1.0475,
+                "y": -0.2524,
+                "cluster": 1,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 6.0000,
+                    "Documents": 2.0000,
+                    "Citations": 2.0000,
+                    "Norm. citations": 5.6068
+                },
+                "scores": {
+                    "Avg. pub. year": 2021.0000,
+                    "Avg. citations": 1.0000,
+                    "Avg. norm. citations": 2.8034
+                }
+            },
+            {
+                "id": 590,
+                "label": "gingras, yves",
+                "x": -0.9792,
+                "y": -0.0107,
+                "cluster": 3,
+                "weights": {
+                    "Links": 2.0000,
+                    "Total link strength": 4.0000,
+                    "Documents": 3.0000,
+                    "Citations": 12.0000,
+                    "Norm. citations": 4.1149
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 4.0000,
+                    "Avg. norm. citations": 1.3716
+                }
+            },
+            {
+                "id": 594,
+                "label": "glänzel, wolfgang",
+                "x": -0.0524,
+                "y": 0.4951,
+                "cluster": 11,
+                "weights": {
+                    "Links": 12.0000,
+                    "Total link strength": 14.0000,
+                    "Documents": 7.0000,
+                    "Citations": 46.0000,
+                    "Norm. citations": 18.2344
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.1429,
+                    "Avg. citations": 6.5714,
+                    "Avg. norm. citations": 2.6049
+                }
+            },
+            {
+                "id": 600,
+                "label": "golosovsky, michael",
+                "x": -0.6571,
+                "y": -0.1754,
+                "cluster": 3,
+                "weights": {
+                    "Links": 1.0000,
+                    "Total link strength": 1.0000,
+                    "Documents": 2.0000,
+                    "Citations": 0.0000,
+                    "Norm. citations": 0.0000
+                },
+                "scores": {
+                    "Avg. pub. year": 2021.0000,
+                    "Avg. citations": 0.0000,
+                    "Avg. norm. citations": 0.0000
+                }
+            },
+            {
+                "id": 614,
+                "label": "gorraiz, juan",
+                "x": -0.0871,
+                "y": 0.6038,
+                "cluster": 11,
+                "weights": {
+                    "Links": 1.0000,
+                    "Total link strength": 1.0000,
+                    "Documents": 3.0000,
+                    "Citations": 0.0000,
+                    "Norm. citations": 0.0000
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.3333,
+                    "Avg. citations": 0.0000,
+                    "Avg. norm. citations": 0.0000
+                }
+            },
+            {
+                "id": 627,
+                "label": "grácio, maria cláudia cabrini",
+                "x": -0.4218,
+                "y": 0.1526,
+                "cluster": 7,
+                "weights": {
+                    "Links": 2.0000,
+                    "Total link strength": 2.0000,
+                    "Documents": 3.0000,
+                    "Citations": 2.0000,
+                    "Norm. citations": 3.1463
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.6667,
+                    "Avg. citations": 0.6667,
+                    "Avg. norm. citations": 1.0488
+                }
+            },
+            {
+                "id": 632,
+                "label": "guerrero-bote, vicente",
+                "x": -0.6074,
+                "y": 0.4296,
+                "cluster": 7,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 10.0000,
+                    "Documents": 3.0000,
+                    "Citations": 7.0000,
+                    "Norm. citations": 4.8609
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.3333,
+                    "Avg. citations": 2.3333,
+                    "Avg. norm. citations": 1.6203
+                }
+            },
+            {
+                "id": 638,
+                "label": "guns, raf",
+                "x": 0.6091,
+                "y": -0.0136,
+                "cluster": 6,
+                "weights": {
+                    "Links": 8.0000,
+                    "Total link strength": 12.0000,
+                    "Documents": 5.0000,
+                    "Citations": 5.0000,
+                    "Norm. citations": 4.1751
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.8000,
+                    "Avg. citations": 1.0000,
+                    "Avg. norm. citations": 0.8350
+                }
+            },
+            {
+                "id": 672,
+                "label": "harsh, matthew",
+                "x": -0.8202,
+                "y": -0.1782,
+                "cluster": 3,
+                "weights": {
+                    "Links": 2.0000,
+                    "Total link strength": 2.0000,
+                    "Documents": 2.0000,
+                    "Citations": 0.0000,
+                    "Norm. citations": 0.0000
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 0.0000,
+                    "Avg. norm. citations": 0.0000
+                }
+            },
+            {
+                "id": 676,
+                "label": "hassan, saeed-ul",
+                "x": 1.0658,
+                "y": -0.4006,
+                "cluster": 1,
+                "weights": {
+                    "Links": 10.0000,
+                    "Total link strength": 21.0000,
+                    "Documents": 6.0000,
+                    "Citations": 12.0000,
+                    "Norm. citations": 9.0359
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 2.0000,
+                    "Avg. norm. citations": 1.5060
+                }
+            },
+            {
+                "id": 678,
+                "label": "haunschild, robin",
+                "x": 0.3630,
+                "y": -0.5209,
+                "cluster": 16,
+                "weights": {
+                    "Links": 3.0000,
+                    "Total link strength": 7.0000,
+                    "Documents": 7.0000,
+                    "Citations": 9.0000,
+                    "Norm. citations": 3.0862
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.2857,
+                    "Avg. citations": 1.2857,
+                    "Avg. norm. citations": 0.4409
+                }
+            },
+            {
+                "id": 707,
+                "label": "hladchenko, myroslava",
+                "x": -0.5094,
+                "y": 0.4964,
+                "cluster": 7,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 5.0000,
+                    "Documents": 2.0000,
+                    "Citations": 2.0000,
+                    "Norm. citations": 5.6068
+                },
+                "scores": {
+                    "Avg. pub. year": 2021.0000,
+                    "Avg. citations": 1.0000,
+                    "Avg. norm. citations": 2.8034
+                }
+            },
+            {
+                "id": 732,
+                "label": "hu, guangyuan",
+                "x": 0.6483,
+                "y": 0.7296,
+                "cluster": 2,
+                "weights": {
+                    "Links": 2.0000,
+                    "Total link strength": 3.0000,
+                    "Documents": 2.0000,
+                    "Citations": 20.0000,
+                    "Norm. citations": 6.8582
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 10.0000,
+                    "Avg. norm. citations": 3.4291
+                }
+            },
+            {
+                "id": 737,
+                "label": "hu, zhigang",
+                "x": -0.1028,
+                "y": 0.1679,
+                "cluster": 14,
+                "weights": {
+                    "Links": 2.0000,
+                    "Total link strength": 2.0000,
+                    "Documents": 2.0000,
+                    "Citations": 6.0000,
+                    "Norm. citations": 2.0575
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 3.0000,
+                    "Avg. norm. citations": 1.0287
+                }
+            },
+            {
+                "id": 745,
+                "label": "huang, ying",
+                "x": 0.3837,
+                "y": 0.3513,
+                "cluster": 2,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 12.0000,
+                    "Documents": 5.0000,
+                    "Citations": 43.0000,
+                    "Norm. citations": 24.5872
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.6000,
+                    "Avg. citations": 8.6000,
+                    "Avg. norm. citations": 4.9174
+                }
+            },
+            {
+                "id": 746,
+                "label": "huang, yong",
+                "x": -0.5327,
+                "y": -0.3650,
+                "cluster": 13,
+                "weights": {
+                    "Links": 2.0000,
+                    "Total link strength": 3.0000,
+                    "Documents": 2.0000,
+                    "Citations": 4.0000,
+                    "Norm. citations": 3.8322
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 2.0000,
+                    "Avg. norm. citations": 1.9161
+                }
+            },
+            {
+                "id": 768,
+                "label": "iqbal, sehrish",
+                "x": 1.1543,
+                "y": -0.4489,
+                "cluster": 1,
+                "weights": {
+                    "Links": 8.0000,
+                    "Total link strength": 12.0000,
+                    "Documents": 3.0000,
+                    "Citations": 8.0000,
+                    "Norm. citations": 2.7433
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.3333,
+                    "Avg. citations": 2.6667,
+                    "Avg. norm. citations": 0.9144
+                }
+            },
+            {
+                "id": 853,
+                "label": "khelfaoui, mahdi",
+                "x": -1.0034,
+                "y": -0.0839,
+                "cluster": 3,
+                "weights": {
+                    "Links": 2.0000,
+                    "Total link strength": 4.0000,
+                    "Documents": 3.0000,
+                    "Citations": 12.0000,
+                    "Norm. citations": 4.1149
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 4.0000,
+                    "Avg. norm. citations": 1.3716
+                }
+            },
+            {
+                "id": 881,
+                "label": "korobskiy, dmitriy",
+                "x": 0.3648,
+                "y": -0.0995,
+                "cluster": 15,
+                "weights": {
+                    "Links": 3.0000,
+                    "Total link strength": 11.0000,
+                    "Documents": 4.0000,
+                    "Citations": 7.0000,
+                    "Norm. citations": 2.4004
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.2500,
+                    "Avg. citations": 1.7500,
+                    "Avg. norm. citations": 0.6001
+                }
+            },
+            {
+                "id": 887,
+                "label": "kousha, kayvan",
+                "x": 0.6566,
+                "y": -0.4718,
+                "cluster": 10,
+                "weights": {
+                    "Links": 2.0000,
+                    "Total link strength": 6.0000,
+                    "Documents": 6.0000,
+                    "Citations": 25.0000,
+                    "Norm. citations": 8.5728
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 4.1667,
+                    "Avg. norm. citations": 1.4288
+                }
+            },
+            {
+                "id": 903,
+                "label": "kulczycki, emanuel",
+                "x": 0.6448,
+                "y": 0.1295,
+                "cluster": 6,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 6.0000,
+                    "Documents": 3.0000,
+                    "Citations": 9.0000,
+                    "Norm. citations": 5.5467
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.3333,
+                    "Avg. citations": 3.0000,
+                    "Avg. norm. citations": 1.8489
+                }
+            },
+            {
+                "id": 914,
+                "label": "laakso, mikael",
+                "x": 0.7465,
+                "y": 0.1817,
+                "cluster": 6,
+                "weights": {
+                    "Links": 5.0000,
+                    "Total link strength": 5.0000,
+                    "Documents": 3.0000,
+                    "Citations": 13.0000,
+                    "Norm. citations": 4.4578
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 4.3333,
+                    "Avg. norm. citations": 1.4859
+                }
+            },
+            {
+                "id": 921,
+                "label": "lamirel, jean-charles",
+                "x": 0.1326,
+                "y": 0.4517,
+                "cluster": 8,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 7.0000,
+                    "Documents": 3.0000,
+                    "Citations": 2.0000,
+                    "Norm. citations": 0.6858
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.6667,
+                    "Avg. citations": 0.6667,
+                    "Avg. norm. citations": 0.2286
+                }
+            },
+            {
+                "id": 931,
+                "label": "larivière, vincent",
+                "x": -0.6851,
+                "y": -0.0671,
+                "cluster": 3,
+                "weights": {
+                    "Links": 13.0000,
+                    "Total link strength": 22.0000,
+                    "Documents": 12.0000,
+                    "Citations": 27.0000,
+                    "Norm. citations": 19.1006
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.4167,
+                    "Avg. citations": 2.2500,
+                    "Avg. norm. citations": 1.5917
+                }
+            },
+            {
+                "id": 960,
+                "label": "leydesdorff, loet",
+                "x": -0.1142,
+                "y": -0.2959,
+                "cluster": 4,
+                "weights": {
+                    "Links": 6.0000,
+                    "Total link strength": 9.0000,
+                    "Documents": 6.0000,
+                    "Citations": 8.0000,
+                    "Norm. citations": 2.7433
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.1667,
+                    "Avg. citations": 1.3333,
+                    "Avg. norm. citations": 0.4572
+                }
+            },
+            {
+                "id": 985,
+                "label": "li, xin",
+                "x": -0.2951,
+                "y": -0.4792,
+                "cluster": 13,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 4.0000,
+                    "Documents": 2.0000,
+                    "Citations": 0.0000,
+                    "Norm. citations": 0.0000
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 0.0000,
+                    "Avg. norm. citations": 0.0000
+                }
+            },
+            {
+                "id": 1002,
+                "label": "lin, deming",
+                "x": 0.1491,
+                "y": 0.6747,
+                "cluster": 8,
+                "weights": {
+                    "Links": 2.0000,
+                    "Total link strength": 2.0000,
+                    "Documents": 2.0000,
+                    "Citations": 0.0000,
+                    "Norm. citations": 0.0000
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 0.0000,
+                    "Avg. norm. citations": 0.0000
+                }
+            },
+            {
+                "id": 1033,
+                "label": "liu, weishu",
+                "x": 0.7401,
+                "y": 0.7460,
+                "cluster": 2,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 6.0000,
+                    "Documents": 8.0000,
+                    "Citations": 83.0000,
+                    "Norm. citations": 28.4616
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.1250,
+                    "Avg. citations": 10.3750,
+                    "Avg. norm. citations": 3.5577
+                }
+            },
+            {
+                "id": 1037,
+                "label": "liu, xiaozhong",
+                "x": -1.0450,
+                "y": 0.2899,
+                "cluster": 9,
+                "weights": {
+                    "Links": 2.0000,
+                    "Total link strength": 4.0000,
+                    "Documents": 2.0000,
+                    "Citations": 12.0000,
+                    "Norm. citations": 4.1149
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 6.0000,
+                    "Avg. norm. citations": 2.0575
+                }
+            },
+            {
+                "id": 1044,
+                "label": "liu, yuxian",
+                "x": -0.0515,
+                "y": 0.9481,
+                "cluster": 12,
+                "weights": {
+                    "Links": 2.0000,
+                    "Total link strength": 2.0000,
+                    "Documents": 2.0000,
+                    "Citations": 2.0000,
+                    "Norm. citations": 0.6858
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 1.0000,
+                    "Avg. norm. citations": 0.3429
+                }
+            },
+            {
+                "id": 1048,
+                "label": "lopez-illescas, carmen",
+                "x": -0.6779,
+                "y": 0.5053,
+                "cluster": 7,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 10.0000,
+                    "Documents": 3.0000,
+                    "Citations": 7.0000,
+                    "Norm. citations": 4.8609
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.3333,
+                    "Avg. citations": 2.3333,
+                    "Avg. norm. citations": 1.6203
+                }
+            },
+            {
+                "id": 1066,
+                "label": "lyhagen, johan",
+                "x": -0.9994,
+                "y": -0.7139,
+                "cluster": 5,
+                "weights": {
+                    "Links": 1.0000,
+                    "Total link strength": 2.0000,
+                    "Documents": 2.0000,
+                    "Citations": 1.0000,
+                    "Norm. citations": 0.3429
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 0.5000,
+                    "Avg. norm. citations": 0.1715
+                }
+            },
+            {
+                "id": 1069,
+                "label": "lyu, xiaozan",
+                "x": -0.0544,
+                "y": -0.1968,
+                "cluster": 4,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 6.0000,
+                    "Documents": 4.0000,
+                    "Citations": 4.0000,
+                    "Norm. citations": 1.3716
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.2500,
+                    "Avg. citations": 1.0000,
+                    "Avg. norm. citations": 0.3429
+                }
+            },
+            {
+                "id": 1078,
+                "label": "ma, shutian",
+                "x": -0.9983,
+                "y": 0.3606,
+                "cluster": 9,
+                "weights": {
+                    "Links": 2.0000,
+                    "Total link strength": 4.0000,
+                    "Documents": 2.0000,
+                    "Citations": 12.0000,
+                    "Norm. citations": 4.1149
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 6.0000,
+                    "Avg. norm. citations": 2.0575
+                }
+            },
+            {
+                "id": 1124,
+                "label": "martín-martín, alberto",
+                "x": 0.6719,
+                "y": -0.7409,
+                "cluster": 10,
+                "weights": {
+                    "Links": 2.0000,
+                    "Total link strength": 4.0000,
+                    "Documents": 2.0000,
+                    "Citations": 29.0000,
+                    "Norm. citations": 9.9444
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 14.5000,
+                    "Avg. norm. citations": 4.9722
+                }
+            },
+            {
+                "id": 1127,
+                "label": "marx, werner",
+                "x": 0.2693,
+                "y": -0.5397,
+                "cluster": 16,
+                "weights": {
+                    "Links": 2.0000,
+                    "Total link strength": 2.0000,
+                    "Documents": 2.0000,
+                    "Citations": 7.0000,
+                    "Norm. citations": 2.4004
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 3.5000,
+                    "Avg. norm. citations": 1.2002
+                }
+            },
+            {
+                "id": 1129,
+                "label": "mas-bleda, amalia",
+                "x": 0.7708,
+                "y": -0.6265,
+                "cluster": 10,
+                "weights": {
+                    "Links": 1.0000,
+                    "Total link strength": 2.0000,
+                    "Documents": 2.0000,
+                    "Citations": 1.0000,
+                    "Norm. citations": 0.3429
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 0.5000,
+                    "Avg. norm. citations": 0.1715
+                }
+            },
+            {
+                "id": 1168,
+                "label": "milojević, staša",
+                "x": -0.4323,
+                "y": -0.2129,
+                "cluster": 4,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 4.0000,
+                    "Documents": 6.0000,
+                    "Citations": 17.0000,
+                    "Norm. citations": 8.2900
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.1667,
+                    "Avg. citations": 2.8333,
+                    "Avg. norm. citations": 1.3817
+                }
+            },
+            {
+                "id": 1179,
+                "label": "moed, henk f.",
+                "x": -0.4842,
+                "y": 0.3473,
+                "cluster": 7,
+                "weights": {
+                    "Links": 11.0000,
+                    "Total link strength": 20.0000,
+                    "Documents": 7.0000,
+                    "Citations": 9.0000,
+                    "Norm. citations": 8.0072
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.2857,
+                    "Avg. citations": 1.2857,
+                    "Avg. norm. citations": 1.1439
+                }
+            },
+            {
+                "id": 1188,
+                "label": "mongeon, philippe",
+                "x": -0.3990,
+                "y": -0.0782,
+                "cluster": 3,
+                "weights": {
+                    "Links": 3.0000,
+                    "Total link strength": 5.0000,
+                    "Documents": 3.0000,
+                    "Citations": 3.0000,
+                    "Norm. citations": 1.0287
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 1.0000,
+                    "Avg. norm. citations": 0.3429
+                }
+            },
+            {
+                "id": 1232,
+                "label": "nawaz, raheel",
+                "x": 0.9545,
+                "y": -0.3125,
+                "cluster": 1,
+                "weights": {
+                    "Links": 7.0000,
+                    "Total link strength": 9.0000,
+                    "Documents": 2.0000,
+                    "Citations": 2.0000,
+                    "Norm. citations": 5.6068
+                },
+                "scores": {
+                    "Avg. pub. year": 2021.0000,
+                    "Avg. citations": 1.0000,
+                    "Avg. norm. citations": 2.8034
+                }
+            },
+            {
+                "id": 1289,
+                "label": "orduna-malea, enrique",
+                "x": 0.5958,
+                "y": -0.7053,
+                "cluster": 10,
+                "weights": {
+                    "Links": 2.0000,
+                    "Total link strength": 4.0000,
+                    "Documents": 2.0000,
+                    "Citations": 29.0000,
+                    "Norm. citations": 9.9444
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 14.5000,
+                    "Avg. norm. citations": 4.9722
+                }
+            },
+            {
+                "id": 1394,
+                "label": "pölönen, janne",
+                "x": 0.7173,
+                "y": 0.0639,
+                "cluster": 6,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 6.0000,
+                    "Documents": 2.0000,
+                    "Citations": 5.0000,
+                    "Norm. citations": 4.1751
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 2.5000,
+                    "Avg. norm. citations": 2.0875
+                }
+            },
+            {
+                "id": 1404,
+                "label": "qiu, junping",
+                "x": -0.7684,
+                "y": 0.0704,
+                "cluster": 9,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 6.0000,
+                    "Documents": 2.0000,
+                    "Citations": 12.0000,
+                    "Norm. citations": 4.1149
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 6.0000,
+                    "Avg. norm. citations": 2.0575
+                }
+            },
+            {
+                "id": 1449,
+                "label": "rousseau, ronald",
+                "x": 0.0361,
+                "y": 0.9127,
+                "cluster": 12,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 5.0000,
+                    "Documents": 4.0000,
+                    "Citations": 6.0000,
+                    "Norm. citations": 2.0575
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.2500,
+                    "Avg. citations": 1.5000,
+                    "Avg. norm. citations": 0.5144
+                }
+            },
+            {
+                "id": 1457,
+                "label": "ruocco, giancarlo",
+                "x": -0.2552,
+                "y": 0.3294,
+                "cluster": 11,
+                "weights": {
+                    "Links": 5.0000,
+                    "Total link strength": 6.0000,
+                    "Documents": 2.0000,
+                    "Citations": 3.0000,
+                    "Norm. citations": 1.0287
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 1.5000,
+                    "Avg. norm. citations": 0.5144
+                }
+            },
+            {
+                "id": 1475,
+                "label": "sainte-marie, maxime",
+                "x": -0.5008,
+                "y": -0.0806,
+                "cluster": 3,
+                "weights": {
+                    "Links": 2.0000,
+                    "Total link strength": 4.0000,
+                    "Documents": 2.0000,
+                    "Citations": 0.0000,
+                    "Norm. citations": 0.0000
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 0.0000,
+                    "Avg. norm. citations": 0.0000
+                }
+            },
+            {
+                "id": 1499,
+                "label": "sarwar, raheem",
+                "x": 1.1541,
+                "y": -0.3058,
+                "cluster": 1,
+                "weights": {
+                    "Links": 6.0000,
+                    "Total link strength": 7.0000,
+                    "Documents": 2.0000,
+                    "Citations": 6.0000,
+                    "Norm. citations": 6.9785
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 3.0000,
+                    "Avg. norm. citations": 3.4892
+                }
+            },
+            {
+                "id": 1513,
+                "label": "schmoch, ulrich",
+                "x": -1.0147,
+                "y": -0.4743,
+                "cluster": 5,
+                "weights": {
+                    "Links": 1.0000,
+                    "Total link strength": 1.0000,
+                    "Documents": 2.0000,
+                    "Citations": 3.0000,
+                    "Norm. citations": 1.0287
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 1.5000,
+                    "Avg. norm. citations": 0.5144
+                }
+            },
+            {
+                "id": 1520,
+                "label": "schubert, andrás",
+                "x": -0.1563,
+                "y": 0.4906,
+                "cluster": 11,
+                "weights": {
+                    "Links": 1.0000,
+                    "Total link strength": 1.0000,
+                    "Documents": 4.0000,
+                    "Citations": 2.0000,
+                    "Norm. citations": 0.6858
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.2500,
+                    "Avg. citations": 0.5000,
+                    "Avg. norm. citations": 0.1715
+                }
+            },
+            {
+                "id": 1566,
+                "label": "shu, fei",
+                "x": -0.6849,
+                "y": 0.1271,
+                "cluster": 9,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 8.0000,
+                    "Documents": 3.0000,
+                    "Citations": 14.0000,
+                    "Norm. citations": 9.7218
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.3333,
+                    "Avg. citations": 4.6667,
+                    "Avg. norm. citations": 3.2406
+                }
+            },
+            {
+                "id": 1586,
+                "label": "sivertsen, gunnar",
+                "x": 0.5341,
+                "y": 0.2335,
+                "cluster": 6,
+                "weights": {
+                    "Links": 8.0000,
+                    "Total link strength": 13.0000,
+                    "Documents": 5.0000,
+                    "Citations": 9.0000,
+                    "Norm. citations": 10.4677
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.6000,
+                    "Avg. citations": 1.8000,
+                    "Avg. norm. citations": 2.0935
+                }
+            },
+            {
+                "id": 1597,
+                "label": "song, min",
+                "x": -0.3959,
+                "y": -0.5300,
+                "cluster": 13,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 4.0000,
+                    "Documents": 4.0000,
+                    "Citations": 4.0000,
+                    "Norm. citations": 1.3716
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.2500,
+                    "Avg. citations": 1.0000,
+                    "Avg. norm. citations": 0.3429
+                }
+            },
+            {
+                "id": 1631,
+                "label": "sugimoto, cassidy r.",
+                "x": -0.5450,
+                "y": 0.0838,
+                "cluster": 9,
+                "weights": {
+                    "Links": 13.0000,
+                    "Total link strength": 17.0000,
+                    "Documents": 6.0000,
+                    "Citations": 18.0000,
+                    "Norm. citations": 16.0144
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 3.0000,
+                    "Avg. norm. citations": 2.6691
+                }
+            },
+            {
+                "id": 1657,
+                "label": "tang, li",
+                "x": 0.6158,
+                "y": 0.6370,
+                "cluster": 2,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 4.0000,
+                    "Documents": 2.0000,
+                    "Citations": 12.0000,
+                    "Norm. citations": 4.1149
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 6.0000,
+                    "Avg. norm. citations": 2.0575
+                }
+            },
+            {
+                "id": 1674,
+                "label": "tekles, alexander",
+                "x": 0.2013,
+                "y": -0.3172,
+                "cluster": 15,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 9.0000,
+                    "Documents": 4.0000,
+                    "Citations": 20.0000,
+                    "Norm. citations": 6.8582
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 5.0000,
+                    "Avg. norm. citations": 1.7146
+                }
+            },
+            {
+                "id": 1675,
+                "label": "thelwall, michael",
+                "x": 0.6141,
+                "y": -0.2907,
+                "cluster": 10,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 4.0000,
+                    "Documents": 2.0000,
+                    "Citations": 3.0000,
+                    "Norm. citations": 1.0287
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 1.5000,
+                    "Avg. norm. citations": 0.5144
+                }
+            },
+            {
+                "id": 1676,
+                "label": "thelwall, mike",
+                "x": 0.6737,
+                "y": -0.6049,
+                "cluster": 10,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 11.0000,
+                    "Documents": 23.0000,
+                    "Citations": 76.0000,
+                    "Norm. citations": 28.5217
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.2609,
+                    "Avg. citations": 3.3043,
+                    "Avg. norm. citations": 1.2401
+                }
+            },
+            {
+                "id": 1681,
+                "label": "tian, wencan",
+                "x": -0.1126,
+                "y": 0.0766,
+                "cluster": 14,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 5.0000,
+                    "Documents": 2.0000,
+                    "Citations": 9.0000,
+                    "Norm. citations": 3.0862
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 4.5000,
+                    "Avg. norm. citations": 1.5431
+                }
+            },
+            {
+                "id": 1728,
+                "label": "van eck, nees jan",
+                "x": -0.8374,
+                "y": -0.5475,
+                "cluster": 5,
+                "weights": {
+                    "Links": 6.0000,
+                    "Total link strength": 7.0000,
+                    "Documents": 5.0000,
+                    "Citations": 55.0000,
+                    "Norm. citations": 65.6097
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.2000,
+                    "Avg. citations": 11.0000,
+                    "Avg. norm. citations": 13.1219
+                }
+            },
+            {
+                "id": 1762,
+                "label": "wagner, caroline s.",
+                "x": -0.0956,
+                "y": -0.4343,
+                "cluster": 4,
+                "weights": {
+                    "Links": 5.0000,
+                    "Total link strength": 6.0000,
+                    "Documents": 3.0000,
+                    "Citations": 2.0000,
+                    "Norm. citations": 5.6068
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.6667,
+                    "Avg. citations": 0.6667,
+                    "Avg. norm. citations": 1.8689
+                }
+            },
+            {
+                "id": 1765,
+                "label": "waltman, ludo",
+                "x": -0.6557,
+                "y": -0.3747,
+                "cluster": 5,
+                "weights": {
+                    "Links": 8.0000,
+                    "Total link strength": 10.0000,
+                    "Documents": 6.0000,
+                    "Citations": 41.0000,
+                    "Norm. citations": 63.2695
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 6.8333,
+                    "Avg. norm. citations": 10.5449
+                }
+            },
+            {
+                "id": 1769,
+                "label": "wang, haifeng",
+                "x": 0.8196,
+                "y": 0.7098,
+                "cluster": 2,
+                "weights": {
+                    "Links": 1.0000,
+                    "Total link strength": 1.0000,
+                    "Documents": 2.0000,
+                    "Citations": 0.0000,
+                    "Norm. citations": 0.0000
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 0.0000,
+                    "Avg. norm. citations": 0.0000
+                }
+            },
+            {
+                "id": 1784,
+                "label": "wang, qi",
+                "x": -0.3777,
+                "y": -0.4367,
+                "cluster": 13,
+                "weights": {
+                    "Links": 3.0000,
+                    "Total link strength": 3.0000,
+                    "Documents": 2.0000,
+                    "Citations": 9.0000,
+                    "Norm. citations": 3.0862
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 4.5000,
+                    "Avg. norm. citations": 1.5431
+                }
+            },
+            {
+                "id": 1790,
+                "label": "wang, xianwen",
+                "x": -0.0194,
+                "y": 0.1201,
+                "cluster": 14,
+                "weights": {
+                    "Links": 5.0000,
+                    "Total link strength": 6.0000,
+                    "Documents": 4.0000,
+                    "Citations": 9.0000,
+                    "Norm. citations": 3.0862
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 2.2500,
+                    "Avg. norm. citations": 0.7715
+                }
+            },
+            {
+                "id": 1803,
+                "label": "wang, yuqi",
+                "x": 0.0719,
+                "y": 0.2778,
+                "cluster": 8,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 4.0000,
+                    "Documents": 2.0000,
+                    "Citations": 0.0000,
+                    "Norm. citations": 0.0000
+                },
+                "scores": {
+                    "Avg. pub. year": 2021.0000,
+                    "Avg. citations": 0.0000,
+                    "Avg. norm. citations": 0.0000
+                }
+            },
+            {
+                "id": 1805,
+                "label": "wang, zhiqi",
+                "x": 0.0667,
+                "y": 0.7154,
+                "cluster": 8,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 5.0000,
+                    "Documents": 3.0000,
+                    "Citations": 6.0000,
+                    "Norm. citations": 2.0575
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.3333,
+                    "Avg. citations": 2.0000,
+                    "Avg. norm. citations": 0.6858
+                }
+            },
+            {
+                "id": 1808,
+                "label": "warnow, tandy",
+                "x": 0.2666,
+                "y": -0.0516,
+                "cluster": 15,
+                "weights": {
+                    "Links": 3.0000,
+                    "Total link strength": 11.0000,
+                    "Documents": 4.0000,
+                    "Citations": 7.0000,
+                    "Norm. citations": 2.4004
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.2500,
+                    "Avg. citations": 1.7500,
+                    "Avg. norm. citations": 0.6001
+                }
+            },
+            {
+                "id": 1837,
+                "label": "wolfram, dietmar",
+                "x": 0.5847,
+                "y": -0.1943,
+                "cluster": 10,
+                "weights": {
+                    "Links": 3.0000,
+                    "Total link strength": 3.0000,
+                    "Documents": 2.0000,
+                    "Citations": 6.0000,
+                    "Norm. citations": 2.0575
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 3.0000,
+                    "Avg. norm. citations": 1.0287
+                }
+            },
+            {
+                "id": 1842,
+                "label": "wray, k. brad",
+                "x": 0.4578,
+                "y": -0.5057,
+                "cluster": 16,
+                "weights": {
+                    "Links": 2.0000,
+                    "Total link strength": 2.0000,
+                    "Documents": 3.0000,
+                    "Citations": 1.0000,
+                    "Norm. citations": 0.3429
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 0.3333,
+                    "Avg. norm. citations": 0.1143
+                }
+            },
+            {
+                "id": 1849,
+                "label": "wu, mengjia",
+                "x": -0.1515,
+                "y": -0.5208,
+                "cluster": 4,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 5.0000,
+                    "Documents": 3.0000,
+                    "Citations": 5.0000,
+                    "Norm. citations": 14.0171
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.6667,
+                    "Avg. citations": 1.6667,
+                    "Avg. norm. citations": 4.6724
+                }
+            },
+            {
+                "id": 1855,
+                "label": "wu, yishan",
+                "x": -0.0314,
+                "y": 1.0276,
+                "cluster": 12,
+                "weights": {
+                    "Links": 3.0000,
+                    "Total link strength": 3.0000,
+                    "Documents": 2.0000,
+                    "Citations": 3.0000,
+                    "Norm. citations": 1.0287
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 1.5000,
+                    "Avg. norm. citations": 0.5144
+                }
+            },
+            {
+                "id": 1901,
+                "label": "yang, liying",
+                "x": 0.5557,
+                "y": 0.5680,
+                "cluster": 2,
+                "weights": {
+                    "Links": 2.0000,
+                    "Total link strength": 2.0000,
+                    "Documents": 2.0000,
+                    "Citations": 0.0000,
+                    "Norm. citations": 0.0000
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 0.0000,
+                    "Avg. norm. citations": 0.0000
+                }
+            },
+            {
+                "id": 1909,
+                "label": "yang, xuemei",
+                "x": -0.0899,
+                "y": 1.1708,
+                "cluster": 12,
+                "weights": {
+                    "Links": 1.0000,
+                    "Total link strength": 1.0000,
+                    "Documents": 2.0000,
+                    "Citations": 0.0000,
+                    "Norm. citations": 0.0000
+                },
+                "scores": {
+                    "Avg. pub. year": 2021.0000,
+                    "Avg. citations": 0.0000,
+                    "Avg. norm. citations": 0.0000
+                }
+            },
+            {
+                "id": 1961,
+                "label": "zhang, chengzhi",
+                "x": -0.9495,
+                "y": 0.2776,
+                "cluster": 9,
+                "weights": {
+                    "Links": 3.0000,
+                    "Total link strength": 5.0000,
+                    "Documents": 4.0000,
+                    "Citations": 14.0000,
+                    "Norm. citations": 4.8007
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.2500,
+                    "Avg. citations": 3.5000,
+                    "Avg. norm. citations": 1.2002
+                }
+            },
+            {
+                "id": 1975,
+                "label": "zhang, lin",
+                "x": 0.4556,
+                "y": 0.4708,
+                "cluster": 2,
+                "weights": {
+                    "Links": 6.0000,
+                    "Total link strength": 14.0000,
+                    "Documents": 6.0000,
+                    "Citations": 43.0000,
+                    "Norm. citations": 24.5872
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.6667,
+                    "Avg. citations": 7.1667,
+                    "Avg. norm. citations": 4.0979
+                }
+            },
+            {
+                "id": 1996,
+                "label": "zhang, yi",
+                "x": -0.0560,
+                "y": -0.5341,
+                "cluster": 4,
+                "weights": {
+                    "Links": 3.0000,
+                    "Total link strength": 4.0000,
+                    "Documents": 2.0000,
+                    "Citations": 5.0000,
+                    "Norm. citations": 14.0171
+                },
+                "scores": {
+                    "Avg. pub. year": 2021.0000,
+                    "Avg. citations": 2.5000,
+                    "Avg. norm. citations": 7.0085
+                }
+            },
+            {
+                "id": 2009,
+                "label": "zhao, wenjing",
+                "x": 0.3256,
+                "y": 0.4464,
+                "cluster": 2,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 6.0000,
+                    "Documents": 2.0000,
+                    "Citations": 39.0000,
+                    "Norm. citations": 13.3735
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 19.5000,
+                    "Avg. norm. citations": 6.6868
+                }
+            },
+            {
+                "id": 2025,
+                "label": "zhou, ping",
+                "x": 0.0011,
+                "y": -0.2802,
+                "cluster": 4,
+                "weights": {
+                    "Links": 3.0000,
+                    "Total link strength": 4.0000,
+                    "Documents": 2.0000,
+                    "Citations": 1.0000,
+                    "Norm. citations": 0.3429
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 0.5000,
+                    "Avg. norm. citations": 0.1715
+                }
+            },
+            {
+                "id": 2036,
+                "label": "zhu, junwen",
+                "x": 0.7604,
+                "y": 0.8323,
+                "cluster": 2,
+                "weights": {
+                    "Links": 1.0000,
+                    "Total link strength": 2.0000,
+                    "Documents": 2.0000,
+                    "Citations": 51.0000,
+                    "Norm. citations": 17.4884
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.0000,
+                    "Avg. citations": 25.5000,
+                    "Avg. norm. citations": 8.7442
+                }
+            },
+            {
+                "id": 2050,
+                "label": "zuccala, alesia",
+                "x": 1.2276,
+                "y": -0.5442,
+                "cluster": 1,
+                "weights": {
+                    "Links": 4.0000,
+                    "Total link strength": 4.0000,
+                    "Documents": 2.0000,
+                    "Citations": 4.0000,
+                    "Norm. citations": 1.3716
+                },
+                "scores": {
+                    "Avg. pub. year": 2020.5000,
+                    "Avg. citations": 2.0000,
+                    "Avg. norm. citations": 0.6858
+                }
+            }
+        ],
+        "links": [
+            {
+                "source_id": 14,
+                "target_id": 462,
+                "strength": 4.0000
+            },
+            {
+                "source_id": 23,
+                "target_id": 1066,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 23,
+                "target_id": 1728,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 39,
+                "target_id": 44,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 39,
+                "target_id": 45,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 39,
+                "target_id": 180,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 39,
+                "target_id": 439,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 39,
+                "target_id": 676,
+                "strength": 3.0000
+            },
+            {
+                "source_id": 39,
+                "target_id": 768,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 39,
+                "target_id": 1232,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 39,
+                "target_id": 2050,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 44,
+                "target_id": 676,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 44,
+                "target_id": 768,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 44,
+                "target_id": 1499,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 44,
+                "target_id": 2050,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 45,
+                "target_id": 180,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 45,
+                "target_id": 439,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 45,
+                "target_id": 500,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 45,
+                "target_id": 676,
+                "strength": 4.0000
+            },
+            {
+                "source_id": 45,
+                "target_id": 768,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 45,
+                "target_id": 1232,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 45,
+                "target_id": 1499,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 60,
+                "target_id": 1597,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 133,
+                "target_id": 672,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 133,
+                "target_id": 931,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 180,
+                "target_id": 256,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 180,
+                "target_id": 399,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 180,
+                "target_id": 638,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 180,
+                "target_id": 676,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 180,
+                "target_id": 678,
+                "strength": 5.0000
+            },
+            {
+                "source_id": 180,
+                "target_id": 768,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 180,
+                "target_id": 960,
+                "strength": 4.0000
+            },
+            {
+                "source_id": 180,
+                "target_id": 1127,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 180,
+                "target_id": 1232,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 180,
+                "target_id": 1674,
+                "strength": 4.0000
+            },
+            {
+                "source_id": 180,
+                "target_id": 1675,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 180,
+                "target_id": 1762,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 180,
+                "target_id": 1837,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 180,
+                "target_id": 1842,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 184,
+                "target_id": 914,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 189,
+                "target_id": 333,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 189,
+                "target_id": 1728,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 189,
+                "target_id": 1765,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 209,
+                "target_id": 307,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 209,
+                "target_id": 746,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 209,
+                "target_id": 985,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 209,
+                "target_id": 1597,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 209,
+                "target_id": 1631,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 209,
+                "target_id": 1765,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 209,
+                "target_id": 1784,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 228,
+                "target_id": 1069,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 228,
+                "target_id": 1762,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 228,
+                "target_id": 1849,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 228,
+                "target_id": 1996,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 228,
+                "target_id": 2025,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 251,
+                "target_id": 359,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 251,
+                "target_id": 594,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 251,
+                "target_id": 1179,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 251,
+                "target_id": 1457,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 251,
+                "target_id": 1631,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 256,
+                "target_id": 399,
+                "strength": 5.0000
+            },
+            {
+                "source_id": 256,
+                "target_id": 881,
+                "strength": 4.0000
+            },
+            {
+                "source_id": 256,
+                "target_id": 1674,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 256,
+                "target_id": 1808,
+                "strength": 4.0000
+            },
+            {
+                "source_id": 271,
+                "target_id": 931,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 271,
+                "target_id": 1404,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 271,
+                "target_id": 1566,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 271,
+                "target_id": 1631,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 271,
+                "target_id": 1961,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 290,
+                "target_id": 353,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 290,
+                "target_id": 453,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 290,
+                "target_id": 594,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 290,
+                "target_id": 921,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 290,
+                "target_id": 1002,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 290,
+                "target_id": 1805,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 307,
+                "target_id": 627,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 307,
+                "target_id": 1179,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 307,
+                "target_id": 1631,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 333,
+                "target_id": 1728,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 333,
+                "target_id": 1765,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 344,
+                "target_id": 488,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 344,
+                "target_id": 1069,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 344,
+                "target_id": 1188,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 344,
+                "target_id": 1681,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 344,
+                "target_id": 1790,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 353,
+                "target_id": 453,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 353,
+                "target_id": 921,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 353,
+                "target_id": 1803,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 359,
+                "target_id": 594,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 359,
+                "target_id": 1179,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 359,
+                "target_id": 1457,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 359,
+                "target_id": 1631,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 371,
+                "target_id": 632,
+                "strength": 3.0000
+            },
+            {
+                "source_id": 371,
+                "target_id": 707,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 371,
+                "target_id": 1048,
+                "strength": 3.0000
+            },
+            {
+                "source_id": 371,
+                "target_id": 1179,
+                "strength": 3.0000
+            },
+            {
+                "source_id": 399,
+                "target_id": 881,
+                "strength": 3.0000
+            },
+            {
+                "source_id": 399,
+                "target_id": 1674,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 399,
+                "target_id": 1808,
+                "strength": 3.0000
+            },
+            {
+                "source_id": 427,
+                "target_id": 1513,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 427,
+                "target_id": 1728,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 439,
+                "target_id": 676,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 443,
+                "target_id": 1855,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 443,
+                "target_id": 1909,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 453,
+                "target_id": 921,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 453,
+                "target_id": 1803,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 462,
+                "target_id": 1728,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 466,
+                "target_id": 1449,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 471,
+                "target_id": 638,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 471,
+                "target_id": 1586,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 488,
+                "target_id": 1681,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 488,
+                "target_id": 1790,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 500,
+                "target_id": 676,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 500,
+                "target_id": 1232,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 500,
+                "target_id": 1499,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 590,
+                "target_id": 853,
+                "strength": 3.0000
+            },
+            {
+                "source_id": 590,
+                "target_id": 931,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 594,
+                "target_id": 614,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 594,
+                "target_id": 745,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 594,
+                "target_id": 1179,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 594,
+                "target_id": 1457,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 594,
+                "target_id": 1520,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 594,
+                "target_id": 1631,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 594,
+                "target_id": 1805,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 594,
+                "target_id": 1975,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 594,
+                "target_id": 2009,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 600,
+                "target_id": 931,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 627,
+                "target_id": 1179,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 632,
+                "target_id": 707,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 632,
+                "target_id": 1048,
+                "strength": 3.0000
+            },
+            {
+                "source_id": 632,
+                "target_id": 1179,
+                "strength": 3.0000
+            },
+            {
+                "source_id": 638,
+                "target_id": 903,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 638,
+                "target_id": 914,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 638,
+                "target_id": 1394,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 638,
+                "target_id": 1586,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 638,
+                "target_id": 1675,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 638,
+                "target_id": 1837,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 672,
+                "target_id": 931,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 676,
+                "target_id": 768,
+                "strength": 3.0000
+            },
+            {
+                "source_id": 676,
+                "target_id": 1232,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 676,
+                "target_id": 1499,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 676,
+                "target_id": 2050,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 678,
+                "target_id": 1127,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 678,
+                "target_id": 1842,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 707,
+                "target_id": 1048,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 707,
+                "target_id": 1179,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 732,
+                "target_id": 1033,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 732,
+                "target_id": 1657,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 737,
+                "target_id": 1681,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 737,
+                "target_id": 1790,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 745,
+                "target_id": 1586,
+                "strength": 3.0000
+            },
+            {
+                "source_id": 745,
+                "target_id": 1975,
+                "strength": 5.0000
+            },
+            {
+                "source_id": 745,
+                "target_id": 2009,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 746,
+                "target_id": 1765,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 768,
+                "target_id": 1232,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 768,
+                "target_id": 1499,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 768,
+                "target_id": 2050,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 853,
+                "target_id": 931,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 881,
+                "target_id": 1808,
+                "strength": 4.0000
+            },
+            {
+                "source_id": 887,
+                "target_id": 1675,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 887,
+                "target_id": 1676,
+                "strength": 5.0000
+            },
+            {
+                "source_id": 903,
+                "target_id": 914,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 903,
+                "target_id": 1394,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 903,
+                "target_id": 1586,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 914,
+                "target_id": 1394,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 914,
+                "target_id": 1586,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 921,
+                "target_id": 1803,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 931,
+                "target_id": 1168,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 931,
+                "target_id": 1188,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 931,
+                "target_id": 1404,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 931,
+                "target_id": 1475,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 931,
+                "target_id": 1566,
+                "strength": 3.0000
+            },
+            {
+                "source_id": 931,
+                "target_id": 1631,
+                "strength": 4.0000
+            },
+            {
+                "source_id": 931,
+                "target_id": 1765,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 960,
+                "target_id": 1069,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 960,
+                "target_id": 1168,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 960,
+                "target_id": 1674,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 960,
+                "target_id": 1762,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 960,
+                "target_id": 2025,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 985,
+                "target_id": 1597,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 985,
+                "target_id": 1784,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 985,
+                "target_id": 1849,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1002,
+                "target_id": 1805,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1033,
+                "target_id": 1657,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1033,
+                "target_id": 1769,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1033,
+                "target_id": 2036,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 1037,
+                "target_id": 1078,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 1037,
+                "target_id": 1961,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 1044,
+                "target_id": 1449,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1044,
+                "target_id": 1855,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1048,
+                "target_id": 1179,
+                "strength": 3.0000
+            },
+            {
+                "source_id": 1069,
+                "target_id": 2025,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 1078,
+                "target_id": 1961,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 1124,
+                "target_id": 1289,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 1124,
+                "target_id": 1676,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 1129,
+                "target_id": 1676,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 1168,
+                "target_id": 1631,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1168,
+                "target_id": 1765,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1179,
+                "target_id": 1457,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1179,
+                "target_id": 1631,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1188,
+                "target_id": 1475,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 1232,
+                "target_id": 1499,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1289,
+                "target_id": 1676,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 1394,
+                "target_id": 1586,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1404,
+                "target_id": 1566,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 1404,
+                "target_id": 1631,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1449,
+                "target_id": 1805,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1449,
+                "target_id": 1855,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1457,
+                "target_id": 1631,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1566,
+                "target_id": 1631,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 1586,
+                "target_id": 1975,
+                "strength": 3.0000
+            },
+            {
+                "source_id": 1586,
+                "target_id": 2009,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1597,
+                "target_id": 1784,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1631,
+                "target_id": 1765,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1657,
+                "target_id": 1901,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1657,
+                "target_id": 1975,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1675,
+                "target_id": 1837,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1681,
+                "target_id": 1790,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 1728,
+                "target_id": 1765,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 1762,
+                "target_id": 1849,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1762,
+                "target_id": 1996,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1790,
+                "target_id": 1803,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1849,
+                "target_id": 1996,
+                "strength": 2.0000
+            },
+            {
+                "source_id": 1901,
+                "target_id": 1975,
+                "strength": 1.0000
+            },
+            {
+                "source_id": 1975,
+                "target_id": 2009,
+                "strength": 2.0000
+            }
+        ]
+    }
+}

@@ -1,0 +1,3977 @@
+{
+    "config": {
+        "terminology": {
+            "cluster": "Group",
+            "clusters": "Groups",
+            "item": "Researcher",
+            "items": "Researchers",
+            "link": "Co-authorship link",
+            "links": "Co-authorship links",
+            "link_strength": "Co-authorships",
+            "total_link_strength": "Total co-authorships"
+        },
+        "templates": {
+            "item_description": "<div class='description_heading'>Researcher</div><div class='description_label'><a class='description_url' href='https://app.dimensions.ai/discover/publication?and_facet_researcher={id}' target='_blank'>{label}</a></div><div class='description_text'>{organization} - {address}</div>",
+            "link_description": "<div class='description_heading'>Co-authorship link</div><div class='description_label'><a class='description_url' href='https://app.dimensions.ai/discover/publication?and_facet_researcher={source_id}' target='_blank'>{source_label}</a></div><div class='description_text'>{source_organization} - {source_address}</div><div class='description_label'><a class='description_url' href='https://app.dimensions.ai/discover/publication?and_facet_researcher={target_id}' target='_blank'>{target_label}</a></div><div class='description_text'>{target_organization} - {target_address}</div>"
+        },
+        "styles": {
+            "description_heading": "color: #757575; font-weight: 600;"
+        }
+    },
+    "network": {
+        "items": [
+            {
+                "id": "ur.01041121777.72",
+                "label": "Lutz Bornmann",
+                "organization": "Max Planck Society",
+                "address": "Munich, Germany",
+                "x": 0.00926454458385706,
+                "y": -0.8194026947021484,
+                "cluster": 11,
+                "weights": {
+                    "Publications": 190,
+                    "Citations": 4213,
+                    "Norm. citations": 314.0056944511198
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.452631578947,
+                    "Avg. citations": 22.17368421052631,
+                    "Avg. norm. citations": 1.652661549742736
+                }
+            },
+            {
+                "id": "ur.01117315427.34",
+                "label": "Loet Leydesdorff",
+                "organization": "University of Amsterdam",
+                "address": "Amsterdam, Netherlands",
+                "x": -0.20328518748283386,
+                "y": -0.589972734451294,
+                "cluster": 12,
+                "weights": {
+                    "Publications": 128,
+                    "Citations": 3501,
+                    "Norm. citations": 237.0877157651955
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.71875,
+                    "Avg. citations": 27.3515625,
+                    "Avg. norm. citations": 1.85224777941559
+                }
+            },
+            {
+                "id": "ur.010706033475.66",
+                "label": "Mike Thelwall",
+                "organization": "University of Wolverhampton",
+                "address": "Wolverhampton, United Kingdom",
+                "x": 0.5479413270950317,
+                "y": -0.2684869170188904,
+                "cluster": 7,
+                "weights": {
+                    "Publications": 124,
+                    "Citations": 4490,
+                    "Norm. citations": 322.1784774283099
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.895161290323,
+                    "Avg. citations": 36.20967741935484,
+                    "Avg. norm. citations": 2.59821352764766
+                }
+            },
+            {
+                "id": "ur.07435436662.44",
+                "label": "Giovanni Abramo",
+                "organization": "National Research Council",
+                "address": "Rome, Italy",
+                "x": 0.8700807094573975,
+                "y": 0.5843181610107422,
+                "cluster": 14,
+                "weights": {
+                    "Publications": 84,
+                    "Citations": 1514,
+                    "Norm. citations": 107.336564111603
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.928571428571,
+                    "Avg. citations": 18.02380952380953,
+                    "Avg. norm. citations": 1.277816239423846
+                }
+            },
+            {
+                "id": "ur.07665243172.78",
+                "label": "Ciriaco Andrea D'Angelo",
+                "organization": "University of Rome Tor Vergata",
+                "address": "Rome, Italy",
+                "x": 0.9171470403671265,
+                "y": 0.4700923264026642,
+                "cluster": 14,
+                "weights": {
+                    "Publications": 83,
+                    "Citations": 1483,
+                    "Norm. citations": 102.9227942151178
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.963855421687,
+                    "Avg. citations": 17.86746987951807,
+                    "Avg. norm. citations": 1.240033665242383
+                }
+            },
+            {
+                "id": "ur.011401535623.07",
+                "label": "Ronald Rousseau",
+                "organization": "KU Leuven",
+                "address": "Leuven, Belgium",
+                "x": -0.6164569854736328,
+                "y": 0.4074775278568268,
+                "cluster": 8,
+                "weights": {
+                    "Publications": 82,
+                    "Citations": 734,
+                    "Norm. citations": 56.6236819028194
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.987804878049,
+                    "Avg. citations": 8.951219512195122,
+                    "Avg. norm. citations": 0.6905327061319438
+                }
+            },
+            {
+                "id": "ur.010543537745.39",
+                "label": "Wolfgang Glänzel",
+                "organization": "KU Leuven",
+                "address": "Leuven, Belgium",
+                "x": 0.3145856261253357,
+                "y": 0.5745584964752197,
+                "cluster": 6,
+                "weights": {
+                    "Publications": 66,
+                    "Citations": 842,
+                    "Norm. citations": 56.86778616100067
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.818181818182,
+                    "Avg. citations": 12.75757575757576,
+                    "Avg. norm. citations": 0.8616331236515253
+                }
+            },
+            {
+                "id": "ur.013336273241.41",
+                "label": "Mu-Hsuan Huang",
+                "organization": "National Taiwan University",
+                "address": "Taipei, Taiwan",
+                "x": -1.3636964559555054,
+                "y": -0.6832897663116455,
+                "cluster": 15,
+                "weights": {
+                    "Publications": 52,
+                    "Citations": 648,
+                    "Norm. citations": 35.19279958180034
+                },
+                "scores": {
+                    "Avg. pub. year": 2013.75,
+                    "Avg. citations": 12.46153846153846,
+                    "Avg. norm. citations": 0.6767846073423143
+                }
+            },
+            {
+                "id": "ur.013433750473.60",
+                "label": "Vincent Larivière",
+                "organization": "University of Montreal",
+                "address": "Montreal, Canada",
+                "x": 0.24570754170417786,
+                "y": -0.2841303050518036,
+                "cluster": 1,
+                "weights": {
+                    "Publications": 51,
+                    "Citations": 1481,
+                    "Norm. citations": 106.9838173091498
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.764705882353,
+                    "Avg. citations": 29.03921568627451,
+                    "Avg. norm. citations": 2.097721908022546
+                }
+            },
+            {
+                "id": "ur.010501507403.57",
+                "label": "Ying Ding",
+                "organization": "Indiana University Bloomington",
+                "address": "Bloomington, United States",
+                "x": -0.210980623960495,
+                "y": -0.14517749845981598,
+                "cluster": 3,
+                "weights": {
+                    "Publications": 49,
+                    "Citations": 1112,
+                    "Norm. citations": 72.92161768821349
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.102040816327,
+                    "Avg. citations": 22.69387755102041,
+                    "Avg. norm. citations": 1.488196279351296
+                }
+            },
+            {
+                "id": "ur.012335176517.38",
+                "label": "Gangan Prathap",
+                "organization": "A P J Abdul Kalam Technological University",
+                "address": "Thiruvananthapuram, India",
+                "x": -0.34721553325653076,
+                "y": -0.6102083325386047,
+                "cluster": 12,
+                "weights": {
+                    "Publications": 45,
+                    "Citations": 168,
+                    "Norm. citations": 11.22920802995128
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.155555555556,
+                    "Avg. citations": 3.733333333333333,
+                    "Avg. norm. citations": 0.2495379562211395
+                }
+            },
+            {
+                "id": "ur.013476316237.32",
+                "label": "Erjia Yan",
+                "organization": "Drexel University",
+                "address": "Philadelphia, United States",
+                "x": -0.10752284526824951,
+                "y": -0.29892539978027344,
+                "cluster": 3,
+                "weights": {
+                    "Publications": 44,
+                    "Citations": 722,
+                    "Norm. citations": 64.03309235591311
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.818181818182,
+                    "Avg. citations": 16.40909090909091,
+                    "Avg. norm. citations": 1.45529755354348
+                }
+            },
+            {
+                "id": "ur.01340617017.77",
+                "label": "Cassidy R. Sugimoto",
+                "organization": "Indiana University Bloomington",
+                "address": "Bloomington, United States",
+                "x": 0.1719478815793991,
+                "y": -0.16875720024108887,
+                "cluster": 1,
+                "weights": {
+                    "Publications": 42,
+                    "Citations": 1799,
+                    "Norm. citations": 116.4050014883557
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.547619047619,
+                    "Avg. citations": 42.83333333333334,
+                    "Avg. norm. citations": 2.77154765448466
+                }
+            },
+            {
+                "id": "ur.013620216237.55",
+                "label": "Dar-Zen Chen",
+                "organization": "National Taiwan University",
+                "address": "Taipei, Taiwan",
+                "x": -1.291090726852417,
+                "y": -0.6326645612716675,
+                "cluster": 15,
+                "weights": {
+                    "Publications": 38,
+                    "Citations": 470,
+                    "Norm. citations": 22.85146177938892
+                },
+                "scores": {
+                    "Avg. pub. year": 2013.394736842105,
+                    "Avg. citations": 12.36842105263158,
+                    "Avg. norm. citations": 0.60135425735234
+                }
+            },
+            {
+                "id": "ur.015350443747.47",
+                "label": "Robin Haunschild",
+                "organization": "Max Planck Institute for Solid State Research",
+                "address": "Stuttgart, Germany",
+                "x": -0.1203916147351265,
+                "y": -0.9472646117210388,
+                "cluster": 11,
+                "weights": {
+                    "Publications": 38,
+                    "Citations": 328,
+                    "Norm. citations": 49.26659024120116
+                },
+                "scores": {
+                    "Avg. pub. year": 2017.5,
+                    "Avg. citations": 8.631578947368421,
+                    "Avg. norm. citations": 1.296489216873715
+                }
+            },
+            {
+                "id": "ur.01203665252.25",
+                "label": "Ludo Waltman",
+                "organization": "Leiden University",
+                "address": "Leiden, Netherlands",
+                "x": -0.26822957396507263,
+                "y": 0.7213867902755737,
+                "cluster": 2,
+                "weights": {
+                    "Publications": 37,
+                    "Citations": 2586,
+                    "Norm. citations": 157.440266843306
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.459459459459,
+                    "Avg. citations": 69.89189189189189,
+                    "Avg. norm. citations": 4.255142347116377
+                }
+            },
+            {
+                "id": "ur.015254724313.19",
+                "label": "Leo Egghe",
+                "organization": "Indian Statistical Institute",
+                "address": "Kolkata, India",
+                "x": -0.7120285034179688,
+                "y": 0.32078906893730164,
+                "cluster": 8,
+                "weights": {
+                    "Publications": 36,
+                    "Citations": 211,
+                    "Norm. citations": 17.53275366752665
+                },
+                "scores": {
+                    "Avg. pub. year": 2013.611111111111,
+                    "Avg. citations": 5.861111111111111,
+                    "Avg. norm. citations": 0.4870209352090736
+                }
+            },
+            {
+                "id": "ur.015575637147.72",
+                "label": "Werner Marx",
+                "organization": "Max Planck Institute for Solid State Research",
+                "address": "Stuttgart, Germany",
+                "x": 0.0006403708248399198,
+                "y": -1.0181381702423096,
+                "cluster": 11,
+                "weights": {
+                    "Publications": 33,
+                    "Citations": 741,
+                    "Norm. citations": 52.70350728987574
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.030303030303,
+                    "Avg. citations": 22.45454545454545,
+                    "Avg. norm. citations": 1.597075978481083
+                }
+            },
+            {
+                "id": "ur.010433123061.81",
+                "label": "Han Woo Park",
+                "organization": "Yeungnam University",
+                "address": "Daegu, South Korea",
+                "x": 0.416197806596756,
+                "y": -0.702283501625061,
+                "cluster": 7,
+                "weights": {
+                    "Publications": 32,
+                    "Citations": 681,
+                    "Norm. citations": 40.70108350159077
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.03125,
+                    "Avg. citations": 21.28125,
+                    "Avg. norm. citations": 1.271908859424711
+                }
+            },
+            {
+                "id": "ur.01316361675.44",
+                "label": "Min Song",
+                "organization": "Yonsei University",
+                "address": "Seoul, South Korea",
+                "x": -0.23110072314739227,
+                "y": -0.2647452652454376,
+                "cluster": 3,
+                "weights": {
+                    "Publications": 32,
+                    "Citations": 395,
+                    "Norm. citations": 29.74139089314747
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.84375,
+                    "Avg. citations": 12.34375,
+                    "Avg. norm. citations": 0.9294184654108585
+                }
+            },
+            {
+                "id": "ur.010225441325.58",
+                "label": "Jose A. García",
+                "organization": "University of Granada",
+                "address": "Granada, Spain",
+                "x": 1.2527931928634644,
+                "y": -0.31328657269477844,
+                "cluster": 10,
+                "weights": {
+                    "Publications": 30,
+                    "Citations": 167,
+                    "Norm. citations": 10.68195577953662
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.033333333333,
+                    "Avg. citations": 5.566666666666666,
+                    "Avg. norm. citations": 0.3560651926512208
+                }
+            },
+            {
+                "id": "ur.012336067767.45",
+                "label": "Rosa Rodriguez-Sánchez",
+                "organization": "University of Granada",
+                "address": "Granada, Spain",
+                "x": 1.3165122270584106,
+                "y": -0.41779381036758423,
+                "cluster": 10,
+                "weights": {
+                    "Publications": 30,
+                    "Citations": 167,
+                    "Norm. citations": 10.68195577953663
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.033333333333,
+                    "Avg. citations": 5.566666666666666,
+                    "Avg. norm. citations": 0.3560651926512209
+                }
+            },
+            {
+                "id": "ur.01242763150.03",
+                "label": "Alan L. Porter",
+                "organization": "Accenture (United States)",
+                "address": "New York, United States",
+                "x": -0.8007794618606567,
+                "y": -0.3960302770137787,
+                "cluster": 5,
+                "weights": {
+                    "Publications": 30,
+                    "Citations": 591,
+                    "Norm. citations": 45.89189966486963
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.966666666667,
+                    "Avg. citations": 19.7,
+                    "Avg. norm. citations": 1.529729988828988
+                }
+            },
+            {
+                "id": "ur.014771673561.84",
+                "label": "Joaquín Fdez-Valdivia",
+                "organization": "University of Granada",
+                "address": "Granada, Spain",
+                "x": 1.1938807964324951,
+                "y": -0.43307605385780334,
+                "cluster": 10,
+                "weights": {
+                    "Publications": 30,
+                    "Citations": 167,
+                    "Norm. citations": 10.68195577953663
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.033333333333,
+                    "Avg. citations": 5.566666666666666,
+                    "Avg. norm. citations": 0.356065192651221
+                }
+            },
+            {
+                "id": "ur.015317766207.06",
+                "label": "Kayvan Kousha",
+                "organization": "University of Wolverhampton",
+                "address": "Wolverhampton, United Kingdom",
+                "x": 0.5662180185317993,
+                "y": -0.39709633588790894,
+                "cluster": 7,
+                "weights": {
+                    "Publications": 28,
+                    "Citations": 816,
+                    "Norm. citations": 61.62958997181426
+                },
+                "scores": {
+                    "Avg. pub. year": 2016.285714285714,
+                    "Avg. citations": 29.14285714285714,
+                    "Avg. norm. citations": 2.201056784707652
+                }
+            },
+            {
+                "id": "ur.012213506743.88",
+                "label": "Javier Ruiz-Castillo",
+                "organization": "Carlos III University of Madrid",
+                "address": "Madrid, Spain",
+                "x": 0.18737351894378662,
+                "y": 0.20956072211265564,
+                "cluster": 4,
+                "weights": {
+                    "Publications": 27,
+                    "Citations": 559,
+                    "Norm. citations": 30.01080501606585
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.111111111111,
+                    "Avg. citations": 20.7037037037037,
+                    "Avg. norm. citations": 1.111511296891328
+                }
+            },
+            {
+                "id": "ur.013012771111.87",
+                "label": "Rodrigo Costas",
+                "organization": "Leiden University",
+                "address": "Leiden, Netherlands",
+                "x": -0.03523466736078262,
+                "y": 0.4041248559951782,
+                "cluster": 2,
+                "weights": {
+                    "Publications": 26,
+                    "Citations": 924,
+                    "Norm. citations": 68.07558776871765
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.692307692308,
+                    "Avg. citations": 35.53846153846154,
+                    "Avg. norm. citations": 2.618291837258371
+                }
+            },
+            {
+                "id": "ur.011612755475.45",
+                "label": "Nees Jan van Eck",
+                "organization": "Leiden University",
+                "address": "Leiden, Netherlands",
+                "x": -0.23335278034210205,
+                "y": 0.6263295412063599,
+                "cluster": 2,
+                "weights": {
+                    "Publications": 25,
+                    "Citations": 1469,
+                    "Norm. citations": 95.04778510368364
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.72,
+                    "Avg. citations": 58.76,
+                    "Avg. norm. citations": 3.801911404147345
+                }
+            },
+            {
+                "id": "ur.011704607143.20",
+                "label": "Fred Y. Ye",
+                "organization": "Nanjing University",
+                "address": "Nanjing, China",
+                "x": -0.6364578008651733,
+                "y": -0.00790126621723175,
+                "cluster": 3,
+                "weights": {
+                    "Publications": 25,
+                    "Citations": 305,
+                    "Norm. citations": 20.15019695429526
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.6,
+                    "Avg. citations": 12.2,
+                    "Avg. norm. citations": 0.8060078781718104
+                }
+            },
+            {
+                "id": "ur.01117100362.08",
+                "label": "Rüdiger Mutz",
+                "organization": "ETH Zurich",
+                "address": "Zurich, Switzerland",
+                "x": 0.16935570538043976,
+                "y": -0.9114816188812256,
+                "cluster": 11,
+                "weights": {
+                    "Publications": 24,
+                    "Citations": 1009,
+                    "Norm. citations": 55.33783997338034
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.791666666667,
+                    "Avg. citations": 42.04166666666666,
+                    "Avg. norm. citations": 2.305743332224181
+                }
+            },
+            {
+                "id": "ur.015520422353.10",
+                "label": "Juan Gorraiz",
+                "organization": "University of Vienna",
+                "address": "Vienna, Austria",
+                "x": 0.5681465864181519,
+                "y": 0.5698062181472778,
+                "cluster": 6,
+                "weights": {
+                    "Publications": 24,
+                    "Citations": 401,
+                    "Norm. citations": 27.04532022428427
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.333333333333,
+                    "Avg. citations": 16.70833333333333,
+                    "Avg. norm. citations": 1.126888342678511
+                }
+            },
+            {
+                "id": "ur.015517505034.15",
+                "label": "Henk F. Moed",
+                "organization": "Sapienza University of Rome",
+                "address": "Rome, Italy",
+                "x": 0.585269033908844,
+                "y": 0.15754710137844086,
+                "cluster": 4,
+                "weights": {
+                    "Publications": 23,
+                    "Citations": 579,
+                    "Norm. citations": 45.92769734476349
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.869565217391,
+                    "Avg. citations": 25.17391304347826,
+                    "Avg. norm. citations": 1.996856406294065
+                }
+            },
+            {
+                "id": "ur.010523256744.02",
+                "label": "Raf Guns",
+                "organization": "University of Antwerp",
+                "address": "Antwerp, Belgium",
+                "x": -0.7866043448448181,
+                "y": 0.41078612208366394,
+                "cluster": 8,
+                "weights": {
+                    "Publications": 22,
+                    "Citations": 268,
+                    "Norm. citations": 24.27030971029096
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.636363636364,
+                    "Avg. citations": 12.18181818181818,
+                    "Avg. norm. citations": 1.103195895922316
+                }
+            },
+            {
+                "id": "ur.011307644472.55",
+                "label": "Bart Thijs",
+                "organization": "KU Leuven",
+                "address": "Leuven, Belgium",
+                "x": 0.2378309667110443,
+                "y": 0.6573022603988647,
+                "cluster": 6,
+                "weights": {
+                    "Publications": 22,
+                    "Citations": 367,
+                    "Norm. citations": 23.14676750431642
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.090909090909,
+                    "Avg. citations": 16.68181818181818,
+                    "Avg. norm. citations": 1.052125795650746
+                }
+            },
+            {
+                "id": "ur.012671172661.44",
+                "label": "Judit Bar-Ilan",
+                "organization": "Bar-Ilan University",
+                "address": "Ramat Gan, Israel",
+                "x": 0.27985432744026184,
+                "y": 0.013420257717370987,
+                "cluster": 4,
+                "weights": {
+                    "Publications": 22,
+                    "Citations": 525,
+                    "Norm. citations": 41.2451687697335
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.363636363636,
+                    "Avg. citations": 23.86363636363636,
+                    "Avg. norm. citations": 1.87478039862425
+                }
+            },
+            {
+                "id": "ur.016310605133.80",
+                "label": "Félix de Moya-Anegón",
+                "organization": "Instituto de Políticas y Bienes Públicos",
+                "address": "Madrid, Spain",
+                "x": 0.6961671710014343,
+                "y": -0.006294284015893936,
+                "cluster": 4,
+                "weights": {
+                    "Publications": 22,
+                    "Citations": 418,
+                    "Norm. citations": 24.49898879102994
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.045454545455,
+                    "Avg. citations": 19,
+                    "Avg. norm. citations": 1.11359039959227
+                }
+            },
+            {
+                "id": "ur.010714150321.95",
+                "label": "Enrique Orduna-Malea",
+                "organization": "Universitat Politècnica de València",
+                "address": "Valencia, Spain",
+                "x": 1.020843267440796,
+                "y": -0.01561757456511259,
+                "cluster": 13,
+                "weights": {
+                    "Publications": 21,
+                    "Citations": 322,
+                    "Norm. citations": 43.4220344560413
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.761904761905,
+                    "Avg. citations": 15.33333333333333,
+                    "Avg. norm. citations": 2.067715926478157
+                }
+            },
+            {
+                "id": "ur.01105627764.76",
+                "label": "Chaomei Chen",
+                "organization": "Yonsei University",
+                "address": "Seoul, South Korea",
+                "x": -0.27547726035118103,
+                "y": -0.3705589473247528,
+                "cluster": 3,
+                "weights": {
+                    "Publications": 19,
+                    "Citations": 497,
+                    "Norm. citations": 33.34536162208504
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.842105263158,
+                    "Avg. citations": 26.15789473684211,
+                    "Avg. norm. citations": 1.755019032741318
+                }
+            },
+            {
+                "id": "ur.012114761217.04",
+                "label": "Peter van den Besselaar",
+                "organization": "VU Amsterdam",
+                "address": "Amsterdam, Netherlands",
+                "x": -0.2526157796382904,
+                "y": 0.11799290031194687,
+                "cluster": 9,
+                "weights": {
+                    "Publications": 19,
+                    "Citations": 322,
+                    "Norm. citations": 23.30513899556893
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.947368421053,
+                    "Avg. citations": 16.94736842105263,
+                    "Avg. norm. citations": 1.22658626292468
+                }
+            },
+            {
+                "id": "ur.014732510515.04",
+                "label": "András Schubert",
+                "organization": "Library and Information Centre of the Hungarian Academy of Sciences",
+                "address": "Budapest, Hungary",
+                "x": 0.39619818329811096,
+                "y": 0.6442341208457947,
+                "cluster": 6,
+                "weights": {
+                    "Publications": 19,
+                    "Citations": 130,
+                    "Norm. citations": 6.269733812069069
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.210526315789,
+                    "Avg. citations": 6.842105263157895,
+                    "Avg. norm. citations": 0.3299859901088984
+                }
+            },
+            {
+                "id": "ur.011662015413.17",
+                "label": "Saeed-Ul Hassan",
+                "organization": "Information Technology University",
+                "address": "Lahore, Pakistan",
+                "x": 0.449372261762619,
+                "y": 0.05111974850296974,
+                "cluster": 1,
+                "weights": {
+                    "Publications": 18,
+                    "Citations": 237,
+                    "Norm. citations": 25.43836202487553
+                },
+                "scores": {
+                    "Avg. pub. year": 2016.166666666667,
+                    "Avg. citations": 13.16666666666667,
+                    "Avg. norm. citations": 1.413242334715307
+                }
+            },
+            {
+                "id": "ur.01340127426.82",
+                "label": "Kevin W. Boyack",
+                "organization": "University of New Mexico",
+                "address": "Albuquerque, United States",
+                "x": -0.22340011596679688,
+                "y": 0.2993055582046509,
+                "cluster": 9,
+                "weights": {
+                    "Publications": 18,
+                    "Citations": 734,
+                    "Norm. citations": 59.0571842250722
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.888888888889,
+                    "Avg. citations": 40.77777777777778,
+                    "Avg. norm. citations": 3.280954679170678
+                }
+            },
+            {
+                "id": "ur.014175472475.08",
+                "label": "Flavia Di Costa",
+                "organization": "National Research Council",
+                "address": "Rome, Italy",
+                "x": 1.021144151687622,
+                "y": 0.5968770980834961,
+                "cluster": 14,
+                "weights": {
+                    "Publications": 18,
+                    "Citations": 174,
+                    "Norm. citations": 28.01287624855436
+                },
+                "scores": {
+                    "Avg. pub. year": 2016.055555555556,
+                    "Avg. citations": 9.666666666666666,
+                    "Avg. norm. citations": 1.556270902697465
+                }
+            },
+            {
+                "id": "ur.015257736633.50",
+                "label": "Tindaro Cicero",
+                "organization": "Italian National Agency for the Evaluation of Universities and Research Institutes",
+                "address": "Rome, Italy",
+                "x": 0.6145464777946472,
+                "y": 0.310322642326355,
+                "cluster": 1,
+                "weights": {
+                    "Publications": 18,
+                    "Citations": 427,
+                    "Norm. citations": 21.23804538297177
+                },
+                "scores": {
+                    "Avg. pub. year": 2013.277777777778,
+                    "Avg. citations": 23.72222222222222,
+                    "Avg. norm. citations": 1.179891410165098
+                }
+            },
+            {
+                "id": "ur.015523510675.88",
+                "label": "Yi Bu",
+                "organization": "Indiana University Bloomington",
+                "address": "Bloomington, United States",
+                "x": -0.31744930148124695,
+                "y": -0.08893723785877228,
+                "cluster": 3,
+                "weights": {
+                    "Publications": 18,
+                    "Citations": 101,
+                    "Norm. citations": 21.68121168815785
+                },
+                "scores": {
+                    "Avg. pub. year": 2018.166666666667,
+                    "Avg. citations": 5.611111111111111,
+                    "Avg. norm. citations": 1.204511760453214
+                }
+            },
+            {
+                "id": "ur.016125347735.33",
+                "label": "Hans-Dieter Daniel",
+                "organization": "ETH Zurich",
+                "address": "Zurich, Switzerland",
+                "x": 0.16420353949069977,
+                "y": -1.0163825750350952,
+                "cluster": 11,
+                "weights": {
+                    "Publications": 18,
+                    "Citations": 423,
+                    "Norm. citations": 18.51358730810994
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.055555555556,
+                    "Avg. citations": 23.5,
+                    "Avg. norm. citations": 1.02853262822833
+                }
+            },
+            {
+                "id": "ur.012232176363.49",
+                "label": "Lin Zhang",
+                "organization": "KU Leuven",
+                "address": "Leuven, Belgium",
+                "x": 0.1703721284866333,
+                "y": 0.5359048843383789,
+                "cluster": 6,
+                "weights": {
+                    "Publications": 17,
+                    "Citations": 174,
+                    "Norm. citations": 19.6835119339117
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.294117647059,
+                    "Avg. citations": 10.23529411764706,
+                    "Avg. norm. citations": 1.157853643171277
+                }
+            },
+            {
+                "id": "ur.012770042711.01",
+                "label": "Daniel Torres-Salinas",
+                "organization": "University of Granada",
+                "address": "Granada, Spain",
+                "x": 1.0724395513534546,
+                "y": -0.2760774791240692,
+                "cluster": 10,
+                "weights": {
+                    "Publications": 17,
+                    "Citations": 296,
+                    "Norm. citations": 20.0386344233114
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.411764705882,
+                    "Avg. citations": 17.41176470588235,
+                    "Avg. norm. citations": 1.178743201371259
+                }
+            },
+            {
+                "id": "ur.014607354011.46",
+                "label": "Weishu Liu",
+                "organization": "Zhejiang University of Finance and Economics",
+                "address": "Hangzhou, China",
+                "x": -1.1965430974960327,
+                "y": -0.2717512249946594,
+                "cluster": 5,
+                "weights": {
+                    "Publications": 17,
+                    "Citations": 196,
+                    "Norm. citations": 43.72407422000199
+                },
+                "scores": {
+                    "Avg. pub. year": 2017.764705882353,
+                    "Avg. citations": 11.52941176470588,
+                    "Avg. norm. citations": 2.57200436588247
+                }
+            },
+            {
+                "id": "ur.015253414127.13",
+                "label": "Christian Gumpenberger",
+                "organization": "University of Vienna",
+                "address": "Vienna, Austria",
+                "x": 0.6271539330482483,
+                "y": 0.5164211988449097,
+                "cluster": 6,
+                "weights": {
+                    "Publications": 17,
+                    "Citations": 267,
+                    "Norm. citations": 16.51252259063216
+                },
+                "scores": {
+                    "Avg. pub. year": 2013.64705882353,
+                    "Avg. citations": 15.70588235294118,
+                    "Avg. norm. citations": 0.9713248582724802
+                }
+            },
+            {
+                "id": "ur.015311136760.01",
+                "label": "Thed N. van Leeuwen",
+                "organization": "Foundation For Fundamental Research On Matter",
+                "address": "Utrecht, Netherlands",
+                "x": -0.06960953772068024,
+                "y": 0.6302627325057983,
+                "cluster": 2,
+                "weights": {
+                    "Publications": 17,
+                    "Citations": 667,
+                    "Norm. citations": 30.68237089999868
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.470588235294,
+                    "Avg. citations": 39.23529411764706,
+                    "Avg. norm. citations": 1.804845347058746
+                }
+            },
+            {
+                "id": "ur.01001066535.15",
+                "label": "Michael SCHREIBER",
+                "organization": "TU Dresden",
+                "address": "Dresden, Germany",
+                "x": -0.29246628284454346,
+                "y": 0.8218186497688293,
+                "cluster": 2,
+                "weights": {
+                    "Publications": 16,
+                    "Citations": 276,
+                    "Norm. citations": 14.56982940864296
+                },
+                "scores": {
+                    "Avg. pub. year": 2013.3125,
+                    "Avg. citations": 17.25,
+                    "Avg. norm. citations": 0.9106143380401851
+                }
+            },
+            {
+                "id": "ur.011243427073.04",
+                "label": "Staša Milojević",
+                "organization": "Indiana University Bloomington",
+                "address": "Bloomington, United States",
+                "x": 0.08513205498456955,
+                "y": -0.02819066122174263,
+                "cluster": 4,
+                "weights": {
+                    "Publications": 16,
+                    "Citations": 378,
+                    "Norm. citations": 20.3848409888073
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.9375,
+                    "Avg. citations": 23.625,
+                    "Avg. norm. citations": 1.274052561800456
+                }
+            },
+            {
+                "id": "ur.07530454143.16",
+                "label": "Nicolas Robinson-Garcia",
+                "organization": "Universitat Politècnica de València",
+                "address": "Valencia, Spain",
+                "x": 0.9601424336433411,
+                "y": -0.25886043906211853,
+                "cluster": 10,
+                "weights": {
+                    "Publications": 16,
+                    "Citations": 274,
+                    "Norm. citations": 20.81092785220148
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.8125,
+                    "Avg. citations": 17.125,
+                    "Avg. norm. citations": 1.300682990762593
+                }
+            },
+            {
+                "id": "ur.012252217067.12",
+                "label": "Tim C. E. Engels",
+                "organization": "University of Antwerp",
+                "address": "Antwerp, Belgium",
+                "x": -0.8698039054870605,
+                "y": 0.46086931228637695,
+                "cluster": 8,
+                "weights": {
+                    "Publications": 15,
+                    "Citations": 305,
+                    "Norm. citations": 26.54772590215319
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.8,
+                    "Avg. citations": 20.33333333333333,
+                    "Avg. norm. citations": 1.76984839347688
+                }
+            },
+            {
+                "id": "ur.015053463455.25",
+                "label": "Per Ahlgren",
+                "organization": "Royal Institute of Technology",
+                "address": "Stockholm, Sweden",
+                "x": -0.4747324287891388,
+                "y": 0.6085008978843689,
+                "cluster": 2,
+                "weights": {
+                    "Publications": 15,
+                    "Citations": 124,
+                    "Norm. citations": 16.75730428451582
+                },
+                "scores": {
+                    "Avg. pub. year": 2016,
+                    "Avg. citations": 8.266666666666667,
+                    "Avg. norm. citations": 1.117153618967721
+                }
+            },
+            {
+                "id": "ur.013343565427.35",
+                "label": "Li Tang",
+                "organization": "Fudan University",
+                "address": "Shanghai, China",
+                "x": -1.0663199424743652,
+                "y": -0.26349905133247375,
+                "cluster": 5,
+                "weights": {
+                    "Publications": 14,
+                    "Citations": 335,
+                    "Norm. citations": 29.85033412214261
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.214285714286,
+                    "Avg. citations": 23.92857142857143,
+                    "Avg. norm. citations": 2.132166723010186
+                }
+            },
+            {
+                "id": "ur.014340212161.35",
+                "label": "Anne-Wil Harzing",
+                "organization": "Middlesex University",
+                "address": "London, United Kingdom",
+                "x": 1.0473387241363525,
+                "y": 0.07157835364341736,
+                "cluster": 13,
+                "weights": {
+                    "Publications": 14,
+                    "Citations": 682,
+                    "Norm. citations": 54.34237856844286
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.357142857143,
+                    "Avg. citations": 48.71428571428572,
+                    "Avg. norm. citations": 3.88159846917449
+                }
+            },
+            {
+                "id": "ur.016331467427.22",
+                "label": "Jan Youtie",
+                "organization": "Georgia Institute of Technology",
+                "address": "Atlanta, United States",
+                "x": -0.8726305365562439,
+                "y": -0.3317779004573822,
+                "cluster": 5,
+                "weights": {
+                    "Publications": 14,
+                    "Citations": 352,
+                    "Norm. citations": 24.19683590253226
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.357142857143,
+                    "Avg. citations": 25.14285714285714,
+                    "Avg. norm. citations": 1.728345421609447
+                }
+            },
+            {
+                "id": "ur.07423161073.47",
+                "label": "Jiang Li",
+                "organization": "Zhejiang University",
+                "address": "Hangzhou, China",
+                "x": -0.598929226398468,
+                "y": -0.10114023834466934,
+                "cluster": 3,
+                "weights": {
+                    "Publications": 14,
+                    "Citations": 224,
+                    "Norm. citations": 15.59036913412086
+                },
+                "scores": {
+                    "Avg. pub. year": 2015,
+                    "Avg. citations": 16,
+                    "Avg. norm. citations": 1.113597795294347
+                }
+            },
+            {
+                "id": "ur.0774410306.61",
+                "label": "Caroline S. Wagner",
+                "organization": "The Ohio State University",
+                "address": "Columbus, United States",
+                "x": -0.04597567394375801,
+                "y": -0.5137439370155334,
+                "cluster": 9,
+                "weights": {
+                    "Publications": 14,
+                    "Citations": 528,
+                    "Norm. citations": 39.21421244973696
+                },
+                "scores": {
+                    "Avg. pub. year": 2016.285714285714,
+                    "Avg. citations": 37.71428571428572,
+                    "Avg. norm. citations": 2.801015174981212
+                }
+            },
+            {
+                "id": "ur.0775254440.57",
+                "label": "Philip Shapira",
+                "organization": "University of Manchester",
+                "address": "Manchester, United Kingdom",
+                "x": -0.9575057029724121,
+                "y": -0.3170638382434845,
+                "cluster": 5,
+                "weights": {
+                    "Publications": 14,
+                    "Citations": 451,
+                    "Norm. citations": 25.25960941505909
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.571428571429,
+                    "Avg. citations": 32.21428571428572,
+                    "Avg. norm. citations": 1.804257815361364
+                }
+            },
+            {
+                "id": "ur.01176047712.23",
+                "label": "Yves GINGRAS",
+                "organization": "University of Quebec",
+                "address": "Québec, Canada",
+                "x": 0.21157746016979218,
+                "y": -0.39549338817596436,
+                "cluster": 1,
+                "weights": {
+                    "Publications": 13,
+                    "Citations": 522,
+                    "Norm. citations": 30.60491546613336
+                },
+                "scores": {
+                    "Avg. pub. year": 2015,
+                    "Avg. citations": 40.15384615384615,
+                    "Avg. norm. citations": 2.354224266625643
+                }
+            },
+            {
+                "id": "ur.013711667557.11",
+                "label": "Yuandi Wang",
+                "organization": "Sichuan University",
+                "address": "Chengdu, China",
+                "x": -1.1333990097045898,
+                "y": -0.20343652367591858,
+                "cluster": 5,
+                "weights": {
+                    "Publications": 13,
+                    "Citations": 154,
+                    "Norm. citations": 10.31497442437365
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.692307692308,
+                    "Avg. citations": 11.84615384615385,
+                    "Avg. norm. citations": 0.7934595711056652
+                }
+            },
+            {
+                "id": "ur.014103405625.26",
+                "label": "Isidro F. Aguillo",
+                "organization": "Instituto de Políticas y Bienes Públicos",
+                "address": "Madrid, Spain",
+                "x": 0.5302635431289673,
+                "y": -0.6058499217033386,
+                "cluster": 7,
+                "weights": {
+                    "Publications": 13,
+                    "Citations": 304,
+                    "Norm. citations": 19.09086132978635
+                },
+                "scores": {
+                    "Avg. pub. year": 2013.923076923077,
+                    "Avg. citations": 23.38461538461538,
+                    "Avg. norm. citations": 1.46852779459895
+                }
+            },
+            {
+                "id": "ur.015377164101.53",
+                "label": "Guangyuan Hu",
+                "organization": "Shanghai University of Finance and Economics",
+                "address": "Shanghai, China",
+                "x": -1.1321719884872437,
+                "y": -0.31331032514572144,
+                "cluster": 5,
+                "weights": {
+                    "Publications": 13,
+                    "Citations": 195,
+                    "Norm. citations": 30.3488604269732
+                },
+                "scores": {
+                    "Avg. pub. year": 2016.769230769231,
+                    "Avg. citations": 15,
+                    "Avg. norm. citations": 2.334527725151785
+                }
+            },
+            {
+                "id": "ur.015666224655.06",
+                "label": "Zaida Chinchilla-Rodríguez",
+                "organization": "Instituto de Políticas y Bienes Públicos",
+                "address": "Madrid, Spain",
+                "x": 0.598699152469635,
+                "y": 0.018520452082157135,
+                "cluster": 4,
+                "weights": {
+                    "Publications": 13,
+                    "Citations": 196,
+                    "Norm. citations": 12.77935940905399
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.230769230769,
+                    "Avg. citations": 15.07692307692308,
+                    "Avg. norm. citations": 0.9830276468503071
+                }
+            },
+            {
+                "id": "ur.015721776261.58",
+                "label": "Fereshteh Didegah",
+                "organization": "Simon Fraser University",
+                "address": "Burnaby, Canada",
+                "x": 0.4715512692928314,
+                "y": -0.10500548034906387,
+                "cluster": 1,
+                "weights": {
+                    "Publications": 13,
+                    "Citations": 498,
+                    "Norm. citations": 33.04883789418965
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.230769230769,
+                    "Avg. citations": 38.30769230769231,
+                    "Avg. norm. citations": 2.54221829955305
+                }
+            },
+            {
+                "id": "ur.016572223027.79",
+                "label": "Gohar Feroz Khan",
+                "organization": "Korea University of Technology and Education",
+                "address": "Cheonan, South Korea",
+                "x": 0.4111802279949188,
+                "y": -0.7606485486030579,
+                "cluster": 7,
+                "weights": {
+                    "Publications": 13,
+                    "Citations": 171,
+                    "Norm. citations": 8.189323910850916
+                },
+                "scores": {
+                    "Avg. pub. year": 2013.230769230769,
+                    "Avg. citations": 13.15384615384615,
+                    "Avg. norm. citations": 0.6299479931423781
+                }
+            },
+            {
+                "id": "ur.07445460435.16",
+                "label": "Félix Moya-Anegón",
+                "organization": "Spanish National Research Council",
+                "address": "Madrid, Spain",
+                "x": 0.6790133714675903,
+                "y": 0.1017661914229393,
+                "cluster": 4,
+                "weights": {
+                    "Publications": 13,
+                    "Citations": 416,
+                    "Norm. citations": 21.80569485058476
+                },
+                "scores": {
+                    "Avg. pub. year": 2014,
+                    "Avg. citations": 32,
+                    "Avg. norm. citations": 1.677361142352674
+                }
+            },
+            {
+                "id": "ur.01024636130.49",
+                "label": "Anthony F. J. Van Raan",
+                "organization": "Utrecht University",
+                "address": "Utrecht, Netherlands",
+                "x": -0.1220531091094017,
+                "y": 0.7208895087242126,
+                "cluster": 2,
+                "weights": {
+                    "Publications": 12,
+                    "Citations": 572,
+                    "Norm. citations": 23.49383924457991
+                },
+                "scores": {
+                    "Avg. pub. year": 2012.75,
+                    "Avg. citations": 47.66666666666666,
+                    "Avg. norm. citations": 1.957819937048326
+                }
+            },
+            {
+                "id": "ur.01031274113.13",
+                "label": "Gunnar Sivertsen",
+                "organization": "Nordic Institute for Studies in Innovation, Research and Education",
+                "address": "Oslo, Norway",
+                "x": -0.7740755677223206,
+                "y": 0.5257229208946228,
+                "cluster": 8,
+                "weights": {
+                    "Publications": 12,
+                    "Citations": 275,
+                    "Norm. citations": 25.07236186401469
+                },
+                "scores": {
+                    "Avg. pub. year": 2016.083333333333,
+                    "Avg. citations": 22.91666666666667,
+                    "Avg. norm. citations": 2.089363488667891
+                }
+            },
+            {
+                "id": "ur.010555112512.84",
+                "label": "Juan Miguel Campanario",
+                "organization": "University of Alcalá",
+                "address": "Alcalá de Henares, Spain",
+                "x": 1.0041865110397339,
+                "y": -0.3475553095340729,
+                "cluster": 10,
+                "weights": {
+                    "Publications": 12,
+                    "Citations": 100,
+                    "Norm. citations": 4.152612481114617
+                },
+                "scores": {
+                    "Avg. pub. year": 2013.416666666667,
+                    "Avg. citations": 8.333333333333334,
+                    "Avg. norm. citations": 0.3460510400928847
+                }
+            },
+            {
+                "id": "ur.010647206305.12",
+                "label": "Xiaojun Hu",
+                "organization": "Zhejiang University",
+                "address": "Hangzhou, China",
+                "x": -0.5487428307533264,
+                "y": 0.33202657103538513,
+                "cluster": 8,
+                "weights": {
+                    "Publications": 12,
+                    "Citations": 105,
+                    "Norm. citations": 7.578481715885226
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.916666666667,
+                    "Avg. citations": 8.75,
+                    "Avg. norm. citations": 0.6315401429904355
+                }
+            },
+            {
+                "id": "ur.011633364021.46",
+                "label": "Andrea Scharnhorst",
+                "organization": "Data Archiving and Networked Services",
+                "address": "The Hague, Netherlands",
+                "x": -0.1115783154964447,
+                "y": 0.19995342195034027,
+                "cluster": 9,
+                "weights": {
+                    "Publications": 12,
+                    "Citations": 135,
+                    "Norm. citations": 16.35623485901189
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.916666666667,
+                    "Avg. citations": 11.25,
+                    "Avg. norm. citations": 1.363019571584324
+                }
+            },
+            {
+                "id": "ur.015337575577.19",
+                "label": "Ping Zhou",
+                "organization": "Zhejiang University",
+                "address": "Hangzhou, China",
+                "x": -0.07655848562717438,
+                "y": -0.6832472085952759,
+                "cluster": 12,
+                "weights": {
+                    "Publications": 12,
+                    "Citations": 164,
+                    "Norm. citations": 8.551829581692298
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.083333333333,
+                    "Avg. citations": 13.66666666666667,
+                    "Avg. norm. citations": 0.7126524651410248
+                }
+            },
+            {
+                "id": "ur.016034550507.65",
+                "label": "José Luis Ortega",
+                "organization": "Spanish National Research Council",
+                "address": "Madrid, Spain",
+                "x": 0.5720528364181519,
+                "y": -0.6192484498023987,
+                "cluster": 7,
+                "weights": {
+                    "Publications": 12,
+                    "Citations": 256,
+                    "Norm. citations": 21.15271922400969
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.5,
+                    "Avg. citations": 21.33333333333333,
+                    "Avg. norm. citations": 1.762726602000807
+                }
+            },
+            {
+                "id": "ur.016410542555.38",
+                "label": "Pardeep Sud",
+                "organization": "University of Wolverhampton",
+                "address": "Wolverhampton, United Kingdom",
+                "x": 0.6553371548652649,
+                "y": -0.2700403928756714,
+                "cluster": 7,
+                "weights": {
+                    "Publications": 12,
+                    "Citations": 391,
+                    "Norm. citations": 24.31937121380877
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.166666666667,
+                    "Avg. citations": 32.58333333333334,
+                    "Avg. norm. citations": 2.026614267817398
+                }
+            },
+            {
+                "id": "ur.016516321032.93",
+                "label": "Jie Tang",
+                "organization": "Tsinghua University",
+                "address": "Beijing, China",
+                "x": -0.11781685799360275,
+                "y": -0.16212023794651031,
+                "cluster": 3,
+                "weights": {
+                    "Publications": 12,
+                    "Citations": 121,
+                    "Norm. citations": 13.89145409418344
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.666666666667,
+                    "Avg. citations": 10.08333333333333,
+                    "Avg. norm. citations": 1.157621174515287
+                }
+            },
+            {
+                "id": "ur.0661335146.21",
+                "label": "María Bordons",
+                "organization": "Centro de Ciencias Humanas y Sociales",
+                "address": "Madrid, Spain",
+                "x": 0.02560603991150856,
+                "y": 0.3649264872074127,
+                "cluster": 2,
+                "weights": {
+                    "Publications": 12,
+                    "Citations": 268,
+                    "Norm. citations": 14.97134587562519
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.166666666667,
+                    "Avg. citations": 22.33333333333333,
+                    "Avg. norm. citations": 1.247612156302099
+                }
+            },
+            {
+                "id": "ur.01001516510.85",
+                "label": "AN ZENG",
+                "organization": "Beijing Normal University",
+                "address": "Beijing, China",
+                "x": -0.6718280911445618,
+                "y": 0.9162134528160095,
+                "cluster": 16,
+                "weights": {
+                    "Publications": 11,
+                    "Citations": 53,
+                    "Norm. citations": 8.551777561618904
+                },
+                "scores": {
+                    "Avg. pub. year": 2018.181818181818,
+                    "Avg. citations": 4.818181818181818,
+                    "Avg. norm. citations": 0.7774343237835367
+                }
+            },
+            {
+                "id": "ur.010054546707.54",
+                "label": "Star X. Zhao",
+                "organization": "East China Normal University",
+                "address": "Shanghai, China",
+                "x": -0.5451535582542419,
+                "y": -0.027214018628001213,
+                "cluster": 3,
+                "weights": {
+                    "Publications": 11,
+                    "Citations": 156,
+                    "Norm. citations": 8.934857807752868
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.181818181818,
+                    "Avg. citations": 14.18181818181818,
+                    "Avg. norm. citations": 0.8122598007048062
+                }
+            },
+            {
+                "id": "ur.01056464241.44",
+                "label": "Ismael Rafols",
+                "organization": "Universitat Politècnica de València",
+                "address": "Valencia, Spain",
+                "x": -0.3831937313079834,
+                "y": -0.3595297336578369,
+                "cluster": 3,
+                "weights": {
+                    "Publications": 11,
+                    "Citations": 944,
+                    "Norm. citations": 43.87733250661641
+                },
+                "scores": {
+                    "Avg. pub. year": 2013.181818181818,
+                    "Avg. citations": 85.81818181818181,
+                    "Avg. norm. citations": 3.988848409692401
+                }
+            },
+            {
+                "id": "ur.011076240215.73",
+                "label": "Antonio Perianes-Rodríguez",
+                "organization": "Carlos III University of Madrid",
+                "address": "Madrid, Spain",
+                "x": 0.26280370354652405,
+                "y": 0.23634184896945953,
+                "cluster": 4,
+                "weights": {
+                    "Publications": 11,
+                    "Citations": 200,
+                    "Norm. citations": 17.04066106282166
+                },
+                "scores": {
+                    "Avg. pub. year": 2016.545454545455,
+                    "Avg. citations": 18.18181818181818,
+                    "Avg. norm. citations": 1.54915100571106
+                }
+            },
+            {
+                "id": "ur.011645251103.21",
+                "label": "Alesia Zuccala",
+                "organization": "University of Copenhagen",
+                "address": "Copenhagen, Denmark",
+                "x": -0.854053258895874,
+                "y": 0.5483977198600769,
+                "cluster": 8,
+                "weights": {
+                    "Publications": 11,
+                    "Citations": 182,
+                    "Norm. citations": 22.56927627493434
+                },
+                "scores": {
+                    "Avg. pub. year": 2016.727272727273,
+                    "Avg. citations": 16.54545454545455,
+                    "Avg. norm. citations": 2.051752388630395
+                }
+            },
+            {
+                "id": "ur.01262234203.57",
+                "label": "Filippo Radicchi",
+                "organization": "Indiana University Bloomington",
+                "address": "Bloomington, United States",
+                "x": 0.20502935349941254,
+                "y": 0.05570942163467407,
+                "cluster": 4,
+                "weights": {
+                    "Publications": 11,
+                    "Citations": 249,
+                    "Norm. citations": 14.62260575863835
+                },
+                "scores": {
+                    "Avg. pub. year": 2014,
+                    "Avg. citations": 22.63636363636364,
+                    "Avg. norm. citations": 1.32932779623985
+                }
+            },
+            {
+                "id": "ur.015654307045.44",
+                "label": "Stefanie Haustein",
+                "organization": "University of Montreal",
+                "address": "Montreal, Canada",
+                "x": 0.29673320055007935,
+                "y": -0.11805731058120728,
+                "cluster": 1,
+                "weights": {
+                    "Publications": 11,
+                    "Citations": 854,
+                    "Norm. citations": 61.65241457743716
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.909090909091,
+                    "Avg. citations": 77.63636363636364,
+                    "Avg. norm. citations": 5.604764961585197
+                }
+            },
+            {
+                "id": "ur.016126156707.40",
+                "label": "Jesper W. Schneider",
+                "organization": "Aarhus University",
+                "address": "Aarhus, Denmark",
+                "x": -0.04023457691073418,
+                "y": 0.5254380106925964,
+                "cluster": 2,
+                "weights": {
+                    "Publications": 11,
+                    "Citations": 270,
+                    "Norm. citations": 23.29119667230253
+                },
+                "scores": {
+                    "Avg. pub. year": 2016.272727272727,
+                    "Avg. citations": 24.54545454545455,
+                    "Avg. norm. citations": 2.117381515663866
+                }
+            },
+            {
+                "id": "ur.016465004651.42",
+                "label": "Liying Yang",
+                "organization": "National Science Library",
+                "address": "Beijing, China",
+                "x": -0.554294228553772,
+                "y": 0.6241158246994019,
+                "cluster": 2,
+                "weights": {
+                    "Publications": 11,
+                    "Citations": 106,
+                    "Norm. citations": 6.518991678956506
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.545454545455,
+                    "Avg. citations": 9.636363636363637,
+                    "Avg. norm. citations": 0.5926356071778641
+                }
+            },
+            {
+                "id": "ur.0674122441.32",
+                "label": "Paul Wouters",
+                "organization": "Leiden University",
+                "address": "Leiden, Netherlands",
+                "x": -0.24871975183486938,
+                "y": 0.5103141665458679,
+                "cluster": 2,
+                "weights": {
+                    "Publications": 11,
+                    "Citations": 831,
+                    "Norm. citations": 51.06628781747478
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.818181818182,
+                    "Avg. citations": 75.54545454545455,
+                    "Avg. norm. citations": 4.642389801588617
+                }
+            },
+            {
+                "id": "ur.0700551460.30",
+                "label": "Katy Börner",
+                "organization": "Indiana University Bloomington",
+                "address": "Bloomington, United States",
+                "x": -0.1251884549856186,
+                "y": 0.10658962279558182,
+                "cluster": 9,
+                "weights": {
+                    "Publications": 11,
+                    "Citations": 445,
+                    "Norm. citations": 18.75226762010838
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.090909090909,
+                    "Avg. citations": 40.45454545454545,
+                    "Avg. norm. citations": 1.704751601828035
+                }
+            },
+            {
+                "id": "ur.0714424246.66",
+                "label": "ZENGRU DI",
+                "organization": "Beijing Normal University",
+                "address": "Beijing, China",
+                "x": -0.670690655708313,
+                "y": 0.8296341300010681,
+                "cluster": 16,
+                "weights": {
+                    "Publications": 11,
+                    "Citations": 66,
+                    "Norm. citations": 9.505235008427414
+                },
+                "scores": {
+                    "Avg. pub. year": 2017.818181818182,
+                    "Avg. citations": 6,
+                    "Avg. norm. citations": 0.8641122734934013
+                }
+            },
+            {
+                "id": "ur.07727067537.15",
+                "label": "Yi Zhang",
+                "organization": "University of Technology Sydney",
+                "address": "Sydney, Australia",
+                "x": -0.7415410876274109,
+                "y": -0.4587986469268799,
+                "cluster": 5,
+                "weights": {
+                    "Publications": 11,
+                    "Citations": 188,
+                    "Norm. citations": 16.58956119741177
+                },
+                "scores": {
+                    "Avg. pub. year": 2016.181818181818,
+                    "Avg. citations": 17.09090909090909,
+                    "Avg. norm. citations": 1.508141927037434
+                }
+            },
+            {
+                "id": "ur.010276651533.23",
+                "label": "Hildrun Kretschmer",
+                "organization": "Nederlands Instituut voor Wetenschappelijke Informatiediensten",
+                "address": "Amsterdam, Netherlands",
+                "x": 0.3696783781051636,
+                "y": 0.48640552163124084,
+                "cluster": 6,
+                "weights": {
+                    "Publications": 10,
+                    "Citations": 68,
+                    "Norm. citations": 3.433732703681629
+                },
+                "scores": {
+                    "Avg. pub. year": 2013.3,
+                    "Avg. citations": 6.8,
+                    "Avg. norm. citations": 0.3433732703681629
+                }
+            },
+            {
+                "id": "ur.010534577416.15",
+                "label": "Chaoqun Ni",
+                "organization": "Indiana University Bloomington",
+                "address": "Bloomington, United States",
+                "x": 0.06024301052093506,
+                "y": -0.16952680051326752,
+                "cluster": 1,
+                "weights": {
+                    "Publications": 10,
+                    "Citations": 149,
+                    "Norm. citations": 8.193010710158555
+                },
+                "scores": {
+                    "Avg. pub. year": 2013.7,
+                    "Avg. citations": 14.9,
+                    "Avg. norm. citations": 0.8193010710158555
+                }
+            },
+            {
+                "id": "ur.012212471611.14",
+                "label": "Martijn S. Visser",
+                "organization": "Leiden University",
+                "address": "Leiden, Netherlands",
+                "x": -0.14024174213409424,
+                "y": 0.5685175657272339,
+                "cluster": 2,
+                "weights": {
+                    "Publications": 10,
+                    "Citations": 759,
+                    "Norm. citations": 30.50844973506805
+                },
+                "scores": {
+                    "Avg. pub. year": 2012.8,
+                    "Avg. citations": 75.9,
+                    "Avg. norm. citations": 3.050844973506805
+                }
+            },
+            {
+                "id": "ur.012554176770.95",
+                "label": "Andrea Bonaccorsi",
+                "organization": "University of Pisa",
+                "address": "Pisa, Italy",
+                "x": 0.4720067083835602,
+                "y": 0.17541548609733582,
+                "cluster": 1,
+                "weights": {
+                    "Publications": 10,
+                    "Citations": 136,
+                    "Norm. citations": 12.5396240429963
+                },
+                "scores": {
+                    "Avg. pub. year": 2016.4,
+                    "Avg. citations": 13.6,
+                    "Avg. norm. citations": 1.25396240429963
+                }
+            },
+            {
+                "id": "ur.012700347665.67",
+                "label": "Robert J.W. Tijssen",
+                "organization": "Stellenbosch University",
+                "address": "Stellenbosch, South Africa",
+                "x": -0.3637374937534332,
+                "y": 0.587678849697113,
+                "cluster": 2,
+                "weights": {
+                    "Publications": 10,
+                    "Citations": 323,
+                    "Norm. citations": 15.83478152406387
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.6,
+                    "Avg. citations": 32.3,
+                    "Avg. norm. citations": 1.583478152406387
+                }
+            },
+            {
+                "id": "ur.013316251502.04",
+                "label": "Yu-Wei Chang",
+                "organization": "National Taiwan University",
+                "address": "Taipei, Taiwan",
+                "x": -1.4338220357894897,
+                "y": -0.7355800867080688,
+                "cluster": 15,
+                "weights": {
+                    "Publications": 10,
+                    "Citations": 125,
+                    "Norm. citations": 8.316264940265679
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.4,
+                    "Avg. citations": 12.5,
+                    "Avg. norm. citations": 0.8316264940265679
+                }
+            },
+            {
+                "id": "ur.014711644437.40",
+                "label": "Yongjun Zhu",
+                "organization": "Drexel University",
+                "address": "Philadelphia, United States",
+                "x": -0.17538651823997498,
+                "y": -0.36401256918907166,
+                "cluster": 3,
+                "weights": {
+                    "Publications": 10,
+                    "Citations": 62,
+                    "Norm. citations": 12.19051170119467
+                },
+                "scores": {
+                    "Avg. pub. year": 2016.7,
+                    "Avg. citations": 6.2,
+                    "Avg. norm. citations": 1.219051170119467
+                }
+            },
+            {
+                "id": "ur.016052612767.28",
+                "label": "Alberto Martín-Martín",
+                "organization": "University of Granada",
+                "address": "Granada, Spain",
+                "x": 1.0990086793899536,
+                "y": 0.011114837601780891,
+                "cluster": 13,
+                "weights": {
+                    "Publications": 10,
+                    "Citations": 267,
+                    "Norm. citations": 42.64398607832663
+                },
+                "scores": {
+                    "Avg. pub. year": 2017,
+                    "Avg. citations": 26.7,
+                    "Avg. norm. citations": 4.264398607832663
+                }
+            },
+            {
+                "id": "ur.016141772023.41",
+                "label": "Richard Klavans",
+                "organization": null,
+                "address": null,
+                "x": -0.2907767593860626,
+                "y": 0.3193686008453369,
+                "cluster": 9,
+                "weights": {
+                    "Publications": 10,
+                    "Citations": 338,
+                    "Norm. citations": 26.18526527382655
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.1,
+                    "Avg. citations": 33.8,
+                    "Avg. norm. citations": 2.618526527382655
+                }
+            },
+            {
+                "id": "ur.016246732425.44",
+                "label": "Chengzhi Zhang",
+                "organization": "Nanjing University of Science and Technology",
+                "address": "Nanjing, China",
+                "x": -0.4149737060070038,
+                "y": -0.07872498035430908,
+                "cluster": 3,
+                "weights": {
+                    "Publications": 10,
+                    "Citations": 36,
+                    "Norm. citations": 6.410378908934424
+                },
+                "scores": {
+                    "Avg. pub. year": 2018.4,
+                    "Avg. citations": 3.6,
+                    "Avg. norm. citations": 0.6410378908934424
+                }
+            },
+            {
+                "id": "ur.016557203117.57",
+                "label": "Vicente P. Guerrero-Bote",
+                "organization": "University of Extremadura",
+                "address": "Badajoz, Spain",
+                "x": 0.723097026348114,
+                "y": 0.16052094101905823,
+                "cluster": 4,
+                "weights": {
+                    "Publications": 10,
+                    "Citations": 317,
+                    "Norm. citations": 20.02595909770842
+                },
+                "scores": {
+                    "Avg. pub. year": 2014.7,
+                    "Avg. citations": 31.7,
+                    "Avg. norm. citations": 2.002595909770842
+                }
+            },
+            {
+                "id": "ur.0721466725.19",
+                "label": "Donghua Zhu",
+                "organization": "Beijing Institute of Technology",
+                "address": "Beijing, China",
+                "x": -0.8015012741088867,
+                "y": -0.4908439517021179,
+                "cluster": 5,
+                "weights": {
+                    "Publications": 10,
+                    "Citations": 133,
+                    "Norm. citations": 13.08472380993466
+                },
+                "scores": {
+                    "Avg. pub. year": 2016.2,
+                    "Avg. citations": 13.3,
+                    "Avg. norm. citations": 1.308472380993466
+                }
+            },
+            {
+                "id": "ur.010024454142.25",
+                "label": "Timothy D. Bowman",
+                "organization": "Wayne State University",
+                "address": "Detroit, United States",
+                "x": 0.3966943025588989,
+                "y": -0.04425759240984917,
+                "cluster": 1,
+                "weights": {
+                    "Publications": 9,
+                    "Citations": 258,
+                    "Norm. citations": 27.23583055901706
+                },
+                "scores": {
+                    "Avg. pub. year": 2017,
+                    "Avg. citations": 28.66666666666667,
+                    "Avg. norm. citations": 3.02620339544634
+                }
+            },
+            {
+                "id": "ur.01011533745.57",
+                "label": "Emilio Delgado López-Cózar",
+                "organization": "University of Granada",
+                "address": "Granada, Spain",
+                "x": 1.0796804428100586,
+                "y": -0.08652359247207642,
+                "cluster": 13,
+                "weights": {
+                    "Publications": 9,
+                    "Citations": 173,
+                    "Norm. citations": 15.86126586940963
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.333333333333,
+                    "Avg. citations": 19.22222222222222,
+                    "Avg. norm. citations": 1.762362874378847
+                }
+            },
+            {
+                "id": "ur.010326673517.70",
+                "label": "Blaise Cronin",
+                "organization": "Edinburgh Napier University",
+                "address": "Edinburgh, United Kingdom",
+                "x": 0.07728280872106552,
+                "y": -0.2835857570171356,
+                "cluster": 1,
+                "weights": {
+                    "Publications": 9,
+                    "Citations": 595,
+                    "Norm. citations": 31.6831956800509
+                },
+                "scores": {
+                    "Avg. pub. year": 2012.888888888889,
+                    "Avg. citations": 66.11111111111111,
+                    "Avg. norm. citations": 3.520355075561211
+                }
+            },
+            {
+                "id": "ur.010365735611.01",
+                "label": "Alireza Abbasi",
+                "organization": "UNSW Sydney",
+                "address": "Sydney, Australia",
+                "x": -0.25895455479621887,
+                "y": -0.737299382686615,
+                "cluster": 12,
+                "weights": {
+                    "Publications": 9,
+                    "Citations": 567,
+                    "Norm. citations": 24.23365926246632
+                },
+                "scores": {
+                    "Avg. pub. year": 2013.666666666667,
+                    "Avg. citations": 63,
+                    "Avg. norm. citations": 2.692628806940702
+                }
+            },
+            {
+                "id": "ur.010536306513.03",
+                "label": "Ying Fan",
+                "organization": "Beihang University",
+                "address": "Beijing, China",
+                "x": -0.7410292625427246,
+                "y": 0.8806635737419128,
+                "cluster": 16,
+                "weights": {
+                    "Publications": 9,
+                    "Citations": 53,
+                    "Norm. citations": 8.551777561618904
+                },
+                "scores": {
+                    "Avg. pub. year": 2017.888888888889,
+                    "Avg. citations": 5.888888888888889,
+                    "Avg. norm. citations": 0.9501975068465449
+                }
+            },
+            {
+                "id": "ur.010713640535.48",
+                "label": "Rongying Zhao",
+                "organization": "Wuhan University",
+                "address": "Wuhan, China",
+                "x": 0.3376343846321106,
+                "y": -0.3374518156051636,
+                "cluster": 1,
+                "weights": {
+                    "Publications": 9,
+                    "Citations": 53,
+                    "Norm. citations": 3.686587216607966
+                },
+                "scores": {
+                    "Avg. pub. year": 2016.222222222222,
+                    "Avg. citations": 5.888888888888889,
+                    "Avg. norm. citations": 0.4096208018453295
+                }
+            },
+            {
+                "id": "ur.011163562061.30",
+                "label": "Ulf Sandström",
+                "organization": "Royal Institute of Technology",
+                "address": "Stockholm, Sweden",
+                "x": -0.3082912564277649,
+                "y": 0.11560805141925812,
+                "cluster": 9,
+                "weights": {
+                    "Publications": 9,
+                    "Citations": 136,
+                    "Norm. citations": 14.13110943303602
+                },
+                "scores": {
+                    "Avg. pub. year": 2016.666666666667,
+                    "Avg. citations": 15.11111111111111,
+                    "Avg. norm. citations": 1.570123270337335
+                }
+            },
+            {
+                "id": "ur.011620230543.60",
+                "label": "Cinzia Daraio",
+                "organization": "Sapienza University of Rome",
+                "address": "Rome, Italy",
+                "x": 0.47395235300064087,
+                "y": 0.23786517977714539,
+                "cluster": 1,
+                "weights": {
+                    "Publications": 9,
+                    "Citations": 123,
+                    "Norm. citations": 10.47802328346818
+                },
+                "scores": {
+                    "Avg. pub. year": 2015.777777777778,
+                    "Avg. citations": 13.66666666666667,
+                    "Avg. norm. citations": 1.164224809274242
+                }
+            },
+            {
+                "id": "ur.011713577571.14",
+                "label": "Pei-Shan Chi",
+                "organization": "KU Leuven",
+                "address": "Leuven, Belgium",
+                "x": 0.33734461665153503,
+                "y": 0.7497448325157166,
+                "cluster": 6,
+                "weights": {
+                    "Publications": 9,
+                    "Citations": 77,
+                    "Norm. citations": 9.451365432423055
+                },
+                "scores": {
+                    "Avg. pub. year": 2017.333333333333,
+                    "Avg. citations": 8.555555555555555,
+                    "Avg. norm. citations": 1.050151714713673
+                }
+            },
+            {
+                "id": "ur.012312455777.62",
+                "label": "Pedro Albarrán",
+                "organization": "University of Alicante",
+                "address": "Alicante, Spain",
+                "x": 0.16414940357208252,
+                "y": 0.2727477550506592,
+                "cluster": 4,
+                "weights": {
+                    "Publications": 9,
+                    "Citations": 239,
+                    "Norm. citations": 9.504230949736378
+                },
+                "scores": {
+                    "Avg. pub. year": 2013,
+                    "Avg. citations": 26.55555555555556,
+                    "Avg. norm. citations": 1.05602566108182
+                }
+            }
+        ],
+        "links": [
+            {
+                "source_id": "ur.07435436662.44",
+                "target_id": "ur.07665243172.78",
+                "strength": 81
+            },
+            {
+                "source_id": "ur.01041121777.72",
+                "target_id": "ur.01117315427.34",
+                "strength": 51
+            },
+            {
+                "source_id": "ur.01041121777.72",
+                "target_id": "ur.015350443747.47",
+                "strength": 36
+            },
+            {
+                "source_id": "ur.013336273241.41",
+                "target_id": "ur.013620216237.55",
+                "strength": 36
+            },
+            {
+                "source_id": "ur.01041121777.72",
+                "target_id": "ur.015575637147.72",
+                "strength": 31
+            },
+            {
+                "source_id": "ur.010225441325.58",
+                "target_id": "ur.012336067767.45",
+                "strength": 30
+            },
+            {
+                "source_id": "ur.010225441325.58",
+                "target_id": "ur.014771673561.84",
+                "strength": 30
+            },
+            {
+                "source_id": "ur.012336067767.45",
+                "target_id": "ur.014771673561.84",
+                "strength": 30
+            },
+            {
+                "source_id": "ur.010706033475.66",
+                "target_id": "ur.015317766207.06",
+                "strength": 26
+            },
+            {
+                "source_id": "ur.010543537745.39",
+                "target_id": "ur.011307644472.55",
+                "strength": 19
+            },
+            {
+                "source_id": "ur.011612755475.45",
+                "target_id": "ur.01203665252.25",
+                "strength": 19
+            },
+            {
+                "source_id": "ur.01340617017.77",
+                "target_id": "ur.013433750473.60",
+                "strength": 18
+            },
+            {
+                "source_id": "ur.014175472475.08",
+                "target_id": "ur.07435436662.44",
+                "strength": 18
+            },
+            {
+                "source_id": "ur.014175472475.08",
+                "target_id": "ur.07665243172.78",
+                "strength": 18
+            },
+            {
+                "source_id": "ur.01041121777.72",
+                "target_id": "ur.01117100362.08",
+                "strength": 17
+            },
+            {
+                "source_id": "ur.015253414127.13",
+                "target_id": "ur.015520422353.10",
+                "strength": 17
+            },
+            {
+                "source_id": "ur.015257736633.50",
+                "target_id": "ur.07435436662.44",
+                "strength": 14
+            },
+            {
+                "source_id": "ur.015257736633.50",
+                "target_id": "ur.07665243172.78",
+                "strength": 14
+            },
+            {
+                "source_id": "ur.010543537745.39",
+                "target_id": "ur.012232176363.49",
+                "strength": 12
+            },
+            {
+                "source_id": "ur.010647206305.12",
+                "target_id": "ur.011401535623.07",
+                "strength": 12
+            },
+            {
+                "source_id": "ur.010706033475.66",
+                "target_id": "ur.016410542555.38",
+                "strength": 12
+            },
+            {
+                "source_id": "ur.01117315427.34",
+                "target_id": "ur.0774410306.61",
+                "strength": 12
+            },
+            {
+                "source_id": "ur.011401535623.07",
+                "target_id": "ur.015254724313.19",
+                "strength": 12
+            },
+            {
+                "source_id": "ur.012770042711.01",
+                "target_id": "ur.07530454143.16",
+                "strength": 12
+            },
+            {
+                "source_id": "ur.01041121777.72",
+                "target_id": "ur.016125347735.33",
+                "strength": 11
+            },
+            {
+                "source_id": "ur.010501507403.57",
+                "target_id": "ur.015523510675.88",
+                "strength": 10
+            },
+            {
+                "source_id": "ur.010523256744.02",
+                "target_id": "ur.011401535623.07",
+                "strength": 10
+            },
+            {
+                "source_id": "ur.01117100362.08",
+                "target_id": "ur.016125347735.33",
+                "strength": 10
+            },
+            {
+                "source_id": "ur.01176047712.23",
+                "target_id": "ur.013433750473.60",
+                "strength": 10
+            },
+            {
+                "source_id": "ur.013343565427.35",
+                "target_id": "ur.015377164101.53",
+                "strength": 10
+            },
+            {
+                "source_id": "ur.01340127426.82",
+                "target_id": "ur.016141772023.41",
+                "strength": 10
+            },
+            {
+                "source_id": "ur.014607354011.46",
+                "target_id": "ur.015377164101.53",
+                "strength": 10
+            },
+            {
+                "source_id": "ur.01001516510.85",
+                "target_id": "ur.010536306513.03",
+                "strength": 9
+            },
+            {
+                "source_id": "ur.01001516510.85",
+                "target_id": "ur.0714424246.66",
+                "strength": 9
+            },
+            {
+                "source_id": "ur.01041121777.72",
+                "target_id": "ur.0774410306.61",
+                "strength": 9
+            },
+            {
+                "source_id": "ur.010536306513.03",
+                "target_id": "ur.0714424246.66",
+                "strength": 9
+            },
+            {
+                "source_id": "ur.010714150321.95",
+                "target_id": "ur.016052612767.28",
+                "strength": 9
+            },
+            {
+                "source_id": "ur.012213506743.88",
+                "target_id": "ur.012312455777.62",
+                "strength": 9
+            },
+            {
+                "source_id": "ur.013476316237.32",
+                "target_id": "ur.014711644437.40",
+                "strength": 9
+            },
+            {
+                "source_id": "ur.010501507403.57",
+                "target_id": "ur.01316361675.44",
+                "strength": 8
+            },
+            {
+                "source_id": "ur.010501507403.57",
+                "target_id": "ur.013476316237.32",
+                "strength": 8
+            },
+            {
+                "source_id": "ur.010501507403.57",
+                "target_id": "ur.016516321032.93",
+                "strength": 8
+            },
+            {
+                "source_id": "ur.010523256744.02",
+                "target_id": "ur.012252217067.12",
+                "strength": 8
+            },
+            {
+                "source_id": "ur.01056464241.44",
+                "target_id": "ur.01117315427.34",
+                "strength": 8
+            },
+            {
+                "source_id": "ur.01242763150.03",
+                "target_id": "ur.016331467427.22",
+                "strength": 8
+            },
+            {
+                "source_id": "ur.01011533745.57",
+                "target_id": "ur.010714150321.95",
+                "strength": 7
+            },
+            {
+                "source_id": "ur.010326673517.70",
+                "target_id": "ur.01340617017.77",
+                "strength": 7
+            },
+            {
+                "source_id": "ur.011076240215.73",
+                "target_id": "ur.012213506743.88",
+                "strength": 7
+            },
+            {
+                "source_id": "ur.011163562061.30",
+                "target_id": "ur.012114761217.04",
+                "strength": 7
+            },
+            {
+                "source_id": "ur.012212471611.14",
+                "target_id": "ur.015311136760.01",
+                "strength": 7
+            },
+            {
+                "source_id": "ur.01242763150.03",
+                "target_id": "ur.07727067537.15",
+                "strength": 7
+            },
+            {
+                "source_id": "ur.013343565427.35",
+                "target_id": "ur.014607354011.46",
+                "strength": 7
+            },
+            {
+                "source_id": "ur.015350443747.47",
+                "target_id": "ur.015575637147.72",
+                "strength": 7
+            },
+            {
+                "source_id": "ur.016557203117.57",
+                "target_id": "ur.07445460435.16",
+                "strength": 7
+            },
+            {
+                "source_id": "ur.010054546707.54",
+                "target_id": "ur.011704607143.20",
+                "strength": 6
+            },
+            {
+                "source_id": "ur.010433123061.81",
+                "target_id": "ur.01117315427.34",
+                "strength": 6
+            },
+            {
+                "source_id": "ur.010433123061.81",
+                "target_id": "ur.016572223027.79",
+                "strength": 6
+            },
+            {
+                "source_id": "ur.010534577416.15",
+                "target_id": "ur.01340617017.77",
+                "strength": 6
+            },
+            {
+                "source_id": "ur.010543537745.39",
+                "target_id": "ur.011713577571.14",
+                "strength": 6
+            },
+            {
+                "source_id": "ur.010543537745.39",
+                "target_id": "ur.015520422353.10",
+                "strength": 6
+            },
+            {
+                "source_id": "ur.01117315427.34",
+                "target_id": "ur.015575637147.72",
+                "strength": 6
+            },
+            {
+                "source_id": "ur.011243427073.04",
+                "target_id": "ur.01340617017.77",
+                "strength": 6
+            },
+            {
+                "source_id": "ur.011401535623.07",
+                "target_id": "ur.016465004651.42",
+                "strength": 6
+            },
+            {
+                "source_id": "ur.01203665252.25",
+                "target_id": "ur.012212471611.14",
+                "strength": 6
+            },
+            {
+                "source_id": "ur.015666224655.06",
+                "target_id": "ur.016310605133.80",
+                "strength": 6
+            },
+            {
+                "source_id": "ur.016331467427.22",
+                "target_id": "ur.0775254440.57",
+                "strength": 6
+            },
+            {
+                "source_id": "ur.01011533745.57",
+                "target_id": "ur.016052612767.28",
+                "strength": 5
+            },
+            {
+                "source_id": "ur.010225441325.58",
+                "target_id": "ur.012770042711.01",
+                "strength": 5
+            },
+            {
+                "source_id": "ur.01024636130.49",
+                "target_id": "ur.015311136760.01",
+                "strength": 5
+            },
+            {
+                "source_id": "ur.01041121777.72",
+                "target_id": "ur.016310605133.80",
+                "strength": 5
+            },
+            {
+                "source_id": "ur.010501507403.57",
+                "target_id": "ur.011243427073.04",
+                "strength": 5
+            },
+            {
+                "source_id": "ur.010501507403.57",
+                "target_id": "ur.01340617017.77",
+                "strength": 5
+            },
+            {
+                "source_id": "ur.010523256744.02",
+                "target_id": "ur.015254724313.19",
+                "strength": 5
+            },
+            {
+                "source_id": "ur.010543537745.39",
+                "target_id": "ur.014732510515.04",
+                "strength": 5
+            },
+            {
+                "source_id": "ur.010706033475.66",
+                "target_id": "ur.015721776261.58",
+                "strength": 5
+            },
+            {
+                "source_id": "ur.01117315427.34",
+                "target_id": "ur.015337575577.19",
+                "strength": 5
+            },
+            {
+                "source_id": "ur.011243427073.04",
+                "target_id": "ur.013433750473.60",
+                "strength": 5
+            },
+            {
+                "source_id": "ur.011612755475.45",
+                "target_id": "ur.012212471611.14",
+                "strength": 5
+            },
+            {
+                "source_id": "ur.011620230543.60",
+                "target_id": "ur.012554176770.95",
+                "strength": 5
+            },
+            {
+                "source_id": "ur.012336067767.45",
+                "target_id": "ur.012770042711.01",
+                "strength": 5
+            },
+            {
+                "source_id": "ur.01242763150.03",
+                "target_id": "ur.0721466725.19",
+                "strength": 5
+            },
+            {
+                "source_id": "ur.012770042711.01",
+                "target_id": "ur.014771673561.84",
+                "strength": 5
+            },
+            {
+                "source_id": "ur.013012771111.87",
+                "target_id": "ur.0661335146.21",
+                "strength": 5
+            },
+            {
+                "source_id": "ur.015517505034.15",
+                "target_id": "ur.016310605133.80",
+                "strength": 5
+            },
+            {
+                "source_id": "ur.0721466725.19",
+                "target_id": "ur.07727067537.15",
+                "strength": 5
+            },
+            {
+                "source_id": "ur.010225441325.58",
+                "target_id": "ur.07530454143.16",
+                "strength": 4
+            },
+            {
+                "source_id": "ur.01024636130.49",
+                "target_id": "ur.011612755475.45",
+                "strength": 4
+            },
+            {
+                "source_id": "ur.01024636130.49",
+                "target_id": "ur.01203665252.25",
+                "strength": 4
+            },
+            {
+                "source_id": "ur.01024636130.49",
+                "target_id": "ur.012212471611.14",
+                "strength": 4
+            },
+            {
+                "source_id": "ur.01031274113.13",
+                "target_id": "ur.011645251103.21",
+                "strength": 4
+            },
+            {
+                "source_id": "ur.01031274113.13",
+                "target_id": "ur.012252217067.12",
+                "strength": 4
+            },
+            {
+                "source_id": "ur.01041121777.72",
+                "target_id": "ur.011704607143.20",
+                "strength": 4
+            },
+            {
+                "source_id": "ur.010523256744.02",
+                "target_id": "ur.011645251103.21",
+                "strength": 4
+            },
+            {
+                "source_id": "ur.010706033475.66",
+                "target_id": "ur.01340617017.77",
+                "strength": 4
+            },
+            {
+                "source_id": "ur.010706033475.66",
+                "target_id": "ur.013433750473.60",
+                "strength": 4
+            },
+            {
+                "source_id": "ur.011401535623.07",
+                "target_id": "ur.011704607143.20",
+                "strength": 4
+            },
+            {
+                "source_id": "ur.011401535623.07",
+                "target_id": "ur.012232176363.49",
+                "strength": 4
+            },
+            {
+                "source_id": "ur.011612755475.45",
+                "target_id": "ur.01340127426.82",
+                "strength": 4
+            },
+            {
+                "source_id": "ur.011612755475.45",
+                "target_id": "ur.015311136760.01",
+                "strength": 4
+            },
+            {
+                "source_id": "ur.011645251103.21",
+                "target_id": "ur.012252217067.12",
+                "strength": 4
+            },
+            {
+                "source_id": "ur.011704607143.20",
+                "target_id": "ur.07423161073.47",
+                "strength": 4
+            },
+            {
+                "source_id": "ur.01203665252.25",
+                "target_id": "ur.015311136760.01",
+                "strength": 4
+            },
+            {
+                "source_id": "ur.012336067767.45",
+                "target_id": "ur.07530454143.16",
+                "strength": 4
+            },
+            {
+                "source_id": "ur.012554176770.95",
+                "target_id": "ur.015257736633.50",
+                "strength": 4
+            },
+            {
+                "source_id": "ur.013316251502.04",
+                "target_id": "ur.013336273241.41",
+                "strength": 4
+            },
+            {
+                "source_id": "ur.013343565427.35",
+                "target_id": "ur.0775254440.57",
+                "strength": 4
+            },
+            {
+                "source_id": "ur.01340617017.77",
+                "target_id": "ur.013476316237.32",
+                "strength": 4
+            },
+            {
+                "source_id": "ur.013433750473.60",
+                "target_id": "ur.015654307045.44",
+                "strength": 4
+            },
+            {
+                "source_id": "ur.014771673561.84",
+                "target_id": "ur.07530454143.16",
+                "strength": 4
+            },
+            {
+                "source_id": "ur.015517505034.15",
+                "target_id": "ur.016557203117.57",
+                "strength": 4
+            },
+            {
+                "source_id": "ur.010024454142.25",
+                "target_id": "ur.011662015413.17",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.010024454142.25",
+                "target_id": "ur.01340617017.77",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.010024454142.25",
+                "target_id": "ur.015721776261.58",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.01031274113.13",
+                "target_id": "ur.010523256744.02",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.010326673517.70",
+                "target_id": "ur.013433750473.60",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.01041121777.72",
+                "target_id": "ur.015337575577.19",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.010501507403.57",
+                "target_id": "ur.010534577416.15",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.010534577416.15",
+                "target_id": "ur.013433750473.60",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.010543537745.39",
+                "target_id": "ur.011401535623.07",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.010543537745.39",
+                "target_id": "ur.011633364021.46",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.010543537745.39",
+                "target_id": "ur.015253414127.13",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.010706033475.66",
+                "target_id": "ur.010714150321.95",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.01117315427.34",
+                "target_id": "ur.015350443747.47",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.011243427073.04",
+                "target_id": "ur.013476316237.32",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.011307644472.55",
+                "target_id": "ur.012232176363.49",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.011401535623.07",
+                "target_id": "ur.012252217067.12",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.011633364021.46",
+                "target_id": "ur.0700551460.30",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.01203665252.25",
+                "target_id": "ur.01340127426.82",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.01203665252.25",
+                "target_id": "ur.0674122441.32",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.013012771111.87",
+                "target_id": "ur.015311136760.01",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.013012771111.87",
+                "target_id": "ur.0674122441.32",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.013012771111.87",
+                "target_id": "ur.07530454143.16",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.01316361675.44",
+                "target_id": "ur.013476316237.32",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.01340617017.77",
+                "target_id": "ur.015654307045.44",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.014103405625.26",
+                "target_id": "ur.016034550507.65",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.015053463455.25",
+                "target_id": "ur.016465004651.42",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.015575637147.72",
+                "target_id": "ur.016125347735.33",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.015666224655.06",
+                "target_id": "ur.07445460435.16",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.016310605133.80",
+                "target_id": "ur.016557203117.57",
+                "strength": 3
+            },
+            {
+                "source_id": "ur.010024454142.25",
+                "target_id": "ur.010534577416.15",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.010024454142.25",
+                "target_id": "ur.013433750473.60",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.010054546707.54",
+                "target_id": "ur.011401535623.07",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.010054546707.54",
+                "target_id": "ur.07423161073.47",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.01011533745.57",
+                "target_id": "ur.012770042711.01",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.010276651533.23",
+                "target_id": "ur.010543537745.39",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.010326673517.70",
+                "target_id": "ur.010501507403.57",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.010326673517.70",
+                "target_id": "ur.010534577416.15",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.01041121777.72",
+                "target_id": "ur.010543537745.39",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.010501507403.57",
+                "target_id": "ur.013433750473.60",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.010501507403.57",
+                "target_id": "ur.016246732425.44",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.010706033475.66",
+                "target_id": "ur.011243427073.04",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.010706033475.66",
+                "target_id": "ur.012671172661.44",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.010706033475.66",
+                "target_id": "ur.015654307045.44",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.010706033475.66",
+                "target_id": "ur.016052612767.28",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.01105627764.76",
+                "target_id": "ur.01117315427.34",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.01117100362.08",
+                "target_id": "ur.01117315427.34",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.01117100362.08",
+                "target_id": "ur.015350443747.47",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.01117100362.08",
+                "target_id": "ur.016310605133.80",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.01117315427.34",
+                "target_id": "ur.011243427073.04",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.01117315427.34",
+                "target_id": "ur.011704607143.20",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.01117315427.34",
+                "target_id": "ur.07445460435.16",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.011401535623.07",
+                "target_id": "ur.015053463455.25",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.011612755475.45",
+                "target_id": "ur.0674122441.32",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.011633364021.46",
+                "target_id": "ur.01340127426.82",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.011662015413.17",
+                "target_id": "ur.012554176770.95",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.011662015413.17",
+                "target_id": "ur.015257736633.50",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.011704607143.20",
+                "target_id": "ur.013336273241.41",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.011704607143.20",
+                "target_id": "ur.013620216237.55",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.01203665252.25",
+                "target_id": "ur.012700347665.67",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.01203665252.25",
+                "target_id": "ur.013433750473.60",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.012212471611.14",
+                "target_id": "ur.0674122441.32",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.012213506743.88",
+                "target_id": "ur.013012771111.87",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.01242763150.03",
+                "target_id": "ur.0775254440.57",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.012671172661.44",
+                "target_id": "ur.015517505034.15",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.013012771111.87",
+                "target_id": "ur.01340617017.77",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.013012771111.87",
+                "target_id": "ur.013433750473.60",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.013343565427.35",
+                "target_id": "ur.013711667557.11",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.01340617017.77",
+                "target_id": "ur.015523510675.88",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.01340617017.77",
+                "target_id": "ur.015666224655.06",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.01340617017.77",
+                "target_id": "ur.07530454143.16",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.013711667557.11",
+                "target_id": "ur.015377164101.53",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.015311136760.01",
+                "target_id": "ur.0674122441.32",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.015517505034.15",
+                "target_id": "ur.07445460435.16",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.015523510675.88",
+                "target_id": "ur.016246732425.44",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.016465004651.42",
+                "target_id": "ur.0714424246.66",
+                "strength": 2
+            },
+            {
+                "source_id": "ur.01001066535.15",
+                "target_id": "ur.01203665252.25",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010024454142.25",
+                "target_id": "ur.010501507403.57",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010024454142.25",
+                "target_id": "ur.011243427073.04",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010024454142.25",
+                "target_id": "ur.013476316237.32",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010024454142.25",
+                "target_id": "ur.015654307045.44",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010054546707.54",
+                "target_id": "ur.016246732425.44",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01011533745.57",
+                "target_id": "ur.010706033475.66",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01011533745.57",
+                "target_id": "ur.07530454143.16",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010225441325.58",
+                "target_id": "ur.016310605133.80",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01024636130.49",
+                "target_id": "ur.013012771111.87",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01031274113.13",
+                "target_id": "ur.011401535623.07",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01031274113.13",
+                "target_id": "ur.012232176363.49",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01031274113.13",
+                "target_id": "ur.015311136760.01",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010326673517.70",
+                "target_id": "ur.010706033475.66",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010326673517.70",
+                "target_id": "ur.01117315427.34",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010326673517.70",
+                "target_id": "ur.011243427073.04",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010326673517.70",
+                "target_id": "ur.013476316237.32",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010365735611.01",
+                "target_id": "ur.01117315427.34",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01041121777.72",
+                "target_id": "ur.010523256744.02",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01041121777.72",
+                "target_id": "ur.011243427073.04",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01041121777.72",
+                "target_id": "ur.01203665252.25",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01041121777.72",
+                "target_id": "ur.012114761217.04",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01041121777.72",
+                "target_id": "ur.01262234203.57",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01041121777.72",
+                "target_id": "ur.015254724313.19",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01041121777.72",
+                "target_id": "ur.015517505034.15",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01041121777.72",
+                "target_id": "ur.016557203117.57",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01041121777.72",
+                "target_id": "ur.0674122441.32",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01041121777.72",
+                "target_id": "ur.07445460435.16",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010433123061.81",
+                "target_id": "ur.014103405625.26",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010433123061.81",
+                "target_id": "ur.0774410306.61",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010501507403.57",
+                "target_id": "ur.010706033475.66",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010501507403.57",
+                "target_id": "ur.01117315427.34",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010501507403.57",
+                "target_id": "ur.0700551460.30",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010501507403.57",
+                "target_id": "ur.07423161073.47",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010523256744.02",
+                "target_id": "ur.01117315427.34",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010523256744.02",
+                "target_id": "ur.013476316237.32",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010534577416.15",
+                "target_id": "ur.011243427073.04",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010534577416.15",
+                "target_id": "ur.013476316237.32",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010543537745.39",
+                "target_id": "ur.011612755475.45",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010543537745.39",
+                "target_id": "ur.011620230543.60",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010543537745.39",
+                "target_id": "ur.011704607143.20",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010543537745.39",
+                "target_id": "ur.012114761217.04",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010543537745.39",
+                "target_id": "ur.01340127426.82",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010543537745.39",
+                "target_id": "ur.01340617017.77",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010543537745.39",
+                "target_id": "ur.015337575577.19",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010543537745.39",
+                "target_id": "ur.015517505034.15",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010543537745.39",
+                "target_id": "ur.016310605133.80",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010543537745.39",
+                "target_id": "ur.0700551460.30",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010555112512.84",
+                "target_id": "ur.012770042711.01",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010555112512.84",
+                "target_id": "ur.07530454143.16",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01056464241.44",
+                "target_id": "ur.01105627764.76",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01056464241.44",
+                "target_id": "ur.01242763150.03",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01056464241.44",
+                "target_id": "ur.01340127426.82",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01056464241.44",
+                "target_id": "ur.016331467427.22",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01056464241.44",
+                "target_id": "ur.0700551460.30",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01056464241.44",
+                "target_id": "ur.0774410306.61",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010647206305.12",
+                "target_id": "ur.01117315427.34",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010706033475.66",
+                "target_id": "ur.012700347665.67",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010706033475.66",
+                "target_id": "ur.014103405625.26",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010713640535.48",
+                "target_id": "ur.013433750473.60",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010714150321.95",
+                "target_id": "ur.012770042711.01",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010714150321.95",
+                "target_id": "ur.014340212161.35",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.010714150321.95",
+                "target_id": "ur.015317766207.06",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01105627764.76",
+                "target_id": "ur.01316361675.44",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01105627764.76",
+                "target_id": "ur.014711644437.40",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011076240215.73",
+                "target_id": "ur.011612755475.45",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011076240215.73",
+                "target_id": "ur.01203665252.25",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011076240215.73",
+                "target_id": "ur.012312455777.62",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011076240215.73",
+                "target_id": "ur.01340617017.77",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011076240215.73",
+                "target_id": "ur.015666224655.06",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01117100362.08",
+                "target_id": "ur.015575637147.72",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01117315427.34",
+                "target_id": "ur.011401535623.07",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01117315427.34",
+                "target_id": "ur.012114761217.04",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01117315427.34",
+                "target_id": "ur.012252217067.12",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01117315427.34",
+                "target_id": "ur.012335176517.38",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01117315427.34",
+                "target_id": "ur.01262234203.57",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01117315427.34",
+                "target_id": "ur.013476316237.32",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01117315427.34",
+                "target_id": "ur.016310605133.80",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01117315427.34",
+                "target_id": "ur.016557203117.57",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01117315427.34",
+                "target_id": "ur.0674122441.32",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011243427073.04",
+                "target_id": "ur.011633364021.46",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011243427073.04",
+                "target_id": "ur.01203665252.25",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011243427073.04",
+                "target_id": "ur.01262234203.57",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011243427073.04",
+                "target_id": "ur.012671172661.44",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011243427073.04",
+                "target_id": "ur.015575637147.72",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011243427073.04",
+                "target_id": "ur.0700551460.30",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011307644472.55",
+                "target_id": "ur.011612755475.45",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011307644472.55",
+                "target_id": "ur.011633364021.46",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011307644472.55",
+                "target_id": "ur.011713577571.14",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011307644472.55",
+                "target_id": "ur.01340127426.82",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011307644472.55",
+                "target_id": "ur.014732510515.04",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011401535623.07",
+                "target_id": "ur.0714424246.66",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011401535623.07",
+                "target_id": "ur.07423161073.47",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011612755475.45",
+                "target_id": "ur.011633364021.46",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011612755475.45",
+                "target_id": "ur.012700347665.67",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011612755475.45",
+                "target_id": "ur.013476316237.32",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011612755475.45",
+                "target_id": "ur.015053463455.25",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011612755475.45",
+                "target_id": "ur.07665243172.78",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011620230543.60",
+                "target_id": "ur.015517505034.15",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011633364021.46",
+                "target_id": "ur.012114761217.04",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011633364021.46",
+                "target_id": "ur.013012771111.87",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011645251103.21",
+                "target_id": "ur.011704607143.20",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011645251103.21",
+                "target_id": "ur.015311136760.01",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011662015413.17",
+                "target_id": "ur.015721776261.58",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011704607143.20",
+                "target_id": "ur.012232176363.49",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.011713577571.14",
+                "target_id": "ur.015520422353.10",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01176047712.23",
+                "target_id": "ur.01340617017.77",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01203665252.25",
+                "target_id": "ur.012213506743.88",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01203665252.25",
+                "target_id": "ur.013012771111.87",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01203665252.25",
+                "target_id": "ur.01340617017.77",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01203665252.25",
+                "target_id": "ur.013476316237.32",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01203665252.25",
+                "target_id": "ur.015053463455.25",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.012114761217.04",
+                "target_id": "ur.0700551460.30",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.012212471611.14",
+                "target_id": "ur.012700347665.67",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.012212471611.14",
+                "target_id": "ur.013012771111.87",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.012212471611.14",
+                "target_id": "ur.015517505034.15",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.012212471611.14",
+                "target_id": "ur.016126156707.40",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.012212471611.14",
+                "target_id": "ur.016310605133.80",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.012213506743.88",
+                "target_id": "ur.01262234203.57",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.012232176363.49",
+                "target_id": "ur.013433750473.60",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.012232176363.49",
+                "target_id": "ur.015666224655.06",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.012232176363.49",
+                "target_id": "ur.07435436662.44",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.012232176363.49",
+                "target_id": "ur.07665243172.78",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.012336067767.45",
+                "target_id": "ur.016310605133.80",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01242763150.03",
+                "target_id": "ur.07423161073.47",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.012554176770.95",
+                "target_id": "ur.015517505034.15",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01262234203.57",
+                "target_id": "ur.012671172661.44",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.012671172661.44",
+                "target_id": "ur.015654307045.44",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.012700347665.67",
+                "target_id": "ur.015053463455.25",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.012700347665.67",
+                "target_id": "ur.0674122441.32",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.012770042711.01",
+                "target_id": "ur.015520422353.10",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.013012771111.87",
+                "target_id": "ur.015523510675.88",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.013012771111.87",
+                "target_id": "ur.015666224655.06",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.013012771111.87",
+                "target_id": "ur.016052612767.28",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.013012771111.87",
+                "target_id": "ur.016126156707.40",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.013012771111.87",
+                "target_id": "ur.0700551460.30",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01316361675.44",
+                "target_id": "ur.014711644437.40",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01316361675.44",
+                "target_id": "ur.016516321032.93",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.013343565427.35",
+                "target_id": "ur.016331467427.22",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01340127426.82",
+                "target_id": "ur.0700551460.30",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01340127426.82",
+                "target_id": "ur.0774410306.61",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01340617017.77",
+                "target_id": "ur.015721776261.58",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01340617017.77",
+                "target_id": "ur.016246732425.44",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.01340617017.77",
+                "target_id": "ur.016516321032.93",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.013433750473.60",
+                "target_id": "ur.013476316237.32",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.013433750473.60",
+                "target_id": "ur.015523510675.88",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.013433750473.60",
+                "target_id": "ur.015721776261.58",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.013433750473.60",
+                "target_id": "ur.016246732425.44",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.013433750473.60",
+                "target_id": "ur.07530454143.16",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.013476316237.32",
+                "target_id": "ur.016516321032.93",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.013711667557.11",
+                "target_id": "ur.014607354011.46",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.014103405625.26",
+                "target_id": "ur.015317766207.06",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.014340212161.35",
+                "target_id": "ur.016052612767.28",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.014607354011.46",
+                "target_id": "ur.0775254440.57",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.014771673561.84",
+                "target_id": "ur.016310605133.80",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.015253414127.13",
+                "target_id": "ur.015517505034.15",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.015253414127.13",
+                "target_id": "ur.016310605133.80",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.015311136760.01",
+                "target_id": "ur.016052612767.28",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.015311136760.01",
+                "target_id": "ur.016126156707.40",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.015377164101.53",
+                "target_id": "ur.0775254440.57",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.015517505034.15",
+                "target_id": "ur.015520422353.10",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.015520422353.10",
+                "target_id": "ur.016310605133.80",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.015520422353.10",
+                "target_id": "ur.07530454143.16",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.015523510675.88",
+                "target_id": "ur.015666224655.06",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.015523510675.88",
+                "target_id": "ur.07423161073.47",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.015523510675.88",
+                "target_id": "ur.07530454143.16",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.015666224655.06",
+                "target_id": "ur.07530454143.16",
+                "strength": 1
+            },
+            {
+                "source_id": "ur.0700551460.30",
+                "target_id": "ur.0774410306.61",
+                "strength": 1
+            }
+        ]
+    }
+}

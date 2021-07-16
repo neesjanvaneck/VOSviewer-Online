@@ -1,0 +1,44 @@
+# This workflow will build the code in the master brach using Yarn.
+
+name: Build master branch
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: borales/actions-yarn@v2.0.0
+      with:
+        cmd: install
+    - uses: borales/actions-yarn@v2.0.0
+      with:
+        cmd: build:vosviewer
+    - uses: borales/actions-yarn@v2.0.0
+      with:
+        cmd: build:dimensions
+    - uses: borales/actions-yarn@v2.0.0
+      with:
+        cmd: build:rori
+
+    - name: Upload VOSviewer Online build artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: vosviewer-online-build
+        path: dist/vosviewer-online
+    - name: Upload Dimensions build artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: vosviewer-online-dimensions-build
+        path: dist/vosviewer-online-dimensions
+    - name: Upload RoRI build artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: vosviewer-online-rori-build
+        path: dist/vosviewer-online-rori

@@ -1,0 +1,77 @@
+{
+  "full_mode": {
+    "control_panel": {
+      "view": {
+        "scale": true,
+        "item_size": true,
+        "item_color": true,
+        "item_size_variation": true,
+        "max_label_length": true,
+        "link_size_variation": true,
+        "min_link_strength": true,
+        "max_n_links": true,
+        "curved_links": true,
+        "cluster_colors": true,
+        "score_colors": true
+      },
+      "find": true,
+      "update": {
+        "rotate_flip": true,
+        "normalization": true,
+        "layout": true,
+        "clustering": true
+      }
+    },
+    "url_preview_panel": true,
+    "zoom_panel": true,
+    "information_panel": true,
+    "description_panel": true,
+    "legend_panel": true,
+    "open_icon": true,
+    "save_icon": true,
+    "share_icon": true,
+    "screenshot_icon": true,
+    "background_icon": true,
+    "fullscreen_icon": true
+  },
+  "simple_mode": {
+    "control_panel": {
+      "view": {
+        "scale": true,
+        "item_size": true,
+        "item_color": true,
+        "item_size_variation": true,
+        "max_label_length": true,
+        "link_size_variation": true,
+        "min_link_strength": true,
+        "max_n_links": true,
+        "curved_links": true,
+        "cluster_colors": true,
+        "score_colors": true
+      },
+      "find": true,
+      "update": false
+    },
+    "url_preview_panel": false,
+    "zoom_panel": true,
+    "information_panel": true,
+    "description_panel": true,
+    "legend_panel": true,
+    "open_icon": false,
+    "save_icon": true,
+    "share_icon": true,
+    "screenshot_icon": true,
+    "background_icon": true,
+    "fullscreen_icon": true
+  },
+  "ui_style": {
+    "font_family": "Roboto",
+    "palette_primary_main_color": "#1e7896"
+  },
+  "parameters": {
+    "map": "",
+    "network": "",
+    "json": ""
+  },
+  "docs_url": "https://app.vosviewer.com/docs"
+}
