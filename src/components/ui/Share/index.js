@@ -69,7 +69,19 @@ const Share = observer(() => {
     return `<iframe allowfullscreen="true" src="${embedUrl}" width="100%" height="75%" style="border: 1px solid #ddd; max-width: 1000px; min-height: 500px"></iframe>`;
   };
 
-  const getQueryObject = () => _cloneDeep(queryStringStore.parameters);
+  const getQueryObject = () => {
+    const result = _cloneDeep(queryStringStore.parameters);
+    if (result[parameterKeys.JSON]) {
+      result[parameterKeys.JSON] = encodeURIComponent(result[parameterKeys.JSON]);
+    }
+    if (result[parameterKeys.MAP]) {
+      result[parameterKeys.MAP] = encodeURIComponent(result[parameterKeys.MAP]);
+    }
+    if (result[parameterKeys.NETWORK]) {
+      result[parameterKeys.NETWORK] = encodeURIComponent(result[parameterKeys.NETWORK]);
+    }
+    return result;
+  };
 
   return (
     <>
