@@ -80,6 +80,10 @@ export default (env = defaultEnv) => {
     {
       from: resolve(__dirname, 'src/assets/images/vosviewer-online-thumbnail.png'),
       to: absolute('dist', bundleName, 'images/vosviewer-online-thumbnail.png'),
+    },
+    {
+      from: resolve(__dirname, 'src/assets/images/vosviewer-online-thumbnail-twitter.png'),
+      to: absolute('dist', bundleName, 'images/vosviewer-online-thumbnail-twitter.png'),
     }
   ];
 
