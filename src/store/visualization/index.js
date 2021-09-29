@@ -67,6 +67,7 @@ export default class State {
     this.zoomOut = undefined;
     this.zoomFit = undefined;
     this.zoomTo = undefined;
+    this.translateTo = undefined;
     this.visualizationStatus = VisualizationStatus.DEFAULT;
     this.highlightedItems = [];
     this.highlightedLinks = [];
@@ -122,6 +123,8 @@ export default class State {
     this.getSizeLegendCanvasImage = () => {};
     this.getClusterLegendCanvasImage = () => {};
     this.getLogoImages = () => ([]);
+    this.cxScale = undefined;
+    this.cyScale = undefined;
   }
 
   get itemsOrLinksWithUrl() {
@@ -530,6 +533,20 @@ export default class State {
     });
 
     this.zoomSquare = [[0, 0], [this.canvasPixelWidth, this.canvasPixelHeight]];
+
+    if (this.cxScale && this.cyScale && this.zTransform.invert && this.translateTo) {
+      const prevXRange = this.cxScale.range();
+      const prevYRange = this.cyScale.range();
+      const prevHalfX = prevXRange[0] + (prevXRange[1] - prevXRange[0]) / 2;
+      const prevHalfY = prevYRange[0] + (prevYRange[1] - prevYRange[0]) / 2;
+      const invertedX = (prevHalfX - this.zTransform.x * this.pixelRatio) / this.zTransform.k;
+      const invertedY = (prevHalfY - this.zTransform.y * this.pixelRatio) / this.zTransform.k;
+      const prevHalfActualX = this.cxScale.invert(invertedX);
+      const prevHalfActualY = this.cyScale.invert(invertedY);
+      this.translateTo(cxScale(prevHalfActualX), cyScale(prevHalfActualY));
+    }
+    this.cxScale = cxScale;
+    this.cyScale = cyScale;
   }
 
   updateItemFontSizeAndCircleSize(scale, itemSizeVariation, maxLabelLength, fontFamily = 'Roboto') {
@@ -862,6 +879,10 @@ export default class State {
 
   setZoomTo(f) {
     this.zoomTo = f;
+  }
+
+  setTranslateTo(f) {
+    this.translateTo = f;
   }
 
   setGetScreenshotImage(f) {
