@@ -517,15 +517,15 @@ export default class State {
     const [minY, maxY] = extent(this.items.map(item => +item.y));
 
     const logicalWidth = maxX - minX;
-    const logicalHeigth = maxY - minY;
+    const logicalHeight = maxY - minY;
     const pixelWidth = this.canvasPixelWidth - marginPixelLeft - marginPixelRight;
     const pixelHeight = this.canvasPixelHeight - marginPixelTop - marginPixelBottom;
-    const minScalingFactor = Math.min(pixelWidth / logicalWidth, pixelHeight / logicalHeigth);
+    const minScalingFactor = Math.min(pixelWidth / logicalWidth, pixelHeight / logicalHeight);
     const deltaPixelX = (pixelWidth - minScalingFactor * logicalWidth) / 2;
-    const deltaPixelY = (pixelHeight - minScalingFactor * logicalHeigth) / 2;
+    const deltaPixelY = (pixelHeight - minScalingFactor * logicalHeight) / 2;
 
     const cxScale = scaleLinear().domain([minX, maxX]).range([deltaPixelX + marginPixelLeft, minScalingFactor * logicalWidth + deltaPixelX + marginPixelLeft]);
-    const cyScale = scaleLinear().domain([minY, maxY]).range([minScalingFactor * logicalHeigth + deltaPixelY + marginPixelTop, deltaPixelY + marginPixelTop]);
+    const cyScale = scaleLinear().domain([minY, maxY]).range([minScalingFactor * logicalHeight + deltaPixelY + marginPixelTop, deltaPixelY + marginPixelTop]);
     [this.clickedItem, ...this.items].forEach(item => {
       if (!item) return;
       item._cx = cxScale(+item.x);
