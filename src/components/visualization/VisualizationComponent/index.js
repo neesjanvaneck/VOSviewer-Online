@@ -18,35 +18,32 @@ const VisualizationComponent = observer(({ withoutUrlPreviewPanel, withoutLinks,
   const visualizationStore = useContext(VisualizationStoreContext);
   const webworkerStore = useContext(WebworkerStoreContext);
   const visEl = useRef(null);
-  const [canvasWidth, setCanvasWidth] = useState(window.innerWidth);
-  const [canvasHeight, setCanvasHeight] = useState(window.innerHeight);
+  const [canvasSize, setCanvasSize] = useState([window.innerWidth, window.innerHeight]);
 
   const updateCanvasSize = () => {
-    setCanvasWidth(window.innerWidth - ((configStore.urlPreviewPanel && !withoutUrlPreviewPanel) ? configStore.urlPreviewPanelWidth : 0));
-    setCanvasHeight(window.innerHeight);
+    setCanvasSize([
+      window.innerWidth - ((configStore.urlPreviewPanel && !withoutUrlPreviewPanel) ? configStore.urlPreviewPanelWidth : 0),
+      window.innerHeight
+    ]);
     uiStore.setWindowInnerWidth(window.innerWidth);
   };
 
   useEffect(() => {
-    visualizationStore.setCanvasSize(canvasWidth, canvasHeight);
+    visualizationStore.setCanvasSize(canvasSize[0], canvasSize[1]);
     visualizationStore.updateItemPixelPositionAndScaling();
     visualizationStore.updateLabelScalingFactors();
     visualizationStore.updateItems();
     visualizationStore.updateLinks();
-  }, [canvasWidth, canvasHeight]);
+  }, [canvasSize]);
 
   useEffect(() => {
     if (!withoutUrlPreviewPanel) updateCanvasSize();
   }, [configStore.urlPreviewPanel]);
 
   useEffect(() => {
-    window.addEventListener('resize', () => {
-      updateCanvasSize();
-    });
+    window.addEventListener('resize', updateCanvasSize);
     return () => {
-      window.removeEventListener('resize', () => {
-        updateCanvasSize();
-      });
+      window.removeEventListener('resize', updateCanvasSize);
     };
   }, []);
 
@@ -92,29 +89,29 @@ const VisualizationComponent = observer(({ withoutUrlPreviewPanel, withoutLinks,
       ref={visEl}
     >
       <InteractionCanvas
-        canvasWidth={canvasWidth}
-        canvasHeight={canvasHeight}
+        canvasWidth={canvasSize[0]}
+        canvasHeight={canvasSize[1]}
         withoutLinks={withoutLinks}
       />
       {!withoutLinks ? (
         <DefaultLinkCanvas
-          canvasWidth={canvasWidth}
-          canvasHeight={canvasHeight}
+          canvasWidth={canvasSize[0]}
+          canvasHeight={canvasSize[1]}
         />
       ) : null}
       <DefaultItemCircleCanvas
-        canvasWidth={canvasWidth}
-        canvasHeight={canvasHeight}
+        canvasWidth={canvasSize[0]}
+        canvasHeight={canvasSize[1]}
       />
       <HighlightedItemCircleLinkCanvas
-        canvasWidth={canvasWidth}
-        canvasHeight={canvasHeight}
+        canvasWidth={canvasSize[0]}
+        canvasHeight={canvasSize[1]}
         withoutLinks={withoutLinks}
       />
       {!withoutItemLabels ? (
         <ItemLabelCanvas
-          canvasWidth={canvasWidth}
-          canvasHeight={canvasHeight}
+          canvasWidth={canvasSize[0]}
+          canvasHeight={canvasSize[1]}
           customFont={customFont}
         />
         ) : null}
