@@ -535,15 +535,13 @@ export default class State {
     this.zoomSquare = [[0, 0], [this.canvasPixelWidth, this.canvasPixelHeight]];
 
     if (this.cxScale && this.cyScale && this.zTransform.invert && this.translateTo) {
-      const prevXRange = this.cxScale.range();
-      const prevYRange = this.cyScale.range();
-      const prevHalfX = prevXRange[0] + (prevXRange[1] - prevXRange[0]) / 2;
-      const prevHalfY = prevYRange[0] + (prevYRange[1] - prevYRange[0]) / 2;
-      const invertedX = (prevHalfX - this.zTransform.x * this.pixelRatio) / this.zTransform.k;
-      const invertedY = (prevHalfY - this.zTransform.y * this.pixelRatio) / this.zTransform.k;
-      const prevHalfActualX = this.cxScale.invert(invertedX);
-      const prevHalfActualY = this.cyScale.invert(invertedY);
-      this.translateTo(cxScale(prevHalfActualX), cyScale(prevHalfActualY));
+      const oldPixelXRange = this.cxScale.range();
+      const oldPixelYRange = this.cyScale.range();
+      const centerPixelX = ((oldPixelXRange[0] + (oldPixelXRange[1] - oldPixelXRange[0]) / 2) - this.zTransform.x * this.pixelRatio) / this.zTransform.k;
+      const centerPixelY = ((oldPixelYRange[0] + (oldPixelYRange[1] - oldPixelYRange[0]) / 2) - this.zTransform.y * this.pixelRatio) / this.zTransform.k;
+      const centerX = this.cxScale.invert(centerPixelX);
+      const centerY = this.cyScale.invert(centerPixelY);
+      this.translateTo(cxScale(centerX), cyScale(centerY));
     }
     this.cxScale = cxScale;
     this.cyScale = cyScale;
