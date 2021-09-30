@@ -60,6 +60,8 @@ export default class State {
     this.initialZoomLevel = defaultParameterValues[parameterKeys.ZOOM_LEVEL];
     this.canvasMargin = { left: canvasMargin, right: canvasMargin, top: canvasMargin, bottom: canvasMargin };
     this.pixelRatio = window.devicePixelRatio || 1;
+    this.cxScale = undefined;
+    this.cyScale = undefined;
     this.zoomSquare = undefined;
     this.updateZoomLevel = undefined;
     this.resetZoom = undefined;
@@ -123,8 +125,6 @@ export default class State {
     this.getSizeLegendCanvasImage = () => {};
     this.getClusterLegendCanvasImage = () => {};
     this.getLogoImages = () => ([]);
-    this.cxScale = undefined;
-    this.cyScale = undefined;
   }
 
   get itemsOrLinksWithUrl() {
@@ -531,9 +531,6 @@ export default class State {
       item._cx = cxScale(+item.x);
       item._cy = cyScale(+item.y);
     });
-
-    this.zoomSquare = [[0, 0], [this.canvasPixelWidth, this.canvasPixelHeight]];
-
     if (this.cxScale && this.cyScale && this.zTransform.invert && this.translateTo) {
       const oldPixelXRange = this.cxScale.range();
       const oldPixelYRange = this.cyScale.range();
@@ -545,6 +542,8 @@ export default class State {
     }
     this.cxScale = cxScale;
     this.cyScale = cyScale;
+
+    this.zoomSquare = [[0, 0], [this.canvasPixelWidth, this.canvasPixelHeight]];
   }
 
   updateItemFontSizeAndCircleSize(scale, itemSizeVariation, maxLabelLength, fontFamily = 'Roboto') {
