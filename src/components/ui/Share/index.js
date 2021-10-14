@@ -54,18 +54,18 @@ const Share = observer(() => {
   };
 
   const getShareURL = () => {
-    const domain = window.location.origin;
+    const { origin, pathname } = window.location;
     const queryObject = getQueryObject();
     const queryString = Object.keys(queryObject).reduce((acc, key, idx) => `${acc}${idx === 0 ? '?' : '&'}${key}=${queryObject[key]}`, '');
-    return `${domain}/${queryString}`;
+    return `${origin}${pathname}${queryString}`;
   };
 
   const getEmbedCode = () => {
-    const domain = window.location.origin;
+    const { origin, pathname } = window.location;
     const queryObject = getQueryObject();
     queryObject[parameterKeys.SIMPLE_UI] = true;
     const queryString = Object.keys(queryObject).reduce((acc, key, idx) => `${acc}${idx === 0 ? '?' : '&'}${key}=${queryObject[key]}`, '');
-    const embedUrl = `${domain}/${queryString}`;
+    const embedUrl = `${origin}${pathname}${queryString}`;
     return `<iframe allowfullscreen="true" src="${embedUrl}" width="100%" height="75%" style="border: 1px solid #ddd; max-width: 1000px; min-height: 500px"></iframe>`;
   };
 
