@@ -33,7 +33,7 @@ const LegendPanel = observer(() => {
     if ((uiStore.colorIndex > 0) || (uiStore.colorIndex === 0 && fileDataStore.clusters.size)) {
       legendPanelWidth = legendPanelMaxWidth;
     }
-    return legendPanelWidth + 2 * panelMargin < uiStore.windowInnerWidth - (uiStore.controlPanelIsOpen ? controlPanelWidth : 0) - (configStore.urlPreviewPanelIsOpen ? configStore.urlPreviewPanelWidth : 0) - uiStore.infoPanelWidth - panelMargin;
+    return legendPanelWidth + 2 * panelMargin < uiStore.windowInnerWidth - (uiStore.controlPanelIsOpen ? controlPanelWidth : 0) - (configStore.urlPreviewPanel ? configStore.urlPreviewPanelWidth : 0) - uiStore.infoPanelWidth - panelMargin;
   };
 
   const showSizeLegend = visualizationStore.weightKeysCustomTerminology && visualizationStore.weightKeysCustomTerminology.length > 0;
