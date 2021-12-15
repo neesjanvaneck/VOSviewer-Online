@@ -1,15 +1,16 @@
 /* eslint-disable no-undef */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/anchor-has-content */
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useRef, useState, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import {
-  Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, TextField, Tooltip, Typography
+  Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, FormControlLabel, Switch, TextField, Tooltip, Typography
 } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import ShareIcon from '@material-ui/icons/Share';
 import QRCode from 'qrcode.react';
 import _cloneDeep from 'lodash/cloneDeep';
+import TinyURL from 'tinyurl';
 
 import { ConfigStoreContext, QueryStringStoreContext, UiStoreContext } from 'store/stores';
 import { parameterKeys } from 'utils/variables';
@@ -21,7 +22,15 @@ const Share = observer(() => {
   const queryStringStore = useContext(QueryStringStoreContext);
   const uiStore = useContext(UiStoreContext);
   const [isOpen, setIsOpen] = useState(false);
+  const [isShortLink, setIsShortLink] = useState(false);
+  const [shareUrl, setShareUrl] = useState('');
+  const [embedCode, setEmbedCode] = useState('');
   const qrImageEl = useRef(null);
+
+  useEffect(async () => {
+    setShareUrl(isShortLink ? await getShortenedShareURL() : getShareURL());
+    setEmbedCode(getEmbedCode(isShortLink ? await getShortenedShareURL(true) : getShareURL(true)));
+  });
 
   const showShareDialog = () => {
     setIsOpen(!isOpen);
@@ -53,21 +62,20 @@ const Share = observer(() => {
     }
   };
 
-  const getShareURL = () => {
+  const getShareURL = (isEmbedded = false) => {
     const { origin, pathname } = window.location;
     const queryObject = getQueryObject();
+    if (isEmbedded) queryObject[parameterKeys.SIMPLE_UI] = true;
     const queryString = Object.keys(queryObject).reduce((acc, key, idx) => `${acc}${idx === 0 ? '?' : '&'}${key}=${queryObject[key]}`, '');
     return `${origin}${pathname}${queryString}`;
   };
 
-  const getEmbedCode = () => {
-    const { origin, pathname } = window.location;
-    const queryObject = getQueryObject();
-    queryObject[parameterKeys.SIMPLE_UI] = true;
-    const queryString = Object.keys(queryObject).reduce((acc, key, idx) => `${acc}${idx === 0 ? '?' : '&'}${key}=${queryObject[key]}`, '');
-    const embedUrl = `${origin}${pathname}${queryString}`;
-    return `<iframe allowfullscreen="true" src="${embedUrl}" width="100%" height="75%" style="border: 1px solid #ddd; max-width: 1000px; min-height: 500px"></iframe>`;
+  const getShortenedShareURL = async (isEmbedded = false) => {
+    const url = await TinyURL.shorten(getShareURL(isEmbedded));
+    return url;
   };
+
+  const getEmbedCode = (url) => `<iframe allowfullscreen="true" src="${url}" width="100%" height="75%" style="border: 1px solid #ddd; max-width: 1000px; min-height: 500px"></iframe>`;
 
   const getQueryObject = () => {
     const result = _cloneDeep(queryStringStore.parameters);
@@ -141,6 +149,20 @@ const Share = observer(() => {
                     Download
                   </Button>
                 </div>
+                <div className={s.switchBox}>
+                  <FormControlLabel
+                    classes={{ label: s.switchLabel }}
+                    control={(
+                      <Switch
+                        checked={isShortLink}
+                        onChange={event => setIsShortLink(event.target.checked)}
+                        color="primary"
+                      />
+                    )}
+                    label="Short link"
+                    labelPlacement="start"
+                  />
+                </div>
                 <div className={s.inputBox}>
                   <TextField
                     id="share-link-input"
@@ -148,7 +170,7 @@ const Share = observer(() => {
                     label="Link"
                     multiline
                     maxRows={3}
-                    defaultValue={getShareURL()}
+                    value={shareUrl}
                     InputProps={{ readOnly: true }}
                   />
                   <Button
@@ -166,7 +188,7 @@ const Share = observer(() => {
                     label="Embed code"
                     multiline
                     maxRows={3}
-                    defaultValue={getEmbedCode()}
+                    value={embedCode}
                     InputProps={{ readOnly: true }}
                   />
                   <Button

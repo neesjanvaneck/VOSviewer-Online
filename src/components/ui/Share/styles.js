@@ -61,3 +61,17 @@ export const downloadButton = css`
   margin-bottom: 20px !important;
   margin-left: 20px !important;
 `;
+
+export const switchBox = css`
+  label: switch-box;
+  margin-top: 16px;
+`;
+
+export const switchLabel = css`
+  label: switch-label;
+  margin-left: -16px !important;
+  transform: scale(0.75);
+  transform-origin: left;
+  opacity: 0.65;
+  font-size: 1rem !important;
+`;
