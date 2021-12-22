@@ -263,14 +263,14 @@ export default class State {
       if (!this.weightKeys.includes(`weight<${defaultTerminology.total_link_strength}>`)) {
         this.weightKeys.unshift(`weight<${defaultTerminology.total_link_strength}>`);
         _each(this.items, item => {
-          item[`weight<${defaultTerminology.total_link_strength}>`] = this.itemLinkData[item.id] ? this.itemLinkData[item.id].totalLinkStrength : undefined;
+          item[`weight<${defaultTerminology.total_link_strength}>`] = this.itemLinkData[item.id] ? this.itemLinkData[item.id].totalLinkStrength : 0;
         });
         this.weightIndex = 1;
       }
       if (!this.weightKeys.includes(`weight<${defaultTerminology.links}>`)) {
         this.weightKeys.unshift(`weight<${defaultTerminology.links}>`);
         _each(this.items, item => {
-          item[`weight<${defaultTerminology.links}>`] = this.itemLinkData[item.id] ? this.itemLinkData[item.id].nLinks : undefined;
+          item[`weight<${defaultTerminology.links}>`] = this.itemLinkData[item.id] ? this.itemLinkData[item.id].nLinks : 0;
         });
         this.weightIndex = this.weightKeys.length === 2 ? 1 : 2;
       }
