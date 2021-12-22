@@ -51,6 +51,13 @@ export const getMapFileError = (parseResults, networkDataAvailable) => {
       lineNumber: multipleColumnsError.lineNumber
     };
   }
+  lineNumber = _checkIncorrectNColumnsMapFile(parseResults);
+  if (_isNumber(lineNumber)) {
+    return getFileError(errorKeys.INCORRECT_N_COLUMNS, fileTypeKey, lineNumber);
+  }
+  if (_checkLessThanThreeItems(parseResults)) {
+    return getFileError(errorKeys.LESS_THAN_THREE_ITEMS, fileTypeKey);
+  }
   lineNumber = _checkIdAndLabelColumnsMissing(parseResults);
   if (_isNumber(lineNumber)) {
     return getFileError(errorKeys.ID_AND_LABEL_COLUMNS_MISSING, fileTypeKey, lineNumber);
@@ -60,13 +67,6 @@ export const getMapFileError = (parseResults, networkDataAvailable) => {
   }
   if (!networkDataAvailable && _checkXAndYColumnsMissing(parseResults)) {
     return getFileError(errorKeys.X_AND_Y_COLUMNS_MISSING, fileTypeKey);
-  }
-  lineNumber = _checkIncorrectNColumnsMapFile(parseResults);
-  if (_isNumber(lineNumber)) {
-    return getFileError(errorKeys.INCORRECT_N_COLUMNS, fileTypeKey, lineNumber);
-  }
-  if (_checkLessThanThreeItems(parseResults)) {
-    return getFileError(errorKeys.LESS_THAN_THREE_ITEMS, fileTypeKey);
   }
   lineNumber = _checkIdEmpty(parseResults);
   if (_checkIdEmpty(parseResults)) {
@@ -134,17 +134,17 @@ export const getJsonFileError = (parseResultsMapData, parseResultsNetworkData) =
     return getFileError(errorKeys.FILE_EMPTY, fileTypeKey);
   }
   if (parseResultsMapData.data.length > 0) {
+    if (_checkLessThanThreeItems(parseResultsMapData)) {
+      return getFileError(errorKeys.LESS_THAN_THREE_ITEMS, fileTypeKey);
+    }
     if (_checkIdAndLabelColumnsMissing(parseResultsMapData)) {
       return getFileError(errorKeys.ID_AND_LABEL_ATTRIBUTES_MISSING, fileTypeKey);
     }
     if (parseResultsNetworkData.data.length > 0 && _checkIdColumnMissing(parseResultsMapData)) {
       return getFileError(errorKeys.ID_ATTRIBUTE_MISSING, fileTypeKey);
     }
-    if (!parseResultsNetworkData.data.length > 0 && _checkXAndYColumnsMissing(parseResultsMapData)) {
+    if (parseResultsNetworkData.data.length === 0 && _checkXAndYColumnsMissing(parseResultsMapData)) {
       return getFileError(errorKeys.X_AND_Y_ATTRIBUTES_MISSING, fileTypeKey);
-    }
-    if (_checkLessThanThreeItems(parseResultsMapData)) {
-      return getFileError(errorKeys.LESS_THAN_THREE_ITEMS, fileTypeKey);
     }
     if (_checkIdEmpty(parseResultsMapData)) {
       return getFileError(errorKeys.ID_EMPTY, fileTypeKey);
