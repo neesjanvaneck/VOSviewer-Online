@@ -14,21 +14,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: borales/actions-yarn@v2.0.0
+    - uses: actions/setup-node@v2
       with:
-        cmd: install
-    - uses: borales/actions-yarn@v2.0.0
-      with:
-        cmd: build:vosviewer
-    - uses: borales/actions-yarn@v2.0.0
-      with:
-        cmd: build:dimensions
-    - uses: borales/actions-yarn@v2.0.0
-      with:
-        cmd: build:zeta-alpha
-    - uses: borales/actions-yarn@v2.0.0
-      with:
-        cmd: build:rori
+        node-version: '16'
+    - run: npm install
+    - run: npm run build:vosviewer
+    - run: npm run build:dimensions
+    - run: npm run build:zeta-alpha
+    - run: npm run build:rori
 
     - name: Upload VOSviewer Online build artifact
       uses: actions/upload-artifact@v2
