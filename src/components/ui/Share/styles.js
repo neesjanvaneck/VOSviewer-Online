@@ -19,11 +19,11 @@ export const dialogContent = css`
 `;
 
 export const qrCodeLabel = css`
-label: qr-label;
-transform: scale(0.75);
-transform-origin: top left;
-opacity: 0.65;
-font-size: 1rem;
+  label: qr-label;
+  transform: scale(0.75);
+  transform-origin: top left;
+  opacity: 0.65;
+  font-size: 1rem;
 `;
 
 export const qrCodeBox = css`
@@ -60,4 +60,18 @@ export const downloadButton = css`
   margin-top: 20px !important;
   margin-bottom: 20px !important;
   margin-left: 20px !important;
+`;
+
+export const switchBox = css`
+  label: switch-box;
+  margin-top: 16px;
+`;
+
+export const switchLabel = css`
+  label: switch-label;
+  margin-left: -16px !important;
+  transform: scale(0.75);
+  transform-origin: left;
+  opacity: 0.65;
+  font-size: 1rem !important;
 `;
