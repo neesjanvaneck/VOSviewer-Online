@@ -121,7 +121,7 @@ const Share = observer(() => {
                   <a ref={qrImageEl} style={{ display: 'none' }} />
                   <QRCode
                     id="qr-code-image"
-                    value={getLink()}
+                    value={link}
                     size={90}
                     level="L"
                     renderAs="canvas"
