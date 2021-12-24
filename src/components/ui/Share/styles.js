@@ -19,11 +19,11 @@ export const dialogContent = css`
 `;
 
 export const qrCodeLabel = css`
-label: qr-label;
-transform: scale(0.75);
-transform-origin: top left;
-opacity: 0.65;
-font-size: 1rem;
+  label: qr-label;
+  transform: scale(0.75);
+  transform-origin: top left;
+  opacity: 0.65;
+  font-size: 1rem;
 `;
 
 export const qrCodeBox = css`
