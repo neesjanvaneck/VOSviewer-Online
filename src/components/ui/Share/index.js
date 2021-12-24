@@ -22,7 +22,7 @@ const Share = observer(() => {
   const queryStringStore = useContext(QueryStringStoreContext);
   const uiStore = useContext(UiStoreContext);
   const [isOpen, setIsOpen] = useState(false);
-  const [useShortLink, setUseShortLink] = useState(false);
+  const [useShortLink, setUseShortLink] = useState(true);
   const [link, setLink] = useState('');
   const [embedCode, setEmbedCode] = useState('');
   const qrImageEl = useRef(null);
