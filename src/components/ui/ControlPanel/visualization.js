@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Slider, Typography } from '@material-ui/core';
+import { Slider, Typography } from '@mui/material';
 
 import { ConfigStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
 import * as s from './styles';

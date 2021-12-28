@@ -2,7 +2,7 @@ import { css } from 'emotion';
 
 export const openButton = css`
   label: open-button;
-  margin-left: -10px;
+  margin-left: -2px;
 `;
 
 export const closeButton = css`

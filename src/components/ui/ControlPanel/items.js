@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import {
   FormControl, InputLabel, MenuItem, Select, Slider, TextField, Typography
-} from '@material-ui/core';
+} from '@mui/material';
 
 import { ConfigStoreContext, FileDataStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
 import * as s from './styles';

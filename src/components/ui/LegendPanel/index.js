@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Paper } from '@material-ui/core';
+import { Paper } from '@mui/material';
 
 import { ConfigStoreContext, FileDataStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
 import { controlPanelWidth, panelMargin, panelPadding, legendPanelMaxWidth } from 'utils/variables';

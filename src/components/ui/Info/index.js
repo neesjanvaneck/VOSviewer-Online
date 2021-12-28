@@ -2,9 +2,9 @@ import React, { useContext, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import {
   Button, Dialog, DialogActions, DialogContent, IconButton, Link, Menu, MenuItem, Tooltip, Typography
-} from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
-import InfoIcon from '@material-ui/icons/Info';
+} from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import InfoIcon from '@mui/icons-material/Info';
 
 import { ConfigStoreContext } from 'store/stores';
 import logo from 'assets/images/vosviewer-online-logo.svg';

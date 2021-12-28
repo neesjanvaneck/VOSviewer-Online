@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Box, CircularProgress } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
+import { Box, CircularProgress } from '@mui/material';
+import Typography from '@mui/material/Typography';
 
 import { ClusteringStoreContext, LayoutStoreContext, UiStoreContext } from 'store/stores';
 import { processTypes, processDescriptions } from 'utils/variables';

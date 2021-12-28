@@ -2,9 +2,9 @@ import React, { useContext, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import {
   Button, Dialog, DialogTitle, DialogContent, DialogActions, IconButton, Tooltip
-} from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
-import FolderIcon from '@material-ui/icons/Folder';
+} from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import FolderIcon from '@mui/icons-material/Folder';
 
 import {
   ConfigStoreContext, FileDataStoreContext, UiStoreContext, WebworkerStoreContext

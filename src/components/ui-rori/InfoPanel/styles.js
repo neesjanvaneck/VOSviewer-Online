@@ -8,7 +8,7 @@ export const panel = css`
   padding: 10px 15px;
   pointer-events: all;
   font-family: Nexa Light;
-  font-size: 10pt !important;
+  font-size: 0.83rem !important;
   border-radius: 4px;
   background-color: rgba(255,255,255,0.9);
   box-shadow: 0px 0px 6px 1px rgba(191,192,193,0.25);
@@ -30,7 +30,7 @@ export const panel = css`
   }
 
   table {
-    font-size: 10pt !important;
+    font-size: 0.83rem !important;
 
     tr {
       td:first-child {
@@ -61,6 +61,6 @@ export const closeButton = css`
   color: rgba(0, 0, 0, 0.87);
 
   span {
-    font-size: 12pt;
+    font-size: 1rem;
   }
 `;

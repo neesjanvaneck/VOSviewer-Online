@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 import {
   Button, Accordion, AccordionDetails, AccordionSummary, FormControlLabel, Switch, TextField, Typography
-} from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+} from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import { ClusteringStoreContext, WebworkerStoreContext } from 'store/stores';
 import * as s from './styles';

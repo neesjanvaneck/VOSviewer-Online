@@ -1,8 +1,8 @@
 /* eslint-disable consistent-return */
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import { IconButton, Link, Paper, Typography } from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
+import { IconButton, Link, Paper, Typography } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import { format } from 'd3-format';
 import { css } from 'emotion';
 import _isNil from 'lodash/isNil';

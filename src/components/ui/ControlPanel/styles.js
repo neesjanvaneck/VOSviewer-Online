@@ -74,6 +74,7 @@ export const subtitle = css`
 export const switchBox = css`
   label: switch-box;
   display: flex;
+  margin: 4px 3px 4px 0px;
 `;
 
 export const formControlLabel = css`
@@ -132,7 +133,7 @@ export const expansionPanelItems = (fontFamily) => css`
 `;
 
 export const expansionPanelButton = css`
-  margin-top: 20px !important;
+  margin: 10px 0px !important;
 `;
 
 export const colorPickerItem = css`

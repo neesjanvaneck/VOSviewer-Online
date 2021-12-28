@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import {
   Button, FormControl, Accordion, AccordionDetails, AccordionSummary, FormControlLabel, InputLabel, MenuItem, Select, Switch, Tooltip, Typography
-} from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+} from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { ColorPicker } from 'material-ui-color';
 import _join from 'lodash/join';
 

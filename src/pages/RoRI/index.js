@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
-import { ThemeProvider, createTheme } from '@material-ui/core/styles';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Global } from "@emotion/core";
 
 import VisualizationComponent from 'components/visualization/VisualizationComponent';
@@ -40,7 +40,40 @@ const RoRI = observer(({ dataType }) => {
     palette: {
       primary: {
         main: roriPantone298,
-      }
+      },
+    },
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: {
+
+            fontWeight: 400,
+            textTransform: 'none',
+          },
+        },
+      },
+      MuiFormControl: {
+        defaultProps: {
+          variant: 'standard',
+        },
+      },
+      MuiSlider: {
+        defaultProps: {
+          size: 'small',
+        },
+      },
+      MuiSvgIcon: {
+        styleOverrides: {
+          fontSizeSmall: {
+            fontSize: '1.25rem',
+          },
+        },
+      },
+      MuiTextField: {
+        defaultProps: {
+          variant: 'standard',
+        },
+      },
     },
   });
 

@@ -2,7 +2,7 @@ import { css } from 'emotion';
 
 export const shareButton = css`
   label: share-button;
-  margin-left: -10px;
+  margin-left: -2px;
 `;
 
 export const closeButton = css`

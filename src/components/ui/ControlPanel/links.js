@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
-import { FormControlLabel, Slider, Switch, TextField, Typography } from '@material-ui/core';
+import { FormControlLabel, Slider, Switch, TextField, Typography } from '@mui/material';
 
 import { ConfigStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
 import * as s from './styles';

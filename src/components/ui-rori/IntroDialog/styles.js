@@ -9,7 +9,7 @@ export const introStyle = css`
   height: 100%;
   top: 0;
   font-family: "Nexa Light";
-  font-size: 11pt;
+  font-size: 0.92rem;
   opacity: 1;
   transition: opacity 1s;
   animation: fadein 2s;

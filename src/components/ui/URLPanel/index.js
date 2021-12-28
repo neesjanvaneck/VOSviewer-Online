@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import { CardMedia, Paper } from '@material-ui/core';
+import { CardMedia, Paper } from '@mui/material';
 
 import { ConfigStoreContext, VisualizationStoreContext } from 'store/stores';
 import * as s from './styles';

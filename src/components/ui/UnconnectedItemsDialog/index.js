@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Button, Dialog, DialogActions, DialogContent, Typography } from '@material-ui/core';
+import { Button, Dialog, DialogActions, DialogContent, Typography } from '@mui/material';
 
 import { FileDataStoreContext, UiStoreContext, VisualizationStoreContext, WebworkerStoreContext } from 'store/stores';
 
