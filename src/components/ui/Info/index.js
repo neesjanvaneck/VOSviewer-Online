@@ -6,12 +6,14 @@ import {
 import CloseIcon from '@mui/icons-material/Close';
 import InfoIcon from '@mui/icons-material/Info';
 
-import { ConfigStoreContext } from 'store/stores';
-import logo from 'assets/images/vosviewer-online-logo.svg';
+import { ConfigStoreContext, UiStoreContext } from 'store/stores';
+import vosviewerOnlineLogo from 'assets/images/vosviewer-online-logo.svg';
+import vosviewerOnlineLogoDark from 'assets/images/vosviewer-online-logo-dark.svg';
 import * as s from './styles';
 
 const Info = observer(() => {
   const configStore = useContext(ConfigStoreContext);
+  const uiStore = useContext(UiStoreContext);
   const [infoMenuAnchorEl, setInfoMenuAnchorEl] = useState(null);
   const [aboutDialogIsOpen, setAboutDialogIsOpen] = useState(false);
 
@@ -77,7 +79,7 @@ const Info = observer(() => {
           <IconButton className={s.closeButton} onClick={exitAboutDialog}>
             <CloseIcon fontSize="small" />
           </IconButton>
-          <img className={s.logo} src={logo} alt="VOSviewer Online" />
+          <img className={s.logo} src={uiStore.darkTheme ? vosviewerOnlineLogoDark : vosviewerOnlineLogo} alt="VOSviewer Online" />
           <Typography variant="body1" align="justify" paragraph>
             VOSviewer Online has been developed by
             {' '}
