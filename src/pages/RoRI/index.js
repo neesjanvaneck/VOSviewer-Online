@@ -65,7 +65,7 @@ const RoRI = observer(({ dataType }) => {
       MuiSvgIcon: {
         styleOverrides: {
           fontSizeSmall: {
-            fontSize: '1.25rem',
+            fontSize: '1.1rem',
           },
         },
       },

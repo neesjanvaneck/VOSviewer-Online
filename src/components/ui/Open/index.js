@@ -63,11 +63,13 @@ const Open = observer(() => {
         maxWidth="xs"
         fullWidth
       >
-        <DialogTitle>Open</DialogTitle>
-        <DialogContent classes={{ root: s.dialogContent }}>
+        <DialogTitle>
+          Open
           <IconButton className={s.closeButton} onClick={exitOpenDialog}>
             <CloseIcon fontSize="small" />
           </IconButton>
+        </DialogTitle>
+        <DialogContent classes={{ root: s.dialogContent }}>
           <OpenDialogContent />
         </DialogContent>
         <DialogActions>

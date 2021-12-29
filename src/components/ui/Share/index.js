@@ -111,11 +111,13 @@ const Share = observer(() => {
               onClose={exitShareDialog}
               fullWidth
             >
-              <DialogTitle>Share</DialogTitle>
-              <DialogContent classes={{ root: s.dialogContent }}>
+              <DialogTitle>
+                Share
                 <IconButton className={s.closeButton} onClick={exitShareDialog}>
                   <CloseIcon fontSize="small" />
                 </IconButton>
+              </DialogTitle>
+              <DialogContent classes={{ root: s.dialogContent }}>
                 <Typography className={s.qrCodeLabel}>QR code</Typography>
                 <div className={s.qrCodeBox}>
                   <a ref={qrImageEl} style={{ display: 'none' }} />

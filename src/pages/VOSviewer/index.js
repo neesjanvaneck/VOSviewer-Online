@@ -175,7 +175,7 @@ const VOSviewer = observer(({ queryString }) => {
         MuiSvgIcon: {
           styleOverrides: {
             fontSizeSmall: {
-              fontSize: '1.25rem',
+              fontSize: '1.1rem',
             },
           },
         },

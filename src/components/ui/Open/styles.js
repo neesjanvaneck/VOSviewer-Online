@@ -8,8 +8,8 @@ export const openButton = css`
 export const closeButton = css`
   label: close-button;
   position: absolute !important;
-  top: 0;
-  right: 0;
+  top: 5px;
+  right: 5px;
 `;
 
 export const dialogContent = css`

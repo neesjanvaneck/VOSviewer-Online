@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import {
-  Button, Dialog, DialogActions, DialogContent, IconButton, Link, Menu, MenuItem, Tooltip, Typography
+  Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, Link, Menu, MenuItem, Tooltip, Typography
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import InfoIcon from '@mui/icons-material/Info';
@@ -75,11 +75,13 @@ const Info = observer(() => {
         onClose={exitAboutDialog}
         fullWidth
       >
-        <DialogContent classes={{ root: s.dialogContent }}>
+        <DialogTitle>
+          <img className={s.logo} src={uiStore.darkTheme ? vosviewerOnlineLogoDark : vosviewerOnlineLogo} alt="VOSviewer Online" />
           <IconButton className={s.closeButton} onClick={exitAboutDialog}>
             <CloseIcon fontSize="small" />
           </IconButton>
-          <img className={s.logo} src={uiStore.darkTheme ? vosviewerOnlineLogoDark : vosviewerOnlineLogo} alt="VOSviewer Online" />
+        </DialogTitle>
+        <DialogContent classes={{ root: s.dialogContent }}>
           <Typography variant="body1" align="justify" paragraph>
             VOSviewer Online has been developed by
             {' '}

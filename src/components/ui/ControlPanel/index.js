@@ -50,8 +50,8 @@ const ControlPanel = observer(() => {
               elevation={3}
             >
               {uiStore.controlPanelIsOpen
-              ? <ChevronLeftIcon fontSize="small" />
-              : <ChevronRightIcon fontSize="small" />}
+              ? <ChevronLeftIcon />
+              : <ChevronRightIcon />}
             </Paper>
           </Tooltip>
         )
