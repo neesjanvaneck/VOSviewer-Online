@@ -2,8 +2,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useContext, useEffect, useRef } from 'react';
 import { observer } from 'mobx-react-lite';
-import { IconButton, Tooltip } from '@material-ui/core';
-import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
+import { IconButton, Tooltip } from '@mui/material';
+import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 
 import { ConfigStoreContext, VisualizationStoreContext } from 'store/stores';
 import * as s from './styles';

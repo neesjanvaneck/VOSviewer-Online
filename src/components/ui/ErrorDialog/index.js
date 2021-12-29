@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Typography, Button, Dialog, DialogActions, DialogContent } from '@material-ui/core';
+import { Typography, Button, Dialog, DialogActions, DialogContent } from '@mui/material';
 import _isNumber from 'lodash/isNumber';
 
 import { FileDataStoreContext, UiStoreContext } from 'store/stores';

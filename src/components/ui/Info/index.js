@@ -1,17 +1,19 @@
 import React, { useContext, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import {
-  Button, Dialog, DialogActions, DialogContent, IconButton, Link, Menu, MenuItem, Tooltip, Typography
-} from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
-import InfoIcon from '@material-ui/icons/Info';
+  Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, Link, Menu, MenuItem, Tooltip, Typography
+} from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import InfoIcon from '@mui/icons-material/Info';
 
-import { ConfigStoreContext } from 'store/stores';
-import logo from 'assets/images/vosviewer-online-logo.svg';
+import { ConfigStoreContext, UiStoreContext } from 'store/stores';
+import vosviewerOnlineLogo from 'assets/images/vosviewer-online-logo.svg';
+import vosviewerOnlineLogoDark from 'assets/images/vosviewer-online-logo-dark.svg';
 import * as s from './styles';
 
 const Info = observer(() => {
   const configStore = useContext(ConfigStoreContext);
+  const uiStore = useContext(UiStoreContext);
   const [infoMenuAnchorEl, setInfoMenuAnchorEl] = useState(null);
   const [aboutDialogIsOpen, setAboutDialogIsOpen] = useState(false);
 
@@ -73,11 +75,13 @@ const Info = observer(() => {
         onClose={exitAboutDialog}
         fullWidth
       >
-        <DialogContent classes={{ root: s.dialogContent }}>
+        <DialogTitle>
+          <img className={s.logo} src={uiStore.darkTheme ? vosviewerOnlineLogoDark : vosviewerOnlineLogo} alt="VOSviewer Online" />
           <IconButton className={s.closeButton} onClick={exitAboutDialog}>
             <CloseIcon fontSize="small" />
           </IconButton>
-          <img className={s.logo} src={logo} alt="VOSviewer Online" />
+        </DialogTitle>
+        <DialogContent classes={{ root: s.dialogContent }}>
           <Typography variant="body1" align="justify" paragraph>
             VOSviewer Online has been developed by
             {' '}

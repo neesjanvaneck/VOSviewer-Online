@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 import {
   Checkbox, FormControl, FormControlLabel, InputLabel, MenuItem, Paper, Select, TextField
-} from '@material-ui/core';
+} from '@mui/material';
 
 import { UiStoreContext, VisualizationStoreContext } from 'store/stores';
 import * as s from './styles';

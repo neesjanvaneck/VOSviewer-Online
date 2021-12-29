@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import { IconButton } from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
+import { IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import ReactHtmlParser from 'react-html-parser';
 
 import { FileDataStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';

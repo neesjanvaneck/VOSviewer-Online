@@ -5,9 +5,9 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import {
   Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControlLabel, IconButton, Switch, TextField, Tooltip, Typography
-} from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
-import ShareIcon from '@material-ui/icons/Share';
+} from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import ShareIcon from '@mui/icons-material/Share';
 import TinyURL from 'tinyurl';
 import QRCode from 'qrcode.react';
 import _cloneDeep from 'lodash/cloneDeep';
@@ -111,11 +111,13 @@ const Share = observer(() => {
               onClose={exitShareDialog}
               fullWidth
             >
-              <DialogTitle>Share</DialogTitle>
-              <DialogContent classes={{ root: s.dialogContent }}>
+              <DialogTitle>
+                Share
                 <IconButton className={s.closeButton} onClick={exitShareDialog}>
                   <CloseIcon fontSize="small" />
                 </IconButton>
+              </DialogTitle>
+              <DialogContent classes={{ root: s.dialogContent }}>
                 <Typography className={s.qrCodeLabel}>QR code</Typography>
                 <div className={s.qrCodeBox}>
                   <a ref={qrImageEl} style={{ display: 'none' }} />

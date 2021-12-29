@@ -2,14 +2,14 @@ import { css } from 'emotion';
 
 export const shareButton = css`
   label: share-button;
-  margin-left: -10px;
+  margin-left: -2px;
 `;
 
 export const closeButton = css`
   label: close-button;
   position: absolute !important;
-  top: 0;
-  right: 0;
+  top: 5px;
+  right: 5px;
 `;
 
 export const dialogContent = css`

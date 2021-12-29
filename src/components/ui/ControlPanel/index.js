@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Paper, Tooltip } from '@material-ui/core';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import { Paper, Tooltip } from '@mui/material';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 import { ConfigStoreContext, UiStoreContext } from 'store/stores';
 import { controlPanelTabValues } from 'utils/variables';
@@ -50,8 +50,8 @@ const ControlPanel = observer(() => {
               elevation={3}
             >
               {uiStore.controlPanelIsOpen
-              ? <ChevronLeftIcon fontSize="small" />
-              : <ChevronRightIcon fontSize="small" />}
+              ? <ChevronLeftIcon />
+              : <ChevronRightIcon />}
             </Paper>
           </Tooltip>
         )

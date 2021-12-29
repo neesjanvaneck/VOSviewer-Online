@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Button, TextField } from '@material-ui/core';
+import { Button, TextField } from '@mui/material';
 
 import { VisualizationStoreContext } from 'store/stores';
 import * as s from './styles';

@@ -1,8 +1,8 @@
 /* global NODE_ENV */
 import React, { useContext, useEffect, useRef } from 'react';
 import { observer } from 'mobx-react-lite';
-import { CssBaseline } from '@material-ui/core';
-import { ThemeProvider, createTheme } from '@material-ui/core/styles';
+import { CssBaseline } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import _isPlainObject from 'lodash/isPlainObject';
 
 import VisualizationComponent from 'components/visualization/VisualizationComponent';
@@ -90,7 +90,7 @@ const Dimensions = observer(({ queryString }) => {
         useNextVariants: true,
       },
       palette: {
-        type: isDark ? 'dark' : 'light',
+        mode: isDark ? 'dark' : 'light',
         background: {
           default: isDark ? visualizationBackgroundColors.DARK : visualizationBackgroundColors.LIGHT,
           paper: isDark ? panelBackgroundColors.DARK : panelBackgroundColors.LIGHT,
@@ -98,92 +98,115 @@ const Dimensions = observer(({ queryString }) => {
         primary: {
           main: uiStyle.palette_primary_main_color,
         },
-      }
+      },
+      components: {
+        MuiAccordion: {
+          defaultProps: {
+            disableGutters: true,
+          },
+          styleOverrides: {
+            root: {
+              boxShadow: 'none',
+              backgroundImage: 'none',
+              backgroundColor: 'transparent',
+              '&:before': {
+                backgroundColor: 'transparent',
+              },
+            },
+          },
+        },
+        MuiAccordionDetails: {
+          styleOverrides: {
+            root: {
+              padding: '0px 0px 12px',
+            },
+          },
+        },
+        MuiAccordionSummary: {
+          styleOverrides: {
+            root: {
+              padding: '0px',
+            },
+          },
+        },
+        MuiButton: {
+          styleOverrides: {
+            root: {
+              fontWeight: 400,
+              textTransform: 'none',
+            },
+          },
+        },
+        MuiFormControl: {
+          defaultProps: {
+            variant: 'standard',
+          },
+          styleOverrides: {
+            root: {
+              margin: '4px 0px 12px 0px',
+              width: '100%',
+            },
+          },
+        },
+        MuiFormControlLabel: {
+          styleOverrides: {
+            label: {
+              fontSize: '0.875rem',
+            },
+          },
+        },
+        MuiInputBase: {
+          styleOverrides: {
+            root: {
+              fontSize: '0.875rem',
+            },
+          },
+        },
+        MuiMenuItem: {
+          styleOverrides: {
+            root: {
+              fontSize: '0.875rem',
+            },
+          },
+        },
+        MuiSlider: {
+          defaultProps: {
+            size: 'small',
+          },
+        },
+        MuiSvgIcon: {
+          styleOverrides: {
+            fontSizeSmall: {
+              fontSize: '1.1rem',
+            },
+          },
+        },
+        MuiSwitch: {
+          defaultProps: {
+            size: 'small',
+          },
+        },
+        MuiTab: {
+          styleOverrides: {
+            root: {
+              fontSize: '0.875rem',
+            },
+          },
+        },
+        MuiTextField: {
+          defaultProps: {
+            variant: 'standard',
+          },
+        },
+        MuiCircularProgress: {
+          styleOverrides: {
+            colorPrimary: {
+              color: '#757575',
+            },
+          },
+        },
+      },
     });
-
-    theme.overrides = {
-      MuiInputBase: {
-        root: {
-          fontSize: '0.875rem',
-        },
-      },
-      MuiMenuItem: {
-        root: {
-          fontSize: '0.875rem',
-        },
-      },
-      MuiButton: {
-        label: {
-          fontWeight: 400,
-          textTransform: 'none',
-        }
-      },
-      MuiAccordion: {
-        root: {
-          'box-shadow': 'none',
-          'background-color': 'transparent',
-          '&:before': {
-            'background-color': 'transparent',
-          },
-          '&$expanded': {
-            margin: '0px 0px 12px',
-          },
-        }
-      },
-      MuiAccordionSummary: {
-        root: {
-          padding: '0px',
-          height: '48px',
-          '&$expanded': {
-            height: '48px',
-            'min-height': '48px',
-          },
-        }
-      },
-      MuiAccordionDetails: {
-        root: {
-          padding: '0px',
-        }
-      },
-      MuiListItem: {
-        root: {
-          'padding-top': '0px',
-          'padding-bottom': '0px',
-        }
-      },
-      MuiListItemText: {
-        root: {
-          'margin-top': '0px',
-          'margin-bottom': '0px',
-        }
-      },
-      MuiTab: {
-        root: {
-          fontSize: theme.typography.pxToRem(13),
-        }
-      },
-      MuiSvgIcon: {
-        fontSizeSmall: {
-          fontSize: theme.typography.pxToRem(20),
-        }
-      },
-      MuiFormControl: {
-        root: {
-          margin: '4px 0px 12px 0px',
-          width: '100%',
-        }
-      },
-      MuiFormControlLabel: {
-        label: {
-          fontSize: theme.typography.pxToRem(14),
-        }
-      },
-      MuiCircularProgress: {
-        colorPrimary: {
-          color: '#757575',
-        },
-      }
-    };
     return theme;
   };
 

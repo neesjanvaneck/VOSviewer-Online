@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Paper, Tooltip } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
-import MyLocationIcon from '@material-ui/icons/MyLocation';
-import RemoveIcon from '@material-ui/icons/Remove';
+import { Paper, Tooltip } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import MyLocationIcon from '@mui/icons-material/MyLocation';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 import { ConfigStoreContext, VisualizationStoreContext } from 'store/stores';
 import * as s from './styles';

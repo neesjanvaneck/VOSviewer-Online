@@ -15,7 +15,6 @@ export const panel = css`
   user-select: none;
   pointer-events: none;
   font-family: Nexa Light;
-  font-size: 12pt;
 
   .flexPanel {
     display: flex;
@@ -40,7 +39,7 @@ export const panel = css`
 
       svg {
         text {
-          font-size: 10pt !important;
+          font-size: 0.83rem !important;
         }
       }
 
@@ -75,7 +74,7 @@ export const controls = css`
 
     .form-control {
       width: 100%;
-      font-size: 12pt;
+      font-size: 0.875rem;
     }
 
     label {
@@ -94,13 +93,14 @@ export const controls = css`
 
     .color-picker-title {
       width: 70px;
-      font-size: 12pt;
+      font-size: 0.875rem;
     }
 
     .color-picker-input {
       input {
         width: 175px;
       }
+      font-size: 0.875rem;
     }
 
     div[data-testid="colorpicker-noinput"] {
@@ -125,17 +125,16 @@ export const controls = css`
   button.label {
     left: 50%;
     margin-bottom: 10px;
-    font-size: 10pt;
     text-transform: capitalize;
     transform: translateX(-50%);
   }
 
   span {
-    font-size: 12pt;
+    font-size: 1rem;
   }
 
   input {
-    font-size: 10pt;
+    font-size: 0.83rem;
   }
 
   label {
@@ -146,5 +145,5 @@ export const controls = css`
 
 export const menuItemStyle = css`
  display: inline-block;
- font-size: 10pt;
+ font-size: 0.83rem;
 `;

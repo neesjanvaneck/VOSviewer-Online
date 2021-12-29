@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Tooltip, IconButton } from '@material-ui/core';
-import Brightness7Icon from '@material-ui/icons/Brightness7';
-import Brightness4Icon from '@material-ui/icons/Brightness4';
+import { Tooltip, IconButton } from '@mui/material';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
 
 import { ConfigStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
 import * as s from './styles';

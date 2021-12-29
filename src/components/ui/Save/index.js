@@ -2,8 +2,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useContext, useEffect, useRef } from 'react';
 import { observer } from 'mobx-react-lite';
-import { IconButton, Tooltip } from '@material-ui/core';
-import SaveIcon from '@material-ui/icons/Save';
+import { IconButton, Tooltip } from '@mui/material';
+import SaveIcon from '@mui/icons-material/Save';
 
 import { ConfigStoreContext, FileDataStoreContext, VisualizationStoreContext } from 'store/stores';
 import * as s from './styles';
