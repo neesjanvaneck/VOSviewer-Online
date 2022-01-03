@@ -1,4 +1,8 @@
 {
+    "info": {
+        "title": "Co-citation network of journals in economics, management, and operations research",
+        "description": "<p>This is a visualization of a co-citation network of journals in economics, management, operations research, and related fields.</p><p>For more information, see <a href=\"https://doi.org/10.1007/s11192-009-0146-3\">Van Eck and Waltman (2010)</a>.</p>"
+    },
     "network": {
         "items": [
             {

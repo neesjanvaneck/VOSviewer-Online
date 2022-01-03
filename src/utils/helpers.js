@@ -70,6 +70,7 @@ export function parseQueryString(queryString) {
         break;
       // UI.
       case parameterKeys.DARK_UI:
+      case parameterKeys.SHOW_INFO:
       case parameterKeys.SIMPLE_UI:
         if (_isBoolean(value)) acc[key] = value;
         break;

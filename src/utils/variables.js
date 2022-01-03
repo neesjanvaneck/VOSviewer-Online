@@ -200,6 +200,7 @@ export const parameterKeys = {
   ZOOM_LEVEL: 'zoom_level',
   // UI.
   DARK_UI: 'dark_ui',
+  SHOW_INFO: 'show_info',
   SIMPLE_UI: 'simple_ui',
   URL_PREVIEW_PANEL: 'url_preview_panel',
 };
@@ -235,6 +236,7 @@ export const defaultParameterValues = {
   [parameterKeys.ZOOM_LEVEL]: undefined,
   // UI.
   [parameterKeys.DARK_UI]: false,
+  [parameterKeys.SHOW_INFO]: false,
   [parameterKeys.SIMPLE_UI]: false,
   [parameterKeys.URL_PREVIEW_PANEL]: 0,
 };

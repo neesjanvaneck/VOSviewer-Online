@@ -127,6 +127,7 @@ export default class State {
             zoom_level: defaultParameterValues[parameterKeys.ZOOM_LEVEL],
             // UI.
             dark_ui: defaultParameterValues[parameterKeys.DARK_UI],
+            show_info: defaultParameterValues[parameterKeys.SHOW_INFO],
             simple_ui: defaultParameterValues[parameterKeys.SIMPLE_UI],
             url_preview_panel: defaultParameterValues[parameterKeys.URL_PREVIEW_PANEL],
           },

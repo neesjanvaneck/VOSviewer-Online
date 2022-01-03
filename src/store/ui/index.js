@@ -24,6 +24,7 @@ export default class State {
         maxNLinks: defaultParameterValues[parameterKeys.MAX_N_LINKS],
         minLinkStrength: defaultParameterValues[parameterKeys.MIN_LINK_STRENGTH],
         scale: defaultParameterValues[parameterKeys.SCALE],
+        showInfo: defaultParameterValues[parameterKeys.SHOW_INFO],
         showItem: defaultParameterValues[parameterKeys.SHOW_ITEM],
         itemFilterText: '',
         sizeIndex: 0,
@@ -44,6 +45,7 @@ export default class State {
         loadingScreenIsOpen: true,
         loadingScreenProcessType: undefined,
         loadingScreenProgressValue: 0,
+        infoDialogIsOpen: false,
         windowInnerWidth: window.innerWidth,
         infoPanelWidth: 0
       },
@@ -117,6 +119,10 @@ export default class State {
 
   setScale(scale) {
     this.scale = _clamp(scale, 0.5, 2);
+  }
+
+  setShowInfo(showInfo) {
+    this.showInfo = showInfo;
   }
 
   setShowItem(showItem) {
@@ -207,6 +213,10 @@ export default class State {
     if (loadingScreenProgressValue === 100) setTimeout(() => { this.loadingScreenProgressValue = 0; }, 500);
   }
 
+  setInfoDialogIsOpen(infoDialogIsOpen) {
+    this.infoDialogIsOpen = infoDialogIsOpen;
+  }
+
   setWindowInnerWidth(windowInnerWidth) {
     this.windowInnerWidth = windowInnerWidth;
   }
@@ -235,6 +245,7 @@ export default class State {
     if (!_isUndefined(parameters.max_n_links)) this.setMaxNLinks(parameters.max_n_links, true);
     if (!_isUndefined(parameters.min_link_strength)) this.setMinLinkStrength(parameters.min_link_strength);
     if (!_isUndefined(parameters.scale)) this.setScale(parameters.scale);
+    if (!_isUndefined(parameters.show_info)) this.setShowInfo(parameters.show_info);
     if (!_isUndefined(parameters.show_item)) {
       const decodedValue = decodeUriComponent(parameters.show_item);
       this.setShowItem(decodedValue);

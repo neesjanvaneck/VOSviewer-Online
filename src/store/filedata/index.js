@@ -23,6 +23,8 @@ export default class State {
     this.mapData = [];
     this.networkData = [];
     this.jsonData = {};
+    this.title = undefined;
+    this.description = undefined;
     this.terminology = _clone(defaultTerminology);
     this.templates = {};
     this.styles = {};
@@ -71,10 +73,26 @@ export default class State {
     this.mapData = data.mapData ? data.mapData : [];
     this.networkData = data.networkData ? data.networkData : [];
     this.jsonData = data.jsonData ? data.jsonData : {};
+    this.updateTitle(data.jsonData && data.jsonData.info && data.jsonData.info.title);
+    this.updateDescription(data.jsonData && data.jsonData.info && data.jsonData.info.description);
     this.updateClusters(data.jsonData && data.jsonData.network && data.jsonData.network.clusters);
     this.updateTerminology(data.jsonData && data.jsonData.config && data.jsonData.config.terminology);
     this.updateTemplates(data.jsonData && data.jsonData.config && data.jsonData.config.templates);
     this.updateStyles(uiStyle, data.jsonData && data.jsonData.config && data.jsonData.config.styles);
+  }
+
+  updateTitle(title) {
+    this.title = undefined;
+    if (title) {
+      this.title = title;
+    }
+  }
+
+  updateDescription(description) {
+    this.description = undefined;
+    if (description) {
+      this.description = description;
+    }
   }
 
   updateClusters(clusters) {
@@ -109,6 +127,14 @@ export default class State {
     if (styles) {
       this.styles = _merge(this.styles, styles);
     }
+  }
+
+  getTitle() {
+    return this.jsonData.info ? this.jsonData.info.title : undefined;
+  }
+
+  getDescription() {
+    return this.jsonData.info ? this.jsonData.info.description : undefined;
   }
 
   getClusters() {

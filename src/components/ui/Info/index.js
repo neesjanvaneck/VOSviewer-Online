@@ -6,13 +6,15 @@ import {
 import CloseIcon from '@mui/icons-material/Close';
 import InfoIcon from '@mui/icons-material/Info';
 
-import { ConfigStoreContext, UiStoreContext } from 'store/stores';
+import { ConfigStoreContext, FileDataStoreContext, UiStoreContext } from 'store/stores';
+import { cleanPlainText, parseFormattedText } from 'utils/helpers2';
 import vosviewerOnlineLogo from 'assets/images/vosviewer-online-logo.svg';
 import vosviewerOnlineLogoDark from 'assets/images/vosviewer-online-logo-dark.svg';
 import * as s from './styles';
 
 const Info = observer(() => {
   const configStore = useContext(ConfigStoreContext);
+  const fileDataStore = useContext(FileDataStoreContext);
   const uiStore = useContext(UiStoreContext);
   const [infoMenuAnchorEl, setInfoMenuAnchorEl] = useState(null);
   const [aboutDialogIsOpen, setAboutDialogIsOpen] = useState(false);
@@ -23,6 +25,15 @@ const Info = observer(() => {
 
   const exitInfoMenu = () => {
     setInfoMenuAnchorEl(null);
+  };
+
+  const showInfoDialog = () => {
+    exitInfoMenu();
+    uiStore.setInfoDialogIsOpen(!uiStore.infoDialogIsOpen);
+  };
+
+  const exitInfoDialog = () => {
+    uiStore.setInfoDialogIsOpen(!uiStore.infoDialogIsOpen);
   };
 
   const openDocsUrl = () => {
@@ -41,7 +52,7 @@ const Info = observer(() => {
 
   return (
     <>
-      {configStore.docsUrl ? (
+      {configStore.docsUrl || (fileDataStore.title && fileDataStore.description) ? (
         <div className={s.infoButton}>
           <Tooltip title="Info">
             <IconButton aria-controls="info-menu" onClick={openInfoMenu}>
@@ -54,8 +65,13 @@ const Info = observer(() => {
             open={Boolean(infoMenuAnchorEl)}
             onClose={exitInfoMenu}
           >
-            <MenuItem onClick={openDocsUrl}>Docs</MenuItem>
-            <MenuItem onClick={showAboutDialog}>About</MenuItem>
+            {fileDataStore.title && fileDataStore.description && (
+              <MenuItem onClick={showInfoDialog} divider>Visualization information</MenuItem>
+            )}
+            {configStore.docsUrl && (
+              <MenuItem onClick={openDocsUrl}>VOSviewer Online Docs</MenuItem>
+            )}
+            <MenuItem onClick={showAboutDialog}>About VOSviewer Online</MenuItem>
           </Menu>
         </div>
       ) : (
@@ -70,6 +86,28 @@ const Info = observer(() => {
           </Tooltip>
         </div>
       )}
+
+      <Dialog
+        open={uiStore.infoDialogIsOpen}
+        onClose={exitInfoDialog}
+        fullWidth
+      >
+        <DialogTitle>
+          { cleanPlainText(fileDataStore.title) }
+          <IconButton className={s.closeButton} onClick={exitInfoDialog}>
+            <CloseIcon fontSize="small" />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent classes={{ root: s.dialogContent }} align="justify">
+          { parseFormattedText(fileDataStore.description) }
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={exitInfoDialog} color="primary">
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+
       <Dialog
         open={aboutDialogIsOpen}
         onClose={exitAboutDialog}

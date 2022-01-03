@@ -15,7 +15,12 @@ export const closeButton = css`
 export const dialogContent = css`
   label: dialog-content;
   min-width: 240px;
-  padding: 0px 36px 0px !important;
+  padding: 0px 24px !important;
+
+  p {
+    margin: 0;
+    margin-bottom: 16px;
+  }
 `;
 
 export const logo = css`
