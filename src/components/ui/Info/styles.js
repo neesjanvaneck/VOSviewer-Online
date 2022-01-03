@@ -26,7 +26,9 @@ export const dialogContent = css`
 export const logo = css`
   label: logo;
   display: block;
-  height: 72px;
+  width: 100%;
+  height: auto;
+  max-height: 72px;
   margin: 14px auto 14px;
 `;
 
