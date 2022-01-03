@@ -3,6 +3,39 @@ import ReactHtmlParser, { convertNodeToElement } from 'react-html-parser';
 import { addHook, sanitize } from "dompurify";
 import { css } from 'emotion';
 
+export function cleanPlainText(plainText) {
+  if (!plainText) return;
+  const sanitizedText = sanitize(plainText,
+    {
+      ALLOWED_TAGS: [],
+      ALLOWED_ATTR: [],
+      KEEP_CONTENT: true
+    });
+
+  return sanitizedText;
+}
+
+export function parseFormattedText(formattedText) {
+  if (!formattedText) return;
+  addHook('afterSanitizeAttributes', (node) => {
+    if ('target' in node) {
+      node.setAttribute('target', '_blank'); // Let all links open a new window.
+      node.setAttribute('rel', 'noopener noreferrer'); // Prevent reverse tabnabbing attacks (https://www.owasp.org/index.php/Reverse_Tabnabbing).
+    }
+  });
+  const sanitizedDescription = sanitize(formattedText); // Sanitize HTML and prevents XSS attacks (https://owasp.org/www-community/attacks/xss/).
+
+  function transformDescription(node, index) {
+    if (node.name === 'a') {
+      node.attribs.class = css(`text-decoration: underline; color: inherit;`);
+    }
+
+    return convertNodeToElement(node, index, transformDescription);
+  }
+
+  return ReactHtmlParser(sanitizedDescription, { transform: transformDescription });
+}
+
 export function parseDescription(object, templateType, stores) {
   const { fileDataStore, visualizationStore } = stores;
   if (!object) return;
