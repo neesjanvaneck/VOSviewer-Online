@@ -73,6 +73,7 @@ const Dimensions = observer(({ queryString }) => {
     } else if (jsonURL) {
       webworkerStore.openJsonFile(jsonURL);
     } else {
+      uiStore.setIntroDialogIsOpen(false);
       configStore.setUrlPreviewPanelIsOpen(false);
       uiStore.setLoadingScreenIsOpen(false);
     }

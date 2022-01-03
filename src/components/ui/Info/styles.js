@@ -29,3 +29,21 @@ export const logo = css`
   height: 72px;
   margin: 14px auto 14px;
 `;
+
+export const inlineIcon = css`
+  label: inline-icon;
+  display: inline-block;
+  vertical-align: text-bottom;
+  font-size: 1.3rem !important;
+`;
+
+export const image = css`
+  label: image;
+  border: 1px solid #ccc;
+`;
+
+export const imageBarTitle = css`
+  label: image-bar-title;
+  font-size: 0.875rem !important;
+  text-align: center;
+`;
