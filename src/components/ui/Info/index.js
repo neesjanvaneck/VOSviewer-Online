@@ -11,9 +11,9 @@ import { ConfigStoreContext, FileDataStoreContext, UiStoreContext } from 'store/
 import { cleanPlainText, parseFormattedText } from 'utils/helpers2';
 import vosviewerOnlineLogo from 'assets/images/vosviewer-online-logo.svg';
 import vosviewerOnlineLogoDark from 'assets/images/vosviewer-online-logo-dark.svg';
-import visualizationAuthors from 'assets/images/visualization-authors.png';
-import visualizationJournals from 'assets/images/visualization-journals.png';
-import visualizationTerms from 'assets/images/visualization-terms.png';
+import introVisualizationAuthors from 'assets/images/intro-visualization-authors.png';
+import introVisualizationJournals from 'assets/images/intro-visualization-journals.png';
+import introVisualizationTerms from 'assets/images/intro-visualization-terms.png';
 import * as s from './styles';
 
 const Info = observer(() => {
@@ -220,7 +220,7 @@ const Info = observer(() => {
             <Tooltip title="Co-authorship network of authors in Journal of Informetrics" arrow>
               <Link href="https://app.vosviewer.com/?json=https%3A%2F%2Fapp.vosviewer.com%2Fdata%2FJOI_2007-2016_co-authorship_network.json">
                 <ImageListItem>
-                  <img className={s.image} src={visualizationAuthors} alt="Co-authorship network of authors in Journal of Informetrics" loading="lazy" />
+                  <img className={s.image} src={introVisualizationAuthors} alt="Co-authorship network of authors in Journal of Informetrics" loading="lazy" />
                   <ImageListItemBar classes={{ title: s.imageBarTitle }} title="Authors" />
                 </ImageListItem>
               </Link>
@@ -228,7 +228,7 @@ const Info = observer(() => {
             <Tooltip title="Citation network of journals" arrow>
               <Link href="https://app.vosviewer.com/?json=https%3A%2F%2Fapp.vosviewer.com%2Fdata%2FCrossref_journal_citation_network_10000.json&scale=0.9&item_size_variation=0.3">
                 <ImageListItem>
-                  <img className={s.image} src={visualizationJournals} alt="Citation network of journals" loading="lazy" />
+                  <img className={s.image} src={introVisualizationJournals} alt="Citation network of journals" loading="lazy" />
                   <ImageListItemBar classes={{ title: s.imageBarTitle }} title="Journals" />
                 </ImageListItem>
               </Link>
@@ -236,7 +236,7 @@ const Info = observer(() => {
             <Tooltip title="Co-occurrence network of terms in scientometric journals" arrow>
               <Link href="https://app.vosviewer.com/?json=https%3A%2F%2Fapp.vosviewer.com%2Fdata%2FScientometrics_term_co-occurrence_network.json">
                 <ImageListItem>
-                  <img className={s.image} src={visualizationTerms} alt="Co-occurrence network of terms in scientometric journals" loading="lazy" />
+                  <img className={s.image} src={introVisualizationTerms} alt="Co-occurrence network of terms in scientometric journals" loading="lazy" />
                   <ImageListItemBar classes={{ title: s.imageBarTitle }} title="Terms" />
                 </ImageListItem>
               </Link>
