@@ -46,6 +46,7 @@ export default class State {
         loadingScreenProcessType: undefined,
         loadingScreenProgressValue: 0,
         infoDialogIsOpen: false,
+        introDialogIsOpen: false,
         windowInnerWidth: window.innerWidth,
         infoPanelWidth: 0
       },
@@ -215,6 +216,10 @@ export default class State {
 
   setInfoDialogIsOpen(infoDialogIsOpen) {
     this.infoDialogIsOpen = infoDialogIsOpen;
+  }
+
+  setIntroDialogIsOpen(introDialogIsOpen) {
+    this.introDialogIsOpen = introDialogIsOpen;
   }
 
   setWindowInnerWidth(windowInnerWidth) {

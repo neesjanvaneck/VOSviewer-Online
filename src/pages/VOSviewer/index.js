@@ -71,6 +71,7 @@ const VOSviewer = observer(({ queryString }) => {
     } else if (jsonURL) {
       webworkerStore.openJsonFile(jsonURL);
     } else {
+      uiStore.setIntroDialogIsOpen(true);
       configStore.setUrlPreviewPanelIsOpen(false);
       uiStore.setLoadingScreenIsOpen(false);
     }
