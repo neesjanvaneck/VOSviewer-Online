@@ -1,4 +1,8 @@
 {
+    "info": {
+        "title": "Co-authorship network of authors in Journal of Informetrics",
+        "description": "<p>This is a visualization of a co-authorship network of authors in <em>Journal of Informetrics</em>.</p><p>For more information, see <a href=\"https://www.cwts.nl/blog?article=n-q2x2b4\">this blog post</a>.</p>"
+    },
     "network": {
         "items": [
             {
