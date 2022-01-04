@@ -3,12 +3,12 @@ import { device, media } from 'utils/variables-rori';
 
 export const legendBox = css`
   label: legend-box;
-  font-size: 10pt;
+  font-size: 0.83rem;
   column-count: 2;
 
   ${media(device.phone)} {
     column-count: 2;
-    font-size: 6pt;
+    font-size: 0.5rem;
   }
 
   .circle {

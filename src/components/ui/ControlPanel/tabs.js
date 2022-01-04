@@ -1,6 +1,6 @@
 import React from 'react';
-import { Tab, Tabs } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { Tab, Tabs } from '@mui/material';
+import { withStyles } from '@mui/styles';
 
 export const PanelTabs = withStyles({
   flexContainer: {

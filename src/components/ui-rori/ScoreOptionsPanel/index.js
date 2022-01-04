@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Checkbox, FormControlLabel, TextField, Typography } from '@material-ui/core';
+import { Checkbox, FormControlLabel, TextField, Typography } from '@mui/material';
 
 import { VisualizationStoreContext } from 'store/stores';
 import * as s from './styles';

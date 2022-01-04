@@ -29,7 +29,7 @@
     "legend_panel": true,
     "open_icon": false,
     "save_icon": true,
-    "share_icon": true,
+    "share_icon": false,
     "screenshot_icon": true,
     "background_icon": true,
     "fullscreen_icon": true
@@ -59,7 +59,7 @@
     "legend_panel": true,
     "open_icon": false,
     "save_icon": true,
-    "share_icon": true,
+    "share_icon": false,
     "screenshot_icon": true,
     "background_icon": true,
     "fullscreen_icon": true

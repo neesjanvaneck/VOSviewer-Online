@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Slider, IconButton } from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
+import { Slider, IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import { min } from 'd3-array';
 
 import { UiRoriStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';

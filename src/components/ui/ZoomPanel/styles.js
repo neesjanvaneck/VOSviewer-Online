@@ -1,5 +1,5 @@
 import { css } from 'emotion';
-import { grey } from '@material-ui/core/colors';
+import { grey } from '@mui/material/colors';
 import { panelMargin } from 'utils/variables';
 
 export const previewIsOpen = css`

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Typography, FormControl, Select, InputLabel, MenuItem } from '@material-ui/core';
-import CancelRoundedIcon from '@material-ui/icons/CancelRounded';
+import { Typography, FormControl, Select, InputLabel, MenuItem } from '@mui/material';
+import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
 
 import { ConfigStoreContext, FileDataStoreContext, UiStoreContext } from 'store/stores';
 import JsonFileChooser from './json';

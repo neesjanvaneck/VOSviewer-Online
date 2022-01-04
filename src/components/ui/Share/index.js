@@ -1,13 +1,14 @@
 /* eslint-disable no-undef */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/anchor-has-content */
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import {
-  Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, TextField, Tooltip, Typography
-} from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
-import ShareIcon from '@material-ui/icons/Share';
+  Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControlLabel, IconButton, Switch, TextField, Tooltip, Typography
+} from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import ShareIcon from '@mui/icons-material/Share';
+import TinyURL from 'tinyurl';
 import QRCode from 'qrcode.react';
 import _cloneDeep from 'lodash/cloneDeep';
 
@@ -21,7 +22,15 @@ const Share = observer(() => {
   const queryStringStore = useContext(QueryStringStoreContext);
   const uiStore = useContext(UiStoreContext);
   const [isOpen, setIsOpen] = useState(false);
+  const [useShortLink, setUseShortLink] = useState(true);
+  const [link, setLink] = useState('');
+  const [embedCode, setEmbedCode] = useState('');
   const qrImageEl = useRef(null);
+
+  useEffect(async () => {
+    setLink(useShortLink ? await getShortenedLink() : getLink());
+    setEmbedCode(getEmbedCode(useShortLink ? await getShortenedLink(true) : getLink(true)));
+  });
 
   const showShareDialog = () => {
     setIsOpen(!isOpen);
@@ -38,7 +47,7 @@ const Share = observer(() => {
     qrImageEl.current.click();
   };
 
-  const copyImageToClipboard = (id) => {
+  const copyQRImageToClipboard = (id) => {
     const canvas = document.getElementById(id);
     canvas.toBlob(blob => navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]));
   };
@@ -53,21 +62,20 @@ const Share = observer(() => {
     }
   };
 
-  const getShareURL = () => {
-    const domain = window.location.origin;
+  const getLink = (isEmbedded = false) => {
+    const { origin, pathname } = window.location;
     const queryObject = getQueryObject();
+    if (isEmbedded) queryObject[parameterKeys.SIMPLE_UI] = true;
     const queryString = Object.keys(queryObject).reduce((acc, key, idx) => `${acc}${idx === 0 ? '?' : '&'}${key}=${queryObject[key]}`, '');
-    return `${domain}/${queryString}`;
+    return `${origin}${pathname}${queryString}`;
   };
 
-  const getEmbedCode = () => {
-    const domain = window.location.origin;
-    const queryObject = getQueryObject();
-    queryObject[parameterKeys.SIMPLE_UI] = true;
-    const queryString = Object.keys(queryObject).reduce((acc, key, idx) => `${acc}${idx === 0 ? '?' : '&'}${key}=${queryObject[key]}`, '');
-    const embedUrl = `${domain}/${queryString}`;
-    return `<iframe allowfullscreen="true" src="${embedUrl}" width="100%" height="75%" style="border: 1px solid #ddd; max-width: 1000px; min-height: 500px"></iframe>`;
+  const getShortenedLink = async (isEmbedded = false) => {
+    const url = await TinyURL.shorten(getLink(isEmbedded));
+    return url;
   };
+
+  const getEmbedCode = (url) => `<iframe allowfullscreen="true" src="${url}" width="100%" height="75%" style="border: 1px solid #ddd; max-width: 1000px; min-height: 500px"></iframe>`;
 
   const getQueryObject = () => {
     const result = _cloneDeep(queryStringStore.parameters);
@@ -103,17 +111,19 @@ const Share = observer(() => {
               onClose={exitShareDialog}
               fullWidth
             >
-              <DialogTitle>Share</DialogTitle>
-              <DialogContent classes={{ root: s.dialogContent }}>
+              <DialogTitle>
+                Share
                 <IconButton className={s.closeButton} onClick={exitShareDialog}>
                   <CloseIcon fontSize="small" />
                 </IconButton>
+              </DialogTitle>
+              <DialogContent classes={{ root: s.dialogContent }}>
                 <Typography className={s.qrCodeLabel}>QR code</Typography>
                 <div className={s.qrCodeBox}>
                   <a ref={qrImageEl} style={{ display: 'none' }} />
                   <QRCode
                     id="qr-code-image"
-                    value={getShareURL()}
+                    value={link}
                     size={90}
                     level="L"
                     renderAs="canvas"
@@ -129,7 +139,7 @@ const Share = observer(() => {
                   <Button
                     className={s.copyButton}
                     variant="outlined"
-                    onClick={() => copyImageToClipboard('qr-code-image')}
+                    onClick={() => copyQRImageToClipboard('qr-code-image')}
                   >
                     Copy
                   </Button>
@@ -141,6 +151,20 @@ const Share = observer(() => {
                     Download
                   </Button>
                 </div>
+                <div className={s.switchBox}>
+                  <FormControlLabel
+                    classes={{ label: s.switchLabel }}
+                    control={(
+                      <Switch
+                        checked={useShortLink}
+                        onChange={event => setUseShortLink(event.target.checked)}
+                        color="primary"
+                      />
+                    )}
+                    label="Short link"
+                    labelPlacement="start"
+                  />
+                </div>
                 <div className={s.inputBox}>
                   <TextField
                     id="share-link-input"
@@ -148,7 +172,7 @@ const Share = observer(() => {
                     label="Link"
                     multiline
                     maxRows={3}
-                    defaultValue={getShareURL()}
+                    value={link}
                     InputProps={{ readOnly: true }}
                   />
                   <Button
@@ -166,7 +190,7 @@ const Share = observer(() => {
                     label="Embed code"
                     multiline
                     maxRows={3}
-                    defaultValue={getEmbedCode()}
+                    value={embedCode}
                     InputProps={{ readOnly: true }}
                   />
                   <Button

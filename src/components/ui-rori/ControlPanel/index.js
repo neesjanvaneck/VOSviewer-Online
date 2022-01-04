@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
-import { FormControl, Select, MenuItem, InputBase } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { FormControl, Select, MenuItem, InputBase } from '@mui/material';
+import { withStyles } from '@mui/styles';
 import { color } from 'd3-color';
 
 import { UiStoreContext, VisualizationStoreContext } from 'store/stores';

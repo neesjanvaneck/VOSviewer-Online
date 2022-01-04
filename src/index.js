@@ -59,7 +59,8 @@ const APP = observer(() => {
                   network: '',
                   item_color: configStore.parameters.item_color,
                   item_size: configStore.parameters.item_size,
-                  show_item: configStore.parameters.show_item,
+                  show_info: configStore.parameters.show_info,
+                  show_item: configStore.parameters.show_item
                 }
               });
               visualizationStore.updateStore({
@@ -184,6 +185,7 @@ const APP = observer(() => {
     if (uiStore.showItem) _showItem();
     configStore.setUrlPreviewPanelIsOpen(visualizationStore.itemsOrLinksWithUrl);
     uiStore.setLoadingScreenIsOpen(false);
+    if (uiStore.showInfo && (fileDataStore.title && fileDataStore.description)) uiStore.setInfoDialogIsOpen(true);
   }
 
   function _showItem() {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button } from '@material-ui/core';
+import { Button } from '@mui/material';
 
 import { globalIntro, healthIntro } from 'utils/variables-rori';
 import * as s from './styles';

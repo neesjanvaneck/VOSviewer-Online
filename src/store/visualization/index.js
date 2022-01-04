@@ -60,6 +60,8 @@ export default class State {
     this.initialZoomLevel = defaultParameterValues[parameterKeys.ZOOM_LEVEL];
     this.canvasMargin = { left: canvasMargin, right: canvasMargin, top: canvasMargin, bottom: canvasMargin };
     this.pixelRatio = window.devicePixelRatio || 1;
+    this.cxScale = undefined;
+    this.cyScale = undefined;
     this.zoomSquare = undefined;
     this.updateZoomLevel = undefined;
     this.resetZoom = undefined;
@@ -67,6 +69,7 @@ export default class State {
     this.zoomOut = undefined;
     this.zoomFit = undefined;
     this.zoomTo = undefined;
+    this.translateTo = undefined;
     this.visualizationStatus = VisualizationStatus.DEFAULT;
     this.highlightedItems = [];
     this.highlightedLinks = [];
@@ -260,14 +263,14 @@ export default class State {
       if (!this.weightKeys.includes(`weight<${defaultTerminology.total_link_strength}>`)) {
         this.weightKeys.unshift(`weight<${defaultTerminology.total_link_strength}>`);
         _each(this.items, item => {
-          item[`weight<${defaultTerminology.total_link_strength}>`] = this.itemLinkData[item.id] ? this.itemLinkData[item.id].totalLinkStrength : undefined;
+          item[`weight<${defaultTerminology.total_link_strength}>`] = this.itemLinkData[item.id] ? this.itemLinkData[item.id].totalLinkStrength : 0;
         });
         this.weightIndex = 1;
       }
       if (!this.weightKeys.includes(`weight<${defaultTerminology.links}>`)) {
         this.weightKeys.unshift(`weight<${defaultTerminology.links}>`);
         _each(this.items, item => {
-          item[`weight<${defaultTerminology.links}>`] = this.itemLinkData[item.id] ? this.itemLinkData[item.id].nLinks : undefined;
+          item[`weight<${defaultTerminology.links}>`] = this.itemLinkData[item.id] ? this.itemLinkData[item.id].nLinks : 0;
         });
         this.weightIndex = this.weightKeys.length === 2 ? 1 : 2;
       }
@@ -514,20 +517,31 @@ export default class State {
     const [minY, maxY] = extent(this.items.map(item => +item.y));
 
     const logicalWidth = maxX - minX;
-    const logicalHeigth = maxY - minY;
+    const logicalHeight = maxY - minY;
     const pixelWidth = this.canvasPixelWidth - marginPixelLeft - marginPixelRight;
     const pixelHeight = this.canvasPixelHeight - marginPixelTop - marginPixelBottom;
-    const minScalingFactor = Math.min(pixelWidth / logicalWidth, pixelHeight / logicalHeigth);
+    const minScalingFactor = Math.min(pixelWidth / logicalWidth, pixelHeight / logicalHeight);
     const deltaPixelX = (pixelWidth - minScalingFactor * logicalWidth) / 2;
-    const deltaPixelY = (pixelHeight - minScalingFactor * logicalHeigth) / 2;
+    const deltaPixelY = (pixelHeight - minScalingFactor * logicalHeight) / 2;
 
     const cxScale = scaleLinear().domain([minX, maxX]).range([deltaPixelX + marginPixelLeft, minScalingFactor * logicalWidth + deltaPixelX + marginPixelLeft]);
-    const cyScale = scaleLinear().domain([minY, maxY]).range([minScalingFactor * logicalHeigth + deltaPixelY + marginPixelTop, deltaPixelY + marginPixelTop]);
+    const cyScale = scaleLinear().domain([minY, maxY]).range([minScalingFactor * logicalHeight + deltaPixelY + marginPixelTop, deltaPixelY + marginPixelTop]);
     [this.clickedItem, ...this.items].forEach(item => {
       if (!item) return;
       item._cx = cxScale(+item.x);
       item._cy = cyScale(+item.y);
     });
+    if (this.cxScale && this.cyScale && this.zTransform.invert && this.translateTo) {
+      const oldPixelXRange = this.cxScale.range();
+      const oldPixelYRange = this.cyScale.range();
+      const centerPixelX = ((oldPixelXRange[0] + (oldPixelXRange[1] - oldPixelXRange[0]) / 2) - this.zTransform.x * this.pixelRatio) / this.zTransform.k;
+      const centerPixelY = ((oldPixelYRange[0] + (oldPixelYRange[1] - oldPixelYRange[0]) / 2) - this.zTransform.y * this.pixelRatio) / this.zTransform.k;
+      const centerX = this.cxScale.invert(centerPixelX);
+      const centerY = this.cyScale.invert(centerPixelY);
+      this.translateTo(cxScale(centerX), cyScale(centerY));
+    }
+    this.cxScale = cxScale;
+    this.cyScale = cyScale;
 
     this.zoomSquare = [[0, 0], [this.canvasPixelWidth, this.canvasPixelHeight]];
   }
@@ -862,6 +876,10 @@ export default class State {
 
   setZoomTo(f) {
     this.zoomTo = f;
+  }
+
+  setTranslateTo(f) {
+    this.translateTo = f;
   }
 
   setGetScreenshotImage(f) {

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
-import { IconButton, Tooltip } from '@material-ui/core';
-import FullscreenIcon from '@material-ui/icons/Fullscreen';
-import FullscreenExitIcon from '@material-ui/icons/FullscreenExit';
+import { IconButton, Tooltip } from '@mui/material';
+import FullscreenIcon from '@mui/icons-material/Fullscreen';
+import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
 
 import { ConfigStoreContext } from 'store/stores';
 import * as s from './styles';

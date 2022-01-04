@@ -1,17 +1,25 @@
 import React, { useContext, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import {
-  Button, Dialog, DialogActions, DialogContent, IconButton, Link, Menu, MenuItem, Tooltip, Typography
-} from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
-import InfoIcon from '@material-ui/icons/Info';
+  Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, ImageList, ImageListItem, ImageListItemBar, Link, Menu, MenuItem, Tooltip, Typography
+} from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import FolderIcon from '@mui/icons-material/Folder';
+import InfoIcon from '@mui/icons-material/Info';
 
-import { ConfigStoreContext } from 'store/stores';
-import logo from 'assets/images/vosviewer-online-logo.svg';
+import { ConfigStoreContext, FileDataStoreContext, UiStoreContext } from 'store/stores';
+import { cleanPlainText, parseFormattedText } from 'utils/helpers2';
+import vosviewerOnlineLogo from 'assets/images/vosviewer-online-logo.svg';
+import vosviewerOnlineLogoDark from 'assets/images/vosviewer-online-logo-dark.svg';
+import introVisualizationAuthors from 'assets/images/intro-visualization-authors.png';
+import introVisualizationJournals from 'assets/images/intro-visualization-journals.png';
+import introVisualizationTerms from 'assets/images/intro-visualization-terms.png';
 import * as s from './styles';
 
 const Info = observer(() => {
   const configStore = useContext(ConfigStoreContext);
+  const fileDataStore = useContext(FileDataStoreContext);
+  const uiStore = useContext(UiStoreContext);
   const [infoMenuAnchorEl, setInfoMenuAnchorEl] = useState(null);
   const [aboutDialogIsOpen, setAboutDialogIsOpen] = useState(false);
 
@@ -21,6 +29,15 @@ const Info = observer(() => {
 
   const exitInfoMenu = () => {
     setInfoMenuAnchorEl(null);
+  };
+
+  const showInfoDialog = () => {
+    exitInfoMenu();
+    uiStore.setInfoDialogIsOpen(!uiStore.infoDialogIsOpen);
+  };
+
+  const exitInfoDialog = () => {
+    uiStore.setInfoDialogIsOpen(!uiStore.infoDialogIsOpen);
   };
 
   const openDocsUrl = () => {
@@ -37,9 +54,13 @@ const Info = observer(() => {
     setAboutDialogIsOpen(!aboutDialogIsOpen);
   };
 
+  const exitIntroDialog = () => {
+    uiStore.setIntroDialogIsOpen(!uiStore.introDialogIsOpen);
+  };
+
   return (
     <>
-      {configStore.docsUrl ? (
+      {configStore.docsUrl || (fileDataStore.title && fileDataStore.description) ? (
         <div className={s.infoButton}>
           <Tooltip title="Info">
             <IconButton aria-controls="info-menu" onClick={openInfoMenu}>
@@ -52,8 +73,13 @@ const Info = observer(() => {
             open={Boolean(infoMenuAnchorEl)}
             onClose={exitInfoMenu}
           >
-            <MenuItem onClick={openDocsUrl}>Docs</MenuItem>
-            <MenuItem onClick={showAboutDialog}>About</MenuItem>
+            {fileDataStore.title && fileDataStore.description && (
+              <MenuItem onClick={showInfoDialog} divider>Visualization information</MenuItem>
+            )}
+            {configStore.docsUrl && (
+              <MenuItem onClick={openDocsUrl}>VOSviewer Online Docs</MenuItem>
+            )}
+            <MenuItem onClick={showAboutDialog}>About VOSviewer Online</MenuItem>
           </Menu>
         </div>
       ) : (
@@ -68,16 +94,40 @@ const Info = observer(() => {
           </Tooltip>
         </div>
       )}
+
+      <Dialog
+        open={uiStore.infoDialogIsOpen}
+        onClose={exitInfoDialog}
+        fullWidth
+      >
+        <DialogTitle>
+          { cleanPlainText(fileDataStore.title) }
+          <IconButton className={s.closeButton} onClick={exitInfoDialog}>
+            <CloseIcon fontSize="small" />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent classes={{ root: s.dialogContent }} align="justify">
+          { parseFormattedText(fileDataStore.description) }
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={exitInfoDialog} color="primary">
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+
       <Dialog
         open={aboutDialogIsOpen}
         onClose={exitAboutDialog}
         fullWidth
       >
-        <DialogContent classes={{ root: s.dialogContent }}>
+        <DialogTitle>
+          <img className={s.logo} src={uiStore.darkTheme ? vosviewerOnlineLogoDark : vosviewerOnlineLogo} alt="VOSviewer Online" />
           <IconButton className={s.closeButton} onClick={exitAboutDialog}>
             <CloseIcon fontSize="small" />
           </IconButton>
-          <img className={s.logo} src={logo} alt="VOSviewer Online" />
+        </DialogTitle>
+        <DialogContent classes={{ root: s.dialogContent }}>
           <Typography variant="body1" align="justify" paragraph>
             VOSviewer Online has been developed by
             {' '}
@@ -136,6 +186,75 @@ const Info = observer(() => {
         </DialogContent>
         <DialogActions>
           <Button onClick={exitAboutDialog} color="primary" autoFocus>
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={uiStore.introDialogIsOpen}
+        onClose={exitIntroDialog}
+        fullWidth
+      >
+        <DialogTitle>
+          <img className={s.logo} src={uiStore.darkTheme ? vosviewerOnlineLogoDark : vosviewerOnlineLogo} alt="VOSviewer Online" />
+          <IconButton className={s.closeButton} onClick={exitIntroDialog}>
+            <CloseIcon fontSize="small" />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent classes={{ root: s.dialogContent }}>
+          <Typography variant="body1" align="justify" paragraph>
+            VOSviewer Online is a tool for network visualization. It is a web-based version of
+            {' '}
+            <Link href="https://www.vosviewer.com" target="_blank" underline="always" color="inherit">VOSviewer</Link>
+            , a popular tool for constructing and visualizing bibliometric networks, such as co-authorship networks, citation networks, and co-occurrence networks.
+          </Typography>
+          <Typography variant="body1" align="justify" paragraph>
+            Using VOSviewer Online, visualizations of bibliometric networks created by VOSviewer can be explored interactively in a web browser. To open a visualization, use the
+            {' '}
+            <FolderIcon className={s.inlineIcon} color="action" />
+            {' '}
+            button at the top right or click one of the example visualizations below.
+          </Typography>
+          <ImageList cols={3}>
+            <Tooltip title="Co-authorship network of authors in Journal of Informetrics" arrow>
+              <Link href="https://app.vosviewer.com/?json=https%3A%2F%2Fapp.vosviewer.com%2Fdata%2FJOI_2007-2016_co-authorship_network.json">
+                <ImageListItem>
+                  <img className={s.image} src={introVisualizationAuthors} alt="Co-authorship network of authors in Journal of Informetrics" loading="lazy" />
+                  <ImageListItemBar classes={{ title: s.imageBarTitle }} title="Authors" />
+                </ImageListItem>
+              </Link>
+            </Tooltip>
+            <Tooltip title="Citation network of journals" arrow>
+              <Link href="https://app.vosviewer.com/?json=https%3A%2F%2Fapp.vosviewer.com%2Fdata%2FCrossref_journal_citation_network_10000.json&scale=0.9&item_size_variation=0.3">
+                <ImageListItem>
+                  <img className={s.image} src={introVisualizationJournals} alt="Citation network of journals" loading="lazy" />
+                  <ImageListItemBar classes={{ title: s.imageBarTitle }} title="Journals" />
+                </ImageListItem>
+              </Link>
+            </Tooltip>
+            <Tooltip title="Co-occurrence network of terms in scientometric journals" arrow>
+              <Link href="https://app.vosviewer.com/?json=https%3A%2F%2Fapp.vosviewer.com%2Fdata%2FScientometrics_term_co-occurrence_network.json">
+                <ImageListItem>
+                  <img className={s.image} src={introVisualizationTerms} alt="Co-occurrence network of terms in scientometric journals" loading="lazy" />
+                  <ImageListItemBar classes={{ title: s.imageBarTitle }} title="Terms" />
+                </ImageListItem>
+              </Link>
+            </Tooltip>
+          </ImageList>
+          <Typography variant="body1" align="justify" paragraph>
+            More information about VOSviewer Online is provided in
+            {' '}
+            <Link href="https://app.vosviewer.com/docs" target="_blank" underline="always" color="inherit">VOSviewer Online Docs</Link>
+            {' '}
+            and in
+            {' '}
+            <Link href="https://app.vosviewer.com/docs/videos" target="_blank" underline="always" color="inherit">these introduction videos</Link>
+            .
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={exitIntroDialog} color="primary">
             Close
           </Button>
         </DialogActions>

@@ -183,7 +183,7 @@ function _parseJsonFile(jsonFileOrUrl) {
         });
       };
     } else {
-      fetch(jsonFileOrUrl)
+      fetch(jsonFileOrUrl, { credentials: "include" })
         .then(response => {
           if (!response.ok) {
             if (response.status === 404) {

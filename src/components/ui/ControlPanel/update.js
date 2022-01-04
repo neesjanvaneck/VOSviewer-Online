@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 
 import { ConfigStoreContext, VisualizationStoreContext } from 'store/stores';
 import Normalization from './normalization';

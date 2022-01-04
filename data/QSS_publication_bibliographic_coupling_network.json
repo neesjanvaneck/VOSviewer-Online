@@ -1,4 +1,8 @@
 {
+    "info": {
+        "title": "Bibliographic coupling network of articles in Quantitative Science Studies",
+        "description": "<p>This is a visualization of a bibliographic coupling network of the most cited articles in <em>Quantitative Science Studies</em> in 2020. The visualization is based on data from Dimensions.</p>"
+    },
     "network": {
         "items": [
             {

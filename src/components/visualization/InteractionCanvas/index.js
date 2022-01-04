@@ -23,6 +23,7 @@ const InteractionCanvas = observer(({ canvasWidth, canvasHeight, withoutLinks })
     visualizationStore.setZoomOut(zoomOut);
     visualizationStore.setZoomFit(zoomFit);
     visualizationStore.setZoomTo(zoomTo);
+    visualizationStore.setTranslateTo(translateTo);
     select(canvasEl.current).call(zoomEl);
     select(canvasEl.current)
       .on('mousemove', (event) => {
@@ -86,6 +87,13 @@ const InteractionCanvas = observer(({ canvasWidth, canvasHeight, withoutLinks })
       .transition()
       .duration(500)
       .call(zoomEl.transform, zoomIdentity.translate(x, y).scale(s));
+  };
+
+  const translateTo = (cx, cy) => {
+    const x = cx / visualizationStore.pixelRatio;
+    const y = cy / visualizationStore.pixelRatio;
+    select(canvasEl.current)
+      .call(zoomEl.translateTo, x, y);
   };
 
   useEffect(() => {
