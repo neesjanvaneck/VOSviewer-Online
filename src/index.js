@@ -41,6 +41,8 @@ const APP = observer(() => {
   useEffect(() => {
     webworkerStore.addWorkerEventListener(d => {
       const { type, data } = d;
+      // Replay worker messages into parent window for iframe --> page communication.
+      window.parent.postMessage(JSON.stringify({ type, data }), "*");
       switch (type) {
         case 'update loading screen':
           uiStore.setLoadingScreenProcessType(data.processType);
