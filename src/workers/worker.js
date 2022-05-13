@@ -23,8 +23,6 @@ const clusteringCreator = new ClusteringCreator();
 const layoutCreator = new LayoutCreator();
 const networkNormalizer = new NetworkNormalizer();
 
-let layoutRandomStart = 0;
-
 self.addEventListener("message", event => {
   const { type, options } = event.data;
   switch (type) {
@@ -85,7 +83,6 @@ self.addEventListener("message", event => {
         type: 'update loading screen',
         data: { processType: processTypes.RUNNING_LAYOUT, progressValue: 0 },
       });
-      layoutRandomStart = 0;
       layoutCreator.init(networkNormalizer.normalizedNetwork, options);
       self.postMessage({
         type: 'update run layout progress',
@@ -93,18 +90,17 @@ self.addEventListener("message", event => {
       });
       break;
     case 'continue run layout':
-      if (layoutRandomStart < layoutCreator.nRandomStarts) {
+      if (layoutCreator.randomStart < layoutCreator.nRandomStarts) {
         layoutCreator.performRandomStart();
-        layoutRandomStart += 1;
         self.postMessage({
           type: 'update run layout progress',
-          data: { progressValue: 100 * layoutRandomStart / layoutCreator.nRandomStarts },
+          data: { progressValue: 100 * layoutCreator.randomStart / layoutCreator.nRandomStarts },
         });
       } else {
         layoutCreator.performPostProcessing();
         self.postMessage({
           type: 'end run layout',
-          data: { bestLayout: layoutCreator.bestLayout },
+          data: { newLayout: layoutCreator.bestLayout.getCoordinates() },
         });
       }
       break;

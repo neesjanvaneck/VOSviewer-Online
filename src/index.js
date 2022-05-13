@@ -134,7 +134,7 @@ const APP = observer(() => {
           break;
         case 'end run layout':
           uiStore.setLoadingScreenProgressValue(100);
-          visualizationStore.setLayout(data.bestLayout.coordinate);
+          visualizationStore.setLayout(data.newLayout);
           uiStore.setLoadingScreenIsOpen(false);
           if (webworkerStore.runClustering) {
             webworkerStore.startRunClustering(clusteringStore.getParameters());
