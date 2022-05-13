@@ -24,7 +24,6 @@ const layoutCreator = new LayoutCreator();
 const networkNormalizer = new NetworkNormalizer();
 
 let layoutRandomStart = 0;
-let clusterRandomStart = 0;
 
 self.addEventListener("message", event => {
   const { type, options } = event.data;
@@ -48,7 +47,7 @@ self.addEventListener("message", event => {
       const nItemsNetwork = networkNormalizer.unnormalizedNetwork.getNNodes();
       const networkComponents = networkNormalizer.unnormalizedNetwork.identifyComponents();
       const nComponents = networkComponents.getNClusters();
-      const nItemsLargestComponent = networkNormalizer.unnormalizedNetwork.createSubnetwork(networkComponents, 0).getNNodes();
+      const nItemsLargestComponent = networkNormalizer.unnormalizedNetwork.createSubnetworkForCluster(networkComponents, 0).getNNodes();
       const hasUnconnectedItems = nComponents > 1 && nItemsLargestComponent >= minNItems;
       if (hasUnconnectedItems) networkNormalizer.setNetworkComponents(networkComponents);
       self.postMessage({
@@ -114,7 +113,6 @@ self.addEventListener("message", event => {
         type: 'update loading screen',
         data: { processType: processTypes.RUNNING_CLUSTERING, progressValue: 0 },
       });
-      clusterRandomStart = 0;
       clusteringCreator.init(networkNormalizer.normalizedNetwork, options, networkNormalizer.normalizationMethod === LINLOG_MODULARITY);
       self.postMessage({
         type: 'update run clustering progress',
@@ -122,27 +120,27 @@ self.addEventListener("message", event => {
       });
       break;
     case 'continue run clustering':
-      if (clusterRandomStart < clusteringCreator.nRandomStarts) {
+      if (clusteringCreator.randomStart < clusteringCreator.nRandomStarts) {
         clusteringCreator.performRandomStart();
-        clusterRandomStart += 1;
         self.postMessage({
           type: 'update run clustering progress',
-          data: { progressValue: 100 * clusterRandomStart / clusteringCreator.nRandomStarts },
+          data: { progressValue: 100 * clusteringCreator.randomStart / clusteringCreator.nRandomStarts },
         });
       } else {
         clusteringCreator.performPostProcessing();
-        const bestClustering = {
+        const newClustering = {
           cluster: [],
-          nClusters: clusteringCreator.bestClustering.nClusters,
-          nNodes: clusteringCreator.bestClustering.nNodes
+          nClusters: 0,
+          nNodes: clusteringCreator.bestClustering.getNNodes()
         };
         if (clusteringCreator.mergeSmallClusters) {
-          bestClustering.cluster = clusteringCreator.bestClustering.cluster;
+          newClustering.cluster = clusteringCreator.bestClustering.getClusters();
+          newClustering.nClusters = clusteringCreator.bestClustering.getNClusters();
         } else {
           const nItemsPerCluster = clusteringCreator.bestClustering.getNNodesPerCluster();
-          for (let i = 0; i < bestClustering.nNodes; i++) {
-            const cluster = clusteringCreator.bestClustering.cluster[i];
-            bestClustering.cluster.push(nItemsPerCluster[cluster] >= clusteringCreator.minClusterSize ? cluster : null);
+          for (let i = 0; i < newClustering.nNodes; i++) {
+            const cluster = clusteringCreator.bestClustering.getCluster(i);
+            newClustering.cluster.push(nItemsPerCluster[cluster] >= clusteringCreator.minClusterSize ? cluster : null);
           }
           let nClusters = 0;
           for (let i = 0; i < nItemsPerCluster.length; i++) {
@@ -150,11 +148,11 @@ self.addEventListener("message", event => {
               nClusters += 1;
             }
           }
-          bestClustering.nClusters = nClusters;
+          newClustering.nClusters = nClusters;
         }
         self.postMessage({
           type: 'end run clustering',
-          data: { bestClustering },
+          data: { newClustering },
         });
       }
       break;

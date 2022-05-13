@@ -12,6 +12,7 @@ export default class State {
         minClusterSize: ClusteringCreator.DEFAULT_MIN_CLUSTER_SIZE,
         mergeSmallClusters: ClusteringCreator.DEFAULT_MERGE_SMALL_CLUSTERS,
         nIterations: ClusteringCreator.DEFAULT_N_ITERATIONS,
+        randomness: ClusteringCreator.DEFAULT_RANDOMNESS,
         nRandomStarts: ClusteringCreator.DEFAULT_N_RANDOM_STARTS,
         fixedSeed: ClusteringCreator.DEFAULT_FIXED_SEED,
         useRandomSeed: ClusteringCreator.DEFAULT_USE_RANDOM_SEED,
@@ -26,6 +27,7 @@ export default class State {
       minClusterSize: this.minClusterSize,
       mergeSmallClusters: this.mergeSmallClusters,
       nIterations: this.nIterations,
+      randomness: this.randomness,
       nRandomStarts: this.nRandomStarts,
       fixedSeed: this.fixedSeed,
       useRandomSeed: this.useRandomSeed,
@@ -57,6 +59,14 @@ export default class State {
       this.nIterations = _clamp(Math.round(+nIterations), 1, 1000000);
     } else {
       this.nIterations = nIterations;
+    }
+  }
+
+  setRandomness(randomness, onBlur) {
+    if (onBlur) {
+      this.randomness = _clamp(+randomness, 0.0005, 0.1);
+    } else {
+      this.randomness = randomness;
     }
   }
 
