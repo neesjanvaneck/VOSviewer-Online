@@ -134,7 +134,7 @@ const APP = observer(() => {
           break;
         case 'end run layout':
           uiStore.setLoadingScreenProgressValue(100);
-          visualizationStore.setLayout(data.newLayout);
+          visualizationStore.updateItemCoordinates(data.newCoordinates);
           uiStore.setLoadingScreenIsOpen(false);
           if (webworkerStore.runClustering) {
             webworkerStore.startRunClustering(clusteringStore.getParameters());
@@ -144,7 +144,7 @@ const APP = observer(() => {
           break;
         case 'end run clustering':
           uiStore.setLoadingScreenProgressValue(100);
-          visualizationStore.setClusters(data.newClustering, uiStore.darkTheme);
+          visualizationStore.updateItemClusters(data.newClusters, uiStore.darkTheme);
           uiStore.setLoadingScreenIsOpen(false);
           _finalizeVisualization();
           break;

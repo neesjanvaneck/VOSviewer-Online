@@ -769,7 +769,7 @@ export default class State {
     this.largestComponent = largestComponent;
   }
 
-  setLayout(coordinates) {
+  updateItemCoordinates(coordinates) {
     _each(coordinates[0], (x, i) => {
       const item = _find(this.items, d => d._initialOrderId === i);
       if (item) {
@@ -781,10 +781,10 @@ export default class State {
     this.updateLabelScalingFactors();
   }
 
-  setClusters(clustering, darkTheme) {
+  updateItemClusters(clusters, darkTheme) {
     this.clusterKey = mapFileHeaders.CLUSTER;
     _each(this.items, (item) => {
-      const cluster = clustering.cluster[this.itemIdToIndex[item.id]];
+      const cluster = clusters[this.itemIdToIndex[item.id]];
       item[this.clusterKey] = !_isNil(cluster) ? cluster + 1 : undefined;
     });
     this.clusters = _filter(_keys(_groupBy(this.items, this.clusterKey)), d => d !== "undefined");

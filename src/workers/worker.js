@@ -100,7 +100,7 @@ self.addEventListener("message", event => {
         layoutCreator.performPostProcessing();
         self.postMessage({
           type: 'end run layout',
-          data: { newLayout: layoutCreator.bestLayout.getCoordinates() },
+          data: { newCoordinates: layoutCreator.bestLayout.getCoordinates() },
         });
       }
       break;
@@ -124,31 +124,19 @@ self.addEventListener("message", event => {
         });
       } else {
         clusteringCreator.performPostProcessing();
-        const newClustering = {
-          cluster: [],
-          nClusters: 0,
-          nNodes: clusteringCreator.bestClustering.getNNodes()
-        };
+        let clusters = [];
         if (clusteringCreator.mergeSmallClusters) {
-          newClustering.cluster = clusteringCreator.bestClustering.getClusters();
-          newClustering.nClusters = clusteringCreator.bestClustering.getNClusters();
+          clusters = clusteringCreator.bestClustering.getClusters();
         } else {
           const nItemsPerCluster = clusteringCreator.bestClustering.getNNodesPerCluster();
-          for (let i = 0; i < newClustering.nNodes; i++) {
+          for (let i = 0; i < clusteringCreator.bestClustering.getNNodes(); i++) {
             const cluster = clusteringCreator.bestClustering.getCluster(i);
-            newClustering.cluster.push(nItemsPerCluster[cluster] >= clusteringCreator.minClusterSize ? cluster : null);
+            clusters.push(nItemsPerCluster[cluster] >= clusteringCreator.minClusterSize ? cluster : null);
           }
-          let nClusters = 0;
-          for (let i = 0; i < nItemsPerCluster.length; i++) {
-            if (nItemsPerCluster[i] >= clusteringCreator.minClusterSize) {
-              nClusters += 1;
-            }
-          }
-          newClustering.nClusters = nClusters;
         }
         self.postMessage({
           type: 'end run clustering',
-          data: { newClustering },
+          data: { newClusters: clusters },
         });
       }
       break;
