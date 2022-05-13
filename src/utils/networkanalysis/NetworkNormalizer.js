@@ -1,4 +1,4 @@
-import Network from './Network';
+import { Network } from 'networkanalysis-ts';
 
 export const NO_NORMALIZATION = 'No normalization';
 export const ASSOCIATION_STRENGTH = 'Association strength';
@@ -14,8 +14,15 @@ export class NetworkNormalizer {
     this.networkComponents = undefined;
   }
 
-  init(nNodes, edge, weight) {
-    this.unnormalizedNetwork = new Network(nNodes, edge, weight);
+  init(nNodes, edges, edgeWeights) {
+    this.unnormalizedNetwork = new Network({
+      nNodes,
+      setNodeWeightsToTotalEdgeWeights: true,
+      edges,
+      edgeWeights,
+      sortedEdges: true,
+      checkIntegrity: false
+    });
     this.performNormalization(this.normalizationMethod);
   }
 
@@ -24,9 +31,9 @@ export class NetworkNormalizer {
     if (normalizationMethod === NO_NORMALIZATION) {
       this.normalizedNetwork = this.unnormalizedNetwork.createNetworkWithoutNodeWeights();
     } else if (normalizationMethod === ASSOCIATION_STRENGTH) {
-      this.normalizedNetwork = this.unnormalizedNetwork.createNormalizedNetwork1();
+      this.normalizedNetwork = this.unnormalizedNetwork.createNormalizedNetworkUsingAssociationStrength();
     } else if (normalizationMethod === FRACTIONALIZATION) {
-      this.normalizedNetwork = this.unnormalizedNetwork.createNormalizedNetwork2();
+      this.normalizedNetwork = this.unnormalizedNetwork.createNormalizedNetworkUsingFractionalization();
     } else this.normalizedNetwork = this.unnormalizedNetwork;
   }
 
