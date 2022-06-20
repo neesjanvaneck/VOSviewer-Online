@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite';
 import { IconButton, Link, Paper, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { format } from 'd3-format';
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 import _isNil from 'lodash/isNil';
 import _isNull from 'lodash/isNull';
 import _isUndefined from 'lodash/isUndefined';

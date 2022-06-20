@@ -1,4 +1,4 @@
-/* global NODE_ENV */
+/* global NODE_ENV DATA_MAP DATA_NETWORK DATA_JSON */
 import React, { useContext, useEffect, useRef } from 'react';
 import { observer } from 'mobx-react-lite';
 import { CssBaseline } from '@mui/material';
@@ -33,7 +33,7 @@ import { getProxyUrl } from 'utils/helpers';
 import { parameterKeys, panelBackgroundColors, visualizationBackgroundColors } from 'utils/variables';
 import * as s from './style';
 
-const VOSviewer = observer(({ queryString }) => {
+const VOSviewer = observer(({ queryString = {} }) => {
   const clusteringStore = useContext(ClusteringStoreContext);
   const configStore = useContext(ConfigStoreContext);
   const layoutStore = useContext(LayoutStoreContext);
@@ -54,20 +54,26 @@ const VOSviewer = observer(({ queryString }) => {
     }
 
     const proxy = (NODE_ENV !== 'development') ? configStore.proxyUrl : undefined;
+    let download = false;
     let mapURL = getProxyUrl(proxy, queryString[parameterKeys.MAP]);
     let networkURL = getProxyUrl(proxy, queryString[parameterKeys.NETWORK]);
-    let jsonURL = getProxyUrl(proxy, queryString[parameterKeys.JSON]);
+    let jsonURL = queryString[parameterKeys.JSON] instanceof Object ? queryString[parameterKeys.JSON] : getProxyUrl(proxy, queryString[parameterKeys.JSON]);
+    if (mapURL || networkURL) download = true;
     if (NODE_ENV === 'development' && !mapURL && !networkURL && !jsonURL) {
-      mapURL = 'data/JOI_2007-2016_co-authorship_map.txt';
-      networkURL = 'data/JOI_2007-2016_co-authorship_network.txt';
+      mapURL = require('data/JOI_2007-2016_co-authorship_map.txt');
+      networkURL = require('data/JOI_2007-2016_co-authorship_network.txt');
     } else if (!mapURL && !networkURL && !jsonURL) {
-      mapURL = getProxyUrl(proxy, configStore.parameters.map);
-      networkURL = getProxyUrl(proxy, configStore.parameters.network);
-      jsonURL = getProxyUrl(proxy, configStore.parameters.json);
+      // eslint-disable-next-line import/no-dynamic-require
+      mapURL = DATA_MAP && require(DATA_MAP);
+      // eslint-disable-next-line import/no-dynamic-require
+      networkURL = DATA_NETWORK && require(DATA_NETWORK);
+      // eslint-disable-next-line import/no-dynamic-require
+      jsonURL = DATA_JSON && require(DATA_JSON);
+      if (mapURL || networkURL) download = false;
     }
 
     if (mapURL || networkURL) {
-      webworkerStore.openMapNetworkFile(mapURL, networkURL);
+      webworkerStore.openMapNetworkFile(mapURL, networkURL, undefined, download);
     } else if (jsonURL) {
       webworkerStore.openJsonFile(jsonURL);
     } else {

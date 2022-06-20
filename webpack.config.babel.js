@@ -2,6 +2,7 @@ import { join, resolve } from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
+import NodePolyfillPlugin from 'node-polyfill-webpack-plugin';
 // import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 function absolute(...args) {
@@ -19,30 +20,27 @@ const rules = [
   {
     test: /\.(otf|eot|svg|ttf|woff|woff2)$/,
     exclude: [/images/],
-    loader: 'file-loader?name=./fonts/[name].[ext]'
+    type: 'asset/resource',
+    generator: {
+      filename: 'fonts/[name][ext]'
+    }
   },
   {
     test: /\.(jpg|jpeg|gif|png|svg)$/,
     exclude: [/fonts/],
-    loader: 'file-loader?name=./images/[name].[ext]'
+    type: 'asset/resource',
+    generator: {
+      filename: 'images/[name][ext]'
+    }
   },
   {
     test: /\.txt$/,
-    use: 'raw-loader',
-  },
-  {
-    test: /\.worker\.js$/,
-    use: {
-      loader: 'worker-loader',
-      options: {
-        name: '[name]:[hash:8].js'
-      }
-    }
-  },
+    type: 'asset/source',
+  }
 ];
 
 const config = {
-  entry: ['@babel/polyfill', './src'],
+  entry: ['./src'],
   module: {
     rules,
   },
@@ -72,6 +70,11 @@ export default (env = defaultEnv) => {
   const appMode = env.mode || 'vosviewer';
   const bundleName = appMode === 'vosviewer' ? 'vosviewer-online' : `vosviewer-online-${appMode}`;
 
+  config.stats = {
+    errorDetails: false,
+    logging: 'verbose',
+  };
+
   const copyPatternsImages = [
     {
       from: resolve(__dirname, 'src/assets/images/vosviewer-favicon.png'),
@@ -88,7 +91,7 @@ export default (env = defaultEnv) => {
   ];
 
   config.mode = env.dev ? 'development' : 'production';
-  config.devtool = env.dev ? 'cheap-module-eval-source-map' : undefined; // Use 'source-map' for production to create map file
+  config.devtool = env.dev ? 'eval-cheap-module-source-map' : undefined; // Use 'source-map' for production to create map file
   config.output = {
     path: absolute('dist', bundleName),
     library: appMode,
@@ -96,6 +99,7 @@ export default (env = defaultEnv) => {
     publicPath: env.dev ? '/' : undefined,
     globalObject: 'this'
   };
+  config.resolve.alias.component = resolve(__dirname, `src/${appMode}App.js`);
 
   config.optimization = {
     splitChunks: {
@@ -117,6 +121,7 @@ export default (env = defaultEnv) => {
   }
 
   config.plugins = [
+    new NodePolyfillPlugin(),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       inject: 'body',
@@ -127,80 +132,21 @@ export default (env = defaultEnv) => {
       NODE_ENV: JSON.stringify(env.dev ? 'development' : 'production'),
       MODE: JSON.stringify(appMode),
       CONFIG: JSON.stringify(jsonConfig),
+      DATA_MAP: (jsonConfig.parameters && jsonConfig.parameters.map) ? JSON.stringify(jsonConfig.parameters.map) : undefined,
+      DATA_NETWORK: (jsonConfig.parameters && jsonConfig.parameters.network) ? JSON.stringify(jsonConfig.parameters.network) : undefined,
+      DATA_JSON: (jsonConfig.parameters && jsonConfig.parameters.json) ? JSON.stringify(jsonConfig.parameters.json) : undefined
     }),
 
     // new BundleAnalyzerPlugin(),
   ];
 
-  if (appMode === 'vosviewer') {
-    config.plugins.push(
-      new CopyPlugin({
-        patterns: [
-          ...copyPatternsImages,
-          {
-            from: resolve(__dirname, 'data', 'JOI_2007-2016_co-authorship_map.txt'),
-            to: absolute('dist', bundleName, 'data/JOI_2007-2016_co-authorship_map.txt'),
-          },
-          {
-            from: resolve(__dirname, 'data', 'JOI_2007-2016_co-authorship_network.txt'),
-            to: absolute('dist', bundleName, 'data/JOI_2007-2016_co-authorship_network.txt'),
-          },
-          {
-            from: resolve(__dirname, 'data', 'JOI_2007-2016_co-authorship_network.json'),
-            to: absolute('dist', bundleName, 'data/JOI_2007-2016_co-authorship_network.json'),
-          },
-        ],
-      }),
-    );
-  } else if (appMode === 'dimensions') {
-    config.plugins.push(
-      new CopyPlugin({
-        patterns: [
-          ...copyPatternsImages,
-          {
-            from: resolve(__dirname, 'data', 'Dimensions_COVID19_research_organization_co-authorship_network.json'),
-            to: absolute('dist', bundleName, 'data/Dimensions_COVID19_research_organization_co-authorship_network.json'),
-          },
-          {
-            from: resolve(__dirname, 'data', 'Dimensions_obesity_journal_bibliographic_coupling_network.json'),
-            to: absolute('dist', bundleName, 'data/Dimensions_obesity_journal_bibliographic_coupling_network.json'),
-          },
-          {
-            from: resolve(__dirname, 'data', 'Dimensions_scientometrics_researcher_co-authorship_network.json'),
-            to: absolute('dist', bundleName, 'data/Dimensions_scientometrics_researcher_co-authorship_network.json'),
-          },
-        ],
-      }),
-    );
-  } else if (appMode === 'zetaalpha') {
-    config.plugins.push(
-      new CopyPlugin({
-        patterns: [
-          ...copyPatternsImages,
-          {
-            from: resolve(__dirname, 'data', 'Zeta-Alpha_ICLR2021.json'),
-            to: absolute('dist', bundleName, 'data/Zeta-Alpha_ICLR2021.json'),
-          }
-        ],
-      }),
-    );
-  } else if (appMode === 'rori') {
-    config.plugins.push(
-      new CopyPlugin({
-        patterns: [
-          ...copyPatternsImages,
-          {
-            from: resolve(__dirname, 'data', 'RoRI_research_funding_landscape_2019jun_global.txt'),
-            to: absolute('dist', bundleName, 'data/RoRI_research_funding_landscape_2019jun_global.txt'),
-          },
-          {
-            from: resolve(__dirname, 'data', 'RoRI_research_funding_landscape_2019jun_health.txt'),
-            to: absolute('dist', bundleName, 'data/RoRI_research_funding_landscape_2019jun_health.txt'),
-          },
-        ],
-      }),
-    );
-  }
+  config.plugins.push(
+    new CopyPlugin({
+      patterns: [
+        ...copyPatternsImages,
+      ],
+    }),
+  );
 
   return config;
 };

@@ -1,4 +1,4 @@
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 import { grey } from '@mui/material/colors';
 import { panelMargin } from 'utils/variables';
 

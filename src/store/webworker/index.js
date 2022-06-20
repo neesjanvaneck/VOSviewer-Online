@@ -1,6 +1,7 @@
 /* eslint-disable import/no-webpack-loader-syntax */
 /* eslint-disable import/no-unresolved */
-import Worker from 'worker-loader!workers/worker';
+// https://github.com/webpack/webpack/discussions/14066#discussioncomment-2206544
+import Worker from 'workerize-loader?inline!workers/worker';
 
 export default class State {
   constructor() {
@@ -41,12 +42,12 @@ export default class State {
     this.startParseJsonFile({ jsonFileOrUrl });
   }
 
-  openMapNetworkFile(mapFileOrUrl, networkFileOrUrl, resetParameters = false) {
+  openMapNetworkFile(mapFileOrUrl, networkFileOrUrl, resetParameters = false, download = false) {
     this.resetParameters = resetParameters;
     this.loadNewData = true;
     this.runLayout = false;
     this.runClustering = false;
-    this.startParseMapNetworkFile({ mapFileOrUrl, networkFileOrUrl });
+    this.startParseMapNetworkFile({ mapFileOrUrl, networkFileOrUrl, download });
   }
 
   updateNormalization(normalizationMethod) {

@@ -27,9 +27,13 @@ const Share = observer(() => {
   const [embedCode, setEmbedCode] = useState('');
   const qrImageEl = useRef(null);
 
-  useEffect(async () => {
-    setLink(useShortLink ? await getShortenedLink() : getLink());
-    setEmbedCode(getEmbedCode(useShortLink ? await getShortenedLink(true) : getLink(true)));
+  useEffect(() => {
+    // https://github.com/facebook/react/issues/14326
+    async function setLinkAndEmbedCode() {
+      setLink(useShortLink ? await getShortenedLink() : getLink());
+      setEmbedCode(getEmbedCode(useShortLink ? await getShortenedLink(true) : getLink(true)));
+    }
+    setLinkAndEmbedCode();
   });
 
   const showShareDialog = () => {

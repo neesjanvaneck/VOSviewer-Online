@@ -1,4 +1,4 @@
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 import { roriPantone3005 } from 'utils/variables-rori';
 
 export const introStyle = css`

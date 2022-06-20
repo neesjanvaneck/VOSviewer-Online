@@ -1,4 +1,4 @@
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 import { visualizationBackgroundColors } from 'utils/variables';
 
 export const app = (isDark) => css`

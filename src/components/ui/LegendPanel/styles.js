@@ -1,4 +1,4 @@
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 import { panelMargin, panelPadding, legendPanelMaxWidth } from 'utils/variables';
 
 export const previewIsOpen = css`

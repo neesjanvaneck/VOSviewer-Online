@@ -1,7 +1,7 @@
 /* eslint-disable consistent-return */
 import ReactHtmlParser, { convertNodeToElement } from 'react-html-parser';
 import { addHook, sanitize } from "dompurify";
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 
 export function cleanPlainText(plainText) {
   if (!plainText) return;

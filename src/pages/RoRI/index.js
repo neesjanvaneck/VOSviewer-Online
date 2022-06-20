@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { Global } from "@emotion/core";
 
 import VisualizationComponent from 'components/visualization/VisualizationComponent';
 import ControlPanel from 'components/ui-rori/ControlPanel';
@@ -13,7 +12,7 @@ import PoweredByLogo from 'components/ui-rori/Logos/PoweredByLogo';
 
 import { UiStoreContext, VisualizationStoreContext, WebworkerStoreContext } from 'store/stores';
 import { roriPantone298 } from 'utils/variables-rori';
-import * as s from './styles';
+import './styles';
 
 const RoRI = observer(({ dataType }) => {
   const uiStore = useContext(UiStoreContext);
@@ -27,7 +26,7 @@ const RoRI = observer(({ dataType }) => {
   uiStore.setGradientCircles(false);
 
   useEffect(() => {
-    const mapURL = (dataType === 'health') ? 'data/RoRI_research_funding_landscape_2019jun_health.txt' : 'data/RoRI_research_funding_landscape_2019jun_global.txt';
+    const mapURL = (dataType === 'health') ? require('data/RoRI_research_funding_landscape_2019jun_health.txt') : require('data/RoRI_research_funding_landscape_2019jun_global.txt');
     uiStore.setSizeIndex(0);
     uiStore.setColorIndex((dataType === 'health') ? 1 : 0);
     webworkerStore.openMapNetworkFile(mapURL);
@@ -80,7 +79,6 @@ const RoRI = observer(({ dataType }) => {
   return (
     <ThemeProvider theme={muiTheme}>
       <>
-        <Global styles={s.globalStyles} />
         <VisualizationComponent withoutUrlPreviewPanel withoutLinks withoutItemLabels customFont="Nexa Bold" />
         <ControlPanel />
         <LegendInfoPanel />
