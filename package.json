@@ -36,9 +36,13 @@
     "java-random": "^0.4.0",
     "leven-sort": "^3.0.0",
     "lodash": "^4.17.21",
+    "mobx": "^6.6.0",
+    "mobx-react-lite": "^3.4.0",
     "papaparse": "^5.3.1",
     "qrcode.react": "^1.0.1",
     "qs": "^6.10.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-full-screen": "^1.1.1",
     "react-resize-detector": "^7.1.2",
     "use-debounce": "0.0.7"
@@ -82,12 +86,6 @@
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.9.2",
     "workerize-loader": "^2.0.2"
-  },
-  "peerDependencies": {
-    "mobx": "^6.6.0",
-    "mobx-react-lite": "^3.4.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
   },
   "engines": {
     "node": ">=16.0.0",
