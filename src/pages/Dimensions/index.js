@@ -35,7 +35,7 @@ import { getProxyUrl } from 'utils/helpers';
 import { parameterKeys, panelBackgroundColors, visualizationBackgroundColors } from 'utils/variables';
 import * as s from './style';
 
-const Dimensions = observer(({ queryString = {} }) => {
+const Dimensions = observer(({ queryString = {}, fullscreenHandle }) => {
   const clusteringStore = useContext(ClusteringStoreContext);
   const configStore = useContext(ConfigStoreContext);
   const layoutStore = useContext(LayoutStoreContext);
@@ -236,7 +236,7 @@ const Dimensions = observer(({ queryString = {} }) => {
           <Share />
           <Screenshot />
           <DarkLightTheme />
-          <Fullscreen />
+          <Fullscreen enter={fullscreenHandle.enter} exit={fullscreenHandle.exit} active={fullscreenHandle.active} />
           <Info />
         </div>
         <URLPanel />

@@ -3,16 +3,20 @@ import { controlPanelWidth } from 'utils/variables';
 
 export const open = css`
   label: control-panel-open;
+
+  z-index: 0;
 `;
 
 export const closed = css`
   label: control-panel-closed;
+
+  z-index: 0;
 `;
 
 export const controlPanel = css`
   label: control-panel;
   top: 0;
-  position: fixed;
+  position: absolute;
   width: ${controlPanelWidth - 2}px;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.95);

@@ -5,6 +5,7 @@ import { observer } from 'mobx-react-lite';
 import levenSort from 'leven-sort';
 import _isUndefined from 'lodash/isUndefined';
 import _isPlainObject from 'lodash/isPlainObject';
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 import { parameterKeys } from 'utils/variables';
 import {
@@ -23,6 +24,7 @@ const VOSviewer = observer(({ parameters = {}, data }) => {
   const queryStringStore = useContext(QueryStringStoreContext);
   const webworkerStore = useContext(WebworkerStoreContext);
   const [firstRender, setFirstRender] = useState(true);
+  const fullscreenHandle = useFullScreenHandle();
 
   if (firstRender) {
     setFirstRender(false);
@@ -200,7 +202,11 @@ const VOSviewer = observer(({ parameters = {}, data }) => {
   }
 
   return (
-    <App parameters={parameters} />
+    <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}>
+      <FullScreen handle={fullscreenHandle}>
+        <App parameters={parameters} fullscreenHandle={fullscreenHandle} />
+      </FullScreen>
+    </div>
   );
 });
 
