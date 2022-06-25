@@ -4,7 +4,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import {
-  Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControlLabel, IconButton, Switch, TextField, Tooltip, Typography
+  Button, DialogActions, DialogContent, DialogTitle, FormControlLabel, IconButton, Switch, TextField, Tooltip, Typography
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import ShareIcon from '@mui/icons-material/Share';
@@ -12,6 +12,7 @@ import TinyURL from 'tinyurl';
 import QRCode from 'qrcode.react';
 import _cloneDeep from 'lodash/cloneDeep';
 
+import Dialog from 'components/ui/Dialog';
 import { ConfigStoreContext, QueryStringStoreContext, UiStoreContext } from 'store/stores';
 import { parameterKeys } from 'utils/variables';
 import vosviewerIcon from 'assets/images/vosviewer-favicon.png';

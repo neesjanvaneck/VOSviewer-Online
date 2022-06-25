@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Typography, Button, Dialog, DialogActions, DialogContent } from '@mui/material';
+import { Typography, Button, DialogActions, DialogContent } from '@mui/material';
+
 import _isNumber from 'lodash/isNumber';
 
+import Dialog from 'components/ui/Dialog';
 import { FileDataStoreContext, UiStoreContext } from 'store/stores';
 
 const ErrorDialog = observer(() => {

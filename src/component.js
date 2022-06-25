@@ -1,5 +1,5 @@
 /* global CONFIG */
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { observer } from 'mobx-react-lite';
 import levenSort from 'leven-sort';
@@ -25,6 +25,11 @@ const VOSviewer = observer(({ parameters = {}, data }) => {
   const webworkerStore = useContext(WebworkerStoreContext);
   const [firstRender, setFirstRender] = useState(true);
   const fullscreenHandle = useFullScreenHandle();
+  const rootElRef = useRef(null);
+
+  useEffect(() => {
+    uiStore.setRootEl(rootElRef.current);
+  }, []);
 
   if (firstRender) {
     setFirstRender(false);
@@ -202,7 +207,7 @@ const VOSviewer = observer(({ parameters = {}, data }) => {
   }
 
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}>
+    <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }} ref={rootElRef}>
       <FullScreen handle={fullscreenHandle}>
         <App parameters={parameters} fullscreenHandle={fullscreenHandle} />
       </FullScreen>

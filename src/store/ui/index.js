@@ -48,7 +48,8 @@ export default class State {
         infoDialogIsOpen: false,
         introDialogIsOpen: false,
         windowInnerWidth: window.innerWidth,
-        infoPanelWidth: 0
+        infoPanelWidth: 0,
+        rootEl: undefined
       },
       state
     );
@@ -228,6 +229,10 @@ export default class State {
 
   setInfoPanelWidth(infoPanelWidth) {
     this.infoPanelWidth = infoPanelWidth;
+  }
+
+  setRootEl(el) {
+    this.rootEl = el;
   }
 
   updateStore({ parameters }) {
