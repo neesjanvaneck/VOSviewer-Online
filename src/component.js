@@ -12,7 +12,8 @@ import {
   ConfigStoreContext, ClusteringStoreContext, FileDataStoreContext, LayoutStoreContext, UiStoreContext, VisualizationStoreContext, QueryStringStoreContext, WebworkerStoreContext
 } from 'store/stores';
 
-import App from 'component';
+// The '@component' is resolved from an alias in the webpack configuration
+import App from '@component';
 
 const VOSviewer = observer(({ parameters = {}, data }) => {
   const configStore = useContext(ConfigStoreContext);

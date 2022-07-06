@@ -99,7 +99,22 @@ export default (env = defaultEnv) => {
     publicPath: env.dev ? '/' : undefined,
     globalObject: 'this'
   };
-  config.resolve.alias.component = resolve(__dirname, `src/${appMode}App.js`);
+  let componentFileNamePrefix;
+  switch (appMode) {
+    case 'dimensions':
+      componentFileNamePrefix = 'Dimensions';
+      break;
+    case 'zetaalpha':
+      componentFileNamePrefix = 'ZetaAlpha';
+      break;
+    case 'rori':
+      componentFileNamePrefix = 'RoRI';
+      break;
+    default:
+      componentFileNamePrefix = 'VOSviewer';
+      break;
+  }
+  config.resolve.alias['@component'] = resolve(__dirname, `src/${componentFileNamePrefix}App.js`);
 
   config.optimization = {
     splitChunks: {

@@ -78,7 +78,22 @@ export default (env = defaultEnv) => {
       type: "module",
     },
   };
-  config.resolve.alias.component = resolve(__dirname, `src/${appMode}App.js`);
+  let componentFileNamePrefix;
+  switch (appMode) {
+    case 'dimensions':
+      componentFileNamePrefix = 'Dimensions';
+      break;
+    case 'zetaalpha':
+      componentFileNamePrefix = 'ZetaAlpha';
+      break;
+    case 'rori':
+      componentFileNamePrefix = 'RoRI';
+      break;
+    default:
+      componentFileNamePrefix = 'VOSviewer';
+      break;
+  }
+  config.resolve.alias['@component'] = resolve(__dirname, `src/${componentFileNamePrefix}App.js`);
 
   config.experiments = {
     outputModule: true
