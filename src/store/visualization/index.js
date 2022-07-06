@@ -1,5 +1,5 @@
 /* eslint-disable no-bitwise */
-import ReactHtmlParser from 'react-html-parser';
+import HTMLReactParser from 'html-react-parser';
 import { extendObservable } from 'mobx';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { extent, sum } from 'd3-array';
@@ -552,7 +552,7 @@ export default class State {
       item._fontSize = this.pixelRatio * (scale * labelMinFontSize + labelFontSizeScalingConstant * item._normalizedWeight ** itemSizeVariation);
       if (this.labelCanvasContext) {
         this.labelCanvasContext.font = `${item._fontSize}px ${fontFamily}`;
-        const label = ReactHtmlParser(item.label)[0];
+        const label = HTMLReactParser(item.label);
         item._labelText = (label || '').slice(0, maxLabelLength) || '';
         item._labelTextWidth = this.labelCanvasContext.measureText(item._labelText).width;
       }

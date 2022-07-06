@@ -1,5 +1,5 @@
 /* eslint-disable consistent-return */
-import ReactHtmlParser, { convertNodeToElement } from 'react-html-parser';
+import HTMLReactParser from 'html-react-parser';
 import { addHook, sanitize } from "dompurify";
 import { css } from '@emotion/css';
 
@@ -25,15 +25,13 @@ export function parseFormattedText(formattedText) {
   });
   const sanitizedDescription = sanitize(formattedText); // Sanitize HTML and prevents XSS attacks (https://owasp.org/www-community/attacks/xss/).
 
-  function transformDescription(node, index) {
-    if (node.name === 'a') {
-      node.attribs.class = css(`text-decoration: underline; color: inherit;`);
+  return HTMLReactParser(sanitizedDescription, {
+    replace: node => {
+      if (node.name === 'a') {
+        node.attribs.class = css(`text-decoration: underline; color: inherit;`);
+      }
     }
-
-    return convertNodeToElement(node, index, transformDescription);
-  }
-
-  return ReactHtmlParser(sanitizedDescription, { transform: transformDescription });
+  });
 }
 
 export function parseDescription(object, templateType, stores) {
@@ -49,20 +47,19 @@ export function parseDescription(object, templateType, stores) {
   });
   const sanitizedDescription = sanitize(description); // Sanitize HTML and prevents XSS attacks (https://owasp.org/www-community/attacks/xss/).
 
-  function transformDescription(node, index) {
-    if (node.attribs) {
-      if (node.attribs.class && typeof fileDataStore.styles[node.attribs.class] === 'string') {
-        node.attribs.class = css(fileDataStore.styles[node.attribs.class]);
+
+  return HTMLReactParser(sanitizedDescription, {
+    replace: node => {
+      if (node.attribs) {
+        if (node.attribs.class && typeof fileDataStore.styles[node.attribs.class] === 'string') {
+          node.attribs.class = css(fileDataStore.styles[node.attribs.class]);
+        }
+        if (node.name === 'a' && node.attribs.href) node.attribs.href = _replaceDescriptionPlaceholders(node.attribs.href, object, templateType, visualizationStore);
+        if (node.name === 'img' && node.attribs.src) node.attribs.src = _replaceDescriptionPlaceholders(node.attribs.src, object, templateType, visualizationStore);
       }
-      if (node.name === 'a' && node.attribs.href) node.attribs.href = _replaceDescriptionPlaceholders(node.attribs.href, object, templateType, visualizationStore);
-      if (node.name === 'img' && node.attribs.src) node.attribs.src = _replaceDescriptionPlaceholders(node.attribs.src, object, templateType, visualizationStore);
+      if (node.data) node.data = _replaceDescriptionPlaceholders(node.data, object, templateType, visualizationStore);
     }
-    if (node.data) node.data = _replaceDescriptionPlaceholders(node.data, object, templateType, visualizationStore);
-
-    return convertNodeToElement(node, index, transformDescription);
-  }
-
-  return ReactHtmlParser(sanitizedDescription, { transform: transformDescription });
+  });
 }
 
 function _replaceDescriptionPlaceholders(text, object, templateType, visualizationStore) {
