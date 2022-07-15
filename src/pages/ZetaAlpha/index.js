@@ -1,7 +1,6 @@
 /* global NODE_ENV DATA_MAP DATA_NETWORK DATA_JSON */
 import React, { useContext, useEffect, useRef } from 'react';
 import { observer } from 'mobx-react-lite';
-import { CssBaseline } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import _isPlainObject from 'lodash/isPlainObject';
 
@@ -220,7 +219,6 @@ const ZetaAlpha = observer(({ queryString = {}, fullscreenHandle }) => {
   return (
     <ThemeProvider theme={muiTheme(uiStore.darkTheme)}>
       <div className={s.app(uiStore.darkTheme)}>
-        <CssBaseline />
         <VisualizationComponent customFont={configStore.uiStyle.font_family} />
         <img
           className={s.vosviewerLogo}

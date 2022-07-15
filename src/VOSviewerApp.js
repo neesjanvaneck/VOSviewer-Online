@@ -1,9 +1,12 @@
 import React from 'react';
+import ScopedCssBaseline from '@mui/material/ScopedCssBaseline';
 
 import VOSviewer from './pages/VOSviewer';
 
 const VOSviewerApp = ({ parameters, fullscreenHandle }) => (
-  <VOSviewer queryString={parameters} fullscreenHandle={fullscreenHandle} />
+  <ScopedCssBaseline>
+    <VOSviewer queryString={parameters} fullscreenHandle={fullscreenHandle} />
+  </ScopedCssBaseline>
 
 );
 
