@@ -32,6 +32,7 @@ import {
 } from 'store/stores';
 import { getProxyUrl } from 'utils/helpers';
 import { parameterKeys, panelBackgroundColors, visualizationBackgroundColors } from 'utils/variables';
+import 'utils/fonts/Roboto'
 import * as s from './style';
 
 const ZetaAlpha = observer(({ queryString = {}, fullscreenHandle }) => {

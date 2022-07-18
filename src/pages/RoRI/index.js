@@ -12,7 +12,7 @@ import PoweredByLogo from 'components/ui-rori/Logos/PoweredByLogo';
 
 import { UiStoreContext, VisualizationStoreContext, WebworkerStoreContext } from 'store/stores';
 import { roriPantone298 } from 'utils/variables-rori';
-import './styles';
+import 'utils/fonts/Nexa';
 
 const RoRI = observer(({ dataType }) => {
   const uiStore = useContext(UiStoreContext);
