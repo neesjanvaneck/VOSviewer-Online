@@ -36,7 +36,7 @@ self.addEventListener("message", event => {
       _parseJsonFile(options.jsonFileOrUrl);
       break;
     case 'start parse vosviewer-map-network file':
-      _parseMapNetworkFile(options.mapFileOrUrl, options.networkFileOrUrl);
+      _parseMapNetworkFile(options.mapFileOrUrl, options.networkFileOrUrl, options.download);
       break;
     case 'start process data': {
       self.postMessage({
@@ -182,6 +182,8 @@ function _parseJsonFile(jsonFileOrUrl) {
           data: { fileError },
         });
       };
+    } else if (jsonFileOrUrl instanceof Object) {
+      _parseJsonData(jsonFileOrUrl);
     } else {
       fetch(jsonFileOrUrl, { credentials: "include" })
         .then(response => {
@@ -208,17 +210,21 @@ function _parseJsonFile(jsonFileOrUrl) {
   }
 }
 
-function _parseJsonData(text) {
+function _parseJsonData(textOrObject) {
   let fileError;
   let jsonData = {};
   let mapData = [];
   let networkData = [];
 
   let data;
-  try {
-    data = JSON.parse(text);
-  } catch (error) {
-    data = undefined;
+  if (textOrObject instanceof Object) {
+    data = textOrObject;
+  } else {
+    try {
+      data = JSON.parse(textOrObject);
+    } catch (error) {
+      data = undefined;
+    }
   }
   if (data && data.network && (data.network.items || data.network.links)) {
     jsonData = _cloneDeep(data) || {};
@@ -272,7 +278,7 @@ function _parseJsonData(text) {
       uniqueItemIds.sort();
       mapData = uniqueItemIds.map(d => ({ id: d }));
     }
-  } else if (text === "") {
+  } else if (textOrObject === "") {
     fileError = getFileError(errorKeys.FILE_EMPTY, fileTypeKeys.VOSVIEWER_JSON_FILE);
   } else {
     fileError = getFileError(errorKeys.INVALID_JSON_DATA_FORMAT, fileTypeKeys.VOSVIEWER_JSON_FILE);
@@ -283,7 +289,7 @@ function _parseJsonData(text) {
   });
 }
 
-function _parseMapNetworkFile(mapFileOrUrl, networkFileOrUrl) {
+function _parseMapNetworkFile(mapFileOrUrl, networkFileOrUrl, download) {
   let fileError;
   let mapData = [];
   let networkData = [];
@@ -295,7 +301,7 @@ function _parseMapNetworkFile(mapFileOrUrl, networkFileOrUrl) {
     });
     parse(mapFileOrUrl, {
       header: true,
-      download: !(mapFileOrUrl instanceof File),
+      download,
       // skipEmptyLines: true,
       delimitersToGuess: ['\t', ';', ','],
       // dynamicTyping: true,
@@ -324,7 +330,7 @@ function _parseMapNetworkFile(mapFileOrUrl, networkFileOrUrl) {
           });
           parse(networkFileOrUrl, {
             header: false,
-            download: !(networkFileOrUrl instanceof File),
+            download,
             // skipEmptyLines: true,
             delimitersToGuess: ['\t', ';', ','],
             dynamicTyping: true,
@@ -365,7 +371,7 @@ function _parseMapNetworkFile(mapFileOrUrl, networkFileOrUrl) {
     });
     parse(networkFileOrUrl, {
       header: false,
-      download: !(networkFileOrUrl instanceof File),
+      download,
       // skipEmptyLines: true,
       delimitersToGuess: ['\t', ';', ','],
       dynamicTyping: true,

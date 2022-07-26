@@ -1,5 +1,5 @@
 /* global MODE */
-import { extendObservable } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 import _clone from 'lodash/clone';
 import _capitalize from 'lodash/capitalize';
 import _keys from 'lodash/keys';
@@ -10,16 +10,7 @@ import { mapFileHeaders, defaultTerminology, defaultTemplates, defaultStyles } f
 
 export default class State {
   constructor() {
-    extendObservable(
-      this,
-      {
-        fileError: undefined,
-        mapFile: undefined,
-        networkFile: undefined,
-        jsonFile: undefined,
-        clusters: new Map(),
-      },
-    );
+    makeAutoObservable(this);
     this.mapData = [];
     this.networkData = [];
     this.jsonData = {};
@@ -29,6 +20,16 @@ export default class State {
     this.templates = {};
     this.styles = {};
   }
+
+  fileError = undefined
+
+  mapFile = undefined
+
+  networkFile = undefined
+
+  jsonFile = undefined
+
+  clusters = new Map()
 
   get parameters() {
     return this.jsonData.config ? this.jsonData.config.parameters : undefined;

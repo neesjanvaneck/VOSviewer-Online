@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import {
-  Button, Dialog, DialogTitle, DialogContent, DialogActions, IconButton, Tooltip
+  Button, DialogTitle, DialogContent, DialogActions, IconButton, Tooltip
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import FolderIcon from '@mui/icons-material/Folder';
@@ -9,6 +9,7 @@ import FolderIcon from '@mui/icons-material/Folder';
 import {
   ConfigStoreContext, FileDataStoreContext, UiStoreContext, WebworkerStoreContext
 } from 'store/stores';
+import Dialog from 'components/ui/Dialog';
 import OpenDialogContent from './OpenDialogContent';
 import * as s from './styles';
 

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { observer } from 'mobx-react-lite';
+import { withResizeDetector } from 'react-resize-detector';
 
 import {
   ConfigStoreContext, FileDataStoreContext, UiStoreContext, VisualizationStoreContext, WebworkerStoreContext
@@ -11,29 +12,33 @@ import HighlightedItemCircleLinkCanvas from 'components/visualization/Highlighte
 import ItemLabelCanvas from 'components/visualization/ItemLabelCanvas';
 import * as s from './styles';
 
-const VisualizationComponent = observer(({ withoutUrlPreviewPanel, withoutLinks, withoutItemLabels, customFont }) => {
+const VisualizationComponent = observer(({
+  width, height, withoutUrlPreviewPanel, withoutLinks, withoutItemLabels, customFont
+}) => {
   const configStore = useContext(ConfigStoreContext);
   const fileDataStore = useContext(FileDataStoreContext);
   const uiStore = useContext(UiStoreContext);
   const visualizationStore = useContext(VisualizationStoreContext);
   const webworkerStore = useContext(WebworkerStoreContext);
   const visEl = useRef(null);
-  const [canvasSize, setCanvasSize] = useState([window.innerWidth, window.innerHeight]);
+  const [canvasSize, setCanvasSize] = useState(undefined);
 
   const updateCanvasSize = () => {
     setCanvasSize([
-      window.innerWidth - ((configStore.urlPreviewPanel && !withoutUrlPreviewPanel) ? configStore.urlPreviewPanelWidth : 0),
-      window.innerHeight
+      visEl.current.offsetWidth - ((configStore.urlPreviewPanel && !withoutUrlPreviewPanel) ? configStore.urlPreviewPanelWidth : 0),
+      visEl.current.offsetHeight
     ]);
     uiStore.setWindowInnerWidth(window.innerWidth);
   };
 
   useEffect(() => {
-    visualizationStore.setCanvasSize(canvasSize[0], canvasSize[1]);
-    visualizationStore.updateItemPixelPositionAndScaling();
-    visualizationStore.updateLabelScalingFactors();
-    visualizationStore.updateItems();
-    visualizationStore.updateLinks();
+    if (canvasSize) {
+      visualizationStore.setCanvasSize(canvasSize[0], canvasSize[1]);
+      visualizationStore.updateItemPixelPositionAndScaling();
+      visualizationStore.updateLabelScalingFactors();
+      visualizationStore.updateItems();
+      visualizationStore.updateLinks();
+    }
   }, [canvasSize]);
 
   useEffect(() => {
@@ -41,11 +46,10 @@ const VisualizationComponent = observer(({ withoutUrlPreviewPanel, withoutLinks,
   }, [configStore.urlPreviewPanel]);
 
   useEffect(() => {
-    window.addEventListener('resize', updateCanvasSize);
-    return () => {
-      window.removeEventListener('resize', updateCanvasSize);
-    };
-  }, []);
+    if (width && height) {
+      updateCanvasSize();
+    }
+  }, [width, height]);
 
   useEffect(() => {
     if (visEl) {
@@ -88,35 +92,39 @@ const VisualizationComponent = observer(({ withoutUrlPreviewPanel, withoutLinks,
       onClick={handleClick}
       ref={visEl}
     >
-      <InteractionCanvas
-        canvasWidth={canvasSize[0]}
-        canvasHeight={canvasSize[1]}
-        withoutLinks={withoutLinks}
-      />
-      {!withoutLinks ? (
-        <DefaultLinkCanvas
+      {canvasSize && (
+      <>
+        <InteractionCanvas
           canvasWidth={canvasSize[0]}
           canvasHeight={canvasSize[1]}
+          withoutLinks={withoutLinks}
         />
+        {!withoutLinks ? (
+          <DefaultLinkCanvas
+            canvasWidth={canvasSize[0]}
+            canvasHeight={canvasSize[1]}
+          />
       ) : null}
-      <DefaultItemCircleCanvas
-        canvasWidth={canvasSize[0]}
-        canvasHeight={canvasSize[1]}
-      />
-      <HighlightedItemCircleLinkCanvas
-        canvasWidth={canvasSize[0]}
-        canvasHeight={canvasSize[1]}
-        withoutLinks={withoutLinks}
-      />
-      {!withoutItemLabels ? (
-        <ItemLabelCanvas
+        <DefaultItemCircleCanvas
           canvasWidth={canvasSize[0]}
           canvasHeight={canvasSize[1]}
-          customFont={customFont}
         />
+        <HighlightedItemCircleLinkCanvas
+          canvasWidth={canvasSize[0]}
+          canvasHeight={canvasSize[1]}
+          withoutLinks={withoutLinks}
+        />
+        {!withoutItemLabels ? (
+          <ItemLabelCanvas
+            canvasWidth={canvasSize[0]}
+            canvasHeight={canvasSize[1]}
+            customFont={customFont}
+          />
         ) : null}
+      </>
+      )}
     </div>
   );
 });
 
-export default VisualizationComponent;
+export default withResizeDetector(VisualizationComponent);

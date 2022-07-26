@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import {
-  Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton, ImageList, ImageListItem, ImageListItemBar, Link, Menu, MenuItem, Tooltip, Typography
+  Button, DialogActions, DialogContent, DialogTitle, IconButton, ImageList, ImageListItem, ImageListItemBar, Link, Menu, MenuItem, Tooltip, Typography
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import FolderIcon from '@mui/icons-material/Folder';
 import InfoIcon from '@mui/icons-material/Info';
 
+import Dialog from 'components/ui/Dialog';
 import { ConfigStoreContext, FileDataStoreContext, UiStoreContext } from 'store/stores';
 import { cleanPlainText, parseFormattedText } from 'utils/helpers2';
 import vosviewerOnlineLogo from 'assets/images/vosviewer-online-logo.svg';

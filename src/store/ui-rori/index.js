@@ -1,17 +1,14 @@
-import { extendObservable } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 import _isUndefined from 'lodash/isUndefined';
 
 export default class State {
   constructor(state = {}) {
-    extendObservable(
-      this,
-      {
-        legendSettingsPanelIsOpen: false,
-        legendSettingsPanelType: 'color',
-      },
-      state
-    );
+    makeAutoObservable(this, state);
   }
+
+  legendSettingsPanelIsOpen = false
+
+  legendSettingsPanelType = 'color'
 
   setLegendSettingsPanelIsOpen(legendSettingsPanelIsOpen) {
     this.legendSettingsPanelIsOpen = !_isUndefined(legendSettingsPanelIsOpen) ? legendSettingsPanelIsOpen : !this.legendSettingsPanelIsOpen;

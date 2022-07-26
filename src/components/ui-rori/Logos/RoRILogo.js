@@ -1,5 +1,5 @@
 import React from 'react';
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 
 import { device, media } from 'utils/variables-rori';
 import roriLogo from 'assets/images/rori-logo.svg';

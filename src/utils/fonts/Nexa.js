@@ -1,4 +1,4 @@
-import { css } from "@emotion/core";
+import { injectGlobal } from "@emotion/css";
 
 import svgFont from 'assets/fonts/nexa-bold-webfont.svg';
 import woffFont from 'assets/fonts/nexa-bold-webfont.woff';
@@ -8,7 +8,7 @@ import svgFontLight from 'assets/fonts/nexa-light-webfont.svg';
 import woffFontLight from 'assets/fonts/nexa-light-webfont.woff';
 import ttfFontLight from 'assets/fonts/nexa-light-webfont.ttf';
 
-export const globalStyles = css`
+export const globalStyles = injectGlobal`
 @font-face {
   font-family: "Nexa Bold";
   src: 

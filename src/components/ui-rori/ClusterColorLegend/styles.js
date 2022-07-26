@@ -1,4 +1,4 @@
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 import { device, media } from 'utils/variables-rori';
 
 export const legendBox = css`

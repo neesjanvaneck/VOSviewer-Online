@@ -1,4 +1,4 @@
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 import { panelMargin, panelPadding } from 'utils/variables';
 
 export const scoreOptionsPanel = css`

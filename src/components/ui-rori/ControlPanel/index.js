@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 import { FormControl, Select, MenuItem, InputBase } from '@mui/material';
-import { withStyles } from '@mui/styles';
 import { color } from 'd3-color';
 
 import { UiStoreContext, VisualizationStoreContext } from 'store/stores';
@@ -11,20 +10,25 @@ import * as s from './styles';
 const boxShadowColor = color(roriPantone299);
 boxShadowColor.opacity = 0.25;
 
-const BootstrapInput = withStyles(() => ({
-  input: {
-    borderRadius: 4,
-    position: 'relative',
-    border: `1px solid ${roriPantoneCoolGray4}`,
-    fontSize: 16,
-    padding: '5px 26px 5px 12px',
-    '&:focus': {
-      borderRadius: 4,
-      borderColor: `${roriPantone298}`,
-      boxShadow: `0 0 0 0.1rem boxShadowColor`,
-    },
-  },
-}))(InputBase);
+const BootstrapInput = (props) => (
+  <InputBase
+    {...props}
+    sx={{
+      '& .MuiSelect-select': {
+        borderRadius: '4px',
+        position: 'relative',
+        border: `1px solid ${roriPantoneCoolGray4}`,
+        fontSize: '16px',
+        padding: '5px 26px 5px 12px',
+        '&:focus': {
+          borderRadius: '4px',
+          borderColor: `${roriPantone298}`,
+          boxShadow: `0 0 0 0.1rem ${boxShadowColor}`,
+        },
+      }
+    }}
+  />
+);
 
 const ControlPanel = observer(() => {
   const uiStore = useContext(UiStoreContext);

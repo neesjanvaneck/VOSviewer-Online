@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import ReactHtmlParser from 'react-html-parser';
+import HTMLReactParser from 'html-react-parser';
 
 import { FileDataStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
 import { trimTextEnd } from 'utils/helpers';
@@ -12,7 +12,7 @@ const VerticalDivider = () => <div component="p" className={s.divider}> | </div>
 const Content = ({ text }) => (<div component="p" className={s.infoText}>{text}</div>);
 const HeadContent = ({ text }) => (
   <>
-    <div className="head-content">{ReactHtmlParser(text)}</div>
+    <div className="head-content">{HTMLReactParser(text)}</div>
     <hr />
   </>
 );

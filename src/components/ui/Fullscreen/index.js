@@ -7,47 +7,12 @@ import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
 import { ConfigStoreContext } from 'store/stores';
 import * as s from './styles';
 
-const Fullscreen = observer(() => {
+const Fullscreen = observer(({ enter, exit, active }) => {
   const configStore = useContext(ConfigStoreContext);
 
   useEffect(() => {
-    document.addEventListener("fullscreenchange", () => {
-      configStore.setFullscreen(document.fullscreen);
-    }, false);
-
-    document.addEventListener("mozfullscreenchange", () => {
-      configStore.setFullscreen(document.fullscreen);
-    }, false);
-
-    document.addEventListener("webkitfullscreenchange", () => {
-      configStore.setFullscreen(document.fullscreen);
-    }, false);
-  }, []);
-
-  // https://gist.github.com/simonewebdesign/6183356
-
-  const changeFullscreen = () => {
-    if (configStore.fullscreen) {
-      if (document.cancelFullScreen) {
-        document.cancelFullScreen();
-      } else if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-      } else if (document.webkitCancelFullScreen) {
-        document.webkitCancelFullScreen();
-      }
-    } else {
-      const el = document.body;
-      if (el.requestFullscreen) {
-        el.requestFullscreen();
-      } else if (el.msRequestFullscreen) {
-        el.msRequestFullscreen();
-      } else if (el.mozRequestFullScreen) {
-        el.mozRequestFullScreen();
-      } else if (el.webkitRequestFullscreen) {
-        el.webkitRequestFullscreen();
-      }
-    }
-  };
+    configStore.setFullscreen(active);
+  }, [active]);
 
   return (
     <>
@@ -55,7 +20,7 @@ const Fullscreen = observer(() => {
       && (
         <div
           className={s.fullscreenButton}
-          onClick={changeFullscreen}
+          onClick={configStore.fullscreen ? exit : enter}
         >
           <Tooltip title={`${configStore.fullscreen ? 'Exit full screen' : 'Full screen'}`}>
             <IconButton>

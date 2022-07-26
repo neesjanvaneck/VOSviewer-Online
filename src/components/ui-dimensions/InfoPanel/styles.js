@@ -1,4 +1,4 @@
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 import { controlPanelWidth, panelMargin, panelPadding } from 'utils/variables';
 
 export const visible = css`

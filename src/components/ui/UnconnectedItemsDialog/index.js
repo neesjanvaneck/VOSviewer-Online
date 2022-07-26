@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Button, Dialog, DialogActions, DialogContent, Typography } from '@mui/material';
+import { Button, DialogActions, DialogContent, Typography } from '@mui/material';
 
+import Dialog from 'components/ui/Dialog';
 import { FileDataStoreContext, UiStoreContext, VisualizationStoreContext, WebworkerStoreContext } from 'store/stores';
 
 const UnconnectedItemsDialog = observer(() => {
