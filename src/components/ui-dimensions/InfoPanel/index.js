@@ -28,9 +28,11 @@ const InfoPanel = observer(() => {
   const refEl = useRef(null);
   const [isOpen, setIsOpen] = useState(true);
 
-  if (refEl && refEl.current) {
-    uiStore.setInfoPanelWidth(refEl.current.offsetWidth);
-  }
+  useEffect(() => {
+    if (refEl && refEl.current) {
+      uiStore.setInfoPanelWidth(refEl.current.offsetWidth);
+    }
+  });
 
   useEffect(
     () => {},

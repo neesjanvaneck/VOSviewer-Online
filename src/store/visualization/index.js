@@ -1,6 +1,6 @@
 /* eslint-disable no-bitwise */
 import HTMLReactParser from 'html-react-parser';
-import { extendObservable } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { extent, sum } from 'd3-array';
 import { color } from 'd3-color';
@@ -30,32 +30,7 @@ import {
 
 export default class State {
   constructor(state = {}) {
-    extendObservable(
-      this,
-      {
-        lastDataUpdate: Date.now(),
-        lastItemUpdate: Date.now(),
-        lastLinkUpdate: Date.now(),
-        hoveredItem: undefined,
-        clickedItem: undefined,
-        hoveredLink: undefined,
-        clickedLink: undefined,
-        zTransform: { x: 0, y: 0, k: 1 },
-        weightKeysCustomTerminology: [],
-        scoreKeys: [],
-        clusterKeyIndex: 0,
-        weightIndex: 0,
-        scoreIndex: 0,
-        scoreColorSchemeName: defaultParameterValues[parameterKeys.SCORE_COLORS],
-        scoreColorLegendMinScore: 0,
-        scoreColorLegendMaxScore: 0,
-        scoreColorLegendMinScoreAutoValue: true,
-        scoreColorLegendMaxScoreAutoValue: true,
-        normalizeScoresMethodName: 'Do not normalize',
-        degreesToRotate: 90,
-      },
-      state
-    );
+    makeAutoObservable(this, state);
     this.largestComponent = defaultParameterValues[parameterKeys.LARGEST_COMPONENT];
     this.initialZoomLevel = defaultParameterValues[parameterKeys.ZOOM_LEVEL];
     this.canvasMargin = { left: canvasMargin, right: canvasMargin, top: canvasMargin, bottom: canvasMargin };
@@ -126,6 +101,46 @@ export default class State {
     this.getClusterLegendCanvasImage = () => {};
     this.getLogoImages = () => ([]);
   }
+
+  lastDataUpdate = Date.now()
+
+  lastItemUpdate = Date.now()
+
+  lastLinkUpdate = Date.now()
+
+  hoveredItem = undefined
+
+  clickedItem = undefined
+
+  hoveredLink = undefined
+
+  clickedLink = undefined
+
+  zTransform = { x: 0, y: 0, k: 1 }
+
+  weightKeysCustomTerminology = []
+
+  scoreKeys = []
+
+  clusterKeyIndex = 0
+
+  weightIndex = 0
+
+  scoreIndex = 0
+
+  scoreColorSchemeName = defaultParameterValues[parameterKeys.SCORE_COLORS]
+
+  scoreColorLegendMinScore = 0
+
+  scoreColorLegendMaxScore = 0
+
+  scoreColorLegendMinScoreAutoValue = true
+
+  scoreColorLegendMaxScoreAutoValue = true
+
+  normalizeScoresMethodName = 'Do not normalize'
+
+  degreesToRotate = 90
 
   get itemsOrLinksWithUrl() {
     const itemsWithUrl = this.items.filter(item => item.url);

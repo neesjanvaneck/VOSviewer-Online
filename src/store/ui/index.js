@@ -1,4 +1,4 @@
-import { extendObservable } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 import decodeUriComponent from 'decode-uri-component';
 import _clamp from 'lodash/clamp';
 import _isUndefined from 'lodash/isUndefined';
@@ -7,53 +7,88 @@ import { parameterKeys, defaultParameterValues } from 'utils/variables';
 
 export default class State {
   constructor(state = {}) {
-    extendObservable(
-      this,
-      {
-        mapQueryStringValue: defaultParameterValues[parameterKeys.MAP],
-        networkQueryStringValue: defaultParameterValues[parameterKeys.NETWORK],
-        jsonQueryStringValue: defaultParameterValues[parameterKeys.JSON],
-        coloredLinks: defaultParameterValues[parameterKeys.COLORED_LINKS],
-        curvedLinks: defaultParameterValues[parameterKeys.CURVED_LINKS],
-        darkTheme: defaultParameterValues[parameterKeys.DARK_UI],
-        dimmingEffect: defaultParameterValues[parameterKeys.DIMMING_EFFECT],
-        gradientCircles: defaultParameterValues[parameterKeys.GRADIENT_CIRCLES],
-        itemSizeVariation: defaultParameterValues[parameterKeys.ITEM_SIZE_VARIATION],
-        linkSizeVariation: defaultParameterValues[parameterKeys.LINK_SIZE_VARIATION],
-        maxLabelLength: defaultParameterValues[parameterKeys.MAX_LABEL_LENGTH],
-        maxNLinks: defaultParameterValues[parameterKeys.MAX_N_LINKS],
-        minLinkStrength: defaultParameterValues[parameterKeys.MIN_LINK_STRENGTH],
-        scale: defaultParameterValues[parameterKeys.SCALE],
-        showInfo: defaultParameterValues[parameterKeys.SHOW_INFO],
-        showItem: defaultParameterValues[parameterKeys.SHOW_ITEM],
-        itemFilterText: '',
-        sizeIndex: 0,
-        colorIndex: 0,
-        nLinksPerFrame: 1000,
-        linkTransparency: 0,
-        controlPanelIsOpen: false,
-        scoreOptionsPanelIsOpen: false,
-        fileType: 'vosviewer-json', // or 'vosviewer-map-network'
-        mapFileSelectedName: 'No file selected',
-        networkFileSelectedName: 'No file selected',
-        jsonFileSelectedName: 'No file selected',
-        errorDialogIsOpen: false,
-        unconnectedItemsDialogIsOpen: false,
-        unconnectedItemsExist: false,
-        unconnectedItemsDialogNItemsNetwork: undefined,
-        unconnectedItemsDialogNItemsLargestComponent: undefined,
-        loadingScreenIsOpen: true,
-        loadingScreenProcessType: undefined,
-        loadingScreenProgressValue: 0,
-        infoDialogIsOpen: false,
-        introDialogIsOpen: false,
-        windowInnerWidth: window.innerWidth,
-        infoPanelWidth: 0,
-        rootEl: undefined
-      },
-      state
-    );
+    makeAutoObservable(this, state);
   }
+
+  mapQueryStringValue = defaultParameterValues[parameterKeys.MAP]
+
+  networkQueryStringValue = defaultParameterValues[parameterKeys.NETWORK]
+
+  jsonQueryStringValue = defaultParameterValues[parameterKeys.JSON]
+
+  coloredLinks = defaultParameterValues[parameterKeys.COLORED_LINKS]
+
+  curvedLinks = defaultParameterValues[parameterKeys.CURVED_LINKS]
+
+  darkTheme = defaultParameterValues[parameterKeys.DARK_UI]
+
+  dimmingEffect = defaultParameterValues[parameterKeys.DIMMING_EFFECT]
+
+  gradientCircles = defaultParameterValues[parameterKeys.GRADIENT_CIRCLES]
+
+  itemSizeVariation = defaultParameterValues[parameterKeys.ITEM_SIZE_VARIATION]
+
+  linkSizeVariation = defaultParameterValues[parameterKeys.LINK_SIZE_VARIATION]
+
+  maxLabelLength = defaultParameterValues[parameterKeys.MAX_LABEL_LENGTH]
+
+  maxNLinks = defaultParameterValues[parameterKeys.MAX_N_LINKS]
+
+  minLinkStrength = defaultParameterValues[parameterKeys.MIN_LINK_STRENGTH]
+
+  scale = defaultParameterValues[parameterKeys.SCALE]
+
+  showInfo = defaultParameterValues[parameterKeys.SHOW_INFO]
+
+  showItem = defaultParameterValues[parameterKeys.SHOW_ITEM]
+
+  itemFilterText = ''
+
+  sizeIndex = 0
+
+  colorIndex = 0
+
+  nLinksPerFrame = 1000
+
+  linkTransparency = 0
+
+  controlPanelIsOpen = false
+
+  scoreOptionsPanelIsOpen = false
+
+  fileType = 'vosviewer-json' // or 'vosviewer-map-network'
+
+  mapFileSelectedName = 'No file selected'
+
+  networkFileSelectedName = 'No file selected'
+
+  jsonFileSelectedName = 'No file selected'
+
+  errorDialogIsOpen = false
+
+  unconnectedItemsDialogIsOpen = false
+
+  unconnectedItemsExist = false
+
+  unconnectedItemsDialogNItemsNetwork = undefined
+
+  unconnectedItemsDialogNItemsLargestComponent = undefined
+
+  loadingScreenIsOpen = true
+
+  loadingScreenProcessType = undefined
+
+  loadingScreenProgressValue = 0
+
+  infoDialogIsOpen = false
+
+  introDialogIsOpen = false
+
+  windowInnerWidth = window.innerWidth
+
+  infoPanelWidth = 0
+
+  rootEl = undefined
 
   setMapQueryStringValue(mapQueryStringValue) {
     this.mapQueryStringValue = mapQueryStringValue;
