@@ -36,7 +36,7 @@ self.addEventListener("message", event => {
       _parseJsonFile(options.jsonFileOrUrl);
       break;
     case 'start parse vosviewer-map-network file':
-      _parseMapNetworkFile(options.mapFileOrUrl, options.networkFileOrUrl, options.download);
+      _parseMapNetworkFile(options.mapFileOrUrl, options.networkFileOrUrl);
       break;
     case 'start process data': {
       self.postMessage({
@@ -289,7 +289,7 @@ function _parseJsonData(textOrObject) {
   });
 }
 
-function _parseMapNetworkFile(mapFileOrUrl, networkFileOrUrl, download) {
+function _parseMapNetworkFile(mapFileOrUrl, networkFileOrUrl) {
   let fileError;
   let mapData = [];
   let networkData = [];
@@ -301,7 +301,7 @@ function _parseMapNetworkFile(mapFileOrUrl, networkFileOrUrl, download) {
     });
     parse(mapFileOrUrl, {
       header: true,
-      download,
+      download: !(mapFileOrUrl instanceof File),
       // skipEmptyLines: true,
       delimitersToGuess: ['\t', ';', ','],
       // dynamicTyping: true,
@@ -330,7 +330,7 @@ function _parseMapNetworkFile(mapFileOrUrl, networkFileOrUrl, download) {
           });
           parse(networkFileOrUrl, {
             header: false,
-            download,
+            download: !(networkFileOrUrl instanceof File),
             // skipEmptyLines: true,
             delimitersToGuess: ['\t', ';', ','],
             dynamicTyping: true,
@@ -371,7 +371,7 @@ function _parseMapNetworkFile(mapFileOrUrl, networkFileOrUrl, download) {
     });
     parse(networkFileOrUrl, {
       header: false,
-      download,
+      download: !(networkFileOrUrl instanceof File),
       // skipEmptyLines: true,
       delimitersToGuess: ['\t', ';', ','],
       dynamicTyping: true,

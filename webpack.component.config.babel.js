@@ -26,7 +26,14 @@ const rules = [
   {
     test: /\.txt$/,
     type: 'asset/source',
-  }
+  },
+  {
+    test: /\worker\.js$/,
+    use: {
+      loader: 'workerize-loader',
+      options: { inline: true }
+    },
+  },
 ];
 
 const config = {
@@ -86,9 +93,6 @@ export default (env = defaultEnv) => {
     case 'zetaalpha':
       componentFileNamePrefix = 'ZetaAlpha';
       break;
-    case 'rori':
-      componentFileNamePrefix = 'RoRI';
-      break;
     default:
       componentFileNamePrefix = 'VOSviewer';
       break;
@@ -106,16 +110,19 @@ export default (env = defaultEnv) => {
     jsonConfig = {};
   }
 
+  if (jsonConfig.parameters) {
+    delete jsonConfig.parameters.map;
+    delete jsonConfig.parameters.network;
+    delete jsonConfig.parameters.json;
+  }
+
   config.plugins = [
     new NodePolyfillPlugin(),
     new webpack.DefinePlugin({
       NODE_ENV: JSON.stringify('production'),
       PRODUCTION: JSON.stringify(true),
       MODE: JSON.stringify(appMode),
-      CONFIG: JSON.stringify(jsonConfig),
-      DATA_MAP: undefined,
-      DATA_NETWORK: undefined,
-      DATA_JSON: undefined,
+      CONFIG: JSON.stringify(jsonConfig)
     }),
   ];
 

@@ -1,4 +1,4 @@
-/* global NODE_ENV DATA_MAP DATA_NETWORK DATA_JSON */
+/* global NODE_ENV */
 import React, { useContext, useEffect, useRef } from 'react';
 import { observer } from 'mobx-react-lite';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -57,25 +57,19 @@ const ZetaAlpha = observer(({ queryString = {}, fullscreenHandle }) => {
     }
 
     const proxy = (NODE_ENV !== 'development') ? configStore.proxyUrl : undefined;
-    let download = false;
     let mapURL = getProxyUrl(proxy, queryString[parameterKeys.MAP]);
     let networkURL = getProxyUrl(proxy, queryString[parameterKeys.NETWORK]);
     let jsonURL = queryString[parameterKeys.JSON] instanceof Object ? queryString[parameterKeys.JSON] : getProxyUrl(proxy, queryString[parameterKeys.JSON]);
-    if (mapURL || networkURL) download = true;
     if (NODE_ENV === 'development' && !mapURL && !networkURL && !jsonURL) {
-      jsonURL = require('data/Zeta-Alpha_ICLR2021.json');
+      jsonURL = 'data/Zeta-Alpha_ICLR2021.json';
     } else if (!mapURL && !networkURL && !jsonURL) {
-      // eslint-disable-next-line import/no-dynamic-require
-      mapURL = DATA_MAP && require(DATA_MAP);
-      // eslint-disable-next-line import/no-dynamic-require
-      networkURL = DATA_NETWORK && require(DATA_NETWORK);
-      // eslint-disable-next-line import/no-dynamic-require
-      jsonURL = DATA_JSON && require(DATA_JSON);
-      if (mapURL || networkURL) download = false;
+      mapURL = getProxyUrl(proxy, configStore.parameters.map);
+      networkURL = getProxyUrl(proxy, configStore.parameters.network);
+      jsonURL = getProxyUrl(proxy, configStore.parameters.json);
     }
 
     if (mapURL || networkURL) {
-      webworkerStore.openMapNetworkFile(mapURL, networkURL, undefined, download);
+      webworkerStore.openMapNetworkFile(mapURL, networkURL);
     } else if (jsonURL) {
       webworkerStore.openJsonFile(jsonURL);
     } else {

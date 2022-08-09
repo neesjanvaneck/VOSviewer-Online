@@ -36,7 +36,13 @@ const rules = [
   {
     test: /\.txt$/,
     type: 'asset/source',
-  }
+  },
+  {
+    test: /\worker\.js$/,
+    use: {
+      loader: 'workerize-loader',
+    },
+  },
 ];
 
 const config = {
@@ -146,22 +152,81 @@ export default (env = defaultEnv) => {
       'process.env.NODE_ENV': JSON.stringify(env.dev ? 'development' : 'production'),
       NODE_ENV: JSON.stringify(env.dev ? 'development' : 'production'),
       MODE: JSON.stringify(appMode),
-      CONFIG: JSON.stringify(jsonConfig),
-      DATA_MAP: (jsonConfig.parameters && jsonConfig.parameters.map) ? JSON.stringify(jsonConfig.parameters.map) : undefined,
-      DATA_NETWORK: (jsonConfig.parameters && jsonConfig.parameters.network) ? JSON.stringify(jsonConfig.parameters.network) : undefined,
-      DATA_JSON: (jsonConfig.parameters && jsonConfig.parameters.json) ? JSON.stringify(jsonConfig.parameters.json) : undefined
+      CONFIG: JSON.stringify(jsonConfig)
     }),
 
     // new BundleAnalyzerPlugin(),
   ];
 
-  config.plugins.push(
-    new CopyPlugin({
-      patterns: [
-        ...copyPatternsImages,
-      ],
-    }),
-  );
+  if (appMode === 'vosviewer') {
+    config.plugins.push(
+      new CopyPlugin({
+        patterns: [
+          ...copyPatternsImages,
+          {
+            from: resolve(__dirname, 'data', 'JOI_2007-2016_co-authorship_map.txt'),
+            to: absolute('dist', bundleName, 'data/JOI_2007-2016_co-authorship_map.txt'),
+          },
+          {
+            from: resolve(__dirname, 'data', 'JOI_2007-2016_co-authorship_network.txt'),
+            to: absolute('dist', bundleName, 'data/JOI_2007-2016_co-authorship_network.txt'),
+          },
+          {
+            from: resolve(__dirname, 'data', 'JOI_2007-2016_co-authorship_network.json'),
+            to: absolute('dist', bundleName, 'data/JOI_2007-2016_co-authorship_network.json'),
+          },
+        ],
+      }),
+    );
+  } else if (appMode === 'dimensions') {
+    config.plugins.push(
+      new CopyPlugin({
+        patterns: [
+          ...copyPatternsImages,
+          {
+            from: resolve(__dirname, 'data', 'Dimensions_COVID19_research_organization_co-authorship_network.json'),
+            to: absolute('dist', bundleName, 'data/Dimensions_COVID19_research_organization_co-authorship_network.json'),
+          },
+          {
+            from: resolve(__dirname, 'data', 'Dimensions_obesity_journal_bibliographic_coupling_network.json'),
+            to: absolute('dist', bundleName, 'data/Dimensions_obesity_journal_bibliographic_coupling_network.json'),
+          },
+          {
+            from: resolve(__dirname, 'data', 'Dimensions_scientometrics_researcher_co-authorship_network.json'),
+            to: absolute('dist', bundleName, 'data/Dimensions_scientometrics_researcher_co-authorship_network.json'),
+          },
+        ],
+      }),
+    );
+  } else if (appMode === 'zetaalpha') {
+    config.plugins.push(
+      new CopyPlugin({
+        patterns: [
+          ...copyPatternsImages,
+          {
+            from: resolve(__dirname, 'data', 'Zeta-Alpha_ICLR2021.json'),
+            to: absolute('dist', bundleName, 'data/Zeta-Alpha_ICLR2021.json'),
+          }
+        ],
+      }),
+    );
+  } else if (appMode === 'rori') {
+    config.plugins.push(
+      new CopyPlugin({
+        patterns: [
+          ...copyPatternsImages,
+          {
+            from: resolve(__dirname, 'data', 'RoRI_research_funding_landscape_2019jun_global.txt'),
+            to: absolute('dist', bundleName, 'data/RoRI_research_funding_landscape_2019jun_global.txt'),
+          },
+          {
+            from: resolve(__dirname, 'data', 'RoRI_research_funding_landscape_2019jun_health.txt'),
+            to: absolute('dist', bundleName, 'data/RoRI_research_funding_landscape_2019jun_health.txt'),
+          },
+        ],
+      }),
+    );
+  }
 
   return config;
 };

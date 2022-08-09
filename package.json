@@ -25,7 +25,6 @@
     "build-component:vosviewer": "npm run build-component",
     "build-component:dimensions": "webpack --progress --env config=config-dimensions.json --env mode=dimensions --config webpack.component.config.babel.js && mode=dimensions node copy-package-json.js",
     "build-component:zeta-alpha": "webpack --progress --env config=config-zeta-alpha.json --env mode=zetaalpha --config webpack.component.config.babel.js && mode=zetaalpha node copy-package-json.js",
-    "build-component:rori": "webpack --progress --env mode=rori --config webpack.component.config.babel.js && mode=rori node copy-package-json.js",
     "copy-package-json": "node copy-package-json.js"
   },
   "dependencies": {
