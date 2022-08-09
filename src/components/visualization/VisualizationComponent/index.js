@@ -25,7 +25,7 @@ const VisualizationComponent = observer(({
 
   const updateCanvasSize = () => {
     setCanvasSize([
-      visEl.current.offsetWidth - ((configStore.urlPreviewPanel && !withoutUrlPreviewPanel) ? configStore.urlPreviewPanelWidth : 0),
+      visEl.current.offsetWidth,
       visEl.current.offsetHeight
     ]);
     uiStore.setWindowInnerWidth(window.innerWidth);
