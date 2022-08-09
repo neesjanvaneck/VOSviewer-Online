@@ -1,4 +1,4 @@
-import { makeAutoObservable } from 'mobx';
+import { makeAutoObservable, runInAction } from 'mobx';
 import decodeUriComponent from 'decode-uri-component';
 import _clamp from 'lodash/clamp';
 import _isUndefined from 'lodash/isUndefined';
@@ -245,9 +245,13 @@ export default class State {
     this.loadingScreenProcessType = loadingScreenProcessType;
   }
 
-  setLoadingScreenProgressValue(loadingScreenProgressValue) {
+  async setLoadingScreenProgressValue(loadingScreenProgressValue) {
     this.loadingScreenProgressValue = loadingScreenProgressValue;
-    if (loadingScreenProgressValue === 100) setTimeout(() => { this.loadingScreenProgressValue = 0; }, 500);
+    if (loadingScreenProgressValue === 100) {
+      await new Promise((_) => setTimeout(_, 500));
+      // https://mobx.js.org/actions.html#runinaction
+      runInAction(() => { this.loadingScreenProgressValue = 0; });
+    }
   }
 
   setInfoDialogIsOpen(infoDialogIsOpen) {
