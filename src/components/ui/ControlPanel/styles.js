@@ -99,6 +99,7 @@ export const switchLabel = css`
 export const sliderBox = css`
   label: slider-box;
   margin: 4px 2px 12px 0px;
+  line-height: 0px;
 `;
 
 export const sliderBoxLabel = css`
