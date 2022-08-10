@@ -2,7 +2,7 @@ import { css } from '@emotion/css';
 
 export const urlPreviewPanel = (previewPanelWidth) => css`
   label: url-preview-panel;
-  position: fixed;
+  position: absolute;
   width: ${previewPanelWidth}px;
   height: 100%;
   top: 0;

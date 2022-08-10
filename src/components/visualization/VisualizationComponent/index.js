@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import { withResizeDetector } from 'react-resize-detector';
 
 import {
   ConfigStoreContext, FileDataStoreContext, UiStoreContext, VisualizationStoreContext, WebworkerStoreContext
@@ -13,7 +12,7 @@ import ItemLabelCanvas from 'components/visualization/ItemLabelCanvas';
 import * as s from './styles';
 
 const VisualizationComponent = observer(({
-  width, height, withoutUrlPreviewPanel, withoutLinks, withoutItemLabels, customFont
+  withoutUrlPreviewPanel, withoutLinks, withoutItemLabels, customFont
 }) => {
   const configStore = useContext(ConfigStoreContext);
   const fileDataStore = useContext(FileDataStoreContext);
@@ -24,11 +23,12 @@ const VisualizationComponent = observer(({
   const [canvasSize, setCanvasSize] = useState(undefined);
 
   const updateCanvasSize = () => {
-    setCanvasSize([
-      visEl.current.offsetWidth,
-      visEl.current.offsetHeight
-    ]);
-    uiStore.setWindowInnerWidth(window.innerWidth);
+    if (uiStore.componentWidth && uiStore.componentHeight) {
+      setCanvasSize([
+        uiStore.componentWidth - ((configStore.urlPreviewPanel && !withoutUrlPreviewPanel) ? configStore.urlPreviewPanelWidth : 0),
+        uiStore.componentHeight
+      ]);
+    }
   };
 
   useEffect(() => {
@@ -46,10 +46,8 @@ const VisualizationComponent = observer(({
   }, [configStore.urlPreviewPanel]);
 
   useEffect(() => {
-    if (width && height) {
-      updateCanvasSize();
-    }
-  }, [width, height]);
+    updateCanvasSize();
+  }, [uiStore.componentWidth, uiStore.componentHeight]);
 
   useEffect(() => {
     if (visEl) {
@@ -127,4 +125,4 @@ const VisualizationComponent = observer(({
   );
 });
 
-export default withResizeDetector(VisualizationComponent);
+export default VisualizationComponent;
