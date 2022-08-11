@@ -93,7 +93,7 @@ const InfoPanel = observer(() => {
             && (
               <>
                 <InfoItem label={fileDataStore.terminology.links} value={formatNumber(itemLinkData.nLinks)} labelStyle={fileDataStore.styles.description_heading} />
-                {uiStore.componentWidth > 520
+                {uiStore.windowInnerWidth > 520
                   && (
                     <>
                       <InfoItem label={fileDataStore.terminology.total_link_strength} value={formatNumber(itemLinkData.totalLinkStrength)} labelStyle={fileDataStore.styles.description_heading} />
@@ -147,7 +147,7 @@ const InfoPanel = observer(() => {
         && (
           <>
             <InfoItem label={fileDataStore.terminology.links} value={formatNumber(visualizationStore.links.length)} labelStyle={fileDataStore.styles.description_heading} />
-            {uiStore.componentWidth > 520
+            {uiStore.windowInnerWidth > 520
               && (
                 <>
                   <InfoItem label={fileDataStore.terminology.total_link_strength} value={formatNumber(visualizationStore.totalLinkStrength)} labelStyle={fileDataStore.styles.description_heading} />

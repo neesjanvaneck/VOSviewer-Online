@@ -93,7 +93,7 @@ const InfoPanel = observer(() => {
               <>
                 <Divider />
                 <InfoItem text={`${fileDataStore.terminology.links}: ${formatNumber(itemLinkData.nLinks)}`} />
-                {uiStore.componentWidth > 800
+                {uiStore.windowInnerWidth > 800
                   && (
                     <>
                       <Divider />
@@ -211,7 +211,7 @@ const InfoPanel = observer(() => {
                         <>
                           <Divider />
                           <InfoItem text={`${fileDataStore.terminology.links}: ${formatNumber(visualizationStore.links.length)}`} />
-                          {uiStore.componentWidth > 800
+                          {uiStore.windowInnerWidth > 800
                             && (
                               <>
                                 <Divider />

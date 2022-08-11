@@ -84,9 +84,7 @@ export default class State {
 
   introDialogIsOpen = false
 
-  componentWidth = undefined
-
-  componentHeight = undefined
+  windowInnerWidth = window.innerWidth
 
   infoPanelWidth = 0
 
@@ -264,12 +262,8 @@ export default class State {
     this.introDialogIsOpen = introDialogIsOpen;
   }
 
-  setComponentWidth(componentWidth) {
-    this.componentWidth = componentWidth;
-  }
-
-  setComponentHeight(componentHeight) {
-    this.componentHeight = componentHeight;
+  setWindowInnerWidth(windowInnerWidth) {
+    this.windowInnerWidth = windowInnerWidth;
   }
 
   setInfoPanelWidth(infoPanelWidth) {
