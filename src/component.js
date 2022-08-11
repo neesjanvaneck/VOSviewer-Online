@@ -1,4 +1,4 @@
-/* global CONFIG */
+/* global CONFIG IS_REACT_COMPONENT */
 import React, { useContext, useEffect, useState, useRef } from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { observer } from 'mobx-react-lite';
@@ -187,7 +187,7 @@ const VOSviewer = observer(({ parameters = {}, data }) => {
     visualizationStore.updateData();
     visualizationStore.updateZoomLevel();
     if (uiStore.showItem) _showItem();
-    configStore.setUrlPreviewPanelIsOpen(visualizationStore.itemsOrLinksWithUrl);
+    configStore.setUrlPreviewPanelIsOpen(!IS_REACT_COMPONENT && visualizationStore.itemsOrLinksWithUrl);
     uiStore.setLoadingScreenIsOpen(false);
     if (uiStore.showInfo && (fileDataStore.title && fileDataStore.description)) uiStore.setInfoDialogIsOpen(true);
   }

@@ -1,3 +1,4 @@
+/* global IS_REACT_COMPONENT */
 /* eslint-disable no-undef */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/anchor-has-content */
@@ -98,7 +99,7 @@ const Share = observer(() => {
 
   return (
     <>
-      {configStore.uiConfig.share_icon && (uiStore.jsonQueryStringValue || uiStore.mapQueryStringValue || uiStore.networkQueryStringValue)
+      {!IS_REACT_COMPONENT && configStore.uiConfig.share_icon && (uiStore.jsonQueryStringValue || uiStore.mapQueryStringValue || uiStore.networkQueryStringValue)
         && (
           <>
             <div

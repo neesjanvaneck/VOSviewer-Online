@@ -151,6 +151,7 @@ export default (env = defaultEnv) => {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(env.dev ? 'development' : 'production'),
       NODE_ENV: JSON.stringify(env.dev ? 'development' : 'production'),
+      IS_REACT_COMPONENT: JSON.stringify(false),
       MODE: JSON.stringify(appMode),
       CONFIG: JSON.stringify(jsonConfig)
     }),
