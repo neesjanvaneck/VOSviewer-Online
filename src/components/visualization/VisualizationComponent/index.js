@@ -24,12 +24,8 @@ const VisualizationComponent = observer(({
 
   const updateCanvasSize = () => {
     if (uiStore.componentWidth && uiStore.componentHeight) {
-      const urlPreviewPanelWidth = ((configStore.urlPreviewPanel && !withoutUrlPreviewPanel) ? configStore.urlPreviewPanelWidth : 0);
-      setCanvasSize(configStore.fullscreen ? [
-        window.innerWidth - urlPreviewPanelWidth,
-        window.innerHeight
-      ] : [
-        uiStore.componentWidth - urlPreviewPanelWidth,
+      setCanvasSize([
+        uiStore.componentWidth - ((configStore.urlPreviewPanel && !withoutUrlPreviewPanel) ? configStore.urlPreviewPanelWidth : 0),
         uiStore.componentHeight
       ]);
     }
@@ -51,7 +47,7 @@ const VisualizationComponent = observer(({
 
   useEffect(() => {
     updateCanvasSize();
-  }, [uiStore.componentWidth, uiStore.componentHeight, configStore.fullscreen]);
+  }, [uiStore.componentWidth, uiStore.componentHeight]);
 
   useEffect(() => {
     if (visEl) {
