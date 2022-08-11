@@ -168,6 +168,13 @@ const VOSviewer = observer(({ queryString = {}, fullscreenHandle }) => {
             },
           },
         },
+        MuiPaper: {
+          styleOverrides: {
+            root: {
+              lineHeight: 0.6,
+            },
+          }
+        },
         MuiSlider: {
           defaultProps: {
             size: 'small',
