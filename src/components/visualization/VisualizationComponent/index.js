@@ -13,20 +13,20 @@ import ItemLabelCanvas from 'components/visualization/ItemLabelCanvas';
 import * as s from './styles';
 
 const VisualizationComponent = observer(({
-  width, height, withoutUrlPreviewPanel, withoutLinks, withoutItemLabels, customFont
+  width, height, targetRef, withoutUrlPreviewPanel, withoutLinks, withoutItemLabels, customFont
 }) => {
   const configStore = useContext(ConfigStoreContext);
   const fileDataStore = useContext(FileDataStoreContext);
   const uiStore = useContext(UiStoreContext);
   const visualizationStore = useContext(VisualizationStoreContext);
   const webworkerStore = useContext(WebworkerStoreContext);
-  const visEl = useRef(null);
+  // const visEl = useRef(null);
   const [canvasSize, setCanvasSize] = useState(undefined);
 
   const updateCanvasSize = () => {
     setCanvasSize([
-      visEl.current.offsetWidth,
-      visEl.current.offsetHeight
+      targetRef.current.offsetWidth,
+      targetRef.current.offsetHeight
     ]);
     uiStore.setWindowInnerWidth(window.innerWidth);
   };
@@ -52,16 +52,16 @@ const VisualizationComponent = observer(({
   }, [width, height]);
 
   useEffect(() => {
-    if (visEl) {
-      visEl.current.addEventListener('dragenter', (e) => {
+    if (targetRef) {
+      targetRef.current.addEventListener('dragenter', (e) => {
         e.stopPropagation();
         e.preventDefault();
       }, false);
-      visEl.current.addEventListener('dragover', (e) => {
+      targetRef.current.addEventListener('dragover', (e) => {
         e.stopPropagation();
         e.preventDefault();
       }, false);
-      visEl.current.addEventListener('drop', (e) => {
+      targetRef.current.addEventListener('drop', (e) => {
         e.stopPropagation();
         e.preventDefault();
         const file = e.dataTransfer.files[0];
@@ -80,7 +80,7 @@ const VisualizationComponent = observer(({
         }
       }, false);
     }
-  }, [visEl]);
+  }, [targetRef]);
 
   const handleClick = () => {
     uiStore.setScoreOptionsPanelIsOpen(false);
@@ -90,7 +90,7 @@ const VisualizationComponent = observer(({
     <div
       className={s.visContainer(configStore.urlPreviewPanel && !withoutUrlPreviewPanel, configStore.urlPreviewPanelWidth)}
       onClick={handleClick}
-      ref={visEl}
+      ref={targetRef}
     >
       {canvasSize && (
       <>
