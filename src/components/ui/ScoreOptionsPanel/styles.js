@@ -7,6 +7,7 @@ export const scoreOptionsPanel = css`
   padding: ${panelPadding}px;
   border-radius: 5px;
   pointer-events: all;
+  line-height: 0.6;
 `;
 
 export const textField = css`

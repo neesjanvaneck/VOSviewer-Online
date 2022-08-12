@@ -25,6 +25,7 @@ export const legendPanel = css`
   display: flex;
   flex-direction: row-reverse;
   padding: ${panelPadding}px;
+  line-height: 0.6;
 `;
 
 export const colorLegend = css`
