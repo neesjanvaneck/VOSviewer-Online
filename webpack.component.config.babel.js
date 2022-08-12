@@ -105,6 +105,7 @@ export default (env = defaultEnv) => {
 
   let jsonConfig;
   try {
+    // eslint-disable-next-line import/no-dynamic-require
     jsonConfig = require(resolve(__dirname, env.config));
   } catch (ex) {
     jsonConfig = {};
@@ -120,7 +121,6 @@ export default (env = defaultEnv) => {
     new NodePolyfillPlugin(),
     new webpack.DefinePlugin({
       NODE_ENV: JSON.stringify('production'),
-      PRODUCTION: JSON.stringify(true),
       IS_REACT_COMPONENT: JSON.stringify(true),
       MODE: JSON.stringify(appMode),
       CONFIG: JSON.stringify(jsonConfig)

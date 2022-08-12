@@ -136,6 +136,7 @@ export default (env = defaultEnv) => {
 
   let jsonConfig;
   try {
+    // eslint-disable-next-line import/no-dynamic-require
     jsonConfig = require(resolve(__dirname, env.config));
   } catch (ex) {
     jsonConfig = {};
@@ -155,7 +156,6 @@ export default (env = defaultEnv) => {
       MODE: JSON.stringify(appMode),
       CONFIG: JSON.stringify(jsonConfig)
     }),
-
     // new BundleAnalyzerPlugin(),
   ];
 
