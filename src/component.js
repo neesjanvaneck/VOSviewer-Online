@@ -39,10 +39,10 @@ const VOSviewer = observer(({ parameters = {}, data }) => {
     visualizationStore.updateStore(configStore);
     layoutStore.updateStore(configStore);
     clusteringStore.updateStore(configStore);
+    if (data) parameters[parameterKeys.JSON] = data;
   }
 
   useEffect(() => {
-    if (data) parameters[parameterKeys.JSON] = data;
     webworkerStore.addWorkerEventListener(d => {
       const { type, data } = d;
       switch (type) {
