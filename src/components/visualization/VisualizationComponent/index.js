@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { withResizeDetector } from 'react-resize-detector';
 
@@ -20,7 +20,6 @@ const VisualizationComponent = observer(({
   const uiStore = useContext(UiStoreContext);
   const visualizationStore = useContext(VisualizationStoreContext);
   const webworkerStore = useContext(WebworkerStoreContext);
-  // const visEl = useRef(null);
   const [canvasSize, setCanvasSize] = useState(undefined);
 
   const updateCanvasSize = () => {
@@ -28,7 +27,6 @@ const VisualizationComponent = observer(({
       targetRef.current.offsetWidth,
       targetRef.current.offsetHeight
     ]);
-    uiStore.setWindowInnerWidth(window.innerWidth);
   };
 
   useEffect(() => {

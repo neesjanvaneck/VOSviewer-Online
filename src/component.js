@@ -6,6 +6,7 @@ import levenSort from 'leven-sort';
 import _isUndefined from 'lodash/isUndefined';
 import _isPlainObject from 'lodash/isPlainObject';
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
+import { withResizeDetector } from 'react-resize-detector';
 
 import { parameterKeys } from 'utils/variables';
 import {
@@ -15,7 +16,7 @@ import {
 // The '@component' is resolved from an alias in the webpack configuration
 import App from '@component';
 
-const VOSviewer = observer(({ parameters = {}, data }) => {
+const VOSviewer = observer(({ width, parameters = {}, data }) => {
   const configStore = useContext(ConfigStoreContext);
   const clusteringStore = useContext(ClusteringStoreContext);
   const fileDataStore = useContext(FileDataStoreContext);
@@ -31,6 +32,10 @@ const VOSviewer = observer(({ parameters = {}, data }) => {
   useEffect(() => {
     uiStore.setRootEl(rootElRef.current);
   }, []);
+
+  useEffect(() => {
+    if (width !== undefined) uiStore.setComponentWidth(configStore.fullscreen ? window.innerWidth : width);
+  }, [width, configStore.fullscreen]);
 
   if (firstRender) {
     setFirstRender(false);
@@ -216,4 +221,4 @@ const VOSviewer = observer(({ parameters = {}, data }) => {
   );
 });
 
-export default VOSviewer;
+export default withResizeDetector(VOSviewer);
