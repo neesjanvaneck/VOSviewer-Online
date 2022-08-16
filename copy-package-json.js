@@ -14,7 +14,7 @@ peerDependenciesList.forEach(d => {
   delete dependencies[d];
 });
 const appMode = process.env.mode || 'vosviewer';
-const libName = appMode === 'vosviewer' ? 'vosviewer-component' : `vosviewer-component-${appMode}`;
+const libName = appMode === 'vosviewer' ? 'vosviewer-online-component' : `vosviewer-online-component-${appMode}`;
 const newPkg = {
   name: libName,
   version,

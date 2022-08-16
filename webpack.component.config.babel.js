@@ -71,7 +71,7 @@ const defaultEnv = { dev: false };
 
 export default (env = defaultEnv) => {
   const appMode = env.mode || 'vosviewer';
-  const bundleName = appMode === 'vosviewer' ? 'vosviewer-component' : `vosviewer-component-${appMode}`;
+  const bundleName = appMode === 'vosviewer' ? 'vosviewer-online-component' : `vosviewer-online-component-${appMode}`;
 
   config.stats = {
     errorDetails: true,
