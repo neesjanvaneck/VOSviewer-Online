@@ -9,7 +9,6 @@ import ttfFontMediumItalic from 'assets/fonts/Roboto-MediumItalic.ttf';
 import ttfFontBold from 'assets/fonts/Roboto-Bold.ttf';
 import ttfFontBoldItalic from 'assets/fonts/Roboto-BoldItalic.ttf';
 
-
 export const globalStyles = injectGlobal`
 @font-face {
   font-family: "Roboto";
@@ -66,4 +65,4 @@ export const globalStyles = injectGlobal`
   font-weight: 700;
   font-style: italic;
 }
-`
+`;

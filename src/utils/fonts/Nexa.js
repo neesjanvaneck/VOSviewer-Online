@@ -16,6 +16,7 @@ export const globalStyles = injectGlobal`
   url(${ttfFont}) format('truetype'),
   url(${svgFont}) 
 }
+
 @font-face {
   font-family: "Nexa Light";
   src: 

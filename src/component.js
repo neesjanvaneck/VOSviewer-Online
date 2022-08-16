@@ -1,6 +1,5 @@
 /* global CONFIG IS_REACT_COMPONENT */
 import React, { useContext, useEffect, useState, useRef } from 'react';
-// eslint-disable-next-line import/no-unresolved
 import { observer } from 'mobx-react-lite';
 import levenSort from 'leven-sort';
 import _isUndefined from 'lodash/isUndefined';
@@ -14,6 +13,7 @@ import {
 } from 'store/stores';
 
 // The '@component' is resolved from an alias in the webpack configuration
+// eslint-disable-next-line import/no-unresolved
 import App from '@component';
 
 const VOSviewer = observer(({ width, parameters = {}, data }) => {
