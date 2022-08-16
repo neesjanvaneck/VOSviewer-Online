@@ -26,10 +26,10 @@ const RoRI = observer(({ dataType }) => {
   uiStore.setGradientCircles(false);
 
   useEffect(() => {
-    const mapURL = (dataType === 'health') ? 'data/RoRI_research_funding_landscape_2019jun_health.txt' : 'data/RoRI_research_funding_landscape_2019jun_global.txt';
+    const mapUrl = (dataType === 'health') ? 'data/RoRI_research_funding_landscape_2019jun_health.txt' : 'data/RoRI_research_funding_landscape_2019jun_global.txt';
     uiStore.setSizeIndex(0);
     uiStore.setColorIndex((dataType === 'health') ? 1 : 0);
-    webworkerStore.openMapNetworkFile(mapURL);
+    webworkerStore.openMapNetworkFile(mapUrl);
   });
 
   const muiTheme = createTheme({

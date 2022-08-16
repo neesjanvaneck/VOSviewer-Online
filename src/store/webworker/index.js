@@ -31,12 +31,12 @@ export default class State {
     this.runClustering = runClustering;
   }
 
-  openJsonFile(jsonFileOrUrl, resetParameters = false) {
+  openJsonFile(jsonFileOrUrlOrObject, resetParameters = false) {
     this.resetParameters = resetParameters;
     this.loadNewData = true;
     this.runLayout = false;
     this.runClustering = false;
-    this.startParseJsonFile({ jsonFileOrUrl });
+    this.startParseJsonFile({ jsonFileOrUrlOrObject });
   }
 
   openMapNetworkFile(mapFileOrUrl, networkFileOrUrl, resetParameters = false) {

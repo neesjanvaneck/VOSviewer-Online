@@ -57,21 +57,21 @@ const ZetaAlpha = observer(({ queryString = {}, fullscreenHandle }) => {
     }
 
     const proxy = (NODE_ENV !== 'development') ? configStore.proxyUrl : undefined;
-    let mapURL = getProxyUrl(proxy, queryString[parameterKeys.MAP]);
-    let networkURL = getProxyUrl(proxy, queryString[parameterKeys.NETWORK]);
-    let jsonURL = queryString[parameterKeys.JSON] instanceof Object ? queryString[parameterKeys.JSON] : getProxyUrl(proxy, queryString[parameterKeys.JSON]);
-    if (NODE_ENV === 'development' && !mapURL && !networkURL && !jsonURL) {
-      jsonURL = 'data/Zeta-Alpha_ICLR2021.json';
-    } else if (!mapURL && !networkURL && !jsonURL) {
-      mapURL = getProxyUrl(proxy, configStore.parameters.map);
-      networkURL = getProxyUrl(proxy, configStore.parameters.network);
-      jsonURL = getProxyUrl(proxy, configStore.parameters.json);
+    let mapUrl = getProxyUrl(proxy, queryString[parameterKeys.MAP]);
+    let networkUrl = getProxyUrl(proxy, queryString[parameterKeys.NETWORK]);
+    let jsonUrlOrObject = queryString[parameterKeys.JSON] instanceof Object ? queryString[parameterKeys.JSON] : getProxyUrl(proxy, queryString[parameterKeys.JSON]);
+    if (NODE_ENV === 'development' && !mapUrl && !networkUrl && !jsonUrlOrObject) {
+      jsonUrlOrObject = 'data/Zeta-Alpha_ICLR2021.json';
+    } else if (!mapUrl && !networkUrl && !jsonUrlOrObject) {
+      mapUrl = getProxyUrl(proxy, configStore.parameters.map);
+      networkUrl = getProxyUrl(proxy, configStore.parameters.network);
+      jsonUrlOrObject = getProxyUrl(proxy, configStore.parameters.json);
     }
 
-    if (mapURL || networkURL) {
-      webworkerStore.openMapNetworkFile(mapURL, networkURL);
-    } else if (jsonURL) {
-      webworkerStore.openJsonFile(jsonURL);
+    if (mapUrl || networkUrl) {
+      webworkerStore.openMapNetworkFile(mapUrl, networkUrl);
+    } else if (jsonUrlOrObject) {
+      webworkerStore.openJsonFile(jsonUrlOrObject);
     } else {
       uiStore.setIntroDialogIsOpen(false);
       configStore.setUrlPreviewPanelIsOpen(false);

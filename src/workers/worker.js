@@ -33,7 +33,7 @@ self.addEventListener("message", event => {
       networkNormalizer.performNormalization(options.normalizationMethod);
       break;
     case 'start parse vosviewer-json file':
-      _parseJsonFile(options.jsonFileOrUrl);
+      _parseJsonFile(options.jsonFileOrUrlOrObject);
       break;
     case 'start parse vosviewer-map-network file':
       _parseMapNetworkFile(options.mapFileOrUrl, options.networkFileOrUrl);
@@ -163,15 +163,15 @@ self.addEventListener("message", event => {
   }
 });
 
-function _parseJsonFile(jsonFileOrUrl) {
-  if (jsonFileOrUrl) {
+function _parseJsonFile(jsonFileOrUrlOrObject) {
+  if (jsonFileOrUrlOrObject) {
     self.postMessage({
       type: 'update loading screen',
       data: { processType: processTypes.READING_JSON_FILE },
     });
-    if (jsonFileOrUrl instanceof File) {
+    if (jsonFileOrUrlOrObject instanceof File) {
       const reader = new FileReader();
-      reader.readAsText(jsonFileOrUrl, 'UTF-8');
+      reader.readAsText(jsonFileOrUrlOrObject, 'UTF-8');
       reader.onload = event => {
         _parseJsonData(event.target.result);
       };
@@ -182,10 +182,10 @@ function _parseJsonFile(jsonFileOrUrl) {
           data: { fileError },
         });
       };
-    } else if (jsonFileOrUrl instanceof Object) {
-      _parseJsonData(jsonFileOrUrl);
+    } else if (jsonFileOrUrlOrObject instanceof Object) {
+      _parseJsonData(jsonFileOrUrlOrObject);
     } else {
-      fetch(jsonFileOrUrl, { credentials: "include" })
+      fetch(jsonFileOrUrlOrObject, { credentials: "include" })
         .then(response => {
           if (!response.ok) {
             if (response.status === 404) {
@@ -210,18 +210,18 @@ function _parseJsonFile(jsonFileOrUrl) {
   }
 }
 
-function _parseJsonData(textOrObject) {
+function _parseJsonData(jsonObjectOrText) {
   let fileError;
   let jsonData = {};
   let mapData = [];
   let networkData = [];
 
   let data;
-  if (textOrObject instanceof Object) {
-    data = textOrObject;
+  if (jsonObjectOrText instanceof Object) {
+    data = jsonObjectOrText;
   } else {
     try {
-      data = JSON.parse(textOrObject);
+      data = JSON.parse(jsonObjectOrText);
     } catch (error) {
       data = undefined;
     }
@@ -278,7 +278,7 @@ function _parseJsonData(textOrObject) {
       uniqueItemIds.sort();
       mapData = uniqueItemIds.map(d => ({ id: d }));
     }
-  } else if (textOrObject === "") {
+  } else if (jsonObjectOrText === "") {
     fileError = getFileError(errorKeys.FILE_EMPTY, fileTypeKeys.VOSVIEWER_JSON_FILE);
   } else {
     fileError = getFileError(errorKeys.INVALID_JSON_DATA_FORMAT, fileTypeKeys.VOSVIEWER_JSON_FILE);
