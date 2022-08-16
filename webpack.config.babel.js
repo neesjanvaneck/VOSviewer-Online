@@ -3,6 +3,7 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import NodePolyfillPlugin from 'node-polyfill-webpack-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
 // import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 function absolute(...args) {
@@ -132,6 +133,9 @@ export default (env = defaultEnv) => {
         },
       },
     },
+    minimizer: [new TerserPlugin({
+      extractComments: false,
+    })],
   };
 
   let jsonConfig;

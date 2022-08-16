@@ -1,6 +1,7 @@
 import { join, resolve } from 'path';
 import webpack from 'webpack';
 import NodePolyfillPlugin from 'node-polyfill-webpack-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
 import pkg from './package.json';
 
 function absolute(...args) {
@@ -101,6 +102,12 @@ export default (env = defaultEnv) => {
 
   config.experiments = {
     outputModule: true
+  };
+
+  config.optimization = {
+    minimizer: [new TerserPlugin({
+      extractComments: false,
+    })],
   };
 
   let jsonConfig;

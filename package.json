@@ -79,6 +79,7 @@
     "material-ui-color": "^1.2.0",
     "node-polyfill-webpack-plugin": "^1.1.4",
     "react-helmet": "^6.1.0",
+    "terser-webpack-plugin": "^5.3.4",
     "tinyurl": "^1.1.7",
     "webpack": "^5.73.0",
     "webpack-bundle-analyzer": "^3.8.0",
