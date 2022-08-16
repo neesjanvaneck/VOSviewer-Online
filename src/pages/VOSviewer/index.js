@@ -29,7 +29,7 @@ import {
   ClusteringStoreContext, ConfigStoreContext, VisualizationStoreContext, LayoutStoreContext, UiStoreContext, QueryStringStoreContext, WebworkerStoreContext
 } from 'store/stores';
 import { getProxyUrl } from 'utils/helpers';
-import { parameterKeys, panelBackgroundColors, visualizationBackgroundColors } from 'utils/variables';
+import { parameterKeys, panelBackgroundColors, visualizationBackgroundColors, defaultMuiTheme } from 'utils/variables';
 import 'utils/fonts/Roboto';
 import * as s from './style';
 
@@ -99,6 +99,7 @@ const VOSviewer = observer(({ queryString = {}, fullscreenHandle }) => {
         },
       },
       components: {
+        ...defaultMuiTheme.components,
         MuiAccordion: {
           defaultProps: {
             disableGutters: true,

@@ -219,3 +219,7 @@ function _getNiceValue(value, round) {
 
   return niceFractionalPart * 10 ** exponent;
 }
+
+export function getFullscreenOrBodyContainer() {
+  return document.fullscreenElement ?? document.body;
+}

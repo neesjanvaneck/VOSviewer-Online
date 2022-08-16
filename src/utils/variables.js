@@ -4,6 +4,7 @@ import _join from 'lodash/join';
 
 import * as LayoutCreator from 'utils/networkanalysis/LayoutCreator';
 import * as ClusteringCreator from 'utils/networkanalysis/ClusteringCreator';
+import { getFullscreenOrBodyContainer } from 'utils/helpers';
 
 // User interface.
 export const urlPreviewPanelWidthExtent = [300, 600];
@@ -395,3 +396,20 @@ export const processDescriptions = {
   [processTypes.RUNNING_LAYOUT]: 'Running layout algorithm...',
   [processTypes.RUNNING_CLUSTERING]: 'Running clustering algorithm...',
 };
+
+export const defaultMuiTheme = {
+  components: {
+    MuiMenu: {
+      defaultProps: {
+        container: () => getFullscreenOrBodyContainer(),
+      },
+    },
+    MuiTooltip: {
+      defaultProps: {
+        PopperProps: {
+          container: () => getFullscreenOrBodyContainer(),
+        },
+      },
+    },
+  }
+}
