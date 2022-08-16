@@ -23,8 +23,8 @@
     "dev:rori": "webpack serve --hot --port 8600 --env dev --env mode=rori --config webpack.config.babel.js",
     "build-component": "webpack --progress --env config=config.json --config webpack.component.config.babel.js && node copy-package-json.js",
     "build-component:vosviewer": "npm run build-component",
-    "build-component:dimensions": "webpack --progress --env config=config-dimensions.json --env mode=dimensions --config webpack.component.config.babel.js && mode=dimensions node copy-package-json.js",
-    "build-component:zeta-alpha": "webpack --progress --env config=config-zeta-alpha.json --env mode=zetaalpha --config webpack.component.config.babel.js && mode=zetaalpha node copy-package-json.js",
+    "build-component:dimensions": "webpack --progress --env config=config-dimensions.json --env mode=dimensions --config webpack.component.config.babel.js && cross-env mode=dimensions node copy-package-json.js",
+    "build-component:zeta-alpha": "webpack --progress --env config=config-zeta-alpha.json --env mode=zetaalpha --config webpack.component.config.babel.js && cross-env mode=zetaalpha node copy-package-json.js",
     "copy-package-json": "node copy-package-json.js"
   },
   "dependencies": {
@@ -67,6 +67,7 @@
     "babel-loader": "^8.2.5",
     "babel-plugin-emotion": "^10.0.23",
     "copy-webpack-plugin": "^6.0.3",
+    "cross-env": "^7.0.3",
     "eslint": "^5.12.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-dependencies": "^2.4.0",
