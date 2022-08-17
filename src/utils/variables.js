@@ -397,7 +397,21 @@ export const processDescriptions = {
   [processTypes.RUNNING_CLUSTERING]: 'Running clustering algorithm...',
 };
 
-export const defaultMuiTheme = {
+export const defaultMuiTheme = (isDark, uiStyle) => ({
+  typography: {
+    fontFamily: uiStyle.font_family,
+    useNextVariants: true,
+  },
+  palette: {
+    mode: isDark ? 'dark' : 'light',
+    background: {
+      default: isDark ? visualizationBackgroundColors.DARK : visualizationBackgroundColors.LIGHT,
+      paper: isDark ? panelBackgroundColors.DARK : panelBackgroundColors.LIGHT,
+    },
+    primary: {
+      main: uiStyle.palette_primary_main_color,
+    },
+  },
   components: {
     MuiMenu: {
       defaultProps: {
@@ -411,5 +425,103 @@ export const defaultMuiTheme = {
         },
       },
     },
+    MuiAccordion: {
+      defaultProps: {
+        disableGutters: true,
+      },
+      styleOverrides: {
+        root: {
+          boxShadow: 'none',
+          backgroundImage: 'none',
+          backgroundColor: 'transparent',
+          '&:before': {
+            backgroundColor: 'transparent',
+          },
+        },
+      },
+    },
+    MuiAccordionDetails: {
+      styleOverrides: {
+        root: {
+          padding: '0px 0px 12px',
+        },
+      },
+    },
+    MuiAccordionSummary: {
+      styleOverrides: {
+        root: {
+          padding: '0px',
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          fontWeight: 400,
+          textTransform: 'none',
+        },
+      },
+    },
+    MuiFormControl: {
+      defaultProps: {
+        variant: 'standard',
+      },
+      styleOverrides: {
+        root: {
+          margin: '4px 0px 12px 0px',
+          width: '100%',
+        },
+      },
+    },
+    MuiFormControlLabel: {
+      styleOverrides: {
+        label: {
+          fontSize: '0.875rem',
+        },
+      },
+    },
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          fontSize: '0.875rem',
+        },
+      },
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          fontSize: '0.875rem',
+        },
+      },
+    },
+    MuiSlider: {
+      defaultProps: {
+        size: 'small',
+      },
+    },
+    MuiSvgIcon: {
+      styleOverrides: {
+        fontSizeSmall: {
+          fontSize: '1.1rem',
+        },
+      },
+    },
+    MuiSwitch: {
+      defaultProps: {
+        size: 'small',
+      },
+    },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          fontSize: '0.875rem',
+        },
+      },
+    },
+    MuiTextField: {
+      defaultProps: {
+        variant: 'standard',
+      },
+    },
   }
-}
+});
