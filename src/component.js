@@ -16,7 +16,7 @@ import {
 // eslint-disable-next-line import/no-unresolved
 import App from '@component';
 
-const VOSviewer = observer(({ width, parameters = {}, data }) => {
+const VOSviewer = observer(({ width, targetRef, parameters = {}, data }) => {
   const configStore = useContext(ConfigStoreContext);
   const clusteringStore = useContext(ClusteringStoreContext);
   const fileDataStore = useContext(FileDataStoreContext);
@@ -27,10 +27,9 @@ const VOSviewer = observer(({ width, parameters = {}, data }) => {
   const webworkerStore = useContext(WebworkerStoreContext);
   const [firstRender, setFirstRender] = useState(true);
   const fullscreenHandle = useFullScreenHandle();
-  const rootElRef = useRef(null);
 
   useEffect(() => {
-    uiStore.setRootEl(rootElRef.current);
+    uiStore.setRootEl(targetRef.current);
   }, []);
 
   useEffect(() => {
@@ -213,7 +212,7 @@ const VOSviewer = observer(({ width, parameters = {}, data }) => {
   }
 
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }} ref={rootElRef}>
+    <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }} ref={targetRef}>
       <FullScreen handle={fullscreenHandle}>
         <App parameters={parameters} fullscreenHandle={fullscreenHandle} />
       </FullScreen>
