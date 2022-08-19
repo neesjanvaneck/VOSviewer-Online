@@ -13,8 +13,7 @@ peerDependenciesList.forEach(d => {
   peerDependencies[d] = dependencies[d];
   delete dependencies[d];
 });
-const appMode = process.env.mode || 'vosviewer';
-const libName = appMode === 'vosviewer' ? 'vosviewer-online-component' : `vosviewer-online-component-${appMode}`;
+const libName = 'vosviewer-online';
 const newPkg = {
   name: libName,
   version,
@@ -24,4 +23,4 @@ const newPkg = {
   main: "./index.js",
 };
 
-fs.writeFileSync(`lib/${libName}/package.json`, JSON.stringify(newPkg, null, 2));
+fs.writeFileSync(`lib/package.json`, JSON.stringify(newPkg, null, 2));

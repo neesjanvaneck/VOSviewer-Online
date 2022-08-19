@@ -38,7 +38,6 @@ const rules = [
 ];
 
 const config = {
-  entry: ['./src/component.js'],
   module: {
     rules,
   },
@@ -71,7 +70,7 @@ const defaultEnv = { dev: false };
 
 export default (env = defaultEnv) => {
   const appMode = env.mode || 'vosviewer';
-  const bundleName = appMode === 'vosviewer' ? 'vosviewer-online-component' : `vosviewer-online-component-${appMode}`;
+  const bundlePath = appMode === 'vosviewer' ? 'lib' : `lib/${appMode}`;
 
   config.stats = {
     errorDetails: true,
@@ -80,25 +79,30 @@ export default (env = defaultEnv) => {
 
   config.mode = env.dev ? 'development' : 'production';
   config.output = {
-    path: absolute('lib', bundleName),
+    path: absolute(bundlePath),
     filename: 'index.js',
     library: {
       type: "module",
     },
   };
   let componentFileNamePrefix;
+  let entryFileName;
   switch (appMode) {
     case 'dimensions':
       componentFileNamePrefix = 'Dimensions';
+      entryFileName = 'VOSviewerOnlineDimensions';
       break;
-    case 'zetaalpha':
+    case 'zeta-alpha':
       componentFileNamePrefix = 'ZetaAlpha';
+      entryFileName = 'VOSviewerOnlineZetaAlpha';
       break;
     default:
       componentFileNamePrefix = 'VOSviewer';
+      entryFileName = 'VOSviewerOnline';
       break;
   }
   config.resolve.alias['@component'] = resolve(__dirname, `src/${componentFileNamePrefix}App.js`);
+  config.entry = [`./src/${entryFileName}.js`];
 
   config.experiments = {
     outputModule: true
