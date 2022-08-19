@@ -31,7 +31,7 @@ import {
   ClusteringStoreContext, ConfigStoreContext, LayoutStoreContext, UiStoreContext, VisualizationStoreContext, QueryStringStoreContext, WebworkerStoreContext
 } from 'store/stores';
 import { getProxyUrl } from 'utils/helpers';
-import { parameterKeys, panelBackgroundColors, visualizationBackgroundColors, defaultMuiTheme } from 'utils/variables';
+import { parameterKeys, defaultMuiTheme } from 'utils/variables';
 import 'utils/fonts/Roboto';
 import * as s from './style';
 

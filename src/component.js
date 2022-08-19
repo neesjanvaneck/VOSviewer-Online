@@ -1,5 +1,5 @@
 /* global CONFIG IS_REACT_COMPONENT */
-import React, { useContext, useEffect, useState, useRef } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import levenSort from 'leven-sort';
 import _isUndefined from 'lodash/isUndefined';

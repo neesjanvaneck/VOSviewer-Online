@@ -45,7 +45,6 @@ const RoRI = observer(({ dataType }) => {
       MuiButton: {
         styleOverrides: {
           root: {
-
             fontWeight: 400,
             textTransform: 'none',
           },
