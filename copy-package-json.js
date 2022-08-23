@@ -7,20 +7,29 @@ const peerDependenciesList = [
   'react',
   'react-dom',
 ];
-const { version, dependencies } = pkg;
+const {
+  version, author, keywords, license, homepage, repository, bugs, dependencies, engines
+} = pkg;
 const peerDependencies = {};
 peerDependenciesList.forEach(d => {
   peerDependencies[d] = dependencies[d];
   delete dependencies[d];
 });
-const libName = 'vosviewer-online';
 const newPkg = {
-  name: libName,
+  name: 'vosviewer-online',
   version,
-  dependencies,
-  peerDependencies,
+  description: "React component package for integrating VOSviewer Online into your site or application.",
+  author,
+  keywords,
+  license,
+  homepage,
+  repository,
+  bugs,
   type: "module",
   main: "./index.js",
+  dependencies,
+  peerDependencies,
+  engines
 };
 
 fs.writeFileSync(`lib/package.json`, JSON.stringify(newPkg, null, 2));
