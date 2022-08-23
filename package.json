@@ -35,11 +35,11 @@
     "dev:dimensions": "webpack serve --hot --port 8600 --env dev --env config=config-dimensions.json --env mode=dimensions --config webpack.config.babel.js",
     "dev:zeta-alpha": "webpack serve --hot --port 8600 --env dev --env config=config-zeta-alpha.json --env mode=zetaalpha --config webpack.config.babel.js",
     "dev:rori": "webpack serve --hot --port 8600 --env dev --env mode=rori --config webpack.config.babel.js",
-    "build-components": "npm run build-component:vosviewer && npm run build-component:dimensions && npm run build-component:zeta-alpha && node copy-package-json.js",
+    "build-component-package": "npm run build-component:vosviewer && npm run build-component:dimensions && npm run build-component:zeta-alpha && node copy-component-package-json.js",
     "build-component:vosviewer": "webpack --progress --env config=config.json --config webpack.component.config.babel.js",
     "build-component:dimensions": "webpack --progress --env config=config-dimensions.json --env mode=dimensions --config webpack.component.config.babel.js",
     "build-component:zeta-alpha": "webpack --progress --env config=config-zeta-alpha.json --env mode=zeta-alpha --config webpack.component.config.babel.js",
-    "copy-package-json": "node copy-package-json.js"
+    "copy-component-package-json": "node copy-component-package-json.js"
   },
   "dependencies": {
     "autosuggest-highlight": "^3.1.1",
