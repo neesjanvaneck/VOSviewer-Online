@@ -1,14 +1,28 @@
 {
   "name": "vosviewer-online",
   "version": "1.1.0",
-  "description": "VOSviewer Online",
-  "homepage": "https://app.vosviewer.com",
+  "description": "VOSviewer Online is a tool for network visualization. It is a web-based version of VOSviewer, a popular tool for constructing and visualizing bibliometric networks.",
+  "author": "Nees Jan van Eck <ecknjpvan@cwts.leidenuniv.nl> (https://github.com/neesjanvaneck)",
+  "keywords": [
+    "VOSviewer Online",
+    "VOSviewer",
+    "bibliometric network",
+    "network visualization",
+    "network analysis",
+    "clustering",
+    "layout",
+    "React",
+    "React component"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/neesjanvaneck/VOSviewer-Online#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/neesjanvaneck/VOSviewer-Online.git"
   },
-  "author": "Nees Jan van Eck <ecknjpvan@cwts.leidenuniv.nl> (https://github.com/neesjanvaneck)",
-  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/neesjanvaneck/VOSviewer-Online/issues"
+  },
   "module": "src",
   "scripts": {
     "build": "webpack --progress --env config=config.json --config webpack.config.babel.js",
