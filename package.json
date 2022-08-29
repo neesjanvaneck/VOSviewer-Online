@@ -38,6 +38,7 @@
     "material-ui-color": "^1.2.0",
     "mobx": "^4.9.3",
     "mobx-react-lite": "^1.4.1",
+    "networkanalysis-ts": "^1.0.0",
     "papaparse": "^5.3.1",
     "qrcode.react": "^1.0.1",
     "qs": "^6.10.2",
