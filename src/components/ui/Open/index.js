@@ -7,7 +7,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import FolderIcon from '@mui/icons-material/Folder';
 
 import {
-  ConfigStoreContext, FileDataStoreContext, UiStoreContext, WebworkerStoreContext
+  ConfigStoreContext, DataStoreContext, UiStoreContext, WebworkerStoreContext
 } from 'store/stores';
 import Dialog from 'components/ui/Dialog';
 import OpenDialogContent from './OpenDialogContent';
@@ -15,7 +15,7 @@ import * as s from './styles';
 
 const Open = observer(() => {
   const configStore = useContext(ConfigStoreContext);
-  const fileDataStore = useContext(FileDataStoreContext);
+  const dataStore = useContext(DataStoreContext);
   const uiStore = useContext(UiStoreContext);
   const webworkerStore = useContext(WebworkerStoreContext);
   const [isOpen, setIsOpen] = useState(false);
@@ -30,15 +30,15 @@ const Open = observer(() => {
 
   const openMapNetworkFile = () => {
     exitOpenDialog();
-    if (fileDataStore.mapFile || fileDataStore.networkFile) {
-      webworkerStore.openMapNetworkFile(fileDataStore.mapFile, fileDataStore.networkFile, true);
+    if (dataStore.mapFile || dataStore.networkFile) {
+      webworkerStore.openMapNetworkData(dataStore.mapFile, dataStore.networkFile, true);
     }
   };
 
   const openJsonFile = () => {
     exitOpenDialog();
-    if (fileDataStore.jsonFile) {
-      webworkerStore.openJsonFile(fileDataStore.jsonFile, true);
+    if (dataStore.jsonFile) {
+      webworkerStore.openJsonData(dataStore.jsonFile, true);
     }
   };
 

@@ -9,7 +9,7 @@ import { withResizeDetector } from 'react-resize-detector';
 
 import { parameterKeys } from 'utils/variables';
 import {
-  ConfigStoreContext, ClusteringStoreContext, FileDataStoreContext, LayoutStoreContext, UiStoreContext, VisualizationStoreContext, QueryStringStoreContext, WebworkerStoreContext
+  ConfigStoreContext, ClusteringStoreContext, DataStoreContext, LayoutStoreContext, UiStoreContext, VisualizationStoreContext, QueryStringStoreContext, WebworkerStoreContext
 } from 'store/stores';
 
 // The '@component' is resolved from an alias in the webpack configuration
@@ -19,7 +19,7 @@ import App from '@component';
 const VOSviewer = observer(({ width, targetRef, parameters = {}, data }) => {
   const configStore = useContext(ConfigStoreContext);
   const clusteringStore = useContext(ClusteringStoreContext);
-  const fileDataStore = useContext(FileDataStoreContext);
+  const dataStore = useContext(DataStoreContext);
   const layoutStore = useContext(LayoutStoreContext);
   const uiStore = useContext(UiStoreContext);
   const visualizationStore = useContext(VisualizationStoreContext);
@@ -55,10 +55,10 @@ const VOSviewer = observer(({ width, targetRef, parameters = {}, data }) => {
           uiStore.setLoadingScreenProgressValue(data.progressValue ? data.progressValue : 0);
           uiStore.setLoadingScreenIsOpen(true);
           break;
-        case 'end parse vosviewer-json file':
-        case 'end parse vosviewer-map-network file': {
-          fileDataStore.init(data, configStore.uiStyle);
-          if (!fileDataStore.fileError) {
+        case 'end parse vosviewer-json data':
+        case 'end parse vosviewer-map-network data': {
+          dataStore.init(data, configStore.uiStyle);
+          if (!dataStore.dataError) {
             if (webworkerStore.resetParameters) {
               uiStore.updateStore({
                 parameters: {
@@ -77,14 +77,14 @@ const VOSviewer = observer(({ width, targetRef, parameters = {}, data }) => {
                 }
               });
             }
-            if (_isPlainObject(fileDataStore.parameters)) {
-              configStore.updateStore({ parameters: fileDataStore.parameters });
-              uiStore.updateStore({ parameters: fileDataStore.parameters });
-              visualizationStore.updateStore({ parameters: fileDataStore.parameters, colorSchemes: fileDataStore.getColorSchemes() });
-              layoutStore.updateStore({ parameters: fileDataStore.parameters });
-              clusteringStore.updateStore({ parameters: fileDataStore.parameters });
+            if (_isPlainObject(dataStore.parameters)) {
+              configStore.updateStore({ parameters: dataStore.parameters });
+              uiStore.updateStore({ parameters: dataStore.parameters });
+              visualizationStore.updateStore({ parameters: dataStore.parameters, colorSchemes: dataStore.getColorSchemes() });
+              layoutStore.updateStore({ parameters: dataStore.parameters });
+              clusteringStore.updateStore({ parameters: dataStore.parameters });
             }
-            webworkerStore.startProcessData({ mapData: fileDataStore.mapData, networkData: fileDataStore.networkData });
+            webworkerStore.startProcessData({ mapData: dataStore.mapData, networkData: dataStore.networkData });
           } else {
             uiStore.setErrorDialogIsOpen(true);
             uiStore.setLoadingScreenIsOpen(false);
@@ -92,24 +92,24 @@ const VOSviewer = observer(({ width, targetRef, parameters = {}, data }) => {
           break;
         }
         case 'end process data':
-          webworkerStore.setRunLayout(fileDataStore.networkDataIsAvailable && !fileDataStore.coordinatesAreAvailable);
-          webworkerStore.setRunClustering(fileDataStore.networkDataIsAvailable && !fileDataStore.clustersAreAvailable);
+          webworkerStore.setRunLayout(dataStore.networkDataIsAvailable && !dataStore.coordinatesAreAvailable);
+          webworkerStore.setRunClustering(dataStore.networkDataIsAvailable && !dataStore.clustersAreAvailable);
 
           visualizationStore.setItemIdToIndex(data.itemIdToIndex);
           if (!_isUndefined(visualizationStore.largestComponent)) {
-            webworkerStore.startHandleUnconnectedItems({ unconnectedItemsDialogChoice: visualizationStore.largestComponent ? 'yes' : 'no', mapData: fileDataStore.mapData, networkData: fileDataStore.networkData, itemIdToIndex: visualizationStore.itemIdToIndex });
-          } else if (!fileDataStore.coordinatesAreAvailable && data.hasUnconnectedItems) {
+            webworkerStore.startHandleUnconnectedItems({ unconnectedItemsDialogChoice: visualizationStore.largestComponent ? 'yes' : 'no', mapData: dataStore.mapData, networkData: dataStore.networkData, itemIdToIndex: visualizationStore.itemIdToIndex });
+          } else if (!dataStore.coordinatesAreAvailable && data.hasUnconnectedItems) {
             uiStore.setUnconnectedItemsDialog(data.hasUnconnectedItems, data.nItemsNetwork, data.nItemsLargestComponent);
             uiStore.setUnconnectedItemsDialogIsOpen(true);
             uiStore.setLoadingScreenIsOpen(false);
           } else {
-            webworkerStore.startHandleUnconnectedItems({ unconnectedItemsDialogChoice: 'no', mapData: fileDataStore.mapData, networkData: fileDataStore.networkData, itemIdToIndex: visualizationStore.itemIdToIndex });
+            webworkerStore.startHandleUnconnectedItems({ unconnectedItemsDialogChoice: 'no', mapData: dataStore.mapData, networkData: dataStore.networkData, itemIdToIndex: visualizationStore.itemIdToIndex });
           }
           break;
         case 'end handle unconnected items':
           if (data.mapData && data.networkData && data.itemIdToIndex) {
-            fileDataStore.setMapData(data.mapData);
-            fileDataStore.setNetworkData(data.networkData);
+            dataStore.setMapData(data.mapData);
+            dataStore.setNetworkData(data.networkData);
             visualizationStore.setItemIdToIndex(data.itemIdToIndex);
             webworkerStore.setRunLayout(true);
           }
@@ -163,18 +163,18 @@ const VOSviewer = observer(({ width, targetRef, parameters = {}, data }) => {
   }, []);
 
   function _initVisualization() {
-    visualizationStore.init(fileDataStore.mapData, fileDataStore.networkData, fileDataStore.terminology);
+    visualizationStore.init(dataStore.mapData, dataStore.networkData, dataStore.terminology);
 
     const itemSizeDefinedInConfig = !_isUndefined(configStore.parameters.item_size);
     const itemSizeProvidedInQueryString = !_isUndefined(queryStringStore.parameters.item_size);
-    const itemSizeProvidedInFile = _isPlainObject(fileDataStore.parameters) && !_isUndefined(fileDataStore.parameters.item_size);
+    const itemSizeProvidedInFile = _isPlainObject(dataStore.parameters) && !_isUndefined(dataStore.parameters.item_size);
     const sizeIndex = ((!itemSizeDefinedInConfig && webworkerStore.resetParameters && !itemSizeProvidedInFile) || (!itemSizeDefinedInConfig && !webworkerStore.resetParameters && !itemSizeProvidedInQueryString && !itemSizeProvidedInFile)) ? visualizationStore.weightIndex : uiStore.sizeIndex;
     const weightIndex = sizeIndex;
     visualizationStore.updateWeights(weightIndex);
 
     const itemColorDefinedInConfig = !_isUndefined(configStore.parameters.item_color);
     const itemColorProvidedInQueryString = !_isUndefined(queryStringStore.parameters.item_color);
-    const itemColorProvidedInFile = _isPlainObject(fileDataStore.parameters) && !_isUndefined(fileDataStore.parameters.item_color);
+    const itemColorProvidedInFile = _isPlainObject(dataStore.parameters) && !_isUndefined(dataStore.parameters.item_color);
     const colorIndex = ((!itemColorDefinedInConfig && webworkerStore.resetParameters && !itemSizeProvidedInFile) || (!itemColorDefinedInConfig && !webworkerStore.resetParameters && !itemColorProvidedInQueryString && !itemColorProvidedInFile)) ? 0 : uiStore.colorIndex;
     const scoreIndex = colorIndex - 1;
     if (colorIndex > 0) visualizationStore.updateScores(scoreIndex);
@@ -193,7 +193,7 @@ const VOSviewer = observer(({ width, targetRef, parameters = {}, data }) => {
     if (uiStore.showItem) _showItem();
     configStore.setUrlPreviewPanelIsOpen(!IS_REACT_COMPONENT && visualizationStore.itemsOrLinksWithUrl);
     uiStore.setLoadingScreenIsOpen(false);
-    if (uiStore.showInfo && (fileDataStore.title && fileDataStore.description)) uiStore.setInfoDialogIsOpen(true);
+    if (uiStore.showInfo && (dataStore.title && dataStore.description)) uiStore.setInfoDialogIsOpen(true);
   }
 
   function _showItem() {

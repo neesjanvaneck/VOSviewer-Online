@@ -2,11 +2,11 @@ import React, { useContext, useRef } from 'react';
 import { Button } from '@mui/material';
 import _uniqueId from 'lodash/uniqueId';
 
-import { FileDataStoreContext, UiStoreContext } from 'store/stores';
+import { DataStoreContext, UiStoreContext } from 'store/stores';
 import * as s from './styles';
 
 const MapFileChooser = () => {
-  const fileDataStore = useContext(FileDataStoreContext);
+  const dataStore = useContext(DataStoreContext);
   const uiStore = useContext(UiStoreContext);
   const inputFile = useRef(null);
   const uniqUploadId = _uniqueId('upload');
@@ -20,7 +20,7 @@ const MapFileChooser = () => {
     const file = inputFile.current.files[0];
     if (file) {
       uiStore.setMapFileSelectedName(file.name);
-      fileDataStore.setMapFile(file);
+      dataStore.setMapFile(file);
     }
   };
 

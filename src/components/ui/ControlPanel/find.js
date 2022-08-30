@@ -7,11 +7,11 @@ import parse from 'autosuggest-highlight/parse';
 import _sortBy from 'lodash/sortBy';
 import _isUndefined from 'lodash/isUndefined';
 
-import { FileDataStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
+import { DataStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
 import * as s from './styles';
 
 const Find = observer(() => {
-  const fileDataStore = useContext(FileDataStoreContext);
+  const dataStore = useContext(DataStoreContext);
   const uiStore = useContext(UiStoreContext);
   const visualizationStore = useContext(VisualizationStoreContext);
   const [itemFilterText, setItemFilterText] = useState();
@@ -65,7 +65,7 @@ const Find = observer(() => {
   return (
     <>
       <TextField
-        placeholder={`Find ${fileDataStore.terminology.item.toLowerCase()}`}
+        placeholder={`Find ${dataStore.terminology.item.toLowerCase()}`}
         value={itemFilterText || ''}
         fullWidth
         margin="normal"

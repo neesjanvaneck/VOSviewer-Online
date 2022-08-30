@@ -59,9 +59,9 @@ const LoadingScreen = observer(() => {
         return layoutStore.nRandomStarts > 1 ? progressWithLabel() : progress();
       case processTypes.RUNNING_CLUSTERING:
         return clusteringStore.nRandomStarts > 1 ? progressWithLabel() : progress();
-      case processTypes.READING_MAP_FILE:
-      case processTypes.READING_NETWORK_FILE:
-      case processTypes.READING_JSON_FILE:
+      case processTypes.READING_MAP_DATA:
+      case processTypes.READING_NETWORK_DATA:
+      case processTypes.READING_JSON_DATA:
       case processTypes.PROCESSING_DATA:
       default:
         return progress();

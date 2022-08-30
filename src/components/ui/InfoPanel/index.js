@@ -8,7 +8,7 @@ import _isNil from 'lodash/isNil';
 import _isNull from 'lodash/isNull';
 import _isUndefined from 'lodash/isUndefined';
 
-import { ConfigStoreContext, FileDataStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
+import { ConfigStoreContext, DataStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
 import { trimTextEnd } from 'utils/helpers';
 import { parseDescription } from 'utils/helpers2';
 import * as s from './styles';
@@ -18,7 +18,7 @@ const Divider = () => <Typography component="p" className={s.divider}> | </Typog
 
 const InfoPanel = observer(() => {
   const configStore = useContext(ConfigStoreContext);
-  const fileDataStore = useContext(FileDataStoreContext);
+  const dataStore = useContext(DataStoreContext);
   const uiStore = useContext(UiStoreContext);
   const visualizationStore = useContext(VisualizationStoreContext);
   const refEl = useRef(null);
@@ -87,25 +87,25 @@ const InfoPanel = observer(() => {
     return (
       (highlightedItem && !hoveredLink) ? (
         <>
-          <InfoItem text={`${fileDataStore.terminology.item}: ${trimTextEnd(getItemLabel(highlightedItem), 50)}`} />
+          <InfoItem text={`${dataStore.terminology.item}: ${trimTextEnd(getItemLabel(highlightedItem), 50)}`} />
           {itemLinkData
             && (
               <>
                 <Divider />
-                <InfoItem text={`${fileDataStore.terminology.links}: ${formatNumber(itemLinkData.nLinks)}`} />
+                <InfoItem text={`${dataStore.terminology.links}: ${formatNumber(itemLinkData.nLinks)}`} />
                 {uiStore.componentWidth > 800
                   && (
                     <>
                       <Divider />
-                      <InfoItem text={`${fileDataStore.terminology.total_link_strength}: ${formatNumber(itemLinkData.totalLinkStrength)}`} />
+                      <InfoItem text={`${dataStore.terminology.total_link_strength}: ${formatNumber(itemLinkData.totalLinkStrength)}`} />
                     </>
                   )
                 }
               </>
             )
           }
-          {!_isUndefined(weightValue) && ((sizeLabel !== fileDataStore.terminology.total_link_strength && sizeLabel !== fileDataStore.terminology.links)
-            || ((sizeLabel === fileDataStore.terminology.total_link_strength || sizeLabel === fileDataStore.terminology.links) && !itemLinkData))
+          {!_isUndefined(weightValue) && ((sizeLabel !== dataStore.terminology.total_link_strength && sizeLabel !== dataStore.terminology.links)
+            || ((sizeLabel === dataStore.terminology.total_link_strength || sizeLabel === dataStore.terminology.links) && !itemLinkData))
             && (
               <>
                 <Divider />
@@ -117,7 +117,7 @@ const InfoPanel = observer(() => {
             && (
               <>
                 <Divider />
-                <InfoItem text={`${fileDataStore.terminology.cluster}: ${fileDataStore.clusters.get(highlightedItem.cluster) || highlightedItem.cluster}`} />
+                <InfoItem text={`${dataStore.terminology.cluster}: ${dataStore.clusters.get(highlightedItem.cluster) || highlightedItem.cluster}`} />
               </>
             )
           }
@@ -141,11 +141,11 @@ const InfoPanel = observer(() => {
       )
       : (
         <>
-          <InfoItem text={`${fileDataStore.terminology.item} 1: ${trimTextEnd(getItemLabel(visualizationStore.itemsForLinks[highlightedLink.from]), 50)}`} />
+          <InfoItem text={`${dataStore.terminology.item} 1: ${trimTextEnd(getItemLabel(visualizationStore.itemsForLinks[highlightedLink.from]), 50)}`} />
           <Divider />
-          <InfoItem text={`${fileDataStore.terminology.item} 2: ${trimTextEnd(getItemLabel(visualizationStore.itemsForLinks[highlightedLink.to]), 50)}`} />
+          <InfoItem text={`${dataStore.terminology.item} 2: ${trimTextEnd(getItemLabel(visualizationStore.itemsForLinks[highlightedLink.to]), 50)}`} />
           <Divider />
-          <InfoItem text={`${fileDataStore.terminology.link_strength}: ${formatNumber(highlightedLink.strength)}`} />
+          <InfoItem text={`${dataStore.terminology.link_strength}: ${formatNumber(highlightedLink.strength)}`} />
           {highlightedLink.url
             && (
               <>
@@ -168,13 +168,13 @@ const InfoPanel = observer(() => {
         || (visualizationStore.clickedItem && visualizationStore.clickedItem.description)
         || (visualizationStore.hoveredLink && visualizationStore.hoveredLink.description)
         || (visualizationStore.clickedLink && visualizationStore.clickedLink.description)
-        || ((visualizationStore.hoveredItem || visualizationStore.clickedItem) && fileDataStore.templates.item_description)
-        || ((visualizationStore.hoveredLink || visualizationStore.clickedLink) && fileDataStore.templates.link_description)
+        || ((visualizationStore.hoveredItem || visualizationStore.clickedItem) && dataStore.templates.item_description)
+        || ((visualizationStore.hoveredLink || visualizationStore.clickedLink) && dataStore.templates.link_description)
       );
 
-  const getItemDescription = (item) => parseDescription(item, 'item_description', { fileDataStore, visualizationStore });
+  const getItemDescription = (item) => parseDescription(item, 'item_description', { dataStore, visualizationStore });
 
-  const getLinkDescription = (link) => parseDescription(link, 'link_description', { fileDataStore, visualizationStore });
+  const getLinkDescription = (link) => parseDescription(link, 'link_description', { dataStore, visualizationStore });
 
   return (
     <>
@@ -205,17 +205,17 @@ const InfoPanel = observer(() => {
                 ? getItemOrLinkInfo()
                 : (
                   <>
-                    <InfoItem text={`${fileDataStore.terminology.items}: ${visualizationStore.items.length}`} />
+                    <InfoItem text={`${dataStore.terminology.items}: ${visualizationStore.items.length}`} />
                     {Boolean(visualizationStore.links.length)
                       && (
                         <>
                           <Divider />
-                          <InfoItem text={`${fileDataStore.terminology.links}: ${formatNumber(visualizationStore.links.length)}`} />
+                          <InfoItem text={`${dataStore.terminology.links}: ${formatNumber(visualizationStore.links.length)}`} />
                           {uiStore.componentWidth > 800
                             && (
                               <>
                                 <Divider />
-                                <InfoItem text={`${fileDataStore.terminology.total_link_strength}: ${formatNumber(visualizationStore.totalLinkStrength)}`} />
+                                <InfoItem text={`${dataStore.terminology.total_link_strength}: ${formatNumber(visualizationStore.totalLinkStrength)}`} />
                               </>
                             )
                           }
@@ -226,7 +226,7 @@ const InfoPanel = observer(() => {
                       && (
                         <>
                           <Divider />
-                          <InfoItem text={`${fileDataStore.terminology.clusters}: ${visualizationStore.clusters.length}`} />
+                          <InfoItem text={`${dataStore.terminology.clusters}: ${visualizationStore.clusters.length}`} />
                         </>
                       )
                     }

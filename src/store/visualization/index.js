@@ -21,7 +21,7 @@ import _isNaN from 'lodash/isNaN';
 import _uniq from 'lodash/uniq';
 
 import {
-  canvasMargin, clusterColors, circleColors, circleMinDiameter, circleAvgDiameter, lineMinWidth, lineAvgWidth, labelMinFontSize, labelFontSizeScalingConstant, mapFileHeaders, scoreColorLegendPropScoresBetweenMinAndMax, scoreColorLegendDesiredNTicks, parameterKeys, defaultParameterValues, defaultTerminology
+  canvasMargin, clusterColors, circleColors, circleMinDiameter, circleAvgDiameter, lineMinWidth, lineAvgWidth, labelMinFontSize, labelFontSizeScalingConstant, mapDataHeaders, scoreColorLegendPropScoresBetweenMinAndMax, scoreColorLegendDesiredNTicks, parameterKeys, defaultParameterValues, defaultTerminology
 } from 'utils/variables';
 import { ItemStatus, LinkStatus, VisualizationStatus, calcDistance } from 'utils/drawing';
 import {
@@ -797,7 +797,7 @@ export default class State {
   }
 
   setClusters(clustering, darkTheme) {
-    this.clusterKey = mapFileHeaders.CLUSTER;
+    this.clusterKey = mapDataHeaders.CLUSTER;
     _each(this.items, (item) => {
       const cluster = clustering.cluster[this.itemIdToIndex[item.id]];
       item[this.clusterKey] = !_isNil(cluster) ? cluster + 1 : undefined;

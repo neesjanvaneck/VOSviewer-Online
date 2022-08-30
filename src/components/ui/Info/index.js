@@ -8,7 +8,7 @@ import FolderIcon from '@mui/icons-material/Folder';
 import InfoIcon from '@mui/icons-material/Info';
 
 import Dialog from 'components/ui/Dialog';
-import { ConfigStoreContext, FileDataStoreContext, UiStoreContext } from 'store/stores';
+import { ConfigStoreContext, DataStoreContext, UiStoreContext } from 'store/stores';
 import { cleanPlainText, parseFormattedText } from 'utils/helpers2';
 import vosviewerOnlineLogo from 'assets/images/vosviewer-online-logo.svg';
 import vosviewerOnlineLogoDark from 'assets/images/vosviewer-online-logo-dark.svg';
@@ -19,7 +19,7 @@ import * as s from './styles';
 
 const Info = observer(() => {
   const configStore = useContext(ConfigStoreContext);
-  const fileDataStore = useContext(FileDataStoreContext);
+  const dataStore = useContext(DataStoreContext);
   const uiStore = useContext(UiStoreContext);
   const [infoMenuAnchorEl, setInfoMenuAnchorEl] = useState(null);
   const [aboutDialogIsOpen, setAboutDialogIsOpen] = useState(false);
@@ -61,7 +61,7 @@ const Info = observer(() => {
 
   return (
     <>
-      {configStore.docsUrl || (fileDataStore.title && fileDataStore.description) ? (
+      {configStore.docsUrl || (dataStore.title && dataStore.description) ? (
         <div className={s.infoButton}>
           <Tooltip title="Info">
             <IconButton aria-controls="info-menu" onClick={openInfoMenu}>
@@ -74,7 +74,7 @@ const Info = observer(() => {
             open={Boolean(infoMenuAnchorEl)}
             onClose={exitInfoMenu}
           >
-            {fileDataStore.title && fileDataStore.description && (
+            {dataStore.title && dataStore.description && (
               <MenuItem onClick={showInfoDialog} divider>Visualization information</MenuItem>
             )}
             {configStore.docsUrl && (
@@ -102,13 +102,13 @@ const Info = observer(() => {
         fullWidth
       >
         <DialogTitle>
-          { cleanPlainText(fileDataStore.title) }
+          { cleanPlainText(dataStore.title) }
           <IconButton className={s.closeButton} onClick={exitInfoDialog}>
             <CloseIcon fontSize="small" />
           </IconButton>
         </DialogTitle>
         <DialogContent classes={{ root: s.dialogContent }} align="justify">
-          { parseFormattedText(fileDataStore.description) }
+          { parseFormattedText(dataStore.description) }
         </DialogContent>
         <DialogActions>
           <Button onClick={exitInfoDialog} color="primary">

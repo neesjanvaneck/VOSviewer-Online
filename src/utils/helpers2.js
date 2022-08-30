@@ -35,9 +35,9 @@ export function parseFormattedText(formattedText) {
 }
 
 export function parseDescription(object, templateType, stores) {
-  const { fileDataStore, visualizationStore } = stores;
+  const { dataStore, visualizationStore } = stores;
   if (!object) return;
-  const description = object.description || fileDataStore.templates[templateType];
+  const description = object.description || dataStore.templates[templateType];
   if (!description) return;
   addHook('afterSanitizeAttributes', (node) => {
     if ('target' in node) {
@@ -51,8 +51,8 @@ export function parseDescription(object, templateType, stores) {
   return HTMLReactParser(sanitizedDescription, {
     replace: node => {
       if (node.attribs) {
-        if (node.attribs.class && typeof fileDataStore.styles[node.attribs.class] === 'string') {
-          node.attribs.class = css(fileDataStore.styles[node.attribs.class]);
+        if (node.attribs.class && typeof dataStore.styles[node.attribs.class] === 'string') {
+          node.attribs.class = css(dataStore.styles[node.attribs.class]);
         }
         if (node.name === 'a' && node.attribs.href) node.attribs.href = _replaceDescriptionPlaceholders(node.attribs.href, object, templateType, visualizationStore);
         if (node.name === 'img' && node.attribs.src) node.attribs.src = _replaceDescriptionPlaceholders(node.attribs.src, object, templateType, visualizationStore);

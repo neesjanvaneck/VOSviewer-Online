@@ -4,7 +4,7 @@ import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import HTMLReactParser from 'html-react-parser';
 
-import { FileDataStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
+import { DataStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
 import { trimTextEnd } from 'utils/helpers';
 import * as s from './styles';
 
@@ -18,7 +18,7 @@ const HeadContent = ({ text }) => (
 );
 
 const InfoPanel = observer(() => {
-  const fileDataStore = useContext(FileDataStoreContext);
+  const dataStore = useContext(DataStoreContext);
   const uiStore = useContext(UiStoreContext);
   const visualizationStore = useContext(VisualizationStoreContext);
   const [isOpen, setIsOpen] = useState(true);
@@ -63,7 +63,7 @@ const InfoPanel = observer(() => {
     const score = scoreName();
     return (
       <>
-        { name !== fileDataStore.terminology.total_link_strength && name !== fileDataStore.terminology.links ? <Content text={`${trimTextEnd(name, 30)}: ${formatNumber(node[visualizationStore.weightKeysCustomTerminology[visualizationStore.weightIndex]])} `} /> : ''}
+        { name !== dataStore.terminology.total_link_strength && name !== dataStore.terminology.links ? <Content text={`${trimTextEnd(name, 30)}: ${formatNumber(node[visualizationStore.weightKeysCustomTerminology[visualizationStore.weightIndex]])} `} /> : ''}
         {uiStore.colorIndex > 0
           && (
             <>

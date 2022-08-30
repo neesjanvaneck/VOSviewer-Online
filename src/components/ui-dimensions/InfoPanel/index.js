@@ -9,7 +9,7 @@ import _isNil from 'lodash/isNil';
 import _isNull from 'lodash/isNull';
 import _isUndefined from 'lodash/isUndefined';
 
-import { ConfigStoreContext, FileDataStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
+import { ConfigStoreContext, DataStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
 import { parseDescription } from 'utils/helpers2';
 import * as s from './styles';
 
@@ -22,7 +22,7 @@ const InfoItem = ({ label, value, labelStyle }) => (
 
 const InfoPanel = observer(() => {
   const configStore = useContext(ConfigStoreContext);
-  const fileDataStore = useContext(FileDataStoreContext);
+  const dataStore = useContext(DataStoreContext);
   const uiStore = useContext(UiStoreContext);
   const visualizationStore = useContext(VisualizationStoreContext);
   const refEl = useRef(null);
@@ -92,44 +92,44 @@ const InfoPanel = observer(() => {
           {itemLinkData
             && (
               <>
-                <InfoItem label={fileDataStore.terminology.links} value={formatNumber(itemLinkData.nLinks)} labelStyle={fileDataStore.styles.description_heading} />
+                <InfoItem label={dataStore.terminology.links} value={formatNumber(itemLinkData.nLinks)} labelStyle={dataStore.styles.description_heading} />
                 {uiStore.componentWidth > 520
                   && (
                     <>
-                      <InfoItem label={fileDataStore.terminology.total_link_strength} value={formatNumber(itemLinkData.totalLinkStrength)} labelStyle={fileDataStore.styles.description_heading} />
+                      <InfoItem label={dataStore.terminology.total_link_strength} value={formatNumber(itemLinkData.totalLinkStrength)} labelStyle={dataStore.styles.description_heading} />
                     </>
                   )
                 }
               </>
             )
           }
-          {!_isUndefined(weightValue) && ((sizeLabel !== fileDataStore.terminology.total_link_strength && sizeLabel !== fileDataStore.terminology.links)
-            || ((sizeLabel === fileDataStore.terminology.total_link_strength || sizeLabel === fileDataStore.terminology.links) && !itemLinkData))
+          {!_isUndefined(weightValue) && ((sizeLabel !== dataStore.terminology.total_link_strength && sizeLabel !== dataStore.terminology.links)
+            || ((sizeLabel === dataStore.terminology.total_link_strength || sizeLabel === dataStore.terminology.links) && !itemLinkData))
             && (
-              <InfoItem label={sizeLabel === 'weight' ? 'Custom' : sizeLabel} value={formatNumber(weightValue)} labelStyle={fileDataStore.styles.description_heading} />
+              <InfoItem label={sizeLabel === 'weight' ? 'Custom' : sizeLabel} value={formatNumber(weightValue)} labelStyle={dataStore.styles.description_heading} />
             )
           }
           {uiStore.colorIndex === 0 && !_isNil(highlightedItem.cluster)
             && (
               <InfoItem
-                label={fileDataStore.terminology.cluster}
+                label={dataStore.terminology.cluster}
                 value={(
                   <div className={s.circle({ color: highlightedItem._clusterColor.formatHex() })} />
                 )}
-                labelStyle={fileDataStore.styles.description_heading}
+                labelStyle={dataStore.styles.description_heading}
               />
             )
           }
           {uiStore.colorIndex > 0
             && (
-              <InfoItem label={scoreLabel === 'score' ? 'Custom' : scoreLabel} value={formatNumber(highlightedItem[visualizationStore.scoreKey])} labelStyle={fileDataStore.styles.description_heading} />
+              <InfoItem label={scoreLabel === 'score' ? 'Custom' : scoreLabel} value={formatNumber(highlightedItem[visualizationStore.scoreKey])} labelStyle={dataStore.styles.description_heading} />
             )
           }
         </>
       )
       : (
         <>
-          <InfoItem label={fileDataStore.terminology.link_strength} value={formatNumber(highlightedLink.strength)} labelStyle={fileDataStore.styles.description_heading} />
+          <InfoItem label={dataStore.terminology.link_strength} value={formatNumber(highlightedLink.strength)} labelStyle={dataStore.styles.description_heading} />
           {highlightedLink.url
             && (
               <Link target="_blank" href={highlightedLink.url}> URL </Link>
@@ -142,15 +142,15 @@ const InfoPanel = observer(() => {
 
   const getNetworkInfo = () => (
     <>
-      <InfoItem label={fileDataStore.terminology.items} value={visualizationStore.items.length} labelStyle={fileDataStore.styles.description_heading} />
+      <InfoItem label={dataStore.terminology.items} value={visualizationStore.items.length} labelStyle={dataStore.styles.description_heading} />
       {Boolean(visualizationStore.links.length)
         && (
           <>
-            <InfoItem label={fileDataStore.terminology.links} value={formatNumber(visualizationStore.links.length)} labelStyle={fileDataStore.styles.description_heading} />
+            <InfoItem label={dataStore.terminology.links} value={formatNumber(visualizationStore.links.length)} labelStyle={dataStore.styles.description_heading} />
             {uiStore.componentWidth > 520
               && (
                 <>
-                  <InfoItem label={fileDataStore.terminology.total_link_strength} value={formatNumber(visualizationStore.totalLinkStrength)} labelStyle={fileDataStore.styles.description_heading} />
+                  <InfoItem label={dataStore.terminology.total_link_strength} value={formatNumber(visualizationStore.totalLinkStrength)} labelStyle={dataStore.styles.description_heading} />
                 </>
               )
             }
@@ -159,7 +159,7 @@ const InfoPanel = observer(() => {
       }
       {visualizationStore.clusters && uiStore.colorIndex === 0
         && (
-          <InfoItem label={fileDataStore.terminology.clusters} value={visualizationStore.clusters.length} labelStyle={fileDataStore.styles.description_heading} />
+          <InfoItem label={dataStore.terminology.clusters} value={visualizationStore.clusters.length} labelStyle={dataStore.styles.description_heading} />
         )
       }
     </>
@@ -174,13 +174,13 @@ const InfoPanel = observer(() => {
         || (visualizationStore.clickedItem && visualizationStore.clickedItem.description)
         || (visualizationStore.hoveredLink && visualizationStore.hoveredLink.description)
         || (visualizationStore.clickedLink && visualizationStore.clickedLink.description)
-        || ((visualizationStore.hoveredItem || visualizationStore.clickedItem) && fileDataStore.templates.item_description)
-        || ((visualizationStore.hoveredLink || visualizationStore.clickedLink) && fileDataStore.templates.link_description)
+        || ((visualizationStore.hoveredItem || visualizationStore.clickedItem) && dataStore.templates.item_description)
+        || ((visualizationStore.hoveredLink || visualizationStore.clickedLink) && dataStore.templates.link_description)
       );
 
-  const getItemDescription = (item) => parseDescription(item, 'item_description', { fileDataStore, visualizationStore });
+  const getItemDescription = (item) => parseDescription(item, 'item_description', { dataStore, visualizationStore });
 
-  const getLinkDescription = (link) => parseDescription(link, 'link_description', { fileDataStore, visualizationStore });
+  const getLinkDescription = (link) => parseDescription(link, 'link_description', { dataStore, visualizationStore });
 
   return (
     <>

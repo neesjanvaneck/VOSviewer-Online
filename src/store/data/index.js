@@ -6,7 +6,7 @@ import _keys from 'lodash/keys';
 import _includes from 'lodash/includes';
 import _merge from 'lodash/merge';
 
-import { mapFileHeaders, defaultTerminology, defaultTemplates, defaultStyles } from 'utils/variables';
+import { mapDataHeaders, defaultTerminology, defaultTemplates, defaultStyles } from 'utils/variables';
 
 export default class State {
   constructor() {
@@ -21,7 +21,7 @@ export default class State {
     this.styles = {};
   }
 
-  fileError = undefined
+  dataError = undefined
 
   mapFile = undefined
 
@@ -37,12 +37,12 @@ export default class State {
 
   get coordinatesAreAvailable() {
     const keys = _keys(this.mapData[0]);
-    return keys && _includes(keys, mapFileHeaders.X) && _includes(keys, mapFileHeaders.Y);
+    return keys && _includes(keys, mapDataHeaders.X) && _includes(keys, mapDataHeaders.Y);
   }
 
   get clustersAreAvailable() {
     const keys = _keys(this.mapData[0]);
-    return keys && _includes(keys, mapFileHeaders.CLUSTER);
+    return keys && _includes(keys, mapDataHeaders.CLUSTER);
   }
 
   get networkDataIsAvailable() {
@@ -70,7 +70,7 @@ export default class State {
   }
 
   init(data, uiStyle) {
-    this.fileError = data.fileError;
+    this.dataError = data.dataError;
     this.mapData = data.mapData ? data.mapData : [];
     this.networkData = data.networkData ? data.networkData : [];
     this.jsonData = data.jsonData ? data.jsonData : {};

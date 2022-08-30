@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { withResizeDetector } from 'react-resize-detector';
 
 import {
-  ConfigStoreContext, FileDataStoreContext, UiStoreContext, VisualizationStoreContext, WebworkerStoreContext
+  ConfigStoreContext, DataStoreContext, UiStoreContext, VisualizationStoreContext, WebworkerStoreContext
 } from 'store/stores';
 import InteractionCanvas from 'components/visualization/InteractionCanvas';
 import DefaultLinkCanvas from 'components/visualization/DefaultLinkCanvas';
@@ -16,7 +16,7 @@ const VisualizationComponent = observer(({
   width, height, targetRef, withoutUrlPreviewPanel, withoutLinks, withoutItemLabels, customFont
 }) => {
   const configStore = useContext(ConfigStoreContext);
-  const fileDataStore = useContext(FileDataStoreContext);
+  const dataStore = useContext(DataStoreContext);
   const uiStore = useContext(UiStoreContext);
   const visualizationStore = useContext(VisualizationStoreContext);
   const webworkerStore = useContext(WebworkerStoreContext);
@@ -67,13 +67,13 @@ const VisualizationComponent = observer(({
         if (file) {
           if (file.type === 'application/json') {
             uiStore.setJsonFileSelectedName(file.name);
-            fileDataStore.setJsonFile(file);
-            webworkerStore.openJsonFile(fileDataStore.jsonFile, true);
+            dataStore.setJsonFile(file);
+            webworkerStore.openJsonData(dataStore.jsonFile, true);
           } else if (file.type === 'text/plain') {
             uiStore.setMapFileSelectedName(file.name);
-            fileDataStore.setNetworkFile(undefined);
-            fileDataStore.setMapFile(file);
-            webworkerStore.openMapNetworkFile(fileDataStore.mapFile, fileDataStore.networkFile, true);
+            dataStore.setNetworkFile(undefined);
+            dataStore.setMapFile(file);
+            webworkerStore.openMapNetworkData(dataStore.mapFile, dataStore.networkFile, true);
           }
         }
       }, false);

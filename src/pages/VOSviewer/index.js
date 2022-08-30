@@ -67,9 +67,9 @@ const VOSviewer = observer(({ queryString = {}, fullscreenHandle }) => {
     }
 
     if (mapUrl || networkUrl) {
-      webworkerStore.openMapNetworkFile(mapUrl, networkUrl);
+      webworkerStore.openMapNetworkData(mapUrl, networkUrl);
     } else if (jsonUrlOrObject) {
-      webworkerStore.openJsonFile(jsonUrlOrObject);
+      webworkerStore.openJsonData(jsonUrlOrObject);
     } else {
       uiStore.setIntroDialogIsOpen(true);
       configStore.setUrlPreviewPanelIsOpen(false);

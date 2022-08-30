@@ -3,22 +3,22 @@ import { observer } from 'mobx-react-lite';
 import { Button, DialogActions, DialogContent, Typography } from '@mui/material';
 
 import Dialog from 'components/ui/Dialog';
-import { FileDataStoreContext, UiStoreContext, VisualizationStoreContext, WebworkerStoreContext } from 'store/stores';
+import { DataStoreContext, UiStoreContext, VisualizationStoreContext, WebworkerStoreContext } from 'store/stores';
 
 const UnconnectedItemsDialog = observer(() => {
-  const fileDataStore = useContext(FileDataStoreContext);
+  const dataStore = useContext(DataStoreContext);
   const uiStore = useContext(UiStoreContext);
   const visualizationStore = useContext(VisualizationStoreContext);
   const webworkerStore = useContext(WebworkerStoreContext);
 
   const exitUnconnectedItemsDialogYes = () => {
-    webworkerStore.startHandleUnconnectedItems({ unconnectedItemsDialogChoice: 'yes', mapData: fileDataStore.mapData, networkData: fileDataStore.networkData, itemIdToIndex: visualizationStore.itemIdToIndex });
+    webworkerStore.startHandleUnconnectedItems({ unconnectedItemsDialogChoice: 'yes', mapData: dataStore.mapData, networkData: dataStore.networkData, itemIdToIndex: visualizationStore.itemIdToIndex });
     uiStore.setUnconnectedItemsDialog(false);
     uiStore.setUnconnectedItemsDialogIsOpen(false);
   };
 
   const exitUnconnectedItemsDialogNo = () => {
-    webworkerStore.startHandleUnconnectedItems({ unconnectedItemsDialogChoice: 'no', mapData: fileDataStore.mapData, networkData: fileDataStore.networkData, itemIdToIndex: visualizationStore.itemIdToIndex });
+    webworkerStore.startHandleUnconnectedItems({ unconnectedItemsDialogChoice: 'no', mapData: dataStore.mapData, networkData: dataStore.networkData, itemIdToIndex: visualizationStore.itemIdToIndex });
     uiStore.setUnconnectedItemsDialog(false);
     uiStore.setUnconnectedItemsDialogIsOpen(false);
   };

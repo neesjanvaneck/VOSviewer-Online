@@ -31,20 +31,20 @@ export default class State {
     this.runClustering = runClustering;
   }
 
-  openJsonFile(jsonFileOrUrlOrObject, resetParameters = false) {
+  openJsonData(jsonFileOrUrlOrObject, resetParameters = false) {
     this.resetParameters = resetParameters;
     this.loadNewData = true;
     this.runLayout = false;
     this.runClustering = false;
-    this.startParseJsonFile({ jsonFileOrUrlOrObject });
+    this.startParseJsonData({ jsonFileOrUrlOrObject });
   }
 
-  openMapNetworkFile(mapFileOrUrl, networkFileOrUrl, resetParameters = false) {
+  openMapNetworkData(mapFileOrUrl, networkFileOrUrl, resetParameters = false) {
     this.resetParameters = resetParameters;
     this.loadNewData = true;
     this.runLayout = false;
     this.runClustering = false;
-    this.startParseMapNetworkFile({ mapFileOrUrl, networkFileOrUrl });
+    this.startParseMapNetworkData({ mapFileOrUrl, networkFileOrUrl });
   }
 
   updateNormalization(normalizationMethod) {
@@ -65,12 +65,12 @@ export default class State {
     this.startRunClustering(clusteringParameters);
   }
 
-  startParseJsonFile(options) {
-    this.worker.postMessage({ type: 'start parse vosviewer-json file', options });
+  startParseJsonData(options) {
+    this.worker.postMessage({ type: 'start parse vosviewer-json data', options });
   }
 
-  startParseMapNetworkFile(options) {
-    this.worker.postMessage({ type: 'start parse vosviewer-map-network file', options });
+  startParseMapNetworkData(options) {
+    this.worker.postMessage({ type: 'start parse vosviewer-map-network data', options });
   }
 
   startProcessData(options) {
