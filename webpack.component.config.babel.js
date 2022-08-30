@@ -2,6 +2,7 @@ import { join, resolve } from 'path';
 import webpack from 'webpack';
 import NodePolyfillPlugin from 'node-polyfill-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
+import RemovePlugin from 'remove-files-webpack-plugin';
 import pkg from './package.json';
 
 function absolute(...args) {
@@ -135,6 +136,16 @@ export default (env = defaultEnv) => {
       IS_REACT_COMPONENT: JSON.stringify(true),
       MODE: JSON.stringify(appMode),
       CONFIG: JSON.stringify(jsonConfig)
+    }),
+    new RemovePlugin({
+      after: {
+        test: [
+          {
+            folder: absolute(bundlePath),
+            method: absoluteItemPath => new RegExp(/\.worker.js/, 'm').test(absoluteItemPath)
+          }
+        ]
+      }
     }),
   ];
 
