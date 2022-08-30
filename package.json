@@ -40,7 +40,8 @@
     "build-component:dimensions": "webpack --progress --env config=config-dimensions.json --env mode=dimensions --config webpack.component.config.babel.js",
     "build-component:zeta-alpha": "webpack --progress --env config=config-zeta-alpha.json --env mode=zeta-alpha --config webpack.component.config.babel.js",
     "copy-component-package-json": "node copy-component-package-json.js",
-    "publish-component-package": "cd ./lib && npm publish && rm -rf .cache"
+    "publish-component-package": "cd ./lib && npm publish && rm -rf .cache",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "autosuggest-highlight": "^3.1.1",
@@ -94,6 +95,7 @@
     "html-webpack-plugin": "^4.5.1",
     "material-ui-color": "^1.2.0",
     "node-polyfill-webpack-plugin": "^1.1.4",
+    "patch-package": "^6.4.7",
     "react-helmet": "^6.1.0",
     "terser-webpack-plugin": "^5.3.4",
     "tinyurl": "^1.1.7",
