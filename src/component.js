@@ -160,6 +160,9 @@ const VOSviewer = observer(({ width, targetRef, parameters = {}, data }) => {
           break;
       }
     });
+    return () => {
+      webworkerStore.terminateWorker();
+    };
   }, []);
 
   function _initVisualization() {

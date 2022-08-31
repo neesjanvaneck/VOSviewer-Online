@@ -15,6 +15,11 @@ export default class State {
     });
   }
 
+  terminateWorker() {
+    this.worker.terminate();
+    this.worker = new Worker();
+  }
+
   setResetParameters(resetParameters) {
     this.resetParameters = resetParameters;
   }
