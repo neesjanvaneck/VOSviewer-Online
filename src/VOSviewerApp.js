@@ -7,7 +7,6 @@ const VOSviewerApp = ({ parameters, fullscreenHandle }) => (
   <ScopedCssBaseline>
     <VOSviewer queryString={parameters} fullscreenHandle={fullscreenHandle} />
   </ScopedCssBaseline>
-
 );
 
 export default VOSviewerApp;

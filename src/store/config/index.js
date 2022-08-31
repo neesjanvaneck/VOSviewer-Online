@@ -3,6 +3,7 @@ import _clamp from 'lodash/clamp';
 import _isPlainObject from 'lodash/isPlainObject';
 import _isUndefined from 'lodash/isUndefined';
 import _merge from 'lodash/merge';
+
 import { parameterKeys, defaultParameterValues, urlPreviewPanelWidthExtent } from 'utils/variables';
 
 export default class State {

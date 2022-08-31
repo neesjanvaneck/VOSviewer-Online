@@ -1,6 +1,7 @@
 import { makeAutoObservable } from 'mobx';
 import _clamp from 'lodash/clamp';
 import _isUndefined from 'lodash/isUndefined';
+
 import * as LayoutCreator from 'utils/networkanalysis/LayoutCreator';
 
 export default class State {

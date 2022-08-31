@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx';
+
 import * as NetworkNormalizer from 'utils/networkanalysis/NetworkNormalizer';
 
 export default class State {

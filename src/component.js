@@ -1,18 +1,18 @@
 /* global CONFIG IS_REACT_COMPONENT */
 import React, { useContext, useEffect, useState } from 'react';
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
+import { withResizeDetector } from 'react-resize-detector';
 import { observer } from 'mobx-react-lite';
 import levenSort from 'leven-sort';
 import _isUndefined from 'lodash/isUndefined';
 import _isPlainObject from 'lodash/isPlainObject';
-import { FullScreen, useFullScreenHandle } from "react-full-screen";
-import { withResizeDetector } from 'react-resize-detector';
 
 import { parameterKeys } from 'utils/variables';
 import {
   ConfigStoreContext, ClusteringStoreContext, DataStoreContext, LayoutStoreContext, UiStoreContext, VisualizationStoreContext, QueryStringStoreContext, WebworkerStoreContext
 } from 'store/stores';
 
-// The '@component' is resolved from an alias in the webpack configuration
+// The '@component' is resolved from an alias in the webpack configuration.
 // eslint-disable-next-line import/no-unresolved
 import App from '@component';
 

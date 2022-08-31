@@ -15,7 +15,6 @@ import { NetworkNormalizer, LINLOG_MODULARITY } from 'utils/networkanalysis/Netw
 import { LayoutCreator } from 'utils/networkanalysis/LayoutCreator';
 import { ClusteringCreator } from 'utils/networkanalysis/ClusteringCreator';
 import { minNItems, dataTypeKeys, errorKeys, processTypes, parameterKeys } from 'utils/variables';
-
 import { getError, getFileReaderError, getJsonDataError, getMapDataError, getNetworkDataError } from 'utils/errors';
 import { getItemWithTransformedKeysAndValues } from 'utils/helpers';
 
