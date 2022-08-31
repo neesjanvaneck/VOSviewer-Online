@@ -1,8 +1,8 @@
 import { join, resolve } from 'path';
 import webpack from 'webpack';
 import NodePolyfillPlugin from 'node-polyfill-webpack-plugin';
-import TerserPlugin from 'terser-webpack-plugin';
 import RemovePlugin from 'remove-files-webpack-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
 import pkg from './package.json';
 
 function absolute(...args) {
@@ -39,13 +39,11 @@ const rules = [
 ];
 
 const config = {
+  devtool: 'source-map',
   module: {
     rules,
   },
-  devtool: 'source-map',
   resolve: {
-    extensions: ['', '.js', '.jsx'],
-
     alias: {
       assets: resolve(__dirname, 'src/assets/'),
       utils: resolve(__dirname, 'src/utils/'),
@@ -56,6 +54,7 @@ const config = {
       workers: resolve(__dirname, 'src/workers/'),
       pages: resolve(__dirname, 'src/pages/'),
     },
+    extensions: ['', '.js', '.jsx'],
   },
   externals: externals.reduce(
     (acc, cur) => {

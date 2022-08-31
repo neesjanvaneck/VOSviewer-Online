@@ -1,10 +1,9 @@
 import { join, resolve } from 'path';
 import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import NodePolyfillPlugin from 'node-polyfill-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
-// import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 function absolute(...args) {
   return join(__dirname, ...args);
@@ -61,7 +60,6 @@ const config = {
       logos: resolve(__dirname, 'src/logos/'),
       workers: resolve(__dirname, 'src/workers/'),
       pages: resolve(__dirname, 'src/pages/'),
-
       'react-dom': '@hot-loader/react-dom',
     },
     extensions: ['.js', '.jsx'],
@@ -98,7 +96,7 @@ export default (env = defaultEnv) => {
   ];
 
   config.mode = env.dev ? 'development' : 'production';
-  config.devtool = env.dev ? 'eval-cheap-module-source-map' : undefined; // Use 'source-map' for production to create map file
+  config.devtool = env.dev ? 'eval-cheap-module-source-map' : undefined; // Use 'source-map' for production to create map file.
   config.output = {
     path: absolute('dist', bundleName),
     library: appMode,
@@ -160,7 +158,6 @@ export default (env = defaultEnv) => {
       MODE: JSON.stringify(appMode),
       CONFIG: JSON.stringify(jsonConfig)
     }),
-    // new BundleAnalyzerPlugin(),
   ];
 
   if (appMode === 'vosviewer') {
