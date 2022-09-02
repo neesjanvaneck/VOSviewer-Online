@@ -9,12 +9,12 @@ import _join from 'lodash/join';
 
 import { clusterColors } from 'utils/variables';
 import { getColorScheme, trimTextEnd } from 'utils/helpers';
-import { ConfigStoreContext, FileDataStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
+import { ConfigStoreContext, DataStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
 import * as s from './styles';
 
 const ColorSchemes = observer(() => {
   const configStore = useContext(ConfigStoreContext);
-  const fileDataStore = useContext(FileDataStoreContext);
+  const dataStore = useContext(DataStoreContext);
   const uiStore = useContext(UiStoreContext);
   const visualizationStore = useContext(VisualizationStoreContext);
   const [clusterColorSchemeDomain, setClusterColorSchemeDomain] = useState(visualizationStore.clusterColorScheme.domain());
@@ -36,12 +36,12 @@ const ColorSchemes = observer(() => {
   });
 
   const clusterColorPickers = () => clusterColorSchemeDomain.map((key, clusterIndex) => {
-    const clusterCustomName = fileDataStore.clusters.get(key);
+    const clusterCustomName = dataStore.clusters.get(key);
     return (
       <div className={s.colorPickerItem} key={key}>
         {clusterCustomName
           ? (clusterCustomName.length > 25 ? (
-            <Tooltip title={fileDataStore.clusters.get(key)} placement="top-start">
+            <Tooltip title={dataStore.clusters.get(key)} placement="top-start">
               <div className={s.colorPickerTitle(uiStore.darkTheme)}>
                 { trimTextEnd(clusterCustomName, 25) }
               </div>
@@ -53,7 +53,7 @@ const ColorSchemes = observer(() => {
             ))
             : (
               <div className={s.colorPickerTitle(uiStore.darkTheme)}>
-                {`${fileDataStore.terminology.cluster} ${key}`}
+                {`${dataStore.terminology.cluster} ${key}`}
               </div>
             )
         }
@@ -104,7 +104,7 @@ const ColorSchemes = observer(() => {
           <>
             <Accordion>
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography variant="body2">{`${fileDataStore.terminology.cluster} colors`}</Typography>
+                <Typography variant="body2">{`${dataStore.terminology.cluster} colors`}</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <div className={s.expansionPanelItems(configStore.uiStyle.font_family)}>
@@ -114,7 +114,7 @@ const ColorSchemes = observer(() => {
                     variant="outlined"
                     onClick={() => resetClusterColors(uiStore.darkTheme)}
                   >
-                    {`Reset ${fileDataStore.terminology.cluster.toLowerCase()} colors`}
+                    {`Reset ${dataStore.terminology.cluster.toLowerCase()} colors`}
                   </Button>
                 </div>
               </AccordionDetails>

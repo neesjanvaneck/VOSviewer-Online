@@ -1,4 +1,4 @@
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 
 export const infoButton = css`
   label: about-button;
@@ -41,6 +41,7 @@ export const inlineIcon = css`
 
 export const image = css`
   label: image;
+  box-sizing: border-box;
   border: 1px solid #ccc;
 `;
 

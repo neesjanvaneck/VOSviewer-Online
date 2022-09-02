@@ -1,25 +1,29 @@
-import { extendObservable } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 import _clamp from 'lodash/clamp';
 import _isUndefined from 'lodash/isUndefined';
 import * as ClusteringCreator from 'utils/networkanalysis/ClusteringCreator';
 
 export default class State {
   constructor() {
-    extendObservable(
-      this,
-      {
-        resolution: ClusteringCreator.DEFAULT_RESOLUTION,
-        minClusterSize: ClusteringCreator.DEFAULT_MIN_CLUSTER_SIZE,
-        mergeSmallClusters: ClusteringCreator.DEFAULT_MERGE_SMALL_CLUSTERS,
-        nIterations: ClusteringCreator.DEFAULT_N_ITERATIONS,
-        randomness: ClusteringCreator.DEFAULT_RANDOMNESS,
-        nRandomStarts: ClusteringCreator.DEFAULT_N_RANDOM_STARTS,
-        fixedSeed: ClusteringCreator.DEFAULT_FIXED_SEED,
-        useRandomSeed: ClusteringCreator.DEFAULT_USE_RANDOM_SEED,
-      },
-    );
+    makeAutoObservable(this);
     this.canceled = false;
   }
+
+  resolution = ClusteringCreator.DEFAULT_RESOLUTION
+
+  minClusterSize = ClusteringCreator.DEFAULT_MIN_CLUSTER_SIZE
+
+  mergeSmallClusters = ClusteringCreator.DEFAULT_MERGE_SMALL_CLUSTERS
+
+  nIterations = ClusteringCreator.DEFAULT_N_ITERATIONS
+  
+  randomness = ClusteringCreator.DEFAULT_RANDOMNESS
+
+  nRandomStarts = ClusteringCreator.DEFAULT_N_RANDOM_STARTS
+
+  fixedSeed = ClusteringCreator.DEFAULT_FIXED_SEED
+
+  useRandomSeed = ClusteringCreator.DEFAULT_USE_RANDOM_SEED
 
   getParameters() {
     return {

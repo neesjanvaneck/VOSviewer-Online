@@ -1,4 +1,4 @@
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 import { panelMargin, panelPadding, legendPanelMaxWidth } from 'utils/variables';
 
 export const previewIsOpen = css`
@@ -25,6 +25,7 @@ export const legendPanel = css`
   display: flex;
   flex-direction: row-reverse;
   padding: ${panelPadding}px;
+  line-height: 0.6;
 `;
 
 export const colorLegend = css`

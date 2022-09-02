@@ -1,6 +1,4 @@
-/* eslint-disable import/no-webpack-loader-syntax */
-/* eslint-disable import/no-unresolved */
-import Worker from 'worker-loader!workers/worker';
+import Worker from 'workers/worker.js';
 
 export default class State {
   constructor() {
@@ -15,6 +13,11 @@ export default class State {
     this.worker.addEventListener("message", (event) => {
       callback(event.data);
     });
+  }
+
+  terminateWorker() {
+    this.worker.terminate();
+    this.worker = new Worker();
   }
 
   setResetParameters(resetParameters) {
@@ -33,20 +36,20 @@ export default class State {
     this.runClustering = runClustering;
   }
 
-  openJsonFile(jsonFileOrUrl, resetParameters = false) {
+  openJsonData(jsonFileOrUrlOrObject, resetParameters = false) {
     this.resetParameters = resetParameters;
     this.loadNewData = true;
     this.runLayout = false;
     this.runClustering = false;
-    this.startParseJsonFile({ jsonFileOrUrl });
+    this.startParseJsonData({ jsonFileOrUrlOrObject });
   }
 
-  openMapNetworkFile(mapFileOrUrl, networkFileOrUrl, resetParameters = false) {
+  openMapNetworkData(mapFileOrUrl, networkFileOrUrl, resetParameters = false) {
     this.resetParameters = resetParameters;
     this.loadNewData = true;
     this.runLayout = false;
     this.runClustering = false;
-    this.startParseMapNetworkFile({ mapFileOrUrl, networkFileOrUrl });
+    this.startParseMapNetworkData({ mapFileOrUrl, networkFileOrUrl });
   }
 
   updateNormalization(normalizationMethod) {
@@ -67,12 +70,12 @@ export default class State {
     this.startRunClustering(clusteringParameters);
   }
 
-  startParseJsonFile(options) {
-    this.worker.postMessage({ type: 'start parse vosviewer-json file', options });
+  startParseJsonData(options) {
+    this.worker.postMessage({ type: 'start parse vosviewer-json data', options });
   }
 
-  startParseMapNetworkFile(options) {
-    this.worker.postMessage({ type: 'start parse vosviewer-map-network file', options });
+  startParseMapNetworkData(options) {
+    this.worker.postMessage({ type: 'start parse vosviewer-map-network data', options });
   }
 
   startProcessData(options) {

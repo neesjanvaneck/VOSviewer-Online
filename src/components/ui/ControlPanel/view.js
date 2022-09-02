@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Typography } from '@mui/material';
 
-import { ConfigStoreContext, FileDataStoreContext, VisualizationStoreContext } from 'store/stores';
+import { ConfigStoreContext, DataStoreContext, VisualizationStoreContext } from 'store/stores';
 import Vizualization from './visualization';
 import Items from './items';
 import Links from './links';
@@ -11,7 +11,7 @@ import * as s from './styles';
 
 const View = observer(() => {
   const configStore = useContext(ConfigStoreContext);
-  const fileDataStore = useContext(FileDataStoreContext);
+  const dataStore = useContext(DataStoreContext);
   const visualizationStore = useContext(VisualizationStoreContext);
 
   useEffect(
@@ -38,7 +38,7 @@ const View = observer(() => {
         && (
           <>
             <Typography className={s.subtitle} variant="subtitle2">
-              {`${fileDataStore.terminology.items}`}
+              {`${dataStore.terminology.items}`}
             </Typography>
             <Items />
           </>
@@ -55,7 +55,7 @@ const View = observer(() => {
         && (
           <>
             <Typography className={s.subtitle} variant="subtitle2">
-              {`${fileDataStore.terminology.links}`}
+              {`${dataStore.terminology.links}`}
             </Typography>
             <Links />
           </>

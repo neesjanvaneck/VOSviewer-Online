@@ -14,9 +14,8 @@ import _reduce from 'lodash/reduce';
 import { NetworkNormalizer, LINLOG_MODULARITY } from 'utils/networkanalysis/NetworkNormalizer';
 import { LayoutCreator } from 'utils/networkanalysis/LayoutCreator';
 import { ClusteringCreator } from 'utils/networkanalysis/ClusteringCreator';
-import { minNItems, fileTypeKeys, errorKeys, processTypes, parameterKeys } from 'utils/variables';
-
-import { getFileError, getFileReaderError, getJsonFileError, getMapFileError, getNetworkFileError } from 'utils/errors';
+import { minNItems, dataTypeKeys, errorKeys, processTypes, parameterKeys } from 'utils/variables';
+import { getError, getFileReaderError, getJsonDataError, getMapDataError, getNetworkDataError } from 'utils/errors';
 import { getItemWithTransformedKeysAndValues } from 'utils/helpers';
 
 const clusteringCreator = new ClusteringCreator();
@@ -29,11 +28,11 @@ self.addEventListener("message", event => {
     case 'normalize network':
       networkNormalizer.performNormalization(options.normalizationMethod);
       break;
-    case 'start parse vosviewer-json file':
-      _parseJsonFile(options.jsonFileOrUrl);
+    case 'start parse vosviewer-json data':
+      _parseJsonData(options.jsonFileOrUrlOrObject);
       break;
-    case 'start parse vosviewer-map-network file':
-      _parseMapNetworkFile(options.mapFileOrUrl, options.networkFileOrUrl);
+    case 'start parse vosviewer-map-network data':
+      _parseMapNetworkData(options.mapFileOrUrl, options.networkFileOrUrl);
       break;
     case 'start process data': {
       self.postMessage({
@@ -145,27 +144,29 @@ self.addEventListener("message", event => {
   }
 });
 
-function _parseJsonFile(jsonFileOrUrl) {
-  if (jsonFileOrUrl) {
+function _parseJsonData(jsonFileOrUrlOrObject) {
+  if (jsonFileOrUrlOrObject) {
     self.postMessage({
       type: 'update loading screen',
-      data: { processType: processTypes.READING_JSON_FILE },
+      data: { processType: processTypes.READING_JSON_DATA },
     });
-    if (jsonFileOrUrl instanceof File) {
+    if (jsonFileOrUrlOrObject instanceof File) {
       const reader = new FileReader();
-      reader.readAsText(jsonFileOrUrl, 'UTF-8');
+      reader.readAsText(jsonFileOrUrlOrObject, 'UTF-8');
       reader.onload = event => {
-        _parseJsonData(event.target.result);
+        _parseJson(event.target.result);
       };
       reader.onerror = () => {
-        const fileError = getFileReaderError(reader.error, fileTypeKeys.VOSVIEWER_JSON_FILE);
+        const dataError = getFileReaderError(reader.error, dataTypeKeys.VOSVIEWER_JSON_DATA);
         self.postMessage({
-          type: 'end parse vosviewer-json file',
-          data: { fileError },
+          type: 'end parse vosviewer-json data',
+          data: { dataError },
         });
       };
+    } else if (jsonFileOrUrlOrObject instanceof Object) {
+      _parseJson(jsonFileOrUrlOrObject);
     } else {
-      fetch(jsonFileOrUrl, { credentials: "include" })
+      fetch(jsonFileOrUrlOrObject, { credentials: "include" })
         .then(response => {
           if (!response.ok) {
             if (response.status === 404) {
@@ -177,30 +178,34 @@ function _parseJsonFile(jsonFileOrUrl) {
           return response.text();
         })
         .then(text => {
-          _parseJsonData(text);
+          _parseJson(text);
         })
         .catch(error => {
-          const fileError = getFileReaderError(error, fileTypeKeys.VOSVIEWER_JSON_FILE);
+          const dataError = getFileReaderError(error, dataTypeKeys.VOSVIEWER_JSON_DATA);
           self.postMessage({
-            type: 'end parse vosviewer-json file',
-            data: { fileError },
+            type: 'end parse vosviewer-json data',
+            data: { dataError },
           });
         });
     }
   }
 }
 
-function _parseJsonData(text) {
-  let fileError;
+function _parseJson(jsonObjectOrText) {
+  let dataError;
   let jsonData = {};
   let mapData = [];
   let networkData = [];
 
   let data;
-  try {
-    data = JSON.parse(text);
-  } catch (error) {
-    data = undefined;
+  if (jsonObjectOrText instanceof Object) {
+    data = jsonObjectOrText;
+  } else {
+    try {
+      data = JSON.parse(jsonObjectOrText);
+    } catch (error) {
+      data = undefined;
+    }
   }
   if (data && data.network && (data.network.items || data.network.links)) {
     jsonData = _cloneDeep(data) || {};
@@ -245,7 +250,7 @@ function _parseJsonData(text) {
 
     const parseResultsMapData = { data: mapData, meta: { fields: Object.values(_keys(itemPrototype)) } };
     const parseResultsNetworkData = { data: networkData, meta: { fields: Object.values(_keys(linkPrototype)) } };
-    fileError = getJsonFileError(parseResultsMapData, parseResultsNetworkData);
+    dataError = getJsonDataError(parseResultsMapData, parseResultsNetworkData);
 
     if (mapData.length === 0) {
       const itemIds1 = networkData.map(d => d[0]);
@@ -254,26 +259,26 @@ function _parseJsonData(text) {
       uniqueItemIds.sort();
       mapData = uniqueItemIds.map(d => ({ id: d }));
     }
-  } else if (text === "") {
-    fileError = getFileError(errorKeys.FILE_EMPTY, fileTypeKeys.VOSVIEWER_JSON_FILE);
+  } else if (jsonObjectOrText === "") {
+    dataError = getError(errorKeys.NO_DATA, dataTypeKeys.VOSVIEWER_JSON_DATA);
   } else {
-    fileError = getFileError(errorKeys.INVALID_JSON_DATA_FORMAT, fileTypeKeys.VOSVIEWER_JSON_FILE);
+    dataError = getError(errorKeys.INVALID_JSON_DATA_FORMAT, dataTypeKeys.VOSVIEWER_JSON_DATA);
   }
   self.postMessage({
-    type: 'end parse vosviewer-json file',
-    data: { fileError, jsonData, mapData, networkData },
+    type: 'end parse vosviewer-json data',
+    data: { dataError, jsonData, mapData, networkData },
   });
 }
 
-function _parseMapNetworkFile(mapFileOrUrl, networkFileOrUrl) {
-  let fileError;
+function _parseMapNetworkData(mapFileOrUrl, networkFileOrUrl) {
+  let dataError;
   let mapData = [];
   let networkData = [];
 
   if (mapFileOrUrl) {
     self.postMessage({
       type: 'update loading screen',
-      data: { processType: processTypes.READING_MAP_FILE },
+      data: { processType: processTypes.READING_MAP_DATA },
     });
     parse(mapFileOrUrl, {
       header: true,
@@ -282,10 +287,10 @@ function _parseMapNetworkFile(mapFileOrUrl, networkFileOrUrl) {
       delimitersToGuess: ['\t', ';', ','],
       // dynamicTyping: true,
       error: error => {
-        fileError = getFileReaderError(error, fileTypeKeys.VOSVIEWER_MAP_FILE);
+        dataError = getFileReaderError(error, dataTypeKeys.VOSVIEWER_MAP_DATA);
         self.postMessage({
-          type: 'end parse vosviewer-map-network file',
-          data: { fileError },
+          type: 'end parse vosviewer-map-network data',
+          data: { dataError },
         });
       },
       complete: parseResults => {
@@ -298,11 +303,11 @@ function _parseMapNetworkFile(mapFileOrUrl, networkFileOrUrl) {
         }
         parseResults.data = (parseResults.data || []).map(item => getItemWithTransformedKeysAndValues(item));
         mapData = parseResults.data;
-        fileError = getMapFileError(parseResults, networkFileOrUrl != null);
-        if (!fileError && networkFileOrUrl) {
+        dataError = getMapDataError(parseResults, networkFileOrUrl != null);
+        if (!dataError && networkFileOrUrl) {
           self.postMessage({
             type: 'update loading screen',
-            data: { processType: processTypes.READING_NETWORK_FILE },
+            data: { processType: processTypes.READING_NETWORK_DATA },
           });
           parse(networkFileOrUrl, {
             header: false,
@@ -311,10 +316,10 @@ function _parseMapNetworkFile(mapFileOrUrl, networkFileOrUrl) {
             delimitersToGuess: ['\t', ';', ','],
             dynamicTyping: true,
             error: error => {
-              fileError = getFileReaderError(error, fileTypeKeys.VOSVIEWER_NETWORK_FILE);
+              dataError = getFileReaderError(error, dataTypeKeys.VOSVIEWER_NETWORK_DATA);
               self.postMessage({
-                type: 'end parse vosviewer-map-network file',
-                data: { fileError },
+                type: 'end parse vosviewer-map-network data',
+                data: { dataError },
               });
             },
             complete: parseResults => {
@@ -325,17 +330,17 @@ function _parseMapNetworkFile(mapFileOrUrl, networkFileOrUrl) {
                 }
               }
               networkData = parseResults.data;
-              fileError = getNetworkFileError(parseResults, mapData);
+              dataError = getNetworkDataError(parseResults, mapData);
               self.postMessage({
-                type: 'end parse vosviewer-map-network file',
-                data: { fileError, mapData, networkData },
+                type: 'end parse vosviewer-map-network data',
+                data: { dataError, mapData, networkData },
               });
             }
           });
         } else {
           self.postMessage({
-            type: 'end parse vosviewer-map-network file',
-            data: { fileError, mapData, networkData },
+            type: 'end parse vosviewer-map-network data',
+            data: { dataError, mapData, networkData },
           });
         }
       }
@@ -343,7 +348,7 @@ function _parseMapNetworkFile(mapFileOrUrl, networkFileOrUrl) {
   } else if (networkFileOrUrl) {
     self.postMessage({
       type: 'update loading screen',
-      data: { processType: processTypes.READING_NETWORK_FILE },
+      data: { processType: processTypes.READING_NETWORK_DATA },
     });
     parse(networkFileOrUrl, {
       header: false,
@@ -352,10 +357,10 @@ function _parseMapNetworkFile(mapFileOrUrl, networkFileOrUrl) {
       delimitersToGuess: ['\t', ';', ','],
       dynamicTyping: true,
       error: error => {
-        fileError = getFileReaderError(error, fileTypeKeys.VOSVIEWER_NETWORK_FILE);
+        dataError = getFileReaderError(error, dataTypeKeys.VOSVIEWER_NETWORK_DATA);
         self.postMessage({
-          type: 'end parse vosviewer-map-network file',
-          data: { fileError, mapData, networkData },
+          type: 'end parse vosviewer-map-network data',
+          data: { dataError, mapData, networkData },
         });
       },
       complete: results => {
@@ -366,8 +371,8 @@ function _parseMapNetworkFile(mapFileOrUrl, networkFileOrUrl) {
           }
         }
         networkData = results.data;
-        fileError = getNetworkFileError(results, mapData);
-        if (!fileError) {
+        dataError = getNetworkDataError(results, mapData);
+        if (!dataError) {
           const itemIds1 = networkData.map(link => link[0]);
           const itemIds2 = networkData.map(link => link[1]);
           const uniqueItemIds = _uniq(_concat(itemIds1, itemIds2));
@@ -375,8 +380,8 @@ function _parseMapNetworkFile(mapFileOrUrl, networkFileOrUrl) {
           mapData = uniqueItemIds.map(itemId => ({ id: itemId }));
         }
         self.postMessage({
-          type: 'end parse vosviewer-map-network file',
-          data: { fileError, mapData, networkData },
+          type: 'end parse vosviewer-map-network data',
+          data: { dataError, mapData, networkData },
         });
       }
     });

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { select } from 'd3-selection';
 
-import { FileDataStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
+import { DataStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
 import { drawRoundedRectangle } from 'utils/drawing';
 import { trimTextEnd } from 'utils/helpers';
 import {
@@ -11,7 +11,7 @@ import {
 import * as s from './styles';
 
 const ClusterColorLegend = observer(({ showTopClustersOnly, canvasWidth, legendWidth, customFont }) => {
-  const fileDataStore = useContext(FileDataStoreContext);
+  const dataStore = useContext(DataStoreContext);
   const uiStore = useContext(UiStoreContext);
   const visualizationStore = useContext(VisualizationStoreContext);
   const canvasEl = useRef(null);
@@ -37,7 +37,7 @@ const ClusterColorLegend = observer(({ showTopClustersOnly, canvasWidth, legendW
   }, [ctx, mouseCoord, font, showTopClustersOnly, uiStore.darkTheme, visualizationStore.lastItemUpdate]);
 
   const getLegendItems = () => {
-    const arr = Array.from(fileDataStore.clusters, ([key, value]) => ({ key, value }));
+    const arr = Array.from(dataStore.clusters, ([key, value]) => ({ key, value }));
     return showTopClustersOnly ? arr.slice(0, 6) : arr;
   };
 

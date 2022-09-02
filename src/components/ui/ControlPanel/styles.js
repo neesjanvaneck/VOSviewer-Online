@@ -1,18 +1,22 @@
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 import { controlPanelWidth } from 'utils/variables';
 
 export const open = css`
   label: control-panel-open;
+
+  z-index: 0;
 `;
 
 export const closed = css`
   label: control-panel-closed;
+
+  z-index: 0;
 `;
 
 export const controlPanel = css`
   label: control-panel;
   top: 0;
-  position: fixed;
+  position: absolute;
   width: ${controlPanelWidth - 2}px;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.95);
@@ -47,11 +51,13 @@ export const closeOpenButton = css`
 export const closeButton = css`
   label: close-button;
   left: calc(${controlPanelWidth}px - 15px);
+  line-height: 0.6;
 `;
 
 export const openButton = css`
   label: open-button;
   left: calc(${controlPanelWidth}px - 10px);
+  line-height: 0.6;
 `;
 
 export const contentBox = css`
@@ -95,6 +101,7 @@ export const switchLabel = css`
 export const sliderBox = css`
   label: slider-box;
   margin: 4px 2px 12px 0px;
+  line-height: 0px;
 `;
 
 export const sliderBoxLabel = css`
@@ -154,6 +161,7 @@ export const colorPickerTitle = (darkTheme) => css`
 export const listItem = css`
   label: list-item;
   margin: 0px 0px 8px 0px;
+  line-height: 1rem;
   cursor: pointer;
 `;
 

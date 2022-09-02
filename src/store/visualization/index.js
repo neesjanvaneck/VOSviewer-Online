@@ -1,6 +1,6 @@
 /* eslint-disable no-bitwise */
-import ReactHtmlParser from 'react-html-parser';
-import { extendObservable } from 'mobx';
+import HTMLReactParser from 'html-react-parser';
+import { makeAutoObservable } from 'mobx';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { extent, sum } from 'd3-array';
 import { color } from 'd3-color';
@@ -21,7 +21,7 @@ import _isNaN from 'lodash/isNaN';
 import _uniq from 'lodash/uniq';
 
 import {
-  canvasMargin, clusterColors, circleColors, circleMinDiameter, circleAvgDiameter, lineMinWidth, lineAvgWidth, labelMinFontSize, labelFontSizeScalingConstant, mapFileHeaders, scoreColorLegendPropScoresBetweenMinAndMax, scoreColorLegendDesiredNTicks, parameterKeys, defaultParameterValues, defaultTerminology
+  canvasMargin, clusterColors, circleColors, circleMinDiameter, circleAvgDiameter, lineMinWidth, lineAvgWidth, labelMinFontSize, labelFontSizeScalingConstant, mapDataHeaders, scoreColorLegendPropScoresBetweenMinAndMax, scoreColorLegendDesiredNTicks, parameterKeys, defaultParameterValues, defaultTerminology
 } from 'utils/variables';
 import { ItemStatus, LinkStatus, VisualizationStatus, calcDistance } from 'utils/drawing';
 import {
@@ -30,32 +30,7 @@ import {
 
 export default class State {
   constructor(state = {}) {
-    extendObservable(
-      this,
-      {
-        lastDataUpdate: Date.now(),
-        lastItemUpdate: Date.now(),
-        lastLinkUpdate: Date.now(),
-        hoveredItem: undefined,
-        clickedItem: undefined,
-        hoveredLink: undefined,
-        clickedLink: undefined,
-        zTransform: { x: 0, y: 0, k: 1 },
-        weightKeysCustomTerminology: [],
-        scoreKeys: [],
-        clusterKeyIndex: 0,
-        weightIndex: 0,
-        scoreIndex: 0,
-        scoreColorSchemeName: defaultParameterValues[parameterKeys.SCORE_COLORS],
-        scoreColorLegendMinScore: 0,
-        scoreColorLegendMaxScore: 0,
-        scoreColorLegendMinScoreAutoValue: true,
-        scoreColorLegendMaxScoreAutoValue: true,
-        normalizeScoresMethodName: 'Do not normalize',
-        degreesToRotate: 90,
-      },
-      state
-    );
+    makeAutoObservable(this, state);
     this.largestComponent = defaultParameterValues[parameterKeys.LARGEST_COMPONENT];
     this.initialZoomLevel = defaultParameterValues[parameterKeys.ZOOM_LEVEL];
     this.canvasMargin = { left: canvasMargin, right: canvasMargin, top: canvasMargin, bottom: canvasMargin };
@@ -126,6 +101,46 @@ export default class State {
     this.getClusterLegendCanvasImage = () => {};
     this.getLogoImages = () => ([]);
   }
+
+  lastDataUpdate = Date.now()
+
+  lastItemUpdate = Date.now()
+
+  lastLinkUpdate = Date.now()
+
+  hoveredItem = undefined
+
+  clickedItem = undefined
+
+  hoveredLink = undefined
+
+  clickedLink = undefined
+
+  zTransform = { x: 0, y: 0, k: 1 }
+
+  weightKeysCustomTerminology = []
+
+  scoreKeys = []
+
+  clusterKeyIndex = 0
+
+  weightIndex = 0
+
+  scoreIndex = 0
+
+  scoreColorSchemeName = defaultParameterValues[parameterKeys.SCORE_COLORS]
+
+  scoreColorLegendMinScore = 0
+
+  scoreColorLegendMaxScore = 0
+
+  scoreColorLegendMinScoreAutoValue = true
+
+  scoreColorLegendMaxScoreAutoValue = true
+
+  normalizeScoresMethodName = 'Do not normalize'
+
+  degreesToRotate = 90
 
   get itemsOrLinksWithUrl() {
     const itemsWithUrl = this.items.filter(item => item.url);
@@ -552,7 +567,7 @@ export default class State {
       item._fontSize = this.pixelRatio * (scale * labelMinFontSize + labelFontSizeScalingConstant * item._normalizedWeight ** itemSizeVariation);
       if (this.labelCanvasContext) {
         this.labelCanvasContext.font = `${item._fontSize}px ${fontFamily}`;
-        const label = ReactHtmlParser(item.label)[0];
+        const label = HTMLReactParser(item.label);
         item._labelText = (label || '').slice(0, maxLabelLength) || '';
         item._labelTextWidth = this.labelCanvasContext.measureText(item._labelText).width;
       }
@@ -782,7 +797,7 @@ export default class State {
   }
 
   updateItemClusters(clusters, darkTheme) {
-    this.clusterKey = mapFileHeaders.CLUSTER;
+    this.clusterKey = mapDataHeaders.CLUSTER;
     _each(this.items, (item) => {
       const cluster = clusters[this.itemIdToIndex[item.id]];
       item[this.clusterKey] = !_isNil(cluster) ? cluster + 1 : undefined;

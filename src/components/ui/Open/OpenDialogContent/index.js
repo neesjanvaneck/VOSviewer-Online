@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { Typography, FormControl, Select, InputLabel, MenuItem } from '@mui/material';
 import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
 
-import { ConfigStoreContext, FileDataStoreContext, UiStoreContext } from 'store/stores';
+import { ConfigStoreContext, DataStoreContext, UiStoreContext } from 'store/stores';
 import JsonFileChooser from './json';
 import MapFileChooser from './map';
 import NetworkFileChooser from './network';
@@ -11,22 +11,22 @@ import * as s from './styles';
 
 const OpenDialogContent = observer(() => {
   const configStore = useContext(ConfigStoreContext);
-  const fileDataStore = useContext(FileDataStoreContext);
+  const dataStore = useContext(DataStoreContext);
   const uiStore = useContext(UiStoreContext);
 
   const clearMap = () => {
     uiStore.resetMapFileSelectedName();
-    fileDataStore.setMapFile(undefined);
+    dataStore.setMapFile(undefined);
   };
 
   const clearNetwork = () => {
     uiStore.resetNetworkFileSelectedName();
-    fileDataStore.setNetworkFile(undefined);
+    dataStore.setNetworkFile(undefined);
   };
 
   const clearJson = () => {
     uiStore.resetJsonFileSelectedName();
-    fileDataStore.setJsonFile(undefined);
+    dataStore.setJsonFile(undefined);
   };
 
   return (
@@ -49,7 +49,7 @@ const OpenDialogContent = observer(() => {
               <JsonFileChooser />
               <div className={s.fileNameBox(configStore.uiStyle)}>
                 <Typography variant="body2">{uiStore.jsonFileSelectedName}</Typography>
-                {fileDataStore.jsonFile && <CancelRoundedIcon fontSize="small" onClick={clearJson} />}
+                {dataStore.jsonFile && <CancelRoundedIcon fontSize="small" onClick={clearJson} />}
               </div>
             </div>
           )
@@ -61,14 +61,14 @@ const OpenDialogContent = observer(() => {
                 <MapFileChooser />
                 <div className={s.fileNameBox(configStore.uiStyle)}>
                   <Typography variant="body2">{uiStore.mapFileSelectedName}</Typography>
-                  {fileDataStore.mapFile && <CancelRoundedIcon fontSize="small" onClick={clearMap} />}
+                  {dataStore.mapFile && <CancelRoundedIcon fontSize="small" onClick={clearMap} />}
                 </div>
               </div>
               <div className={s.fileBox}>
                 <NetworkFileChooser />
                 <div className={s.fileNameBox(configStore.uiStyle)}>
                   <Typography variant="body2">{uiStore.networkFileSelectedName}</Typography>
-                  {fileDataStore.networkFile && <CancelRoundedIcon fontSize="small" onClick={clearNetwork} />}
+                  {dataStore.networkFile && <CancelRoundedIcon fontSize="small" onClick={clearNetwork} />}
                 </div>
               </div>
             </>

@@ -107,7 +107,7 @@ const LegendPanel = observer(() => {
         >
           {uiStore.colorIndex > 0 && (
             <ScoreColorLegend
-              canvasWidth={min([350, uiStore.windowInnerWidth - 15])}
+              canvasWidth={min([350, uiStore.componentWidth - 15])}
               canvasHeight={48}
               customFont="Nexa Light"
             />

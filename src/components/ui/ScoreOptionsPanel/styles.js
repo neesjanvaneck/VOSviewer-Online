@@ -1,4 +1,4 @@
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 import { panelMargin, panelPadding } from 'utils/variables';
 
 export const scoreOptionsPanel = css`
@@ -7,6 +7,7 @@ export const scoreOptionsPanel = css`
   padding: ${panelPadding}px;
   border-radius: 5px;
   pointer-events: all;
+  line-height: 0.6;
 `;
 
 export const textField = css`

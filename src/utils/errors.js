@@ -9,186 +9,186 @@ import _isNumber from 'lodash/isNumber';
 import _indexOf from 'lodash/indexOf';
 import _isUndefined from 'lodash/isUndefined';
 
-import { mapFileHeaders, fileTypeKeys, fileTypeNames, errorKeys, errorMessages } from 'utils/variables';
+import { mapDataHeaders, dataTypeKeys, dataTypeNames, errorKeys, errorMessages } from 'utils/variables';
 import { getWeightKeys, getScoreKeys } from 'utils/helpers';
 
-export const getFileError = (errorKey, fileTypeKey, lineNumber) => ({
+export const getError = (errorKey, dataTypeKey, lineNumber) => ({
   key: errorKey,
   message: errorMessages[errorKey],
-  fileType: fileTypeNames[fileTypeKey],
+  dataType: dataTypeNames[dataTypeKey],
   lineNumber
 });
 
-export const getFileReaderError = (catchedError, fileTypeKey) => {
+export const getFileReaderError = (catchedError, dataTypeKey) => {
   if (catchedError.message === 'Not Found') {
-    return getFileError(errorKeys.FILE_NOT_FOUND, fileTypeKey);
+    return getError(errorKeys.FILE_NOT_FOUND, dataTypeKey);
   }
   if (catchedError) {
-    return getFileError(errorKeys.FILE_READ_ERROR, fileTypeKey);
+    return getError(errorKeys.FILE_READ_ERROR, dataTypeKey);
   }
   return null;
 };
 
-export const getMapFileError = (parseResults, networkDataAvailable) => {
-  const fileTypeKey = fileTypeKeys.VOSVIEWER_MAP_FILE;
-  if (!parseResults || _checkFileEmpty(parseResults)) {
-    return getFileError(errorKeys.FILE_EMPTY, fileTypeKey);
+export const getMapDataError = (parseResults, networkDataAvailable) => {
+  const dataTypeKey = dataTypeKeys.VOSVIEWER_MAP_DATA;
+  if (!parseResults || _checkNoData(parseResults)) {
+    return getError(errorKeys.NO_DATA, dataTypeKey);
   }
   let lineNumber = _checkIncorrectUseOfQuotes(parseResults);
   if (_isNumber(lineNumber)) {
-    return getFileError(errorKeys.INCORRECT_USE_OF_QUOTES, fileTypeKey, lineNumber);
+    return getError(errorKeys.INCORRECT_USE_OF_QUOTES, dataTypeKey, lineNumber);
   }
   lineNumber = _checkHeaderMissing(parseResults);
   if (_isNumber(lineNumber)) {
-    return getFileError(errorKeys.HEADER_MISSING, fileTypeKey, lineNumber);
+    return getError(errorKeys.HEADER_MISSING, dataTypeKey, lineNumber);
   }
   const multipleColumnsError = _checkMultipleColumns(parseResults);
   if (multipleColumnsError.columns.length) {
     return {
       key: errorKeys.MULTIPLE_COLUMNS,
       message: errorMessages[errorKeys.MULTIPLE_COLUMNS](multipleColumnsError.columns),
-      fileType: fileTypeNames[fileTypeKey],
+      dataType: dataTypeNames[dataTypeKey],
       lineNumber: multipleColumnsError.lineNumber
     };
   }
-  lineNumber = _checkIncorrectNColumnsMapFile(parseResults);
+  lineNumber = _checkIncorrectNColumnsMapData(parseResults);
   if (_isNumber(lineNumber)) {
-    return getFileError(errorKeys.INCORRECT_N_COLUMNS, fileTypeKey, lineNumber);
+    return getError(errorKeys.INCORRECT_N_COLUMNS, dataTypeKey, lineNumber);
   }
   if (_checkLessThanThreeItems(parseResults)) {
-    return getFileError(errorKeys.LESS_THAN_THREE_ITEMS, fileTypeKey);
+    return getError(errorKeys.LESS_THAN_THREE_ITEMS, dataTypeKey);
   }
   lineNumber = _checkIdAndLabelColumnsMissing(parseResults);
   if (_isNumber(lineNumber)) {
-    return getFileError(errorKeys.ID_AND_LABEL_COLUMNS_MISSING, fileTypeKey, lineNumber);
+    return getError(errorKeys.ID_AND_LABEL_COLUMNS_MISSING, dataTypeKey, lineNumber);
   }
   if (networkDataAvailable && _checkIdColumnMissing(parseResults)) {
-    return getFileError(errorKeys.ID_COLUMN_MISSING, fileTypeKey);
+    return getError(errorKeys.ID_COLUMN_MISSING, dataTypeKey);
   }
   if (!networkDataAvailable && _checkXAndYColumnsMissing(parseResults)) {
-    return getFileError(errorKeys.X_AND_Y_COLUMNS_MISSING, fileTypeKey);
+    return getError(errorKeys.X_AND_Y_COLUMNS_MISSING, dataTypeKey);
   }
   lineNumber = _checkIdEmpty(parseResults);
   if (_checkIdEmpty(parseResults)) {
-    return getFileError(errorKeys.ID_EMPTY, fileTypeKey, lineNumber);
+    return getError(errorKeys.ID_EMPTY, dataTypeKey, lineNumber);
   }
   lineNumber = _checkIdNotUnique(parseResults);
   if (_isNumber(lineNumber)) {
-    return getFileError(errorKeys.ID_NOT_UNIQUE, fileTypeKey, lineNumber);
+    return getError(errorKeys.ID_NOT_UNIQUE, dataTypeKey, lineNumber);
   }
   lineNumber = _checkXOrYNotNumber(parseResults);
   if (_isNumber(lineNumber)) {
-    return getFileError(errorKeys.X_OR_Y_NOT_NUMBER, fileTypeKey, lineNumber);
+    return getError(errorKeys.X_OR_Y_NOT_NUMBER, dataTypeKey, lineNumber);
   }
   lineNumber = _checkWeightNotNonnegativeNumber(parseResults);
   if (_isNumber(lineNumber)) {
-    return getFileError(errorKeys.WEIGHT_NOT_NONNEGATIVE_NUMBER, fileTypeKey, lineNumber);
+    return getError(errorKeys.WEIGHT_NOT_NONNEGATIVE_NUMBER, dataTypeKey, lineNumber);
   }
   lineNumber = _checkScoreNotNumber(parseResults);
   if (_isNumber(lineNumber)) {
-    return getFileError(errorKeys.SCORE_NOT_NUMBER, fileTypeKey, lineNumber);
+    return getError(errorKeys.SCORE_NOT_NUMBER, dataTypeKey, lineNumber);
   }
   lineNumber = _checkClusterNotPositiveInteger(parseResults);
   if (_isNumber(lineNumber)) {
-    return getFileError(errorKeys.CLUSTER_NOT_POSITIVE_INTEGER, fileTypeKey, lineNumber);
+    return getError(errorKeys.CLUSTER_NOT_POSITIVE_INTEGER, dataTypeKey, lineNumber);
   }
   if (_checkItemsSameCoordinates(parseResults)) {
-    return getFileError(errorKeys.ITEMS_SAME_COORDINATES, fileTypeKey);
+    return getError(errorKeys.ITEMS_SAME_COORDINATES, dataTypeKey);
   }
   return null;
 };
 
-export const getNetworkFileError = (parseResults, mapData) => {
-  const fileTypeKey = fileTypeKeys.VOSVIEWER_NETWORK_FILE;
-  if (!parseResults || _checkFileEmpty(parseResults)) {
-    return getFileError(errorKeys.FILE_EMPTY, fileTypeKey);
+export const getNetworkDataError = (parseResults, mapData) => {
+  const dataTypeKey = dataTypeKeys.VOSVIEWER_NETWORK_DATA;
+  if (!parseResults || _checkNoData(parseResults)) {
+    return getError(errorKeys.NO_DATA, dataTypeKey);
   }
   let lineNumber = _checkIncorrectUseOfQuotes(parseResults);
   if (_isNumber(lineNumber)) {
-    return getFileError(errorKeys.INCORRECT_USE_OF_QUOTES, fileTypeKey, lineNumber);
+    return getError(errorKeys.INCORRECT_USE_OF_QUOTES, dataTypeKey, lineNumber);
   }
-  if (_checkLessThanTwoColumnsNetworkFile(parseResults)) {
-    return getFileError(errorKeys.LESS_THAN_TWO_COLUMNS_NETWORK_FILE, fileTypeKey);
+  if (_checkLessThanTwoColumnsNetworkData(parseResults)) {
+    return getError(errorKeys.LESS_THAN_TWO_COLUMNS_NETWORK_DATA, dataTypeKey);
   }
-  if (_checkMoreThanThreeColumnsNetworkFile(parseResults)) {
-    return getFileError(errorKeys.MORE_THAN_THREE_COLUMNS_NETWORK_FILE, fileTypeKey);
+  if (_checkMoreThanThreeColumnsNetworkData(parseResults)) {
+    return getError(errorKeys.MORE_THAN_THREE_COLUMNS_NETWORK_DATA, dataTypeKey);
   }
-  lineNumber = _checkIncorrectNColumnsNetworkFile(parseResults);
+  lineNumber = _checkIncorrectNColumnsNetworkData(parseResults);
   if (_isNumber(lineNumber)) {
-    return getFileError(errorKeys.INCORRECT_N_COLUMNS, fileTypeKey, lineNumber);
+    return getError(errorKeys.INCORRECT_N_COLUMNS, dataTypeKey, lineNumber);
   }
-  lineNumber = _checkInvalidIdNetworkFile(parseResults, mapData);
+  lineNumber = _checkInvalidIdNetworkData(parseResults, mapData);
   if (_isNumber(lineNumber)) {
-    return getFileError(errorKeys.INVALID_ID_NETWORK_FILE, fileTypeKey, lineNumber);
+    return getError(errorKeys.INVALID_ID_NETWORK_DATA, dataTypeKey, lineNumber);
   }
   lineNumber = _checkStrengthNotNonnegativeNumber(parseResults);
   if (_isNumber(lineNumber)) {
-    return getFileError(errorKeys.STRENGTH_NOT_NONNEGATIVE_NUMBER, fileTypeKey, lineNumber);
+    return getError(errorKeys.STRENGTH_NOT_NONNEGATIVE_NUMBER, dataTypeKey, lineNumber);
   }
   return null;
 };
 
-export const getJsonFileError = (parseResultsMapData, parseResultsNetworkData) => {
-  const fileTypeKey = fileTypeKeys.VOSVIEWER_JSON_FILE;
-  if ((!parseResultsMapData || _checkFileEmpty(parseResultsMapData)) && (!parseResultsNetworkData || _checkFileEmpty(parseResultsNetworkData))) {
-    return getFileError(errorKeys.FILE_EMPTY, fileTypeKey);
+export const getJsonDataError = (parseResultsMapData, parseResultsNetworkData) => {
+  const dataTypeKey = dataTypeKeys.VOSVIEWER_JSON_DATA;
+  if ((!parseResultsMapData || _checkNoData(parseResultsMapData)) && (!parseResultsNetworkData || _checkNoData(parseResultsNetworkData))) {
+    return getError(errorKeys.NO_DATA, dataTypeKey);
   }
   if (parseResultsMapData.data.length > 0) {
     if (_checkLessThanThreeItems(parseResultsMapData)) {
-      return getFileError(errorKeys.LESS_THAN_THREE_ITEMS, fileTypeKey);
+      return getError(errorKeys.LESS_THAN_THREE_ITEMS, dataTypeKey);
     }
     if (_checkIdAndLabelColumnsMissing(parseResultsMapData)) {
-      return getFileError(errorKeys.ID_AND_LABEL_ATTRIBUTES_MISSING, fileTypeKey);
+      return getError(errorKeys.ID_AND_LABEL_ATTRIBUTES_MISSING, dataTypeKey);
     }
     if (parseResultsNetworkData.data.length > 0 && _checkIdColumnMissing(parseResultsMapData)) {
-      return getFileError(errorKeys.ID_ATTRIBUTE_MISSING, fileTypeKey);
+      return getError(errorKeys.ID_ATTRIBUTE_MISSING, dataTypeKey);
     }
     if (parseResultsNetworkData.data.length === 0 && _checkXAndYColumnsMissing(parseResultsMapData)) {
-      return getFileError(errorKeys.X_AND_Y_ATTRIBUTES_MISSING, fileTypeKey);
+      return getError(errorKeys.X_AND_Y_ATTRIBUTES_MISSING, dataTypeKey);
     }
     if (_checkIdEmpty(parseResultsMapData)) {
-      return getFileError(errorKeys.ID_EMPTY, fileTypeKey);
+      return getError(errorKeys.ID_EMPTY, dataTypeKey);
     }
     if (_checkIdNotUnique(parseResultsMapData)) {
-      return getFileError(errorKeys.ID_NOT_UNIQUE, fileTypeKey);
+      return getError(errorKeys.ID_NOT_UNIQUE, dataTypeKey);
     }
     if (_checkXOrYNotNumber(parseResultsMapData)) {
-      return getFileError(errorKeys.X_OR_Y_NOT_NUMBER, fileTypeKey);
+      return getError(errorKeys.X_OR_Y_NOT_NUMBER, dataTypeKey);
     }
     if (_checkWeightNotNonnegativeNumber(parseResultsMapData)) {
-      return getFileError(errorKeys.WEIGHT_NOT_NONNEGATIVE_NUMBER, fileTypeKey);
+      return getError(errorKeys.WEIGHT_NOT_NONNEGATIVE_NUMBER, dataTypeKey);
     }
     if (_checkScoreNotNumber(parseResultsMapData)) {
-      return getFileError(errorKeys.SCORE_NOT_NUMBER, fileTypeKey);
+      return getError(errorKeys.SCORE_NOT_NUMBER, dataTypeKey);
     }
     if (_checkClusterNotPositiveInteger(parseResultsMapData)) {
-      return getFileError(errorKeys.CLUSTER_NOT_POSITIVE_INTEGER, fileTypeKey);
+      return getError(errorKeys.CLUSTER_NOT_POSITIVE_INTEGER, dataTypeKey);
     }
     if (_checkItemsSameCoordinates(parseResultsMapData)) {
-      return getFileError(errorKeys.ITEMS_SAME_COORDINATES, fileTypeKey);
+      return getError(errorKeys.ITEMS_SAME_COORDINATES, dataTypeKey);
     }
   }
   if (parseResultsNetworkData.data.length > 0) {
     if (_checkSourceIdAttributeMissing(parseResultsNetworkData)) {
-      return getFileError(errorKeys.SOURCE_ID_ATTRIBUTE_MISSING, fileTypeKey);
+      return getError(errorKeys.SOURCE_ID_ATTRIBUTE_MISSING, dataTypeKey);
     }
     if (_checkTargetIdAttributeMissing(parseResultsNetworkData)) {
-      return getFileError(errorKeys.TARGET_ID_ATTRIBUTE_MISSING, fileTypeKey);
+      return getError(errorKeys.TARGET_ID_ATTRIBUTE_MISSING, dataTypeKey);
     }
-    if (_checkInvalidIdJsonFile(parseResultsNetworkData, parseResultsMapData.data)) {
-      return getFileError(errorKeys.INVALID_SOURCE_ID_OR_TARGET_ID, fileTypeKey);
+    if (_checkInvalidIdJsonData(parseResultsNetworkData, parseResultsMapData.data)) {
+      return getError(errorKeys.INVALID_SOURCE_ID_OR_TARGET_ID, dataTypeKey);
     }
     if (_checkStrengthNotNonnegativeNumber(parseResultsNetworkData)) {
-      return getFileError(errorKeys.STRENGTH_NOT_NONNEGATIVE_NUMBER, fileTypeKey);
+      return getError(errorKeys.STRENGTH_NOT_NONNEGATIVE_NUMBER, dataTypeKey);
     }
   }
   return null;
 };
 
 
-// General file error checks.
+// General data error checks.
 
-const _checkFileEmpty = parseResults => {
+const _checkNoData = parseResults => {
   const header = _get(parseResults, 'meta.fields');
   return !_get(header, 'length') && !parseResults.data.length;
 };
@@ -199,7 +199,7 @@ const _checkIncorrectUseOfQuotes = parseResults => {
 };
 
 
-// VOSviewer map file error checks.
+// VOSviewer map data error checks.
 
 const _checkHeaderMissing = parseResults => {
   const header = parseResults.meta.fields[0];
@@ -217,18 +217,18 @@ const _checkMultipleColumns = parseResults => {
 
 const _checkIdColumnMissing = parseResults => {
   const header = parseResults.meta.fields;
-  const idColumn = _includes(header, mapFileHeaders.ID);
+  const idColumn = _includes(header, mapDataHeaders.ID);
   return !idColumn;
 };
 
 const _checkIdAndLabelColumnsMissing = parseResults => {
   const header = parseResults.meta.fields;
-  const idColumn = _includes(header, mapFileHeaders.ID);
-  const labelColumn = _includes(header, mapFileHeaders.LABEL);
+  const idColumn = _includes(header, mapDataHeaders.ID);
+  const labelColumn = _includes(header, mapDataHeaders.LABEL);
   return !idColumn && !labelColumn && 1;
 };
 
-const _checkIncorrectNColumnsMapFile = parseResults => {
+const _checkIncorrectNColumnsMapData = parseResults => {
   const filteredErrors = _filter(parseResults.errors, error => error.type === 'FieldMismatch');
   return filteredErrors.length !== 0 && filteredErrors[0].row + 2;
 };
@@ -236,11 +236,11 @@ const _checkIncorrectNColumnsMapFile = parseResults => {
 const _checkLessThanThreeItems = parseResults => parseResults.data.length < 3;
 
 const _checkIdEmpty = parseResults => {
-  if (!_includes(parseResults.meta.fields, mapFileHeaders.ID)) return;
+  if (!_includes(parseResults.meta.fields, mapDataHeaders.ID)) return;
   let lineNumber;
   for (let i = 0; i < parseResults.data.length; i++) {
     const item = parseResults.data[i];
-    const id = _get(item, mapFileHeaders.ID);
+    const id = _get(item, mapDataHeaders.ID);
     if (_isUndefined(id) || _isNull(id) || id === '') {
       lineNumber = i + 2;
       break;
@@ -250,9 +250,9 @@ const _checkIdEmpty = parseResults => {
 };
 
 const _checkIdNotUnique = parseResults => {
-  if (!_includes(parseResults.meta.fields, mapFileHeaders.ID)) return;
+  if (!_includes(parseResults.meta.fields, mapDataHeaders.ID)) return;
   let lineNumber;
-  const ids = parseResults.data.map(d => _get(d, mapFileHeaders.ID));
+  const ids = parseResults.data.map(d => _get(d, mapDataHeaders.ID));
   for (let i = 0; i < parseResults.data.length; i++) {
     const id = ids[i];
     const nonUniqueIdIndex = _indexOf(ids, id, i + 1);
@@ -268,8 +268,8 @@ const _checkXOrYNotNumber = parseResults => {
   let lineNumber;
   for (let i = 0; i < parseResults.data.length; i++) {
     const item = parseResults.data[i];
-    const x = _get(item, mapFileHeaders.X);
-    const y = _get(item, mapFileHeaders.Y);
+    const x = _get(item, mapDataHeaders.X);
+    const y = _get(item, mapDataHeaders.Y);
     if (!_isUndefined(x) && !_isUndefined(y) && (!_isNumber(x) || !_isNumber(y))) {
       lineNumber = i + 2;
       break;
@@ -312,7 +312,7 @@ const _checkClusterNotPositiveInteger = parseResults => {
   let lineNumber;
   for (let i = 0; i < parseResults.data.length; i++) {
     const item = parseResults.data[i];
-    const cluster = _get(item, mapFileHeaders.CLUSTER);
+    const cluster = _get(item, mapDataHeaders.CLUSTER);
     if (!_isUndefined(cluster) && !_isNull(cluster) && (!_isInteger(cluster) || cluster <= 0 || cluster > 1000)) {
       lineNumber = i + 2;
       break;
@@ -323,27 +323,27 @@ const _checkClusterNotPositiveInteger = parseResults => {
 
 const _checkXAndYColumnsMissing = parseResults => {
   const header = parseResults.meta.fields;
-  const xColumn = _includes(header, mapFileHeaders.X);
-  const yColumn = _includes(header, mapFileHeaders.Y);
+  const xColumn = _includes(header, mapDataHeaders.X);
+  const yColumn = _includes(header, mapDataHeaders.Y);
   return (!xColumn || !yColumn);
 };
 
 const _checkItemsSameCoordinates = parseResults => {
   const header = parseResults.meta.fields;
-  const xColumn = _includes(header, mapFileHeaders.X);
-  const yColumn = _includes(header, mapFileHeaders.Y);
+  const xColumn = _includes(header, mapDataHeaders.X);
+  const yColumn = _includes(header, mapDataHeaders.Y);
   if (!xColumn || !yColumn) return;
-  const xValues = parseResults.data.map(item => _get(item, mapFileHeaders.X));
-  const yValues = parseResults.data.map(item => _get(item, mapFileHeaders.Y));
+  const xValues = parseResults.data.map(item => _get(item, mapDataHeaders.X));
+  const yValues = parseResults.data.map(item => _get(item, mapDataHeaders.Y));
   const xAllSame = _every(xValues, x => x === xValues[0]);
   const yAllSame = _every(yValues, y => y === yValues[0]);
   return xAllSame && yAllSame;
 };
 
 
-// Network file error checks.
+// VOSviewer network data error checks.
 
-const _checkLessThanTwoColumnsNetworkFile = parseResults => {
+const _checkLessThanTwoColumnsNetworkData = parseResults => {
   let error = false;
   if (parseResults.data[0].length < 2) {
     error = true;
@@ -351,7 +351,7 @@ const _checkLessThanTwoColumnsNetworkFile = parseResults => {
   return error;
 };
 
-const _checkMoreThanThreeColumnsNetworkFile = parseResults => {
+const _checkMoreThanThreeColumnsNetworkData = parseResults => {
   let error = false;
   if (parseResults.data[0].length > 3) {
     error = true;
@@ -359,7 +359,7 @@ const _checkMoreThanThreeColumnsNetworkFile = parseResults => {
   return error;
 };
 
-const _checkIncorrectNColumnsNetworkFile = parseResults => {
+const _checkIncorrectNColumnsNetworkData = parseResults => {
   let lineNumber;
   for (let i = 0; i < parseResults.data.length; i++) {
     if (parseResults.data[i].length !== parseResults.data[0].length) {
@@ -370,9 +370,9 @@ const _checkIncorrectNColumnsNetworkFile = parseResults => {
   return lineNumber;
 };
 
-const _checkInvalidIdNetworkFile = (parseResults, mapData) => {
+const _checkInvalidIdNetworkData = (parseResults, mapData) => {
   const ids = mapData.reduce((acc, curr) => {
-    acc[_get(curr, mapFileHeaders.ID)] = curr;
+    acc[_get(curr, mapDataHeaders.ID)] = curr;
     return acc;
   }, {});
   let lineNumber;
@@ -397,7 +397,7 @@ const _checkStrengthNotNonnegativeNumber = parseResults => {
 };
 
 
-// JSON file error checks.
+// VOSviewer JSON data error checks.
 
 const _checkSourceIdAttributeMissing = parseResults => {
   const header = parseResults.meta.fields;
@@ -411,9 +411,9 @@ const _checkTargetIdAttributeMissing = parseResults => {
   return (!targetIdAttribute);
 };
 
-const _checkInvalidIdJsonFile = (parseResults, mapData) => {
+const _checkInvalidIdJsonData = (parseResults, mapData) => {
   const ids = mapData.reduce((acc, curr) => {
-    acc[_get(curr, mapFileHeaders.ID)] = curr;
+    acc[_get(curr, mapDataHeaders.ID)] = curr;
     return acc;
   }, {});
   let lineNumber;
