@@ -10,25 +10,30 @@ import IntroDialog from 'components/ui-rori/IntroDialog';
 import RoRILogo from 'components/ui-rori/Logos/RoRILogo';
 import PoweredByLogo from 'components/ui-rori/Logos/PoweredByLogo';
 
-import { UiStoreContext, VisualizationStoreContext, WebworkerStoreContext } from 'store/stores';
+import { ConfigStoreContext, UiStoreContext, VisualizationStoreContext, WebworkerStoreContext } from 'store/stores';
 import { roriPantone298 } from 'utils/variables-rori';
 import 'utils/fonts/Nexa';
 
 const RoRI = observer(({ dataType }) => {
+  const configStore = useContext(ConfigStoreContext);
   const uiStore = useContext(UiStoreContext);
   const visualizationStore = useContext(VisualizationStoreContext);
   const webworkerStore = useContext(WebworkerStoreContext);
 
+  const parameters = {
+    item_size: 0,
+    item_color: (dataType === 'health') ? 2 : 1,
+    dimming_effect: false,
+    gradient_circles: false
+  };
+  configStore.init({ parameters });
+  uiStore.updateStore({ parameters });
   uiStore.setScoreOptionsPanelIsOpen(true);
   visualizationStore.setCanvasMarginTop(70);
   visualizationStore.setCanvasMarginBottom(80);
-  uiStore.setDimmingEffect(false);
-  uiStore.setGradientCircles(false);
 
   useEffect(() => {
     const mapUrl = (dataType === 'health') ? 'data/RoRI_research_funding_landscape_2019jun_health.txt' : 'data/RoRI_research_funding_landscape_2019jun_global.txt';
-    uiStore.setSizeIndex(0);
-    uiStore.setColorIndex((dataType === 'health') ? 1 : 0);
     webworkerStore.openMapNetworkData(mapUrl);
   });
 
