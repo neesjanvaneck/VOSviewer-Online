@@ -142,7 +142,7 @@ const VOSviewer = observer(({ width, targetRef, parameters = {}, data }) => {
           break;
         case 'end run layout':
           uiStore.setLoadingScreenProgressValue(100);
-          visualizationStore.setLayout(data.bestLayout.coordinate);
+          visualizationStore.updateItemCoordinates(data.newCoordinates);
           uiStore.setLoadingScreenIsOpen(false);
           if (webworkerStore.runClustering) {
             webworkerStore.startRunClustering(clusteringStore.getParameters());
@@ -152,7 +152,7 @@ const VOSviewer = observer(({ width, targetRef, parameters = {}, data }) => {
           break;
         case 'end run clustering':
           uiStore.setLoadingScreenProgressValue(100);
-          visualizationStore.setClusters(data.bestClustering, uiStore.darkTheme);
+          visualizationStore.updateItemClusters(data.newClusters, uiStore.darkTheme);
           uiStore.setLoadingScreenIsOpen(false);
           _finalizeVisualization();
           break;
