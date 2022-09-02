@@ -108,7 +108,9 @@ const Info = observer(() => {
           </IconButton>
         </DialogTitle>
         <DialogContent classes={{ root: s.dialogContent }} align="justify">
-          { parseFormattedText(dataStore.description) }
+          <Typography variant="body1" align="justify" component="div">
+            { parseFormattedText(dataStore.description) }
+          </Typography>
         </DialogContent>
         <DialogActions>
           <Button onClick={exitInfoDialog} color="primary">

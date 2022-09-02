@@ -41,6 +41,7 @@ export const inlineIcon = css`
 
 export const image = css`
   label: image;
+  box-sizing: border-box;
   border: 1px solid #ccc;
 `;
 
