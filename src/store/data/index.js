@@ -1,25 +1,16 @@
 /* global MODE */
-import { extendObservable } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 import _clone from 'lodash/clone';
 import _capitalize from 'lodash/capitalize';
 import _keys from 'lodash/keys';
 import _includes from 'lodash/includes';
 import _merge from 'lodash/merge';
 
-import { mapFileHeaders, defaultTerminology, defaultTemplates, defaultStyles } from 'utils/variables';
+import { mapDataHeaders, defaultTerminology, defaultTemplates, defaultStyles } from 'utils/variables';
 
 export default class State {
   constructor() {
-    extendObservable(
-      this,
-      {
-        fileError: undefined,
-        mapFile: undefined,
-        networkFile: undefined,
-        jsonFile: undefined,
-        clusters: new Map(),
-      },
-    );
+    makeAutoObservable(this);
     this.mapData = [];
     this.networkData = [];
     this.jsonData = {};
@@ -30,18 +21,28 @@ export default class State {
     this.styles = {};
   }
 
+  dataError = undefined
+
+  mapFile = undefined
+
+  networkFile = undefined
+
+  jsonFile = undefined
+
+  clusters = new Map()
+
   get parameters() {
     return this.jsonData.config ? this.jsonData.config.parameters : undefined;
   }
 
   get coordinatesAreAvailable() {
     const keys = _keys(this.mapData[0]);
-    return keys && _includes(keys, mapFileHeaders.X) && _includes(keys, mapFileHeaders.Y);
+    return keys && _includes(keys, mapDataHeaders.X) && _includes(keys, mapDataHeaders.Y);
   }
 
   get clustersAreAvailable() {
     const keys = _keys(this.mapData[0]);
-    return keys && _includes(keys, mapFileHeaders.CLUSTER);
+    return keys && _includes(keys, mapDataHeaders.CLUSTER);
   }
 
   get networkDataIsAvailable() {
@@ -69,7 +70,7 @@ export default class State {
   }
 
   init(data, uiStyle) {
-    this.fileError = data.fileError;
+    this.dataError = data.dataError;
     this.mapData = data.mapData ? data.mapData : [];
     this.networkData = data.networkData ? data.networkData : [];
     this.jsonData = data.jsonData ? data.jsonData : {};

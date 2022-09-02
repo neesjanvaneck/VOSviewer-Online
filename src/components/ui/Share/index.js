@@ -1,10 +1,11 @@
+/* global IS_REACT_COMPONENT */
 /* eslint-disable no-undef */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import {
-  Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControlLabel, IconButton, Switch, TextField, Tooltip, Typography
+  Button, DialogActions, DialogContent, DialogTitle, FormControlLabel, IconButton, Switch, TextField, Tooltip, Typography
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import ShareIcon from '@mui/icons-material/Share';
@@ -12,6 +13,7 @@ import TinyURL from 'tinyurl';
 import QRCode from 'qrcode.react';
 import _cloneDeep from 'lodash/cloneDeep';
 
+import Dialog from 'components/ui/Dialog';
 import { ConfigStoreContext, QueryStringStoreContext, UiStoreContext } from 'store/stores';
 import { parameterKeys } from 'utils/variables';
 import vosviewerIcon from 'assets/images/vosviewer-favicon.png';
@@ -27,9 +29,13 @@ const Share = observer(() => {
   const [embedCode, setEmbedCode] = useState('');
   const qrImageEl = useRef(null);
 
-  useEffect(async () => {
-    setLink(useShortLink ? await getShortenedLink() : getLink());
-    setEmbedCode(getEmbedCode(useShortLink ? await getShortenedLink(true) : getLink(true)));
+  useEffect(() => {
+    // https://github.com/facebook/react/issues/14326
+    async function setLinkAndEmbedCode() {
+      setLink(useShortLink ? await getShortenedLink() : getLink());
+      setEmbedCode(getEmbedCode(useShortLink ? await getShortenedLink(true) : getLink(true)));
+    }
+    setLinkAndEmbedCode();
   });
 
   const showShareDialog = () => {
@@ -93,7 +99,7 @@ const Share = observer(() => {
 
   return (
     <>
-      {configStore.uiConfig.share_icon && (uiStore.jsonQueryStringValue || uiStore.mapQueryStringValue || uiStore.networkQueryStringValue)
+      {!IS_REACT_COMPONENT && configStore.uiConfig.share_icon && (uiStore.jsonQueryStringValue || uiStore.mapQueryStringValue || uiStore.networkQueryStringValue)
         && (
           <>
             <div

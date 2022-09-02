@@ -2,16 +2,16 @@ import React, { useContext, useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { TextField } from '@mui/material';
 import { useDebounce } from 'use-debounce';
-import ReactHtmlParser from 'react-html-parser';
+import HTMLReactParser from 'html-react-parser';
 import parse from 'autosuggest-highlight/parse';
 import _sortBy from 'lodash/sortBy';
 import _isUndefined from 'lodash/isUndefined';
 
-import { FileDataStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
+import { DataStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
 import * as s from './styles';
 
 const Find = observer(() => {
-  const fileDataStore = useContext(FileDataStoreContext);
+  const dataStore = useContext(DataStoreContext);
   const uiStore = useContext(UiStoreContext);
   const visualizationStore = useContext(VisualizationStoreContext);
   const [itemFilterText, setItemFilterText] = useState();
@@ -41,7 +41,7 @@ const Find = observer(() => {
   const itemList = () => _sortBy(visualizationStore.items, ['label', 'id'])
     .filter(item => item.label.toLowerCase().indexOf(uiStore.itemFilterText.toLowerCase()) !== -1)
     .map((item, i) => {
-      const label = ReactHtmlParser(item.label)[0];
+      const label = HTMLReactParser(item.label);
       const matchPosition = label.toLowerCase().indexOf(uiStore.itemFilterText.toLowerCase());
       const labelParts = parse(label, [[matchPosition, matchPosition + uiStore.itemFilterText.length]]);
       return (
@@ -65,7 +65,7 @@ const Find = observer(() => {
   return (
     <>
       <TextField
-        placeholder={`Find ${fileDataStore.terminology.item.toLowerCase()}`}
+        placeholder={`Find ${dataStore.terminology.item.toLowerCase()}`}
         value={itemFilterText || ''}
         fullWidth
         margin="normal"

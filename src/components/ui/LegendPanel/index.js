@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Paper } from '@mui/material';
 
-import { ConfigStoreContext, FileDataStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
+import { ConfigStoreContext, DataStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
 import { controlPanelWidth, panelMargin, panelPadding, legendPanelMaxWidth } from 'utils/variables';
 import SizeLegend from 'components/ui/SizeLegend';
 import ClusterColorLegend from 'components/ui/ClusterColorLegend';
@@ -14,7 +14,7 @@ const sizeLegendPanelWidth = 76;
 
 const LegendPanel = observer(() => {
   const configStore = useContext(ConfigStoreContext);
-  const fileDataStore = useContext(FileDataStoreContext);
+  const dataStore = useContext(DataStoreContext);
   const uiStore = useContext(UiStoreContext);
   const visualizationStore = useContext(VisualizationStoreContext);
   const [showTopClustersOnly, setShowTopClustersOnly] = useState(true);
@@ -30,15 +30,15 @@ const LegendPanel = observer(() => {
 
   const noOverlapLegendPanelAndInfoPanel = () => {
     let legendPanelWidth = sizeLegendPanelWidth + 2 * panelPadding;
-    if ((uiStore.colorIndex > 0) || (uiStore.colorIndex === 0 && fileDataStore.clusters.size)) {
+    if ((uiStore.colorIndex > 0) || (uiStore.colorIndex === 0 && dataStore.clusters.size)) {
       legendPanelWidth = legendPanelMaxWidth;
     }
-    return legendPanelWidth + 2 * panelMargin < uiStore.windowInnerWidth - (uiStore.controlPanelIsOpen ? controlPanelWidth : 0) - (configStore.urlPreviewPanel ? configStore.urlPreviewPanelWidth : 0) - uiStore.infoPanelWidth - panelMargin;
+    return legendPanelWidth + 2 * panelMargin < uiStore.componentWidth - (uiStore.controlPanelIsOpen ? controlPanelWidth : 0) - (configStore.urlPreviewPanel ? configStore.urlPreviewPanelWidth : 0) - uiStore.infoPanelWidth - panelMargin;
   };
 
   const showSizeLegend = visualizationStore.weightKeysCustomTerminology && visualizationStore.weightKeysCustomTerminology.length > 0;
   const showScoreColorLegend = uiStore.colorIndex > 0;
-  const showClusterColorLegend = uiStore.colorIndex === 0 && fileDataStore.clusters && fileDataStore.clusters.size > 0;
+  const showClusterColorLegend = uiStore.colorIndex === 0 && dataStore.clusters && dataStore.clusters.size > 0;
   const showLegend = configStore.uiConfig.legend_panel && (showSizeLegend || showScoreColorLegend || showClusterColorLegend);
 
   return (
@@ -60,7 +60,7 @@ const LegendPanel = observer(() => {
                     className={s.sizeLegend(
                       sizeLegendPanelWidth,
                       uiStore.colorIndex > 0,
-                      uiStore.colorIndex === 0 && fileDataStore.clusters.size
+                      uiStore.colorIndex === 0 && dataStore.clusters.size
                     )}
                   >
                     <SizeLegend

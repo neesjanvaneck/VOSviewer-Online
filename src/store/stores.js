@@ -2,7 +2,7 @@ import React from 'react';
 
 import ConfigStore from 'store/config';
 import ClusteringStore from 'store/clustering';
-import FileDataStore from 'store/filedata';
+import DataStore from 'store/data';
 import LayoutStore from 'store/layout';
 import NormalizationStore from 'store/normalization';
 import QueryStringStore from 'store/querystring';
@@ -13,7 +13,7 @@ import WebworkerStore from 'store/webworker';
 
 const configStore = new ConfigStore();
 const clusteringStore = new ClusteringStore();
-const fileDataStore = new FileDataStore();
+const dataStore = new DataStore();
 const layoutStore = new LayoutStore();
 const normalizationStore = new NormalizationStore();
 const queryStringStore = new QueryStringStore();
@@ -24,7 +24,7 @@ const webworkerStore = new WebworkerStore();
 
 export const ConfigStoreContext = React.createContext(configStore);
 export const ClusteringStoreContext = React.createContext(clusteringStore);
-export const FileDataStoreContext = React.createContext(fileDataStore);
+export const DataStoreContext = React.createContext(dataStore);
 export const LayoutStoreContext = React.createContext(layoutStore);
 export const NormalizationStoreContext = React.createContext(normalizationStore);
 export const QueryStringStoreContext = React.createContext(queryStringStore);

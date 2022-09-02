@@ -1,12 +1,10 @@
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 import { visualizationBackgroundColors } from 'utils/variables';
 
 export const app = (isDark) => css`
   label: app;
 
-  &:fullscreen {
-    background: ${isDark ? visualizationBackgroundColors.DARK : visualizationBackgroundColors.LIGHT};
-  }
+  background: ${isDark ? visualizationBackgroundColors.DARK : visualizationBackgroundColors.LIGHT};
 `;
 
 export const previewIsOpen = css`

@@ -1,8 +1,9 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
+import { withResizeDetector } from 'react-resize-detector';
 
 import {
-  ConfigStoreContext, FileDataStoreContext, UiStoreContext, VisualizationStoreContext, WebworkerStoreContext
+  ConfigStoreContext, DataStoreContext, UiStoreContext, VisualizationStoreContext, WebworkerStoreContext
 } from 'store/stores';
 import InteractionCanvas from 'components/visualization/InteractionCanvas';
 import DefaultLinkCanvas from 'components/visualization/DefaultLinkCanvas';
@@ -11,29 +12,31 @@ import HighlightedItemCircleLinkCanvas from 'components/visualization/Highlighte
 import ItemLabelCanvas from 'components/visualization/ItemLabelCanvas';
 import * as s from './styles';
 
-const VisualizationComponent = observer(({ withoutUrlPreviewPanel, withoutLinks, withoutItemLabels, customFont }) => {
+const VisualizationComponent = observer(({
+  width, height, targetRef, withoutUrlPreviewPanel, withoutLinks, withoutItemLabels, customFont
+}) => {
   const configStore = useContext(ConfigStoreContext);
-  const fileDataStore = useContext(FileDataStoreContext);
+  const dataStore = useContext(DataStoreContext);
   const uiStore = useContext(UiStoreContext);
   const visualizationStore = useContext(VisualizationStoreContext);
   const webworkerStore = useContext(WebworkerStoreContext);
-  const visEl = useRef(null);
-  const [canvasSize, setCanvasSize] = useState([window.innerWidth, window.innerHeight]);
+  const [canvasSize, setCanvasSize] = useState(undefined);
 
   const updateCanvasSize = () => {
     setCanvasSize([
-      window.innerWidth - ((configStore.urlPreviewPanel && !withoutUrlPreviewPanel) ? configStore.urlPreviewPanelWidth : 0),
-      window.innerHeight
+      targetRef.current.offsetWidth,
+      targetRef.current.offsetHeight
     ]);
-    uiStore.setWindowInnerWidth(window.innerWidth);
   };
 
   useEffect(() => {
-    visualizationStore.setCanvasSize(canvasSize[0], canvasSize[1]);
-    visualizationStore.updateItemPixelPositionAndScaling();
-    visualizationStore.updateLabelScalingFactors();
-    visualizationStore.updateItems();
-    visualizationStore.updateLinks();
+    if (canvasSize) {
+      visualizationStore.setCanvasSize(canvasSize[0], canvasSize[1]);
+      visualizationStore.updateItemPixelPositionAndScaling();
+      visualizationStore.updateLabelScalingFactors();
+      visualizationStore.updateItems();
+      visualizationStore.updateLinks();
+    }
   }, [canvasSize]);
 
   useEffect(() => {
@@ -41,23 +44,22 @@ const VisualizationComponent = observer(({ withoutUrlPreviewPanel, withoutLinks,
   }, [configStore.urlPreviewPanel]);
 
   useEffect(() => {
-    window.addEventListener('resize', updateCanvasSize);
-    return () => {
-      window.removeEventListener('resize', updateCanvasSize);
-    };
-  }, []);
+    if (width && height) {
+      updateCanvasSize();
+    }
+  }, [width, height]);
 
   useEffect(() => {
-    if (visEl) {
-      visEl.current.addEventListener('dragenter', (e) => {
+    if (targetRef) {
+      targetRef.current.addEventListener('dragenter', (e) => {
         e.stopPropagation();
         e.preventDefault();
       }, false);
-      visEl.current.addEventListener('dragover', (e) => {
+      targetRef.current.addEventListener('dragover', (e) => {
         e.stopPropagation();
         e.preventDefault();
       }, false);
-      visEl.current.addEventListener('drop', (e) => {
+      targetRef.current.addEventListener('drop', (e) => {
         e.stopPropagation();
         e.preventDefault();
         const file = e.dataTransfer.files[0];
@@ -65,18 +67,18 @@ const VisualizationComponent = observer(({ withoutUrlPreviewPanel, withoutLinks,
         if (file) {
           if (file.type === 'application/json') {
             uiStore.setJsonFileSelectedName(file.name);
-            fileDataStore.setJsonFile(file);
-            webworkerStore.openJsonFile(fileDataStore.jsonFile, true);
+            dataStore.setJsonFile(file);
+            webworkerStore.openJsonData(dataStore.jsonFile, true);
           } else if (file.type === 'text/plain') {
             uiStore.setMapFileSelectedName(file.name);
-            fileDataStore.setNetworkFile(undefined);
-            fileDataStore.setMapFile(file);
-            webworkerStore.openMapNetworkFile(fileDataStore.mapFile, fileDataStore.networkFile, true);
+            dataStore.setNetworkFile(undefined);
+            dataStore.setMapFile(file);
+            webworkerStore.openMapNetworkData(dataStore.mapFile, dataStore.networkFile, true);
           }
         }
       }, false);
     }
-  }, [visEl]);
+  }, [targetRef]);
 
   const handleClick = () => {
     uiStore.setScoreOptionsPanelIsOpen(false);
@@ -86,37 +88,41 @@ const VisualizationComponent = observer(({ withoutUrlPreviewPanel, withoutLinks,
     <div
       className={s.visContainer(configStore.urlPreviewPanel && !withoutUrlPreviewPanel, configStore.urlPreviewPanelWidth)}
       onClick={handleClick}
-      ref={visEl}
+      ref={targetRef}
     >
-      <InteractionCanvas
-        canvasWidth={canvasSize[0]}
-        canvasHeight={canvasSize[1]}
-        withoutLinks={withoutLinks}
-      />
-      {!withoutLinks ? (
-        <DefaultLinkCanvas
+      {canvasSize && (
+      <>
+        <InteractionCanvas
           canvasWidth={canvasSize[0]}
           canvasHeight={canvasSize[1]}
+          withoutLinks={withoutLinks}
         />
+        {!withoutLinks ? (
+          <DefaultLinkCanvas
+            canvasWidth={canvasSize[0]}
+            canvasHeight={canvasSize[1]}
+          />
       ) : null}
-      <DefaultItemCircleCanvas
-        canvasWidth={canvasSize[0]}
-        canvasHeight={canvasSize[1]}
-      />
-      <HighlightedItemCircleLinkCanvas
-        canvasWidth={canvasSize[0]}
-        canvasHeight={canvasSize[1]}
-        withoutLinks={withoutLinks}
-      />
-      {!withoutItemLabels ? (
-        <ItemLabelCanvas
+        <DefaultItemCircleCanvas
           canvasWidth={canvasSize[0]}
           canvasHeight={canvasSize[1]}
-          customFont={customFont}
         />
+        <HighlightedItemCircleLinkCanvas
+          canvasWidth={canvasSize[0]}
+          canvasHeight={canvasSize[1]}
+          withoutLinks={withoutLinks}
+        />
+        {!withoutItemLabels ? (
+          <ItemLabelCanvas
+            canvasWidth={canvasSize[0]}
+            canvasHeight={canvasSize[1]}
+            customFont={customFont}
+          />
         ) : null}
+      </>
+      )}
     </div>
   );
 });
 
-export default VisualizationComponent;
+export default withResizeDetector(VisualizationComponent);

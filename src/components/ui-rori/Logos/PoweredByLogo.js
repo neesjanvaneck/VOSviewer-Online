@@ -1,5 +1,5 @@
 import React from 'react';
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 
 import { device, media, roriPantoneCoolGray7 } from 'utils/variables-rori';
 import dimensionsLogo from 'assets/images/dimensions-logo.svg';

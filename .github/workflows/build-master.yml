@@ -1,4 +1,4 @@
-# This workflow will build the code in the master brach using Yarn.
+# This workflow will build the code in the master branch using npm.
 
 name: Build master branch
 
@@ -22,24 +22,30 @@ jobs:
     - run: npm run build:dimensions
     - run: npm run build:zeta-alpha
     - run: npm run build:rori
+    - run: npm run build-component-package
 
-    - name: Upload VOSviewer Online build artifact
+    - name: Upload VOSviewer Online app artifact
       uses: actions/upload-artifact@v2
       with:
-        name: vosviewer-online-build
+        name: vosviewer-online-app
         path: dist/vosviewer-online
-    - name: Upload Dimensions build artifact
+    - name: Upload Dimensions app artifact
       uses: actions/upload-artifact@v2
       with:
-        name: vosviewer-online-dimensions-build
+        name: vosviewer-online-dimensions-app
         path: dist/vosviewer-online-dimensions
-    - name: Upload Zeta Alpha build artifact
+    - name: Upload Zeta Alpha app artifact
       uses: actions/upload-artifact@v2
       with:
-        name: vosviewer-online-zeta-alpa-build
+        name: vosviewer-online-zeta-alpa-app
         path: dist/vosviewer-online-zetaalpha
-    - name: Upload RoRI build artifact
+    - name: Upload RoRI app artifact
       uses: actions/upload-artifact@v2
       with:
-        name: vosviewer-online-rori-build
+        name: vosviewer-online-rori-app
         path: dist/vosviewer-online-rori
+    - name: Upload VOSviewer Online component package artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: vosviewer-online-lib
+        path: lib

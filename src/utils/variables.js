@@ -4,6 +4,7 @@ import _join from 'lodash/join';
 
 import * as LayoutCreator from 'utils/networkanalysis/LayoutCreator';
 import * as ClusteringCreator from 'utils/networkanalysis/ClusteringCreator';
+import { getFullscreenOrBodyContainer } from 'utils/helpers';
 
 // User interface.
 export const urlPreviewPanelWidthExtent = [300, 600];
@@ -241,8 +242,8 @@ export const defaultParameterValues = {
   [parameterKeys.URL_PREVIEW_PANEL]: 0,
 };
 
-// File.
-export const mapFileHeaders = {
+// Map data.
+export const mapDataHeaders = {
   X: 'x',
   Y: 'y',
   ID: 'id',
@@ -250,7 +251,7 @@ export const mapFileHeaders = {
   CLUSTER: 'cluster'
 };
 
-// File config.
+// JSON data config.
 export const defaultTerminology = {
   cluster: 'Cluster',
   clusters: 'Clusters',
@@ -290,37 +291,38 @@ export const defaultStyles = (uiStyle) => ({
   `,
 });
 
-// File types.
-export const fileTypeKeys = {
-  VOSVIEWER_MAP_FILE: 'vosviewer-map-file',
-  VOSVIEWER_NETWORK_FILE: 'vosviewer-network-file',
-  VOSVIEWER_JSON_FILE: 'vosviewer-json-file',
+// Data types.
+export const dataTypeKeys = {
+  VOSVIEWER_MAP_DATA: 'vosviewer-map-data',
+  VOSVIEWER_NETWORK_DATA: 'vosviewer-network-data',
+  VOSVIEWER_JSON_DATA: 'vosviewer-json-data',
 };
-export const fileTypeNames = {
-  [fileTypeKeys.VOSVIEWER_MAP_FILE]: 'VOSviewer map file',
-  [fileTypeKeys.VOSVIEWER_NETWORK_FILE]: 'VOSviewer network file',
-  [fileTypeKeys.VOSVIEWER_JSON_FILE]: 'VOSviewer JSON file',
+export const dataTypeNames = {
+  [dataTypeKeys.VOSVIEWER_MAP_DATA]: 'VOSviewer map data',
+  [dataTypeKeys.VOSVIEWER_NETWORK_DATA]: 'VOSviewer network data',
+  [dataTypeKeys.VOSVIEWER_JSON_DATA]: 'VOSviewer JSON data',
 };
 
 // Errors.
 export const errorKeys = {
-  // General file errors.
+  // File errors.
   FILE_NOT_FOUND: 'file-not-found',
   FILE_READ_ERROR: 'file-read-error',
-  FILE_EMPTY: 'file-empty',
+  // General data errors.
+  NO_DATA: 'no-data',
   INCORRECT_USE_OF_QUOTES: 'incorrect-use-of-quotes',
-  // Map file errors.
+  INCORRECT_N_COLUMNS: 'incorrect-n-columns',
+  // VOSviewer map data errors.
   HEADER_MISSING: 'header-missing',
   MULTIPLE_COLUMNS: 'multiple-columns',
   ID_AND_LABEL_COLUMNS_MISSING: 'id-label-columns-missing',
   ID_COLUMN_MISSING: 'id-column-missing.',
   X_AND_Y_COLUMNS_MISSING: 'xy-columns-missing',
-  INCORRECT_N_COLUMNS: 'incorrect-n-columns',
-  // Network file errors.
-  LESS_THAN_TWO_COLUMNS_NETWORK_FILE: 'less-than-two-columns-network-file',
-  MORE_THAN_THREE_COLUMNS_NETWORK_FILE: 'more-than-three-columns-network-file',
-  INVALID_ID_NETWORK_FILE: 'invalid-id-network-file',
-  // JSON file errors.
+  // VOSviewer network data errors.
+  LESS_THAN_TWO_COLUMNS_NETWORK_DATA: 'less-than-two-columns-network-data',
+  MORE_THAN_THREE_COLUMNS_NETWORK_DATA: 'more-than-three-columns-network-data',
+  INVALID_ID_NETWORK_DATA: 'invalid-id-network-data',
+  // VOSviewer JSON data errors.
   INVALID_JSON_DATA_FORMAT: 'invalid-json-data-format',
   ID_ATTRIBUTE_MISSING: 'id-attribute-missing',
   ID_AND_LABEL_ATTRIBUTES_MISSING: 'id-label-attributes-missing',
@@ -341,23 +343,24 @@ export const errorKeys = {
   STRENGTH_NOT_NONNEGATIVE_NUMBER: 'strength-not-nonnegative-number',
 };
 export const errorMessages = {
-  // General file errors.
+  // File errors.
   [errorKeys.FILE_NOT_FOUND]: 'File cannot be found.',
   [errorKeys.FILE_READ_ERROR]: 'Re-select the file.',
-  [errorKeys.FILE_EMPTY]: 'File is empty.',
+  // General data errors.
+  [errorKeys.NO_DATA]: 'No data found.',
   [errorKeys.INCORRECT_USE_OF_QUOTES]: 'Incorrect use of quotes.',
-  // Map file errors.
+  // VOSviewer map data errors.
   [errorKeys.HEADER_MISSING]: 'Column header is empty.',
   [errorKeys.MULTIPLE_COLUMNS]: values => `Multiple ${_join(values, ', ')} columns`,
   [errorKeys.ID_AND_LABEL_COLUMNS_MISSING]: 'There must be an ID column or a LABEL column.',
   [errorKeys.ID_COLUMN_MISSING]: 'ID column is missing.',
   [errorKeys.X_AND_Y_COLUMNS_MISSING]: 'X and Y columns are missing.',
   [errorKeys.INCORRECT_N_COLUMNS]: 'Incorrect number of columns.',
-  // Network file errors.
-  [errorKeys.LESS_THAN_TWO_COLUMNS_NETWORK_FILE]: 'There must be at least two columns in a network file.',
-  [errorKeys.MORE_THAN_THREE_COLUMNS_NETWORK_FILE]: 'There must be at most three columns in a network file.',
-  [errorKeys.INVALID_ID_NETWORK_FILE]: 'ID cannot be found in the map file.',
-  // JSON file errors.
+  // VOSviewer network data errors.
+  [errorKeys.LESS_THAN_TWO_COLUMNS_NETWORK_DATA]: 'There must be at least two columns.',
+  [errorKeys.MORE_THAN_THREE_COLUMNS_NETWORK_DATA]: 'There must be at most three columns.',
+  [errorKeys.INVALID_ID_NETWORK_DATA]: 'ID cannot be found in the map data.',
+  // VOSviewer JSON data errors.
   [errorKeys.INVALID_JSON_DATA_FORMAT]: 'Invalid JSON data format.',
   [errorKeys.ID_AND_LABEL_ATTRIBUTES_MISSING]: 'An item must have an ID attribute or a LABEL attribute.',
   [errorKeys.ID_ATTRIBUTE_MISSING]: 'ID attribute of an item is missing.',
@@ -378,20 +381,149 @@ export const errorMessages = {
   [errorKeys.STRENGTH_NOT_NONNEGATIVE_NUMBER]: 'Strength of a link must be a non-negative number.',
 };
 
-// Process.
+// Processes.
 export const processTypes = {
-  READING_MAP_FILE: 'reading-map-file',
-  READING_NETWORK_FILE: 'reading-network-file',
-  READING_JSON_FILE: 'reading-json-file',
+  READING_MAP_DATA: 'reading-map-data',
+  READING_NETWORK_DATA: 'reading-network-data',
+  READING_JSON_DATA: 'reading-json-data',
   PROCESSING_DATA: 'processing-data',
   RUNNING_LAYOUT: 'running-layout',
   RUNNING_CLUSTERING: 'running-clustering',
 };
 export const processDescriptions = {
-  [processTypes.READING_MAP_FILE]: 'Reading VOSviewer map file...',
-  [processTypes.READING_NETWORK_FILE]: 'Reading VOSviewer network file...',
-  [processTypes.READING_JSON_FILE]: 'Reading VOSviewer JSON file...',
+  [processTypes.READING_MAP_DATA]: 'Reading VOSviewer map data...',
+  [processTypes.READING_NETWORK_DATA]: 'Reading VOSviewer network data...',
+  [processTypes.READING_JSON_DATA]: 'Reading VOSviewer JSON data...',
   [processTypes.PROCESSING_DATA]: 'Processing data...',
   [processTypes.RUNNING_LAYOUT]: 'Running layout algorithm...',
   [processTypes.RUNNING_CLUSTERING]: 'Running clustering algorithm...',
 };
+
+export const defaultMuiTheme = (isDark, uiStyle) => ({
+  typography: {
+    fontFamily: uiStyle.font_family,
+    useNextVariants: true,
+  },
+  palette: {
+    mode: isDark ? 'dark' : 'light',
+    background: {
+      default: isDark ? visualizationBackgroundColors.DARK : visualizationBackgroundColors.LIGHT,
+      paper: isDark ? panelBackgroundColors.DARK : panelBackgroundColors.LIGHT,
+    },
+    primary: {
+      main: uiStyle.palette_primary_main_color,
+    },
+  },
+  components: {
+    MuiMenu: {
+      defaultProps: {
+        container: () => getFullscreenOrBodyContainer(),
+      },
+    },
+    MuiTooltip: {
+      defaultProps: {
+        PopperProps: {
+          container: () => getFullscreenOrBodyContainer(),
+        },
+      },
+    },
+    MuiAccordion: {
+      defaultProps: {
+        disableGutters: true,
+      },
+      styleOverrides: {
+        root: {
+          boxShadow: 'none',
+          backgroundImage: 'none',
+          backgroundColor: 'transparent',
+          '&:before': {
+            backgroundColor: 'transparent',
+          },
+        },
+      },
+    },
+    MuiAccordionDetails: {
+      styleOverrides: {
+        root: {
+          padding: '0px 0px 12px',
+        },
+      },
+    },
+    MuiAccordionSummary: {
+      styleOverrides: {
+        root: {
+          padding: '0px',
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          fontWeight: 400,
+          textTransform: 'none',
+        },
+      },
+    },
+    MuiFormControl: {
+      defaultProps: {
+        variant: 'standard',
+      },
+      styleOverrides: {
+        root: {
+          margin: '4px 0px 12px 0px',
+          width: '100%',
+        },
+      },
+    },
+    MuiFormControlLabel: {
+      styleOverrides: {
+        label: {
+          fontSize: '0.875rem',
+        },
+      },
+    },
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          fontSize: '0.875rem',
+        },
+      },
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          fontSize: '0.875rem',
+        },
+      },
+    },
+    MuiSlider: {
+      defaultProps: {
+        size: 'small',
+      },
+    },
+    MuiSvgIcon: {
+      styleOverrides: {
+        fontSizeSmall: {
+          fontSize: '1.1rem',
+        },
+      },
+    },
+    MuiSwitch: {
+      defaultProps: {
+        size: 'small',
+      },
+    },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          fontSize: '0.875rem',
+        },
+      },
+    },
+    MuiTextField: {
+      defaultProps: {
+        variant: 'standard',
+      },
+    },
+  }
+});

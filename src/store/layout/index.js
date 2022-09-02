@@ -1,27 +1,34 @@
-import { extendObservable } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 import _clamp from 'lodash/clamp';
 import _isUndefined from 'lodash/isUndefined';
+
 import * as LayoutCreator from 'utils/networkanalysis/LayoutCreator';
 
 export default class State {
   constructor() {
-    extendObservable(
-      this,
-      {
-        attraction: LayoutCreator.DEFAULT_ATTRACTION,
-        repulsion: LayoutCreator.DEFAULT_REPULSION,
-        maxNIterations: LayoutCreator.DEFAULT_MAX_N_ITERATIONS,
-        initialStepSize: LayoutCreator.DEFAULT_INITIAL_STEP_SIZE,
-        stepSizeConvergence: LayoutCreator.DEFAULT_STEP_SIZE_CONVERGENCE,
-        stepSizeReduction: LayoutCreator.DEFAULT_STEP_SIZE_REDUCTION,
-        requiredNQualityFunctionImprovements: LayoutCreator.DEFAULT_REQUIRED_N_QUALITY_FUNTION_IMPROVEMENTS,
-        nRandomStarts: LayoutCreator.DEFAULT_N_RANDOM_STARTS,
-        fixedSeed: LayoutCreator.DEFAULT_FIXED_SEED,
-        useRandomSeed: LayoutCreator.DEFAULT_USE_RANDOM_SEED,
-      },
-    );
+    makeAutoObservable(this);
     this.canceled = false;
   }
+
+  attraction = LayoutCreator.DEFAULT_ATTRACTION
+
+  repulsion= LayoutCreator.DEFAULT_REPULSION
+
+  maxNIterations= LayoutCreator.DEFAULT_MAX_N_ITERATIONS
+
+  initialStepSize= LayoutCreator.DEFAULT_INITIAL_STEP_SIZE
+
+  stepSizeConvergence= LayoutCreator.DEFAULT_STEP_SIZE_CONVERGENCE
+
+  stepSizeReduction= LayoutCreator.DEFAULT_STEP_SIZE_REDUCTION
+
+  requiredNQualityFunctionImprovements= LayoutCreator.DEFAULT_REQUIRED_N_QUALITY_FUNTION_IMPROVEMENTS
+
+  nRandomStarts= LayoutCreator.DEFAULT_N_RANDOM_STARTS
+
+  fixedSeed= LayoutCreator.DEFAULT_FIXED_SEED
+
+  useRandomSeed= LayoutCreator.DEFAULT_USE_RANDOM_SEED
 
   getParameters() {
     return {

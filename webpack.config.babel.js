@@ -1,8 +1,9 @@
 import { join, resolve } from 'path';
 import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
-// import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import NodePolyfillPlugin from 'node-polyfill-webpack-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
 
 function absolute(...args) {
   return join(__dirname, ...args);
@@ -19,30 +20,33 @@ const rules = [
   {
     test: /\.(otf|eot|svg|ttf|woff|woff2)$/,
     exclude: [/images/],
-    loader: 'file-loader?name=./fonts/[name].[ext]'
+    type: 'asset/resource',
+    generator: {
+      filename: 'fonts/[name][ext]'
+    }
   },
   {
     test: /\.(jpg|jpeg|gif|png|svg)$/,
     exclude: [/fonts/],
-    loader: 'file-loader?name=./images/[name].[ext]'
+    type: 'asset/resource',
+    generator: {
+      filename: 'images/[name][ext]'
+    }
   },
   {
     test: /\.txt$/,
-    use: 'raw-loader',
+    type: 'asset/source',
   },
   {
-    test: /\.worker\.js$/,
+    test: /\worker\.js$/,
     use: {
-      loader: 'worker-loader',
-      options: {
-        name: '[name]:[hash:8].js'
-      }
-    }
+      loader: 'workerize-loader',
+    },
   },
 ];
 
 const config = {
-  entry: ['@babel/polyfill', './src'],
+  entry: ['./src'],
   module: {
     rules,
   },
@@ -56,7 +60,6 @@ const config = {
       logos: resolve(__dirname, 'src/logos/'),
       workers: resolve(__dirname, 'src/workers/'),
       pages: resolve(__dirname, 'src/pages/'),
-
       'react-dom': '@hot-loader/react-dom',
     },
     extensions: ['.js', '.jsx'],
@@ -71,6 +74,11 @@ const defaultEnv = { dev: false };
 export default (env = defaultEnv) => {
   const appMode = env.mode || 'vosviewer';
   const bundleName = appMode === 'vosviewer' ? 'vosviewer-online' : `vosviewer-online-${appMode}`;
+
+  config.stats = {
+    errorDetails: false,
+    logging: 'verbose',
+  };
 
   const copyPatternsImages = [
     {
@@ -88,7 +96,7 @@ export default (env = defaultEnv) => {
   ];
 
   config.mode = env.dev ? 'development' : 'production';
-  config.devtool = env.dev ? 'cheap-module-eval-source-map' : undefined; // Use 'source-map' for production to create map file
+  config.devtool = env.dev ? 'eval-cheap-module-source-map' : undefined; // Use 'source-map' for production to create map file.
   config.output = {
     path: absolute('dist', bundleName),
     library: appMode,
@@ -96,6 +104,22 @@ export default (env = defaultEnv) => {
     publicPath: env.dev ? '/' : undefined,
     globalObject: 'this'
   };
+  let componentFileNamePrefix;
+  switch (appMode) {
+    case 'dimensions':
+      componentFileNamePrefix = 'Dimensions';
+      break;
+    case 'zetaalpha':
+      componentFileNamePrefix = 'ZetaAlpha';
+      break;
+    case 'rori':
+      componentFileNamePrefix = 'RoRI';
+      break;
+    default:
+      componentFileNamePrefix = 'VOSviewer';
+      break;
+  }
+  config.resolve.alias['@component'] = resolve(__dirname, `src/${componentFileNamePrefix}App.js`);
 
   config.optimization = {
     splitChunks: {
@@ -107,16 +131,21 @@ export default (env = defaultEnv) => {
         },
       },
     },
+    minimizer: [new TerserPlugin({
+      extractComments: false,
+    })],
   };
 
   let jsonConfig;
   try {
+    // eslint-disable-next-line import/no-dynamic-require
     jsonConfig = require(resolve(__dirname, env.config));
   } catch (ex) {
     jsonConfig = {};
   }
 
   config.plugins = [
+    new NodePolyfillPlugin(),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       inject: 'body',
@@ -125,11 +154,10 @@ export default (env = defaultEnv) => {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(env.dev ? 'development' : 'production'),
       NODE_ENV: JSON.stringify(env.dev ? 'development' : 'production'),
+      IS_REACT_COMPONENT: JSON.stringify(false),
       MODE: JSON.stringify(appMode),
-      CONFIG: JSON.stringify(jsonConfig),
+      CONFIG: JSON.stringify(jsonConfig)
     }),
-
-    // new BundleAnalyzerPlugin(),
   ];
 
   if (appMode === 'vosviewer') {

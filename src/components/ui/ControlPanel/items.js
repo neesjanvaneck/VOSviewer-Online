@@ -4,12 +4,12 @@ import {
   FormControl, InputLabel, MenuItem, Select, Slider, TextField, Typography
 } from '@mui/material';
 
-import { ConfigStoreContext, FileDataStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
+import { ConfigStoreContext, DataStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
 import * as s from './styles';
 
 const Items = observer(() => {
   const configStore = useContext(ConfigStoreContext);
-  const fileDataStore = useContext(FileDataStoreContext);
+  const dataStore = useContext(DataStoreContext);
   const uiStore = useContext(UiStoreContext);
   const visualizationStore = useContext(VisualizationStoreContext);
 
@@ -29,7 +29,7 @@ const Items = observer(() => {
   });
 
   const colorMenuItems = () => {
-    const keys = [fileDataStore.terminology.clusters, ...visualizationStore.scoreKeys];
+    const keys = [dataStore.terminology.clusters, ...visualizationStore.scoreKeys];
     return keys.map((d, i) => {
       const findMatch = d.match(/<(.*)>/);
       const label = i === 0 ? d : (findMatch ? findMatch[1] : (d === 'score' ? 'Custom' : d));

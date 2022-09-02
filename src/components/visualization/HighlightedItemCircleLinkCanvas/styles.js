@@ -1,4 +1,4 @@
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 
 export const canvas = css`
   label: highlighted-item-circle-link-canvas;

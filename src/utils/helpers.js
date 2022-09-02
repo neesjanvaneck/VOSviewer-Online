@@ -7,7 +7,7 @@ import _isString from 'lodash/isString';
 import _get from 'lodash/get';
 import _transform from 'lodash/transform';
 
-import { parameterKeys, mapFileHeaders, colorSchemes } from 'utils/variables';
+import { parameterKeys, mapDataHeaders, colorSchemes } from 'utils/variables';
 
 export function getProxyUrl(proxy = "", url) {
   let proxyUrl;
@@ -96,7 +96,7 @@ function _parseQueryStringValue(value) {
 }
 
 export function getLabelValue(item) {
-  return (_get(item, mapFileHeaders.LABEL) || _get(item, mapFileHeaders.ID)).toString();
+  return (_get(item, mapDataHeaders.LABEL) || _get(item, mapDataHeaders.ID)).toString();
 }
 
 export function getClusterKeys(keys) {
@@ -218,4 +218,8 @@ function _getNiceValue(value, round) {
   }
 
   return niceFractionalPart * 10 ** exponent;
+}
+
+export function getFullscreenOrBodyContainer() {
+  return document.fullscreenElement ?? document.body;
 }

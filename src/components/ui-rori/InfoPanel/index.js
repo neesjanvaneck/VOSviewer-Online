@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import ReactHtmlParser from 'react-html-parser';
+import HTMLReactParser from 'html-react-parser';
 
-import { FileDataStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
+import { DataStoreContext, UiStoreContext, VisualizationStoreContext } from 'store/stores';
 import { trimTextEnd } from 'utils/helpers';
 import * as s from './styles';
 
@@ -12,13 +12,13 @@ const VerticalDivider = () => <div component="p" className={s.divider}> | </div>
 const Content = ({ text }) => (<div component="p" className={s.infoText}>{text}</div>);
 const HeadContent = ({ text }) => (
   <>
-    <div className="head-content">{ReactHtmlParser(text)}</div>
+    <div className="head-content">{HTMLReactParser(text)}</div>
     <hr />
   </>
 );
 
 const InfoPanel = observer(() => {
-  const fileDataStore = useContext(FileDataStoreContext);
+  const dataStore = useContext(DataStoreContext);
   const uiStore = useContext(UiStoreContext);
   const visualizationStore = useContext(VisualizationStoreContext);
   const [isOpen, setIsOpen] = useState(true);
@@ -63,7 +63,7 @@ const InfoPanel = observer(() => {
     const score = scoreName();
     return (
       <>
-        { name !== fileDataStore.terminology.total_link_strength && name !== fileDataStore.terminology.links ? <Content text={`${trimTextEnd(name, 30)}: ${formatNumber(node[visualizationStore.weightKeysCustomTerminology[visualizationStore.weightIndex]])} `} /> : ''}
+        { name !== dataStore.terminology.total_link_strength && name !== dataStore.terminology.links ? <Content text={`${trimTextEnd(name, 30)}: ${formatNumber(node[visualizationStore.weightKeysCustomTerminology[visualizationStore.weightIndex]])} `} /> : ''}
         {uiStore.colorIndex > 0
           && (
             <>
