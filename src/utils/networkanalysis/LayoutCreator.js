@@ -1,5 +1,5 @@
 import Random from 'java-random';
-import LayoutTechnique from './LayoutTechnique';
+import { Layout, GradientDescentVOSLayoutAlgorithm } from 'networkanalysis-ts';
 
 export const DEFAULT_ATTRACTION = 2;
 export const DEFAULT_REPULSION = 1;
@@ -15,11 +15,6 @@ export const DEFAULT_USE_RANDOM_SEED = false;
 export const SIMILARITY_BETWEEN_UNCONNECTED_ITEMS = 0.01;
 
 export class LayoutCreator {
-  constructor() {
-    this.bestLayout = null;
-    this.minQualityFunction = +Infinity;
-  }
-
   init(network, parameters) {
     this.network = network;
     this.edgeWeightIncrement = (this.network.identifyComponents().getNClusters() > 1) ? SIMILARITY_BETWEEN_UNCONNECTED_ITEMS : 0;
@@ -36,21 +31,25 @@ export class LayoutCreator {
 
     this.random = this.useRandomSeed ? new Random() : new Random(this.fixedSeed);
 
+    this.layoutAlgorithm = new GradientDescentVOSLayoutAlgorithm();
+    this.layoutAlgorithm.initializeBasedOnAttractionAndRepulsionAndEdgeWeightIncrementAndMaxNIterationsAndInitialStepSizeAndMinStepSizeAndStepSizeReductionAndRequiredNQualityValueImprovementsAndRandom(this.attraction, this.repulsion, this.edgeWeightIncrement, this.maxNIterations, this.initialStepSize, this.stepSizeConvergence, this.stepSizeReduction, this.requiredNQualityFunctionImprovements, this.random);
     this.bestLayout = null;
-    this.minQualityFunction = +Infinity;
+    this.minQuality = +Infinity;
+    this.randomStart = 0;
   }
 
   performRandomStart() {
-    const layoutTechnique = new LayoutTechnique(this.network, this.attraction, this.repulsion, this.edgeWeightIncrement, this.random);
-    layoutTechnique.runGradientDescentAlgorithm(this.maxNIterations, this.initialStepSize, this.stepSizeConvergence, this.stepSizeReduction, this.requiredNQualityFunctionImprovements, this.random);
-    const qualityFunction = layoutTechnique.calcQualityFunction();
-    if ((this.bestLayout == null) || (qualityFunction < this.minQualityFunction)) {
-      this.bestLayout = layoutTechnique.getLayout();
-      this.minQualityFunction = qualityFunction;
+    const layout = new Layout({ nNodes: this.network.getNNodes(), random: this.random });
+    this.layoutAlgorithm.improveLayout(this.network, layout);
+    const quality = this.layoutAlgorithm.calcQuality(this.network, layout);
+    if ((this.bestLayout == null) || (quality < this.minQuality)) {
+      this.bestLayout = layout;
+      this.minQuality = quality;
     }
+    this.randomStart += 1;
   }
 
   performPostProcessing() {
-    this.bestLayout.standardizeCoordinates(true);
+    this.bestLayout.standardize(true);
   }
 }

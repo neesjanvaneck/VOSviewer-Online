@@ -52,6 +52,7 @@
     "lodash": "^4.17.21",
     "mobx": "^6.6.1",
     "mobx-react-lite": "^3.4.0",
+    "networkanalysis-ts": "^1.0.0",
     "papaparse": "^5.3.2",
     "qrcode.react": "^1.0.1",
     "qs": "^6.11.0",
