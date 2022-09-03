@@ -69,7 +69,7 @@ const LoadingScreen = observer(() => {
   };
 
   return (
-    <div className={`${s.loadingScreen} ${uiStore.loadingScreenIsOpen ? '' : s.hidden}`}>
+    <div className={`${s.loadingScreen(uiStore.darkTheme)} ${uiStore.loadingScreenIsOpen ? '' : s.hidden}`}>
       <div className={s.progressBox}>
         {getProgressElement()}
         <Typography className={s.description} variant="caption" component="div" color="textSecondary">
