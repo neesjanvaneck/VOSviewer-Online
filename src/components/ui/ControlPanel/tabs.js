@@ -8,7 +8,8 @@ export const PanelTabs = (props) => (
     textColor="primary"
     centered
     sx={{
-      borderBottom: '1px solid #e8e8e8',
+      borderBottom: 1,
+      borderColor: 'divider'
     }}
   />
 );
