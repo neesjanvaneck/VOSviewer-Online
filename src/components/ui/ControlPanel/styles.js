@@ -67,7 +67,6 @@ export const contentBox = css`
   overflow-x: hidden;
   overflow-y: scroll;
   background-color: inherit;
-  border-right: 1px solid #fff;
 `;
 
 export const subtitle = css`
