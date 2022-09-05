@@ -83,6 +83,8 @@ const VOSviewer = observer(({ width, targetRef, parameters = {}, data }) => {
               visualizationStore.updateStore({ parameters: dataStore.parameters, colorSchemes: dataStore.getColorSchemes() });
               layoutStore.updateStore({ parameters: dataStore.parameters });
               clusteringStore.updateStore({ parameters: dataStore.parameters });
+            } else if (_isPlainObject(dataStore.getColorSchemes())) {
+              visualizationStore.updateStore({ parameters: dataStore.parameters, colorSchemes: dataStore.getColorSchemes() });
             }
             webworkerStore.startProcessData({ mapData: dataStore.mapData, networkData: dataStore.networkData });
           } else {
