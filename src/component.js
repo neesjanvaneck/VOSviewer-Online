@@ -178,7 +178,7 @@ const VOSviewer = observer(({ width, targetRef, parameters = {}, data }) => {
     const itemColorDefinedInConfig = !_isUndefined(configStore.parameters.item_color);
     const itemColorProvidedInQueryString = !_isUndefined(queryStringStore.parameters.item_color);
     const itemColorProvidedInFile = _isPlainObject(dataStore.parameters) && !_isUndefined(dataStore.parameters.item_color);
-    const colorIndex = ((!itemColorDefinedInConfig && webworkerStore.resetParameters && !itemSizeProvidedInFile) || (!itemColorDefinedInConfig && !webworkerStore.resetParameters && !itemColorProvidedInQueryString && !itemColorProvidedInFile)) ? 0 : uiStore.colorIndex;
+    const colorIndex = ((!itemColorDefinedInConfig && webworkerStore.resetParameters && !itemColorProvidedInFile) || (!itemColorDefinedInConfig && !webworkerStore.resetParameters && !itemColorProvidedInQueryString && !itemColorProvidedInFile)) ? 0 : uiStore.colorIndex;
     const scoreIndex = colorIndex - 1;
     if (colorIndex > 0) visualizationStore.updateScores(scoreIndex);
 
