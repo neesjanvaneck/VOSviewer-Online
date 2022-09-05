@@ -196,7 +196,7 @@ const VOSviewer = observer(({ width, targetRef, parameters = {}, data }) => {
     if (uiStore.showItem) _showItem();
     configStore.setUrlPreviewPanelIsOpen(!IS_REACT_COMPONENT && visualizationStore.itemsOrLinksWithUrl);
     uiStore.setLoadingScreenIsOpen(false);
-    if (uiStore.showInfo && (dataStore.title && dataStore.description)) uiStore.setInfoDialogIsOpen(true);
+    if (webworkerStore.loadNewData && uiStore.showInfo && (dataStore.title && dataStore.description)) uiStore.setInfoDialogIsOpen(true);
   }
 
   function _showItem() {
