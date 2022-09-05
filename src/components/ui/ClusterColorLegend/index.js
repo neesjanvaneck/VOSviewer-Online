@@ -52,7 +52,7 @@ const ClusterColorLegend = observer(({ showTopClustersOnly, canvasWidth, legendW
 
     ctx.clearRect(0, 0, canvasWidth * visualizationStore.pixelRatio, canvasHeight * visualizationStore.pixelRatio);
 
-    ctx.font = `0.75rem ${font}`;
+    ctx.font = `${12 * visualizationStore.pixelRatio}px ${font}`;
     ctx.textBaseline = 'middle';
     ctx.lineWidth = lineWidth * visualizationStore.pixelRatio;
 
