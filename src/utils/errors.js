@@ -377,7 +377,7 @@ const _checkInvalidIdNetworkData = (parseResults, mapData) => {
   }, {});
   let lineNumber;
   for (let i = 0; i < parseResults.data.length; i++) {
-    if ((!parseResults.data[i][0] || !parseResults.data[i][1]) || (mapData.length && (!ids[parseResults.data[i][0]] || !ids[parseResults.data[i][1]]))) {
+    if ((_isUndefined(parseResults.data[i][0]) || _isUndefined(parseResults.data[i][1])) || (mapData.length && (!ids[parseResults.data[i][0]] || !ids[parseResults.data[i][1]]))) {
       lineNumber = i + 1;
       break;
     }
@@ -418,7 +418,7 @@ const _checkInvalidIdJsonData = (parseResults, mapData) => {
   }, {});
   let lineNumber;
   for (let i = 0; i < parseResults.data.length; i++) {
-    if ((!parseResults.data[i][0] || !parseResults.data[i][1]) || (mapData.length && (!ids[parseResults.data[i][0]] || !ids[parseResults.data[i][1]]))) {
+    if ((_isUndefined(parseResults.data[i][0]) || _isUndefined(parseResults.data[i][1])) || (mapData.length && (!ids[parseResults.data[i][0]] || !ids[parseResults.data[i][1]]))) {
       lineNumber = i + 1;
       break;
     }
