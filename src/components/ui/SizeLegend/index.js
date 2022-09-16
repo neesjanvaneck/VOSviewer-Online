@@ -49,7 +49,7 @@ const SizeLegend = observer(({ canvasWidth, canvasHeight, customFont }) => {
 
   const draw = () => {
     ctx.clearRect(0, 0, canvasWidth * visualizationStore.pixelRatio, canvasHeight * visualizationStore.pixelRatio);
-    ctx.font = `${12 * visualizationStore.pixelRatio}px ${font}`;
+    ctx.font = `${0.75 * visualizationStore.pixelRatio}rem ${font}`;
     ctx.textBaseline = 'middle';
     ctx.lineWidth = lineWidth * visualizationStore.pixelRatio;
     ctx.strokeStyle = uiStore.darkTheme ? color.colorDarkTheme : color.colorLightTheme;

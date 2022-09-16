@@ -61,7 +61,7 @@ const ScoreColorLegend = observer(({
     const scoreRangeDomain = visualizationStore.scoreColorLegendScoreRange.domain();
     tickScale.range([0, colorBarWidth]).domain(scoreRangeDomain);
     ctx.fillStyle = uiStore.darkTheme ? tickConfig.colorDarkTheme : tickConfig.colorLightTheme;
-    ctx.font = `${12 * visualizationStore.pixelRatio}px ${font}`;
+    ctx.font = `${0.75 * visualizationStore.pixelRatio}rem ${font}`;
     ctx.textAlign = 'center';
     const ticks = tickScale.ticks(5);
     _each(ticks, tick => {

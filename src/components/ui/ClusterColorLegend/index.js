@@ -52,10 +52,12 @@ const ClusterColorLegend = observer(({ showTopClustersOnly, canvasWidth, legendW
 
     ctx.clearRect(0, 0, canvasWidth * visualizationStore.pixelRatio, canvasHeight * visualizationStore.pixelRatio);
 
-    ctx.font = `${12 * visualizationStore.pixelRatio}px ${font}`;
+    ctx.font = `${0.75 * visualizationStore.pixelRatio}rem ${font}`;
     ctx.textBaseline = 'middle';
     ctx.lineWidth = lineWidth * visualizationStore.pixelRatio;
 
+    const letterWidth = ctx.measureText('a');
+    const maxTextLength = Math.floor(((itemWidth - radius - textPadding) * visualizationStore.pixelRatio - 2 * letterWidth.width) / letterWidth.width);
     let hovered;
     legendItems.forEach((item, i) => {
       const itemX = i % 2 === 0 ? 0 : itemWidth;
@@ -72,7 +74,7 @@ const ClusterColorLegend = observer(({ showTopClustersOnly, canvasWidth, legendW
       // Draw text.
       const x = cx + radius + textPadding;
       const y = cy;
-      const textIsHovered = item.value.length > 18 && mouseCoord.length
+      const textIsHovered = item.value.length > maxTextLength && mouseCoord.length
         && mouseCoord[0] > itemX
         && mouseCoord[0] < itemX + itemWidth
         && mouseCoord[1] > itemY
@@ -89,7 +91,7 @@ const ClusterColorLegend = observer(({ showTopClustersOnly, canvasWidth, legendW
           text: item.value,
         };
       }
-      const itemText = trimTextEnd(item.value, 18);
+      const itemText = trimTextEnd(item.value, maxTextLength);
       ctx.fillStyle = uiStore.darkTheme ? color.colorDarkTheme : color.colorLightTheme;
       ctx.fillText(itemText, x * visualizationStore.pixelRatio, y * visualizationStore.pixelRatio);
     });

@@ -10,7 +10,7 @@ import ScoreColorLegend from 'components/ui/ScoreColorLegend';
 import ScoreOptionsPanel from 'components/ui/ScoreOptionsPanel';
 import * as s from './styles';
 
-const sizeLegendPanelWidth = 76;
+const sizeLegendPanelWidth = 80;
 
 const LegendPanel = observer(() => {
   const configStore = useContext(ConfigStoreContext);
