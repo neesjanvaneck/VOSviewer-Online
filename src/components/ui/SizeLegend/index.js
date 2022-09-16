@@ -42,41 +42,40 @@ const SizeLegend = observer(({ canvasWidth, canvasHeight, customFont }) => {
       const midValue = visualizationStore.getValueByRadius(midRadius, uiStore.scale, uiStore.itemSizeVariation);
       const maxValue = visualizationStore.getValueByRadius(maxRadius, uiStore.scale, uiStore.itemSizeVariation);
       setTicks(
-        _isFinite(minValue) && _isFinite(midValue) && _isFinite(maxValue) ? [minValue, midValue, maxValue] : null
+        _isFinite(minValue) && _isFinite(midValue) && _isFinite(maxValue) ? [minValue, midValue, maxValue] : [null, null, null]
       );
     }
-  }, [visualizationStore.lastDataUpdate, visualizationStore.weightIndex]);
+  }, [visualizationStore.lastDataUpdate, visualizationStore.weightIndex, uiStore.scale, uiStore.itemSizeVariation]);
 
   const draw = () => {
     ctx.clearRect(0, 0, canvasWidth * visualizationStore.pixelRatio, canvasHeight * visualizationStore.pixelRatio);
-    if (ticks && !(ticks[0] === ticks[1] && ticks[1] === ticks[2])) {
-      ctx.font = `${12 * visualizationStore.pixelRatio}px ${font}`;
-      ctx.textBaseline = 'middle';
-      ctx.lineWidth = lineWidth * visualizationStore.pixelRatio;
-      ctx.strokeStyle = uiStore.darkTheme ? color.colorDarkTheme : color.colorLightTheme;
-      ctx.fillStyle = uiStore.darkTheme ? color.colorDarkTheme : color.colorLightTheme;
+    ctx.font = `${12 * visualizationStore.pixelRatio}px ${font}`;
+    ctx.textBaseline = 'middle';
+    ctx.lineWidth = lineWidth * visualizationStore.pixelRatio;
+    ctx.strokeStyle = uiStore.darkTheme ? color.colorDarkTheme : color.colorLightTheme;
+    ctx.fillStyle = uiStore.darkTheme ? color.colorDarkTheme : color.colorLightTheme;
 
-      ticks.forEach((tick, i) => {
-        // Draw circles.
-        ctx.beginPath();
-        ctx.setLineDash([]);
-        const cx = maxRadius + padding.left;
-        const cy = maxRadius * 2 - radii[i] + padding.top + 5;
-        const r = radii[i];
-        ctx.arc(cx * visualizationStore.pixelRatio, cy * visualizationStore.pixelRatio, r * visualizationStore.pixelRatio, 0, 2 * Math.PI);
-        ctx.stroke();
+    ticks.forEach((tick, i) => {
+      // Draw circles.
+      ctx.beginPath();
+      ctx.setLineDash([]);
+      const cx = maxRadius + padding.left;
+      const cy = maxRadius * 2 - radii[i] + padding.top + 5;
+      const r = radii[i];
+      ctx.arc(cx * visualizationStore.pixelRatio, cy * visualizationStore.pixelRatio, r * visualizationStore.pixelRatio, 0, 2 * Math.PI);
+      ctx.stroke();
 
-        // Draw lines.
-        const x1 = maxRadius + padding.left;
-        const y1 = maxRadius * 2 - radii[i] * 2 + padding.top + 5;
-        const x2 = maxRadius * 2 + gap * 0.5 + padding.left;
-        const y2 = maxRadius * 2 - radii[i] * 2 + padding.top + 5;
-        ctx.beginPath();
-        ctx.setLineDash([1 * visualizationStore.pixelRatio, 1 * visualizationStore.pixelRatio]);
-        ctx.moveTo(x1 * visualizationStore.pixelRatio, y1 * visualizationStore.pixelRatio);
-        ctx.lineTo(x2 * visualizationStore.pixelRatio, y2 * visualizationStore.pixelRatio);
-        ctx.stroke();
-
+      // Draw lines.
+      const x1 = maxRadius + padding.left;
+      const y1 = maxRadius * 2 - radii[i] * 2 + padding.top + 5;
+      const x2 = maxRadius * 2 + gap * 0.5 + padding.left;
+      const y2 = maxRadius * 2 - radii[i] * 2 + padding.top + 5;
+      ctx.beginPath();
+      ctx.setLineDash([1 * visualizationStore.pixelRatio, 1 * visualizationStore.pixelRatio]);
+      ctx.moveTo(x1 * visualizationStore.pixelRatio, y1 * visualizationStore.pixelRatio);
+      ctx.lineTo(x2 * visualizationStore.pixelRatio, y2 * visualizationStore.pixelRatio);
+      ctx.stroke();
+      if ((ticks[0] !== ticks[1]) && (ticks[1] !== ticks[2])) {
         // Draw text.
         const x = maxRadius * 2 + gap + padding.left;
         const y = maxRadius * 2 - radii[i] * 2 + padding.top + 5;
@@ -93,8 +92,8 @@ const SizeLegend = observer(({ canvasWidth, canvasHeight, customFont }) => {
           tickText = format('.1f')(tick);
         }
         ctx.fillText(tickText, x * visualizationStore.pixelRatio, y * visualizationStore.pixelRatio);
-      });
-    }
+      }
+    });
   };
 
   return (
