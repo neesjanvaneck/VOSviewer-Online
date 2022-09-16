@@ -167,11 +167,11 @@ export const listItem = css`
 export const labelPartNormal = css`
   label: label-part-normal;
   font-weight: 300;
-  font-size: 10pt;
+  font-size: 0.875rem;
 `;
 
 export const labelPartHighlighted = css`
   label: label-part-highlighted;
   font-weight: 500;
-  font-size: 10pt;
+  font-size: 0.875rem;
 `;
