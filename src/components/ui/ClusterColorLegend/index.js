@@ -57,7 +57,7 @@ const ClusterColorLegend = observer(({ showTopClustersOnly, canvasWidth, legendW
     ctx.lineWidth = lineWidth * visualizationStore.pixelRatio;
 
     const letterWidth = ctx.measureText('a');
-    const maxTextLength = Math.floor((itemWidth - radius - textPadding - 2 * letterWidth.width) / letterWidth.width);
+    const maxTextLength = Math.floor(((itemWidth - radius - textPadding) * visualizationStore.pixelRatio - 2 * letterWidth.width) / letterWidth.width);
     let hovered;
     legendItems.forEach((item, i) => {
       const itemX = i % 2 === 0 ? 0 : itemWidth;
