@@ -9,14 +9,15 @@ import _isPlainObject from 'lodash/isPlainObject';
 
 import { parameterKeys } from 'utils/variables';
 import {
-  ConfigStoreContext, ClusteringStoreContext, DataStoreContext, LayoutStoreContext, UiStoreContext, VisualizationStoreContext, QueryStringStoreContext, WebworkerStoreContext
+  ConfigStoreContext, ClusteringStoreContext, DataStoreContext, LayoutStoreContext, UiStoreContext, VisualizationStoreContext, QueryStringStoreContext, WebworkerStoreContext,
+  ConfigProvider, ClusteringProvider, WebworkerProvider, VisualizationProvider, UiRoriProvider, UiProvider, QueryStringProvider, NormalizationProvider, LayoutProvider, DataProvider
 } from 'store/stores';
 
 // The '@component' is resolved from an alias in the webpack configuration.
 // eslint-disable-next-line import/no-unresolved
 import App from '@component';
 
-const VOSviewer = observer(({ width, targetRef, parameters = {}, data }) => {
+const VOSviewer = withResizeDetector(observer(({ width, targetRef, parameters = {}, data }) => {
   const configStore = useContext(ConfigStoreContext);
   const clusteringStore = useContext(ClusteringStoreContext);
   const dataStore = useContext(DataStoreContext);
@@ -223,6 +224,29 @@ const VOSviewer = observer(({ width, targetRef, parameters = {}, data }) => {
       </FullScreen>
     </div>
   );
-});
+}));
 
-export default withResizeDetector(VOSviewer);
+
+export default (props) => (
+  <ConfigProvider>
+    <ClusteringProvider>
+      <DataProvider>
+        <LayoutProvider>
+          <NormalizationProvider>
+            <QueryStringProvider>
+              <UiProvider>
+                <UiRoriProvider>
+                  <VisualizationProvider>
+                    <WebworkerProvider>
+                      <VOSviewer {...props} />
+                    </WebworkerProvider>
+                  </VisualizationProvider>
+                </UiRoriProvider>
+              </UiProvider>
+            </QueryStringProvider>
+          </NormalizationProvider>
+        </LayoutProvider>
+      </DataProvider>
+    </ClusteringProvider>
+  </ConfigProvider>
+);
