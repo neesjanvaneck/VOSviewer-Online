@@ -9,8 +9,8 @@ import _isPlainObject from 'lodash/isPlainObject';
 
 import { parameterKeys } from 'utils/variables';
 import {
-  ConfigStoreContext, ClusteringStoreContext, DataStoreContext, LayoutStoreContext, UiStoreContext, VisualizationStoreContext, QueryStringStoreContext, WebworkerStoreContext,
-  ConfigProvider, ClusteringProvider, WebworkerProvider, VisualizationProvider, UiRoriProvider, UiProvider, QueryStringProvider, NormalizationProvider, LayoutProvider, DataProvider
+  ConfigStoreContext, ClusteringStoreContext, DataStoreContext, LayoutStoreContext, QueryStringStoreContext, UiStoreContext, VisualizationStoreContext, WebworkerStoreContext,
+  ConfigProvider, ClusteringProvider, DataProvider, LayoutProvider, NormalizationProvider, QueryStringProvider, UiProvider, UiRoriProvider, VisualizationProvider, WebworkerProvider
 } from 'store/stores';
 
 // The '@component' is resolved from an alias in the webpack configuration.
@@ -225,7 +225,6 @@ const VOSviewer = withResizeDetector(observer(({ width, targetRef, parameters = 
     </div>
   );
 }));
-
 
 export default (props) => (
   <ConfigProvider>
