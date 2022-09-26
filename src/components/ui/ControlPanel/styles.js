@@ -51,12 +51,14 @@ export const closeOpenButton = css`
 export const closeButton = css`
   label: close-button;
   left: calc(${controlPanelWidth}px - 15px);
+  width: max-content;
   line-height: 0.6;
 `;
 
 export const openButton = css`
   label: open-button;
   left: calc(${controlPanelWidth}px - 10px);
+  width: max-content;
   line-height: 0.6;
 `;
 
