@@ -44,8 +44,9 @@ const VOSviewer = withResizeDetector(observer(({ width, targetRef, parameters = 
     visualizationStore.updateStore(configStore);
     layoutStore.updateStore(configStore);
     clusteringStore.updateStore(configStore);
-    if (data) parameters[parameterKeys.JSON] = data;
   }
+
+  if (data) parameters[parameterKeys.JSON] = data;
 
   useEffect(() => {
     webworkerStore.addWorkerEventListener(d => {
