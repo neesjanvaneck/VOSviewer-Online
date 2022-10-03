@@ -124,39 +124,6 @@ const Share = observer(() => {
                 </IconButton>
               </DialogTitle>
               <DialogContent classes={{ root: s.dialogContent }}>
-                <Typography className={s.qrCodeLabel}>QR code</Typography>
-                <div className={s.qrCodeBox}>
-                  <a ref={qrImageEl} style={{ display: 'none' }} />
-                  <QRCode
-                    id="qr-code-image"
-                    value={link}
-                    size={90}
-                    level="L"
-                    renderAs="canvas"
-                    imageSettings={{
-                      src: `${vosviewerIcon}`,
-                      x: null,
-                      y: null,
-                      height: 15,
-                      width: 15,
-                      excavate: false,
-                    }}
-                  />
-                  <Button
-                    className={s.copyButton}
-                    variant="outlined"
-                    onClick={() => copyQRImageToClipboard('qr-code-image')}
-                  >
-                    Copy
-                  </Button>
-                  <Button
-                    className={s.downloadButton}
-                    variant="outlined"
-                    onClick={() => downloadQRImage('qr-code-image')}
-                  >
-                    Download
-                  </Button>
-                </div>
                 <div className={s.switchBox}>
                   <FormControlLabel
                     classes={{ label: s.switchLabel }}
@@ -205,6 +172,39 @@ const Share = observer(() => {
                     onClick={() => copyTextToClickboard('share-embed-code-input')}
                   >
                     Copy
+                  </Button>
+                </div>
+                <Typography className={s.qrCodeLabel}>QR code</Typography>
+                <div className={s.qrCodeBox}>
+                  <a ref={qrImageEl} style={{ display: 'none' }} />
+                  <QRCode
+                    id="qr-code-image"
+                    value={link}
+                    size={90}
+                    level="L"
+                    renderAs="canvas"
+                    imageSettings={{
+                      src: `${vosviewerIcon}`,
+                      x: null,
+                      y: null,
+                      height: 15,
+                      width: 15,
+                      excavate: false,
+                    }}
+                  />
+                  <Button
+                    className={s.copyButton}
+                    variant="outlined"
+                    onClick={() => copyQRImageToClipboard('qr-code-image')}
+                  >
+                    Copy
+                  </Button>
+                  <Button
+                    className={s.downloadButton}
+                    variant="outlined"
+                    onClick={() => downloadQRImage('qr-code-image')}
+                  >
+                    Download
                   </Button>
                 </div>
               </DialogContent>
