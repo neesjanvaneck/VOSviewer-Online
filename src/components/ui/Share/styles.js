@@ -64,14 +64,15 @@ export const downloadButton = css`
 
 export const switchBox = css`
   label: switch-box;
-  margin-top: 16px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 `;
 
 export const switchLabel = css`
   label: switch-label;
   margin-left: -16px !important;
-  transform: scale(0.75);
+  margin-right: 16px !important;
   transform-origin: left;
   opacity: 0.65;
-  font-size: 1rem !important;
+  font-size: 0.75rem !important;
 `;
