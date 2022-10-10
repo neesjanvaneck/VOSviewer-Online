@@ -49,16 +49,16 @@ export const input = css`
 export const copyButton = css`
   label: copy-button;
   display: inline-flex;
-  margin-top: 20px !important;
-  margin-bottom: 20px !important;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
   margin-left: 20px !important;
 `;
 
 export const downloadButton = css`
   label: download-button;
   display: inline-flex;
-  margin-top: 20px !important;
-  margin-bottom: 20px !important;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
   margin-left: 20px !important;
 `;
 
