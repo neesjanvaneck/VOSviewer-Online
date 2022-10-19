@@ -206,8 +206,8 @@ export default (env = defaultEnv) => {
         patterns: [
           ...copyPatternsImages,
           {
-            from: resolve(__dirname, 'data', 'Zeta-Alpha_ICLR2021.json'),
-            to: absolute('dist', bundleName, 'data/Zeta-Alpha_ICLR2021.json'),
+            from: resolve(__dirname, 'data', 'Zeta-Alpha_ICLR2022.json'),
+            to: absolute('dist', bundleName, 'data/Zeta-Alpha_ICLR2022.json'),
           }
         ],
       }),

@@ -71,7 +71,7 @@
   "parameters": {
     "map": "",
     "network": "",
-    "json": "data/Zeta-Alpha_ICLR2021.json",
+    "json": "data/Zeta-Alpha_ICLR2022.json",
     "largest_component": false
   },
   "docs_url": "https://app.vosviewer.com/docs"

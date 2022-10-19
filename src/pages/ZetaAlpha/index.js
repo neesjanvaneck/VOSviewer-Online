@@ -61,7 +61,7 @@ const ZetaAlpha = observer(({ queryString = {}, fullscreenHandle }) => {
     let networkUrl = getProxyUrl(proxy, queryString[parameterKeys.NETWORK]);
     let jsonUrlOrObject = queryString[parameterKeys.JSON] instanceof Object ? queryString[parameterKeys.JSON] : getProxyUrl(proxy, queryString[parameterKeys.JSON]);
     if (NODE_ENV === 'development' && !mapUrl && !networkUrl && !jsonUrlOrObject) {
-      jsonUrlOrObject = 'data/Zeta-Alpha_ICLR2021.json';
+      jsonUrlOrObject = 'data/Zeta-Alpha_ICLR2022.json';
     } else if (!mapUrl && !networkUrl && !jsonUrlOrObject) {
       mapUrl = getProxyUrl(proxy, configStore.parameters.map);
       networkUrl = getProxyUrl(proxy, configStore.parameters.network);
