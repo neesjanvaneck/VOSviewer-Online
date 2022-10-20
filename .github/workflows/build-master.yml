@@ -38,7 +38,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: vosviewer-online-zeta-alpa-app
-        path: dist/vosviewer-online-zetaalpha
+        path: dist/vosviewer-online-zeta-alpha
     - name: Upload RoRI app artifact
       uses: actions/upload-artifact@v2
       with:
