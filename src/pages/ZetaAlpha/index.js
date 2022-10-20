@@ -13,7 +13,7 @@ import DarkLightTheme from 'components/ui/DarkLightTheme';
 import Fullscreen from 'components/ui/Fullscreen';
 import Info from 'components/ui/Info';
 import ControlPanel from 'components/ui/ControlPanel';
-import InfoPanel from 'components/ui/InfoPanel';
+import InfoPanel from 'components/ui-zeta-alpha/InfoPanel';
 import URLPanel from 'components/ui/URLPanel';
 import LegendPanel from 'components/ui/LegendPanel';
 import ZoomPanel from 'components/ui/ZoomPanel';
