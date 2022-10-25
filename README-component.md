@@ -1,6 +1,11 @@
 # VOSviewer Online React component
 
-This is a [React]() component package that offers an easy way to integrate [VOSviewer Online](https://github.com/neesjanvaneck/VOSviewer-Online) into your site or application.
+[![Build master branch](https://github.com/neesjanvaneck/VOSviewer-Online/workflows/Build%20master%20branch/badge.svg?branch=master)](https://github.com/neesjanvaneck/VOSviewer-Online/actions)
+[![License: MIT](https://badgen.net/github/license/neesjanvaneck/VOSviewer-Online?label=License&color=yellow)](https://github.com/neesjanvaneck/VOSviewer-Online/blob/master/LICENSE)
+[![Latest release](https://badgen.net/github/release/neesjanvaneck/VOSviewer-Online?label=Release)](https://github.com/neesjanvaneck/VOSviewer-Online/releases)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7248010.svg)](https://doi.org/10.5281/zenodo.7248010)
+
+This is a [React](https://github.com/facebook/react) component package that offers an easy way to integrate [VOSviewer Online](https://github.com/neesjanvaneck/VOSviewer-Online) into your site or application.
 
 ## Installation
 
