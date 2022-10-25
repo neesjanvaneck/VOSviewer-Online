@@ -116,12 +116,18 @@ const Dimensions = observer(({ queryString = {}, fullscreenHandle }) => {
         />
         <img className={s.dimensionsLogo} src={uiStore.darkTheme ? dimensionsLogoDark : dimensionsLogo} alt="Dimensions" ref={dimensionsLogoEl} />
         <div className={`${s.actionIcons(configStore.urlPreviewPanelWidth)} ${configStore.urlPreviewPanel ? s.previewIsOpen : ''}`}>
-          <Open />
-          <Save />
-          <Share />
-          <Screenshot />
+          {!queryString.looker_ui && (
+            <>
+              <Open />
+              <Save />
+              <Share />
+              <Screenshot />
+            </>
+          )}
           <DarkLightTheme />
-          <Fullscreen enter={fullscreenHandle.enter} exit={fullscreenHandle.exit} active={fullscreenHandle.active} />
+          {!queryString.looker_ui && (
+            <Fullscreen enter={fullscreenHandle.enter} exit={fullscreenHandle.exit} active={fullscreenHandle.active} />
+          )}
           <Info />
         </div>
         <URLPanel />
