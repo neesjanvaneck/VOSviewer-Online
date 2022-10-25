@@ -13,7 +13,7 @@ import DarkLightTheme from 'components/ui/DarkLightTheme';
 import Fullscreen from 'components/ui/Fullscreen';
 import Info from 'components/ui/Info';
 import ControlPanel from 'components/ui/ControlPanel';
-import InfoPanel from 'components/ui/InfoPanel';
+import InfoPanel from 'components/ui-zeta-alpha/InfoPanel';
 import URLPanel from 'components/ui/URLPanel';
 import LegendPanel from 'components/ui/LegendPanel';
 import ZoomPanel from 'components/ui/ZoomPanel';
@@ -61,7 +61,7 @@ const ZetaAlpha = observer(({ queryString = {}, fullscreenHandle }) => {
     let networkUrl = getProxyUrl(proxy, queryString[parameterKeys.NETWORK]);
     let jsonUrlOrObject = queryString[parameterKeys.JSON] instanceof Object ? queryString[parameterKeys.JSON] : getProxyUrl(proxy, queryString[parameterKeys.JSON]);
     if (NODE_ENV === 'development' && !mapUrl && !networkUrl && !jsonUrlOrObject) {
-      jsonUrlOrObject = 'data/Zeta-Alpha_ICLR2021.json';
+      jsonUrlOrObject = 'data/Zeta-Alpha_ICLR2022.json';
     } else if (!mapUrl && !networkUrl && !jsonUrlOrObject) {
       mapUrl = getProxyUrl(proxy, configStore.parameters.map);
       networkUrl = getProxyUrl(proxy, configStore.parameters.network);

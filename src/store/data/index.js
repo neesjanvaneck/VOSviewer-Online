@@ -116,7 +116,7 @@ export default class State {
   }
 
   updateTemplates(templates) {
-    this.templates = (MODE === 'dimensions') ? defaultTemplates(this.terminology.item, this.terminology.link) : {};
+    this.templates = (MODE === 'dimensions' || MODE === 'zeta-alpha') ? defaultTemplates(this.terminology.item, this.terminology.link) : {};
     if (templates) {
       this.templates.item_description = templates.item_description;
       this.templates.link_description = templates.link_description;

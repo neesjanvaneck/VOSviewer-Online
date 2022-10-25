@@ -35,7 +35,7 @@ render(
                 <meta name="description" content="RoRI Research Funding Landscape" />
               </Helmet>
             );
-          case 'zetaalpha':
+          case 'zeta-alpha':
             return (
               <Helmet>
                 <title>VOSviewer Online - Zeta Alpha</title>

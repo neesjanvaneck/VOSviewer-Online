@@ -99,7 +99,7 @@ export default (env = defaultEnv) => {
   config.devtool = env.dev ? 'eval-cheap-module-source-map' : undefined; // Use 'source-map' for production to create map file.
   config.output = {
     path: absolute('dist', bundleName),
-    library: appMode,
+    library: appMode.replace(/-/g, ''),
     filename: env.dev ? `demo/dist/${bundleName}.bundle.js` : `${bundleName}.[contenthash].bundle.js`,
     publicPath: env.dev ? '/' : undefined,
     globalObject: 'this'
@@ -109,7 +109,7 @@ export default (env = defaultEnv) => {
     case 'dimensions':
       componentFileNamePrefix = 'Dimensions';
       break;
-    case 'zetaalpha':
+    case 'zeta-alpha':
       componentFileNamePrefix = 'ZetaAlpha';
       break;
     case 'rori':
@@ -200,14 +200,14 @@ export default (env = defaultEnv) => {
         ],
       }),
     );
-  } else if (appMode === 'zetaalpha') {
+  } else if (appMode === 'zeta-alpha') {
     config.plugins.push(
       new CopyPlugin({
         patterns: [
           ...copyPatternsImages,
           {
-            from: resolve(__dirname, 'data', 'Zeta-Alpha_ICLR2021.json'),
-            to: absolute('dist', bundleName, 'data/Zeta-Alpha_ICLR2021.json'),
+            from: resolve(__dirname, 'data', 'Zeta-Alpha_ICLR2022.json'),
+            to: absolute('dist', bundleName, 'data/Zeta-Alpha_ICLR2022.json'),
           }
         ],
       }),
