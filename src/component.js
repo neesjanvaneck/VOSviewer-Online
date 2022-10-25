@@ -100,7 +100,7 @@ const VOSviewer = withResizeDetector(observer(({ width, targetRef, parameters = 
           webworkerStore.setRunClustering(dataStore.networkDataIsAvailable && !dataStore.clustersAreAvailable);
 
           visualizationStore.setItemIdToIndex(data.itemIdToIndex);
-          if (!_isUndefined(visualizationStore.largestComponent)) {
+          if (!_isUndefined(visualizationStore.largestComponent) && data.hasUnconnectedItems) {
             webworkerStore.startHandleUnconnectedItems({ unconnectedItemsDialogChoice: visualizationStore.largestComponent ? 'yes' : 'no', mapData: dataStore.mapData, networkData: dataStore.networkData, itemIdToIndex: visualizationStore.itemIdToIndex });
           } else if (!dataStore.coordinatesAreAvailable && data.hasUnconnectedItems) {
             uiStore.setUnconnectedItemsDialog(data.hasUnconnectedItems, data.nItemsNetwork, data.nItemsLargestComponent);
