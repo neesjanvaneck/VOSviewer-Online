@@ -2,10 +2,15 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it using the metadata from this file."
 type: "software"
 authors:
-  - family-names: "van Eck"
+  - family-names: "Van Eck"
     given-names: "Nees Jan"
     orcid: "https://orcid.org/0000-0001-8448-4521"
     email: "ecknjpvan@cwts.leidenuniv.nl"
+    affiliation: "Centre for Science and Technology Studies (CWTS), Leiden University"
+  - family-names: "Waltman"
+    given-names: "Ludo"
+    orcid: "https://orcid.org/0000-0001-8249-1752"
+    email: "waltmanlr@cwts.leidenuniv.nl"
     affiliation: "Centre for Science and Technology Studies (CWTS), Leiden University"
 title: "VOSviewer Online"
 abstract: "VOSviewer Online is a tool for network visualization. It is a web-based version of VOSviewer, a popular tool for constructing and visualizing bibliometric networks, such as co-authorship networks, citation networks, and co-occurrence networks."
@@ -21,7 +26,8 @@ keywords:
   - React component
 url: "https://app.vosviewer.com"
 repository-code: "https://github.com/neesjanvaneck/VOSviewer-Online"
+repository-artifact: "https://www.npmjs.com/package/vosviewer-online"
 license: MIT
 doi: 10.5281/zenodo.7248010
-version: 1.1.0
-date-released: 2022-01-04
+version: 1.2.0
+date-released: 2022-10-25

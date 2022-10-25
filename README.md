@@ -3,6 +3,7 @@
 [![Build master branch](https://github.com/neesjanvaneck/VOSviewer-Online/workflows/Build%20master%20branch/badge.svg?branch=master)](https://github.com/neesjanvaneck/VOSviewer-Online/actions)
 [![License: MIT](https://badgen.net/github/license/neesjanvaneck/VOSviewer-Online?label=License&color=yellow)](https://github.com/neesjanvaneck/VOSviewer-Online/blob/master/LICENSE)
 [![Latest release](https://badgen.net/github/release/neesjanvaneck/VOSviewer-Online?label=Release)](https://github.com/neesjanvaneck/VOSviewer-Online/releases)
+[![npm version](https://badgen.net/npm/v/vosviewer-online)](https://www.npmjs.com/package/vosviewer-online)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7248010.svg)](https://doi.org/10.5281/zenodo.7248010)
 
 [VOSviewer Online](https://app.vosviewer.com) is a tool for network visualization. It is a web-based version of [VOSviewer](https://www.vosviewer.com), a popular tool for constructing and visualizing bibliometric networks, such as co-authorship networks, citation networks, and co-occurrence networks.
