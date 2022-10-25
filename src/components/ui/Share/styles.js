@@ -49,29 +49,30 @@ export const input = css`
 export const copyButton = css`
   label: copy-button;
   display: inline-flex;
-  margin-top: 20px !important;
-  margin-bottom: 20px !important;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
   margin-left: 20px !important;
 `;
 
 export const downloadButton = css`
   label: download-button;
   display: inline-flex;
-  margin-top: 20px !important;
-  margin-bottom: 20px !important;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
   margin-left: 20px !important;
 `;
 
 export const switchBox = css`
   label: switch-box;
-  margin-top: 16px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 `;
 
 export const switchLabel = css`
   label: switch-label;
   margin-left: -16px !important;
-  transform: scale(0.75);
+  margin-right: 16px !important;
   transform-origin: left;
   opacity: 0.65;
-  font-size: 1rem !important;
+  font-size: 0.75rem !important;
 `;
