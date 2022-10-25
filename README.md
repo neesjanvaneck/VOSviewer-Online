@@ -3,8 +3,9 @@
 [![Build master branch](https://github.com/neesjanvaneck/VOSviewer-Online/workflows/Build%20master%20branch/badge.svg?branch=master)](https://github.com/neesjanvaneck/VOSviewer-Online/actions)
 [![License: MIT](https://badgen.net/github/license/neesjanvaneck/VOSviewer-Online?label=License&color=yellow)](https://github.com/neesjanvaneck/VOSviewer-Online/blob/master/LICENSE)
 [![Latest release](https://badgen.net/github/release/neesjanvaneck/VOSviewer-Online?label=Release)](https://github.com/neesjanvaneck/VOSviewer-Online/releases)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7248010.svg)](https://doi.org/10.5281/zenodo.7248010)
 
-[VOSviewer Online](https://app.vosviewer.com) is a tool for network visualization. It is a web-based version of [VOSviewer](https://www.vosviewer.com), a popular tool for constructing and visualizing bibliometric networks.
+[VOSviewer Online](https://app.vosviewer.com) is a tool for network visualization. It is a web-based version of [VOSviewer](https://www.vosviewer.com), a popular tool for constructing and visualizing bibliometric networks, such as co-authorship networks, citation networks, and co-occurrence networks.
 
 VOSviewer Online has been developed by [Nees Jan van Eck](https://orcid.org/0000-0001-8448-4521) and [Ludo Waltman](https://orcid.org/0000-0001-8249-1752) at the [Centre for Science and Technology Studies (CWTS)](https://www.cwts.nl) at [Leiden University](https://www.universiteitleiden.nl/en).
 
