@@ -165,11 +165,11 @@ const InfoPanel = observer(() => {
       && configStore.uiConfig.description_panel
       && (
         (visualizationStore.hoveredItem && visualizationStore.hoveredItem.description)
-        || (visualizationStore.clickedItem && visualizationStore.clickedItem.description)
+        || (visualizationStore.clickedItem && visualizationStore.clickedItem.description && !visualizationStore.hoveredItem && !visualizationStore.hoveredLink)
         || (visualizationStore.hoveredLink && visualizationStore.hoveredLink.description)
-        || (visualizationStore.clickedLink && visualizationStore.clickedLink.description)
-        || ((visualizationStore.hoveredItem || visualizationStore.clickedItem) && dataStore.templates.item_description)
-        || ((visualizationStore.hoveredLink || visualizationStore.clickedLink) && dataStore.templates.link_description)
+        || (visualizationStore.clickedLink && visualizationStore.clickedLink.description && !visualizationStore.hoveredItem && !visualizationStore.hoveredLink)
+        || ((visualizationStore.hoveredItem || visualizationStore.clickedItem) && dataStore.templates.item_description && !visualizationStore.hoveredLink)
+        || ((visualizationStore.hoveredLink || visualizationStore.clickedLink) && dataStore.templates.link_description && !visualizationStore.hoveredItem)
       );
 
   const getItemDescription = (item) => parseDescription(item, 'item_description', { dataStore, visualizationStore });
