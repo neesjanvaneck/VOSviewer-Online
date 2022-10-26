@@ -26,6 +26,7 @@ export default class State {
     this.terminology = _clone(defaultTerminology);
     this.templates = {};
     this.styles = {};
+    this.previousJsonData = {};
   }
 
   get parameters() {
@@ -56,6 +57,10 @@ export default class State {
 
   setJsonFile(jsonFile) {
     this.jsonFile = jsonFile;
+  }
+
+  setPreviousJsonData(jsonData) {
+    this.previousJsonData = jsonData;
   }
 
   setMapData(mapData) {
@@ -129,5 +134,9 @@ export default class State {
 
   getStyles() {
     return this.jsonData.config ? this.jsonData.config.styles : undefined;
+  }
+
+  getPreviousJsonData() {
+    return this.previousJsonData;
   }
 }

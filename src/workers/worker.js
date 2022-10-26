@@ -173,7 +173,7 @@ function _parseJsonFile(jsonFileOrUrl) {
       const reader = new FileReader();
       reader.readAsText(jsonFileOrUrl, 'UTF-8');
       reader.onload = event => {
-        _parseJsonData(event.target.result);
+        _parseJson(event.target.result);
       };
       reader.onerror = () => {
         const fileError = getFileReaderError(reader.error, fileTypeKeys.VOSVIEWER_JSON_FILE);
@@ -182,6 +182,30 @@ function _parseJsonFile(jsonFileOrUrl) {
           data: { fileError },
         });
       };
+    } else if (jsonFileOrUrl instanceof Object && jsonFileOrUrl.url) {
+      fetch(jsonFileOrUrl.url, { credentials: "include", method: jsonFileOrUrl.method, body: jsonFileOrUrl.body })
+        .then(response => {
+          if (!response.ok) {
+            if (response.status === 404) {
+              throw new Error('Not Found');
+            } else {
+              throw new Error(response.statusText);
+            }
+          }
+          return response.text();
+        })
+        .then(text => {
+          _parseJson(text);
+        })
+        .catch(error => {
+          const fileError = getFileReaderError(error, fileTypeKeys.VOSVIEWER_JSON_FILE);
+          self.postMessage({
+            type: 'end parse vosviewer-json file',
+            data: { fileError },
+          });
+        });
+    } else if (jsonFileOrUrl instanceof Object && !jsonFileOrUrl.url) {
+      _parseJson(jsonFileOrUrl);
     } else {
       fetch(jsonFileOrUrl, { credentials: "include" })
         .then(response => {
@@ -195,7 +219,7 @@ function _parseJsonFile(jsonFileOrUrl) {
           return response.text();
         })
         .then(text => {
-          _parseJsonData(text);
+          _parseJson(text);
         })
         .catch(error => {
           const fileError = getFileReaderError(error, fileTypeKeys.VOSVIEWER_JSON_FILE);
@@ -208,17 +232,21 @@ function _parseJsonFile(jsonFileOrUrl) {
   }
 }
 
-function _parseJsonData(text) {
+function _parseJson(jsonObjectOrText) {
   let fileError;
   let jsonData = {};
   let mapData = [];
   let networkData = [];
 
   let data;
-  try {
-    data = JSON.parse(text);
-  } catch (error) {
-    data = undefined;
+  if (jsonObjectOrText instanceof Object) {
+    data = jsonObjectOrText;
+  } else {
+    try {
+      data = JSON.parse(jsonObjectOrText);
+    } catch (error) {
+      data = undefined;
+    }
   }
   if (data && data.network && (data.network.items || data.network.links)) {
     jsonData = _cloneDeep(data) || {};
@@ -272,7 +300,7 @@ function _parseJsonData(text) {
       uniqueItemIds.sort();
       mapData = uniqueItemIds.map(d => ({ id: d }));
     }
-  } else if (text === "") {
+  } else if (jsonObjectOrText === "") {
     fileError = getFileError(errorKeys.FILE_EMPTY, fileTypeKeys.VOSVIEWER_JSON_FILE);
   } else {
     fileError = getFileError(errorKeys.INVALID_JSON_DATA_FORMAT, fileTypeKeys.VOSVIEWER_JSON_FILE);

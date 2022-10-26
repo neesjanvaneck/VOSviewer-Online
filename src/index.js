@@ -38,9 +38,50 @@ const APP = observer(() => {
     clusteringStore.updateStore(configStore);
   }
 
+  const compute = (origin) => {
+    const jsonData = visualizationStore.getJsonData(
+      fileDataStore.getTerminology(),
+      fileDataStore.getTemplates(),
+      fileDataStore.getStyles(),
+      fileDataStore.parameters,
+      fileDataStore.getColorSchemes(),
+      fileDataStore.getClusters()
+    );
+
+    fileDataStore.setPreviousJsonData(jsonData);
+    const baseUrl = (origin.includes("localhost") || origin.includes("search-staging") ) ? 'https://api-staging.zeta-alpha.com' : 'https://api.zeta-alpha.com';
+    const newData = { url: `${baseUrl}/v0/service/documents/document/vos-cluster-titles`, method: 'POST', body: JSON.stringify(jsonData) };
+
+    webworkerStore.openJsonFile(newData, false);
+  };
+
+  const handleGoBack = () => {
+    const oldData = fileDataStore.getPreviousJsonData();
+    webworkerStore.openJsonFile(oldData, false);
+  };
+
+  const isAcceptableUrl = (url) => {
+    const accaptedOrigins = ['http://localhost:3000', 'https://search-staging.zeta-alpha.com', 'https://search.zeta-alpha.com'];
+    const regex = /https:\/\/search-staging-pr-\d+.zeta-alpha.com/g;
+    return accaptedOrigins.includes(url) || !!url.match(regex);
+  };
+
   useEffect(() => {
+    window.addEventListener('message', (ev) => {
+      if (isAcceptableUrl(ev.origin)) {
+        if (ev.data === 'generate cluster titles') {
+          compute(ev.origin);
+        }
+        if (ev.data === 'go back to previous titles') {
+          handleGoBack();
+        }
+      }
+    }, false);
+
+
     webworkerStore.addWorkerEventListener(d => {
       const { type, data } = d;
+
       // Replay worker messages into parent window for iframe --> page communication.
       window.parent.postMessage(JSON.stringify({ type, data }), "*");
       switch (type) {
