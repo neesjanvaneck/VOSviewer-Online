@@ -100,6 +100,10 @@ export default class State {
     this.getSizeLegendCanvasImage = () => {};
     this.getClusterLegendCanvasImage = () => {};
     this.getLogoImages = () => ([]);
+    this.onItemClickCallback = undefined;
+    this.onItemHoverCallback = undefined;
+    this.onLinkClickCallback = undefined;
+    this.onLinkHoverCallback = undefined;
   }
 
   lastDataUpdate = Date.now()
@@ -931,6 +935,22 @@ export default class State {
 
   setGetLogoImages(f) {
     this.getLogoImages = f;
+  }
+
+  setOnItemClickCallback(callback) {
+    this.onItemClickCallback = callback;
+  }
+
+  setOnItemHoverCallback(callback) {
+    this.onItemHoverCallback = callback;
+  }
+
+  setOnLinkClickCallback(callback) {
+    this.onLinkClickCallback = callback;
+  }
+
+  setOnLinkHoverCallback(callback) {
+    this.onLinkHoverCallback = callback;
   }
 
   getValueByRadius(radius, scale, itemSizeVariation) {
