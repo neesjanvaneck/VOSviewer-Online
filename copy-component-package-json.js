@@ -1,19 +1,18 @@
 const fs = require('fs');
 const pkg = require('./package.json');
 
-const peerDependenciesList = [
-  'mobx',
-  'mobx-react-lite',
-  'react',
-  'react-dom',
-];
 const {
   version, author, keywords, license, homepage, repository, bugs, dependencies, engines
 } = pkg;
-const peerDependencies = {};
-peerDependenciesList.forEach(d => {
-  peerDependencies[d] = dependencies[d];
-  delete dependencies[d];
+const peerDependencies = {
+  mobx: undefined,
+  "mobx-react-lite": undefined,
+  react: "^17.0.0 || ^18.0.0",
+  "react-dom": "^17.0.0 || ^18.0.0"
+};
+Object.keys(peerDependencies).forEach(key => {
+  if (!peerDependencies[key]) peerDependencies[key] = dependencies[key];
+  delete dependencies[key];
 });
 const newPkg = {
   name: 'vosviewer-online',
