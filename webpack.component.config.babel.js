@@ -134,7 +134,8 @@ export default (env = defaultEnv) => {
       NODE_ENV: JSON.stringify('production'),
       IS_REACT_COMPONENT: JSON.stringify(true),
       MODE: JSON.stringify(appMode),
-      CONFIG: JSON.stringify(jsonConfig)
+      CONFIG: JSON.stringify(jsonConfig),
+      VERSION: JSON.stringify(require("./package.json").version)
     }),
     new RemovePlugin({
       after: {

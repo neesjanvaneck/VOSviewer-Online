@@ -156,7 +156,8 @@ export default (env = defaultEnv) => {
       NODE_ENV: JSON.stringify(env.dev ? 'development' : 'production'),
       IS_REACT_COMPONENT: JSON.stringify(false),
       MODE: JSON.stringify(appMode),
-      CONFIG: JSON.stringify(jsonConfig)
+      CONFIG: JSON.stringify(jsonConfig),
+      VERSION: JSON.stringify(require("./package.json").version)
     }),
   ];
 
