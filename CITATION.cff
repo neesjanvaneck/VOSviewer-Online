@@ -1,4 +1,4 @@
-cff-version: 1.2.0
+cff-version: 1.2.1
 message: "If you use this software, please cite it using the metadata from this file."
 type: "software"
 authors:
@@ -29,5 +29,5 @@ repository-code: "https://github.com/neesjanvaneck/VOSviewer-Online"
 repository-artifact: "https://www.npmjs.com/package/vosviewer-online"
 license: MIT
 doi: 10.5281/zenodo.7248010
-version: 1.2.0
-date-released: 2022-10-25
+version: 1.2.1
+date-released: 2022-12-16
