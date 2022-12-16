@@ -1,3 +1,4 @@
+/* global VERSION */
 import React, { useContext, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import {
@@ -131,6 +132,11 @@ const Info = observer(() => {
           </IconButton>
         </DialogTitle>
         <DialogContent classes={{ root: s.dialogContent }}>
+          <Typography variant="body1" align="justify" paragraph>
+            VOSviewer Online version
+            {' '}
+            {VERSION}
+          </Typography>
           <Typography variant="body1" align="justify" paragraph>
             VOSviewer Online has been developed by
             {' '}
