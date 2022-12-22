@@ -2,6 +2,8 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import { observer } from 'mobx-react-lite';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import _isEmpty from 'lodash/isEmpty';
+import _isEqual from 'lodash/isEqual';
 import _isPlainObject from 'lodash/isPlainObject';
 
 import VisualizationComponent from 'components/visualization/VisualizationComponent';
@@ -44,38 +46,40 @@ const VOSviewer = observer(({ queryString = {}, fullscreenHandle }) => {
   const vosviewerLogoEl = useRef(null);
 
   useEffect(() => {
-    queryStringStore.init(queryString);
-    if (_isPlainObject(queryStringStore.parameters)) {
-      visualizationStore.updateStore({ parameters: queryStringStore.parameters });
-      uiStore.updateStore({ parameters: queryStringStore.parameters });
-      layoutStore.updateStore({ parameters: queryStringStore.parameters });
-      clusteringStore.updateStore({ parameters: queryStringStore.parameters });
-      configStore.updateStore({ parameters: queryStringStore.parameters });
-    }
+    if (_isEmpty(queryString) || !_isEqual(queryString, queryStringStore.parameters)) {
+      queryStringStore.init(queryString);
+      if (_isPlainObject(queryStringStore.parameters)) {
+        visualizationStore.updateStore({ parameters: queryStringStore.parameters });
+        uiStore.updateStore({ parameters: queryStringStore.parameters });
+        layoutStore.updateStore({ parameters: queryStringStore.parameters });
+        clusteringStore.updateStore({ parameters: queryStringStore.parameters });
+        configStore.updateStore({ parameters: queryStringStore.parameters });
+      }
 
-    const proxy = (NODE_ENV !== 'development') ? configStore.proxyUrl : undefined;
-    let mapUrl = getProxyUrl(proxy, queryString[parameterKeys.MAP]);
-    let networkUrl = getProxyUrl(proxy, queryString[parameterKeys.NETWORK]);
-    let jsonUrlOrObject = queryString[parameterKeys.JSON] instanceof Object ? queryString[parameterKeys.JSON] : getProxyUrl(proxy, queryString[parameterKeys.JSON]);
-    if (NODE_ENV === 'development' && !mapUrl && !networkUrl && !jsonUrlOrObject) {
-      mapUrl = 'data/JOI_2007-2016_co-authorship_map.txt';
-      networkUrl = 'data/JOI_2007-2016_co-authorship_network.txt';
-    } else if (!mapUrl && !networkUrl && !jsonUrlOrObject) {
-      mapUrl = getProxyUrl(proxy, configStore.parameters.map);
-      networkUrl = getProxyUrl(proxy, configStore.parameters.network);
-      jsonUrlOrObject = getProxyUrl(proxy, configStore.parameters.json);
-    }
+      const proxy = (NODE_ENV !== 'development') ? configStore.proxyUrl : undefined;
+      let mapUrl = getProxyUrl(proxy, queryString[parameterKeys.MAP]);
+      let networkUrl = getProxyUrl(proxy, queryString[parameterKeys.NETWORK]);
+      let jsonUrlOrObject = queryString[parameterKeys.JSON] instanceof Object ? queryString[parameterKeys.JSON] : getProxyUrl(proxy, queryString[parameterKeys.JSON]);
+      if (NODE_ENV === 'development' && !mapUrl && !networkUrl && !jsonUrlOrObject) {
+        mapUrl = 'data/JOI_2007-2016_co-authorship_map.txt';
+        networkUrl = 'data/JOI_2007-2016_co-authorship_network.txt';
+      } else if (!mapUrl && !networkUrl && !jsonUrlOrObject) {
+        mapUrl = getProxyUrl(proxy, configStore.parameters.map);
+        networkUrl = getProxyUrl(proxy, configStore.parameters.network);
+        jsonUrlOrObject = getProxyUrl(proxy, configStore.parameters.json);
+      }
 
-    if (mapUrl || networkUrl) {
-      webworkerStore.openMapNetworkData(mapUrl, networkUrl);
-    } else if (jsonUrlOrObject) {
-      webworkerStore.openJsonData(jsonUrlOrObject);
-    } else {
-      uiStore.setIntroDialogIsOpen(true);
-      configStore.setUrlPreviewPanelIsOpen(false);
-      uiStore.setLoadingScreenIsOpen(false);
+      if (mapUrl || networkUrl) {
+        webworkerStore.openMapNetworkData(mapUrl, networkUrl);
+      } else if (jsonUrlOrObject) {
+        webworkerStore.openJsonData(jsonUrlOrObject);
+      } else {
+        uiStore.setIntroDialogIsOpen(true);
+        configStore.setUrlPreviewPanelIsOpen(false);
+        uiStore.setLoadingScreenIsOpen(false);
+      }
     }
-  }, []);
+  }, [queryString]);
 
   useEffect(() => {
     visualizationStore.setGetLogoImages(() => ([vosviewerLogoEl.current]));
