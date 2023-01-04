@@ -7,6 +7,9 @@ export default class State {
   }
 
   init(parameters) {
-    if (_isPlainObject(parameters)) this.parameters = _merge(this.parameters, parameters);
+    if (_isPlainObject(parameters)) {
+      this.parameters = {};
+      this.parameters = _merge(this.parameters, parameters);
+    }
   }
 }
