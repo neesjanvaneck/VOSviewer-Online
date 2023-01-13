@@ -7,7 +7,6 @@ import levenSort from 'leven-sort';
 import _isUndefined from 'lodash/isUndefined';
 import _isPlainObject from 'lodash/isPlainObject';
 
-import { parameterKeys } from 'utils/variables';
 import {
   ConfigStoreContext, ClusteringStoreContext, DataStoreContext, LayoutStoreContext, QueryStringStoreContext, UiStoreContext, VisualizationStoreContext, WebworkerStoreContext,
   ConfigProvider, ClusteringProvider, DataProvider, LayoutProvider, NormalizationProvider, QueryStringProvider, UiProvider, UiRoriProvider, VisualizationProvider, WebworkerProvider
@@ -17,7 +16,7 @@ import {
 // eslint-disable-next-line import/no-unresolved
 import App from '@component';
 
-const VOSviewer = withResizeDetector(observer(({ width, targetRef, parameters = {}, data }) => {
+const VOSviewer = withResizeDetector(observer(({ width, targetRef, parameters, data }) => {
   const configStore = useContext(ConfigStoreContext);
   const clusteringStore = useContext(ClusteringStoreContext);
   const dataStore = useContext(DataStoreContext);
@@ -45,8 +44,6 @@ const VOSviewer = withResizeDetector(observer(({ width, targetRef, parameters = 
     layoutStore.updateStore(configStore);
     clusteringStore.updateStore(configStore);
   }
-
-  if (data) parameters[parameterKeys.JSON] = data;
 
   useEffect(() => {
     webworkerStore.addWorkerEventListener(d => {
@@ -221,7 +218,7 @@ const VOSviewer = withResizeDetector(observer(({ width, targetRef, parameters = 
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }} ref={targetRef}>
       <FullScreen handle={fullscreenHandle}>
-        <App parameters={parameters} fullscreenHandle={fullscreenHandle} />
+        <App parameters={parameters} fullscreenHandle={fullscreenHandle} jsonData={data} />
       </FullScreen>
     </div>
   );

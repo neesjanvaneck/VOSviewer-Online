@@ -3,9 +3,9 @@ import ScopedCssBaseline from '@mui/material/ScopedCssBaseline';
 
 import Dimensions from './pages/Dimensions';
 
-const DimensionsApp = ({ parameters, fullscreenHandle }) => (
+const DimensionsApp = ({ parameters, fullscreenHandle, jsonData }) => (
   <ScopedCssBaseline>
-    <Dimensions queryString={parameters} fullscreenHandle={fullscreenHandle} />
+    <Dimensions queryString={parameters} fullscreenHandle={fullscreenHandle} jsonData={jsonData} />
   </ScopedCssBaseline>
 );
 

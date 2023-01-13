@@ -37,7 +37,7 @@ import { parameterKeys, defaultMuiTheme } from 'utils/variables';
 import 'utils/fonts/Roboto';
 import * as s from './style';
 
-const ZetaAlpha = observer(({ queryString = {}, fullscreenHandle }) => {
+const ZetaAlpha = observer(({ queryString, fullscreenHandle, jsonData }) => {
   const clusteringStore = useContext(ClusteringStoreContext);
   const configStore = useContext(ConfigStoreContext);
   const layoutStore = useContext(LayoutStoreContext);
@@ -49,8 +49,10 @@ const ZetaAlpha = observer(({ queryString = {}, fullscreenHandle }) => {
   const zetaalphaLogoEl = useRef(null);
 
   useEffect(() => {
-    if (_isEmpty(queryString) || !_isEqual(queryString, queryStringStore.parameters)) {
-      queryStringStore.init(queryString);
+    const queryStringUpdated = queryString ?? {};
+    queryStringUpdated[parameterKeys.JSON] = jsonData;
+    if (_isEmpty(queryString) || !_isEqual(queryStringUpdated, queryStringStore.parameters)) {
+      queryStringStore.init(queryStringUpdated);
       if (_isPlainObject(queryStringStore.parameters)) {
         visualizationStore.updateStore({ parameters: queryStringStore.parameters });
         uiStore.updateStore({ parameters: queryStringStore.parameters });
@@ -60,9 +62,9 @@ const ZetaAlpha = observer(({ queryString = {}, fullscreenHandle }) => {
       }
 
       const proxy = (NODE_ENV !== 'development') ? configStore.proxyUrl : undefined;
-      let mapUrl = getProxyUrl(proxy, queryString[parameterKeys.MAP]);
-      let networkUrl = getProxyUrl(proxy, queryString[parameterKeys.NETWORK]);
-      let jsonUrlOrObject = queryString[parameterKeys.JSON] instanceof Object ? queryString[parameterKeys.JSON] : getProxyUrl(proxy, queryString[parameterKeys.JSON]);
+      let mapUrl = getProxyUrl(proxy, queryStringUpdated[parameterKeys.MAP]);
+      let networkUrl = getProxyUrl(proxy, queryStringUpdated[parameterKeys.NETWORK]);
+      let jsonUrlOrObject = queryStringUpdated[parameterKeys.JSON] instanceof Object ? queryStringUpdated[parameterKeys.JSON] : getProxyUrl(proxy, queryStringUpdated[parameterKeys.JSON]);
       if (NODE_ENV === 'development' && !mapUrl && !networkUrl && !jsonUrlOrObject) {
         jsonUrlOrObject = 'data/Zeta-Alpha_ICLR2022.json';
       } else if (!mapUrl && !networkUrl && !jsonUrlOrObject) {
@@ -81,7 +83,7 @@ const ZetaAlpha = observer(({ queryString = {}, fullscreenHandle }) => {
         uiStore.setLoadingScreenIsOpen(false);
       }
     }
-  }, [queryString]);
+  }, [queryString, jsonData]);
 
   useEffect(() => {
     visualizationStore.setGetLogoImages(() => ([vosviewerLogoEl.current, zetaalphaLogoEl.current]));

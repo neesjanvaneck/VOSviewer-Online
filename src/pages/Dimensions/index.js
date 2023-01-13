@@ -37,7 +37,7 @@ import { parameterKeys, defaultMuiTheme } from 'utils/variables';
 import 'utils/fonts/Roboto';
 import * as s from './style';
 
-const Dimensions = observer(({ queryString = {}, fullscreenHandle }) => {
+const Dimensions = observer(({ queryString, fullscreenHandle, jsonData }) => {
   const clusteringStore = useContext(ClusteringStoreContext);
   const configStore = useContext(ConfigStoreContext);
   const layoutStore = useContext(LayoutStoreContext);
@@ -49,8 +49,10 @@ const Dimensions = observer(({ queryString = {}, fullscreenHandle }) => {
   const dimensionsLogoEl = useRef(null);
 
   useEffect(() => {
-    if (_isEmpty(queryString) || !_isEqual(queryString, queryStringStore.parameters)) {
-      queryStringStore.init(queryString);
+    const queryStringUpdated = queryString ?? {};
+    queryStringUpdated[parameterKeys.JSON] = jsonData;
+    if (_isEmpty(queryString) || !_isEqual(queryStringUpdated, queryStringStore.parameters)) {
+      queryStringStore.init(queryStringUpdated);
       if (_isPlainObject(queryStringStore.parameters)) {
         visualizationStore.updateStore({ parameters: queryStringStore.parameters });
         uiStore.updateStore({ parameters: queryStringStore.parameters });
@@ -60,9 +62,9 @@ const Dimensions = observer(({ queryString = {}, fullscreenHandle }) => {
       }
 
       const proxy = (NODE_ENV !== 'development') ? configStore.proxyUrl : undefined;
-      let mapUrl = getProxyUrl(proxy, queryString[parameterKeys.MAP]);
-      let networkUrl = getProxyUrl(proxy, queryString[parameterKeys.NETWORK]);
-      let jsonUrlOrObject = queryString[parameterKeys.JSON] instanceof Object ? queryString[parameterKeys.JSON] : getProxyUrl(proxy, queryString[parameterKeys.JSON]);
+      let mapUrl = getProxyUrl(proxy, queryStringUpdated[parameterKeys.MAP]);
+      let networkUrl = getProxyUrl(proxy, queryStringUpdated[parameterKeys.NETWORK]);
+      let jsonUrlOrObject = queryStringUpdated[parameterKeys.JSON] instanceof Object ? queryStringUpdated[parameterKeys.JSON] : getProxyUrl(proxy, queryStringUpdated[parameterKeys.JSON]);
       if (NODE_ENV === 'development' && !mapUrl && !networkUrl && !jsonUrlOrObject) {
         jsonUrlOrObject = 'data/Dimensions_scientometrics_researcher_co-authorship_network.json';
       } else if (!mapUrl && !networkUrl && !jsonUrlOrObject) {
@@ -81,7 +83,7 @@ const Dimensions = observer(({ queryString = {}, fullscreenHandle }) => {
         uiStore.setLoadingScreenIsOpen(false);
       }
     }
-  }, [queryString]);
+  }, [queryString, jsonData]);
 
   useEffect(() => {
     visualizationStore.setGetLogoImages(() => ([vosviewerLogoEl.current, dimensionsLogoEl.current]));
@@ -120,7 +122,7 @@ const Dimensions = observer(({ queryString = {}, fullscreenHandle }) => {
         />
         <img className={s.dimensionsLogo} src={uiStore.darkTheme ? dimensionsLogoDark : dimensionsLogo} alt="Dimensions" ref={dimensionsLogoEl} />
         <div className={`${s.actionIcons(configStore.urlPreviewPanelWidth)} ${configStore.urlPreviewPanel ? s.previewIsOpen : ''}`}>
-          {!queryString.looker_ui && (
+          {!(queryString ?? {}).looker_ui && (
             <>
               <Open />
               <Save />
@@ -129,7 +131,7 @@ const Dimensions = observer(({ queryString = {}, fullscreenHandle }) => {
             </>
           )}
           <DarkLightTheme />
-          {!queryString.looker_ui && (
+          {!(queryString ?? {}).looker_ui && (
             <Fullscreen enter={fullscreenHandle.enter} exit={fullscreenHandle.exit} active={fullscreenHandle.active} />
           )}
           <Info />
