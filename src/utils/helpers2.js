@@ -1,11 +1,11 @@
 /* eslint-disable consistent-return */
 import HTMLReactParser from 'html-react-parser';
-import { addHook, sanitize } from "dompurify";
+import purify from "dompurify";
 import { css } from '@emotion/css';
 
 export function cleanPlainText(plainText) {
   if (!plainText) return;
-  const sanitizedText = sanitize(plainText,
+  const sanitizedText = purify.sanitize(plainText,
     {
       ALLOWED_TAGS: [],
       ALLOWED_ATTR: [],
@@ -17,13 +17,13 @@ export function cleanPlainText(plainText) {
 
 export function parseFormattedText(formattedText) {
   if (!formattedText) return;
-  addHook('afterSanitizeAttributes', (node) => {
+  purify.addHook('afterSanitizeAttributes', (node) => {
     if ('target' in node) {
       node.setAttribute('target', '_blank'); // Let all links open a new window.
       node.setAttribute('rel', 'noopener noreferrer'); // Prevent reverse tabnabbing attacks (https://www.owasp.org/index.php/Reverse_Tabnabbing).
     }
   });
-  const sanitizedDescription = sanitize(formattedText); // Sanitize HTML and prevents XSS attacks (https://owasp.org/www-community/attacks/xss/).
+  const sanitizedDescription = purify.sanitize(formattedText); // Sanitize HTML and prevents XSS attacks (https://owasp.org/www-community/attacks/xss/).
 
   return HTMLReactParser(sanitizedDescription, {
     replace: node => {
@@ -39,13 +39,13 @@ export function parseDescription(object, templateType, stores) {
   if (!object) return;
   const description = object.description || dataStore.templates[templateType];
   if (!description) return;
-  addHook('afterSanitizeAttributes', (node) => {
+  purify.addHook('afterSanitizeAttributes', (node) => {
     if ('target' in node) {
       node.setAttribute('target', '_blank'); // Let all links open a new window.
       node.setAttribute('rel', 'noopener noreferrer'); // Prevent reverse tabnabbing attacks (https://www.owasp.org/index.php/Reverse_Tabnabbing).
     }
   });
-  const sanitizedDescription = sanitize(description); // Sanitize HTML and prevents XSS attacks (https://owasp.org/www-community/attacks/xss/).
+  const sanitizedDescription = purify.sanitize(description); // Sanitize HTML and prevents XSS attacks (https://owasp.org/www-community/attacks/xss/).
 
 
   return HTMLReactParser(sanitizedDescription, {
