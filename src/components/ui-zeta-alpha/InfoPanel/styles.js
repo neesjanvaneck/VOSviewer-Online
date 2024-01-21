@@ -64,15 +64,18 @@ export const infoPanel = (uiStyle) => css`
   }
 `;
 
-export const description = css`
+export const description = (componentWidth) => {
+  const descriptionMargin = 4;
+  const descriptionWidth = componentWidth - 2 * panelMargin - 2 * panelPadding - 2 * descriptionMargin;
+  const descriptionMaxWidth = descriptionWidth > 750 ? 750 : descriptionWidth;
+  return css`
   label: description;
   min-width: 325px;
-  max-width: fit-content;
-  max-height: 275px;
-  margin: 0px 4px !important;
+  max-width: ${descriptionMaxWidth}px;
+  margin: 0px ${descriptionMargin}px !important;
   font-size: 0.75rem !important;
-  overflow: hidden;
-`;
+  `;
+};
 
 export const closeButton = css`
   label: close-button;

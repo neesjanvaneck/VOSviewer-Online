@@ -197,7 +197,7 @@ const InfoPanel = observer(() => {
             {showDescriptionContent()
               && (
                 <>
-                  <Typography component="div" className={s.description}>
+                  <Typography component="div" className={`${s.description(uiStore.componentWidth)}`}>
                     {getItemDescription(visualizationStore.hoveredItem)
                       || getLinkDescription(visualizationStore.hoveredLink)
                       || getItemDescription(visualizationStore.clickedItem)
