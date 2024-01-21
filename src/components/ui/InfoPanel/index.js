@@ -159,6 +159,36 @@ const InfoPanel = observer(() => {
     );
   };
 
+  const getNetworkInfo = () => (
+    <>
+      <InfoItem text={`${dataStore.terminology.items}: ${visualizationStore.items.length}`} />
+      {Boolean(visualizationStore.links.length)
+        && (
+          <>
+            <Divider />
+            <InfoItem text={`${dataStore.terminology.links}: ${formatNumber(visualizationStore.links.length)}`} />
+            {uiStore.componentWidth > 800
+              && (
+                <>
+                  <Divider />
+                  <InfoItem text={`${dataStore.terminology.total_link_strength}: ${formatNumber(visualizationStore.totalLinkStrength)}`} />
+                </>
+              )
+            }
+          </>
+        )
+      }
+      {visualizationStore.clusters && uiStore.colorIndex === 0
+        && (
+          <>
+            <Divider />
+            <InfoItem text={`${dataStore.terminology.clusters}: ${visualizationStore.clusters.length}`} />
+          </>
+        )
+      }
+    </>
+  );
+
   const showInfoContent = () => configStore.uiConfig.information_panel;
 
   const showDescriptionContent = () => isOpen
@@ -203,37 +233,12 @@ const InfoPanel = observer(() => {
               )
             }
             {showInfoContent()
-              && (visualizationStore.hoveredItem || visualizationStore.hoveredLink || visualizationStore.clickedItem || visualizationStore.clickedLink
-                ? getItemOrLinkInfo()
-                : (
-                  <>
-                    <InfoItem text={`${dataStore.terminology.items}: ${visualizationStore.items.length}`} />
-                    {Boolean(visualizationStore.links.length)
-                      && (
-                        <>
-                          <Divider />
-                          <InfoItem text={`${dataStore.terminology.links}: ${formatNumber(visualizationStore.links.length)}`} />
-                          {uiStore.componentWidth > 800
-                            && (
-                              <>
-                                <Divider />
-                                <InfoItem text={`${dataStore.terminology.total_link_strength}: ${formatNumber(visualizationStore.totalLinkStrength)}`} />
-                              </>
-                            )
-                          }
-                        </>
-                      )
-                    }
-                    {visualizationStore.clusters && uiStore.colorIndex === 0
-                      && (
-                        <>
-                          <Divider />
-                          <InfoItem text={`${dataStore.terminology.clusters}: ${visualizationStore.clusters.length}`} />
-                        </>
-                      )
-                    }
-                  </>
-                )
+              && (
+                <Typography component="div" className={s.info}>
+                  {visualizationStore.hoveredItem || visualizationStore.hoveredLink || visualizationStore.clickedItem || visualizationStore.clickedLink
+                    ? getItemOrLinkInfo()
+                    : getNetworkInfo()}
+                </Typography>
               )
             }
           </Paper>

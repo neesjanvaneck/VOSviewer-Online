@@ -78,10 +78,16 @@ export const divider = css`
   color: rgba(148, 148, 147, 0.8) !important;
 `;
 
+export const info = css`
+  label: info;
+  display: flex;
+  font-size: 0.75rem !important;
+`;
+
 export const infoItem = css`
   label: info-item;
   display: inline !important;
-  padding: 4px 4px;
+  padding: 0px 4px;
 `;
 
 export const closeButton = css`
