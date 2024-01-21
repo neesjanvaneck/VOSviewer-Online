@@ -200,9 +200,9 @@ const Share = observer(() => {
               result[key] = uiStore.scale;
             }
             break;
-          case parameterKeys.SCORE_COLORS_SCHEME:
-            if (visualizationStore.scoreColorsSchemeName !== configStore.parameters[key] && visualizationStore.scoreColorsSchemeName !== 'custom') {
-              result[key] = visualizationStore.scoreColorsSchemeName;
+          case parameterKeys.SCORE_COLORS:
+            if (visualizationStore.scoreColorSchemeName !== configStore.parameters[key] && visualizationStore.scoreColorSchemeName !== 'custom') {
+              result[key] = visualizationStore.scoreColorSchemeName;
             }
             break;
           case parameterKeys.SHOW_ITEM:
