@@ -46,7 +46,7 @@
     "autosuggest-highlight": "^3.3.4",
     "d3": "^6.7.0",
     "decode-uri-component": "^0.2.0",
-    "dompurify": "^2.4.0",
+    "dompurify": "^2.4.7",
     "java-random": "^0.4.0",
     "leven-sort": "^4.0.0",
     "lodash": "^4.17.21",
