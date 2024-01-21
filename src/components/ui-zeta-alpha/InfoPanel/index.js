@@ -186,7 +186,7 @@ const InfoPanel = observer(() => {
     <>
       {(showInfoContent() || showDescriptionContent())
         && (
-          <Paper className={`${s.infoPanel} ${uiStore.controlPanelIsOpen ? s.shifted : s.notshifted} ${visualizationStore.items.length ? s.visible : ''}`} ref={refEl} elevation={3}>
+          <Paper className={`${s.infoPanel(configStore.uiStyle)} ${uiStore.controlPanelIsOpen ? s.shifted : s.notshifted} ${visualizationStore.items.length ? s.visible : ''}`} ref={refEl} elevation={3}>
             {showDescriptionContent()
               && (
                 <IconButton className={s.closeButton} onClick={exitInfoPanel}>
