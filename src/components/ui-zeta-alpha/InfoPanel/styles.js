@@ -13,7 +13,7 @@ export const shifted = css`
   label: shifted;
 `;
 
-export const infoPanel = css`
+export const infoPanel = (uiStyle) => css`
   label: info-panel;
   visibility: hidden;
   position: absolute;
@@ -55,6 +55,12 @@ export const infoPanel = css`
         min-width: 100px;
       }
     }
+    color: inherit;
+  }
+
+  a {
+    text-decoration: none;
+    color: ${uiStyle.palette_primary_main_color};
   }
 `;
 

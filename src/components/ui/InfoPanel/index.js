@@ -159,6 +159,36 @@ const InfoPanel = observer(() => {
     );
   };
 
+  const getNetworkInfo = () => (
+    <>
+      <InfoItem text={`${dataStore.terminology.items}: ${visualizationStore.items.length}`} />
+      {Boolean(visualizationStore.links.length)
+        && (
+          <>
+            <Divider />
+            <InfoItem text={`${dataStore.terminology.links}: ${formatNumber(visualizationStore.links.length)}`} />
+            {uiStore.componentWidth > 800
+              && (
+                <>
+                  <Divider />
+                  <InfoItem text={`${dataStore.terminology.total_link_strength}: ${formatNumber(visualizationStore.totalLinkStrength)}`} />
+                </>
+              )
+            }
+          </>
+        )
+      }
+      {visualizationStore.clusters && uiStore.colorIndex === 0
+        && (
+          <>
+            <Divider />
+            <InfoItem text={`${dataStore.terminology.clusters}: ${visualizationStore.clusters.length}`} />
+          </>
+        )
+      }
+    </>
+  );
+
   const showInfoContent = () => configStore.uiConfig.information_panel;
 
   const showDescriptionContent = () => isOpen
@@ -180,12 +210,14 @@ const InfoPanel = observer(() => {
     <>
       {(showInfoContent() || showDescriptionContent())
         && (
-          <Paper className={`${s.infoPanel} ${uiStore.controlPanelIsOpen ? s.shifted : s.notshifted} ${visualizationStore.items.length ? s.visible : ''}`} ref={refEl} elevation={3}>
-            {showDescriptionContent() && (
-              <IconButton className={s.closeButton} onClick={exitInfoPanel}>
-                <CloseIcon fontSize="small" />
-              </IconButton>
-            )}
+          <Paper className={`${s.infoPanel(configStore.uiStyle)} ${uiStore.controlPanelIsOpen ? s.shifted : s.notshifted} ${visualizationStore.items.length ? s.visible : ''}`} ref={refEl} elevation={3}>
+            {showDescriptionContent()
+              && (
+                <IconButton className={s.closeButton} onClick={exitInfoPanel}>
+                  <CloseIcon fontSize="small" />
+                </IconButton>
+              )
+            }
             {showDescriptionContent()
               && (
                 <>
@@ -201,37 +233,12 @@ const InfoPanel = observer(() => {
               )
             }
             {showInfoContent()
-              && (visualizationStore.hoveredItem || visualizationStore.hoveredLink || visualizationStore.clickedItem || visualizationStore.clickedLink
-                ? getItemOrLinkInfo()
-                : (
-                  <>
-                    <InfoItem text={`${dataStore.terminology.items}: ${visualizationStore.items.length}`} />
-                    {Boolean(visualizationStore.links.length)
-                      && (
-                        <>
-                          <Divider />
-                          <InfoItem text={`${dataStore.terminology.links}: ${formatNumber(visualizationStore.links.length)}`} />
-                          {uiStore.componentWidth > 800
-                            && (
-                              <>
-                                <Divider />
-                                <InfoItem text={`${dataStore.terminology.total_link_strength}: ${formatNumber(visualizationStore.totalLinkStrength)}`} />
-                              </>
-                            )
-                          }
-                        </>
-                      )
-                    }
-                    {visualizationStore.clusters && uiStore.colorIndex === 0
-                      && (
-                        <>
-                          <Divider />
-                          <InfoItem text={`${dataStore.terminology.clusters}: ${visualizationStore.clusters.length}`} />
-                        </>
-                      )
-                    }
-                  </>
-                )
+              && (
+                <Typography component="div" className={s.info}>
+                  {visualizationStore.hoveredItem || visualizationStore.hoveredLink || visualizationStore.clickedItem || visualizationStore.clickedLink
+                    ? getItemOrLinkInfo()
+                    : getNetworkInfo()}
+                </Typography>
               )
             }
           </Paper>

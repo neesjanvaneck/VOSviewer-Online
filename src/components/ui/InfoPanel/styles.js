@@ -13,7 +13,7 @@ export const shifted = css`
   label: shifted;
 `;
 
-export const infoPanel = css`
+export const infoPanel = (uiStyle) => css`
   label: info-panel;
   visibility: hidden;
   position: absolute;
@@ -55,6 +55,12 @@ export const infoPanel = css`
         min-width: 100px;
       }
     }
+    color: inherit;
+  }
+
+  a {
+    text-decoration: none;
+    color: ${uiStyle.palette_primary_main_color};
   }
 `;
 
@@ -72,10 +78,16 @@ export const divider = css`
   color: rgba(148, 148, 147, 0.8) !important;
 `;
 
+export const info = css`
+  label: info;
+  display: flex;
+  font-size: 0.75rem !important;
+`;
+
 export const infoItem = css`
   label: info-item;
   display: inline !important;
-  padding: 4px 4px;
+  padding: 0px 4px;
 `;
 
 export const closeButton = css`
