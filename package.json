@@ -1,6 +1,6 @@
 {
   "name": "vosviewer-online",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "VOSviewer Online is a tool for network visualization. It is a web-based version of VOSviewer, a popular tool for constructing and visualizing bibliometric networks.",
   "author": "Nees Jan van Eck <ecknjpvan@cwts.leidenuniv.nl> (https://github.com/neesjanvaneck)",
   "keywords": [
