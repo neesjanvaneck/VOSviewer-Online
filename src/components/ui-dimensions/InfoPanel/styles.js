@@ -52,7 +52,7 @@ export const infoPanel = (uiStyle) => css`
     font-size: 0.75rem !important;
     tr {
       td:first-child {
-        min-width: 100px;
+        min-width: 80px;
       }
     }
     color: inherit;
