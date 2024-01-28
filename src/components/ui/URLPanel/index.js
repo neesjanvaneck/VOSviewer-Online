@@ -1,6 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useCallback } from 'react';
 import { observer } from 'mobx-react-lite';
 import { CardMedia, Paper } from '@mui/material';
+import _throttle from 'lodash/throttle';
 
 import { ConfigStoreContext, VisualizationStoreContext } from 'store/stores';
 import * as s from './styles';
@@ -10,13 +11,18 @@ const URLPanel = observer(() => {
   const visualizationStore = useContext(VisualizationStoreContext);
   const [url, setUrl] = useState(undefined);
 
+  const throttledSetUrl = useCallback(_throttle((value) => {
+    setUrl(value);
+  }, 1000), []);
+
+
   useEffect(() => {
     const { hoveredItem, clickedItem, hoveredLink, clickedLink } = visualizationStore;
     if (clickedItem || clickedLink) {
-      setUrl((clickedItem && clickedItem.url) || (clickedLink && clickedLink.url));
+      throttledSetUrl((clickedItem && clickedItem.url) || (clickedLink && clickedLink.url));
     } else if (hoveredItem || hoveredLink) {
-      setUrl((hoveredItem && hoveredItem.url) || (hoveredLink && hoveredLink.url));
-    } else setUrl(undefined);
+      throttledSetUrl((hoveredItem && hoveredItem.url) || (hoveredLink && hoveredLink.url));
+    } else throttledSetUrl(undefined);
   }, [visualizationStore.hoveredItem, visualizationStore.clickedItem, visualizationStore.hoveredLink, visualizationStore.clickedLink]);
 
   return (
