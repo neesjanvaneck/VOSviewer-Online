@@ -16,11 +16,19 @@ const ClusterColorLegend = observer(({ showTopClustersOnly, canvasWidth, legendW
   const visualizationStore = useContext(VisualizationStoreContext);
   const canvasEl = useRef(null);
   const [ctx, setCtx] = useState(null);
-  const [font, setFont] = useState('Roboto');
+  const [font, setFont] = useState(customFont);
   const [mouseCoord, setMouseCoord] = useState([]);
 
   useEffect(() => {
-    setFont(customFont || 'Roboto');
+    if (document.fonts) {
+      document.fonts.ready.then(() => {
+        setFont(customFont || 'Roboto');
+      });
+    } else {
+      setTimeout(() => {
+        setFont(customFont || 'Roboto');
+      }, 250);
+    }
     setCtx(canvasEl.current.getContext('2d'));
     visualizationStore.setGetClusterLegendCanvasImage(() => canvasEl.current);
     select(canvasEl.current)

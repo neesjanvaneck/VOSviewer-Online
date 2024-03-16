@@ -15,7 +15,7 @@ const SizeLegend = observer(({ canvasWidth, canvasHeight, customFont }) => {
   const visualizationStore = useContext(VisualizationStoreContext);
   const canvasEl = useRef(null);
   const [ctx, setCtx] = useState(null);
-  const [font, setFont] = useState('Roboto');
+  const [font, setFont] = useState(customFont);
   const [ticks, setTicks] = useState([]);
 
   useEffect(() => {

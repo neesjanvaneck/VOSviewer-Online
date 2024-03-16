@@ -13,7 +13,7 @@ const ScoreColorLegend = observer(({
   const visualizationStore = useContext(VisualizationStoreContext);
   const canvasEl = useRef(null);
   const [ctx, setCtx] = useState(null);
-  const [font, setFont] = useState('Roboto');
+  const [font, setFont] = useState(customFont);
 
   useEffect(() => {
     if (document.fonts) {
