@@ -22,7 +22,6 @@ const ItemLabelCanvas = observer(({ canvasWidth, canvasHeight, customFont }) => 
         setFont(customFont || 'Roboto');
       }, 250);
     }
-
     const context = canvasEl.current.getContext('2d');
     setCtx(context);
     visualizationStore.setLabelCanvasContext(context);
@@ -44,6 +43,7 @@ const ItemLabelCanvas = observer(({ canvasWidth, canvasHeight, customFont }) => 
     ctx.clearRect(0, 0, canvasWidth * pixelRatio, canvasHeight * pixelRatio);
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
+    ctx.letterSpacing = ".05em";
 
     // Draw labels of default items.
     for (let i = visualizationStore.items.length - 1; i >= 0; i--) {
