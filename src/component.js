@@ -17,7 +17,16 @@ import {
 // eslint-disable-next-line import/no-unresolved
 import App from '@component';
 
-const VOSviewer = withResizeDetector(observer(({ width, targetRef, parameters = {}, data }) => {
+const VOSviewer = withResizeDetector(observer(({
+  width,
+  targetRef,
+  parameters = {},
+  data,
+  onItemClick,
+  onItemHover,
+  onLinkClick,
+  onLinkHover,
+}) => {
   const configStore = useContext(ConfigStoreContext);
   const clusteringStore = useContext(ClusteringStoreContext);
   const dataStore = useContext(DataStoreContext);
@@ -31,6 +40,10 @@ const VOSviewer = withResizeDetector(observer(({ width, targetRef, parameters = 
 
   useEffect(() => {
     uiStore.setRootEl(targetRef.current);
+    visualizationStore.setOnItemClickCallback(onItemClick);
+    visualizationStore.setOnItemHoverCallback(onItemHover);
+    visualizationStore.setOnLinkClickCallback(onLinkClick);
+    visualizationStore.setOnLinkHoverCallback(onLinkHover);
   }, []);
 
   useEffect(() => {

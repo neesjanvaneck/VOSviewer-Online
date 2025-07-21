@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { observer } from 'mobx-react-lite';
+import { toJS } from 'mobx';
 import { pointer, select } from 'd3-selection';
 import { zoom, zoomIdentity } from 'd3-zoom';
 import { max, min, sum } from 'd3-array';
@@ -31,13 +32,25 @@ const InteractionCanvas = observer(({ canvasWidth, canvasHeight, withoutLinks })
         const hoveredItemIsFound = visualizationStore.findHoveredItem(mousePosition, uiStore.dimmingEffect);
         const hoveredLinkIsFound = withoutLinks ? undefined : visualizationStore.findHoveredLink(mousePosition, uiStore.dimmingEffect);
         select(canvasEl.current).style('cursor', hoveredItemIsFound || hoveredLinkIsFound ? 'pointer' : 'auto');
+        if (visualizationStore.hoveredItem && visualizationStore.onItemHoverCallback !== undefined) {
+          visualizationStore.onItemHoverCallback(toJS(visualizationStore.hoveredItem), event);
+        }
+        if (visualizationStore.hoveredLink && visualizationStore.onLinkHoverCallback !== undefined) {
+          visualizationStore.onLinkHoverCallback(toJS(visualizationStore.hoveredLink), event);
+        }
       })
       .on('mouseout', () => {
         visualizationStore.cancelHovering(uiStore.dimmingEffect);
       })
-      .on('click', () => {
+      .on('click', (event) => {
         visualizationStore.updateClickedItem(undefined, uiStore.dimmingEffect);
         visualizationStore.updateClickedLink(undefined, uiStore.dimmingEffect);
+        if (visualizationStore.clickedItem && visualizationStore.onItemClickCallback !== undefined) {
+          visualizationStore.onItemClickCallback(toJS(visualizationStore.clickedItem), event);
+        }
+        if (visualizationStore.clickedLink && visualizationStore.onLinkClickCallback !== undefined) {
+          visualizationStore.onLinkClickCallback(toJS(visualizationStore.clickedLink), event);
+        }
       });
   }, []);
 
