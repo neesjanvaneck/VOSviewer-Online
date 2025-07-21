@@ -108,7 +108,7 @@ const VOSviewer = observer(({ queryString = {}, fullscreenHandle }) => {
         <div className={`${s.actionIcons(configStore.urlPreviewPanelWidth)} ${configStore.urlPreviewPanel ? s.previewIsOpen : ''}`}>
           <Open />
           <Save />
-          {configStore.uiConfig.share_icon && <Share />}
+          {!IS_REACT_COMPONENT && configStore.uiConfig.share_icon && <Share />}
           <Screenshot />
           <DarkLightTheme />
           <Info />
