@@ -29,7 +29,6 @@ const Share = observer(() => {
   const uiStore = useContext(UiStoreContext);
   const visualizationStore = useContext(VisualizationStoreContext);
   const [isOpen, setIsOpen] = useState(false);
-  // Set shortlink as disabled per default (opt-in mechanism)
   const [useShortLink, setUseShortLink] = useState(false);
   const [useCustomSettings, setUseCustomSettings] = useState(false);
   const [link, setLink] = useState('');

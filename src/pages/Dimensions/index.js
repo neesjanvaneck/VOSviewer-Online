@@ -120,14 +120,14 @@ const Dimensions = observer(({ queryString = {}, fullscreenHandle }) => {
             <>
               <Open />
               <Save />
-              {!IS_REACT_COMPONENT && configStore.uiConfig.share_icon && <Share />}
+                {!IS_REACT_COMPONENT && configStore.uiConfig.share_icon && <Share />}
               <Screenshot />
             </>
           )}
           <DarkLightTheme />
-          {!queryString.looker_ui && (
-            <Fullscreen enter={fullscreenHandle.enter} exit={fullscreenHandle.exit} active={fullscreenHandle.active} />
-          )}
+            {!queryString.looker_ui && (
+              <Fullscreen enter={fullscreenHandle.enter} exit={fullscreenHandle.exit} active={fullscreenHandle.active} />
+            )}
           <Info />
         </div>
         <URLPanel />
