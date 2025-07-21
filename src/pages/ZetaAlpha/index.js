@@ -118,7 +118,7 @@ const ZetaAlpha = observer(({ queryString = {}, fullscreenHandle }) => {
         <div className={`${s.actionIcons(configStore.urlPreviewPanelWidth)} ${configStore.urlPreviewPanel ? s.previewIsOpen : ''}`}>
           <Open />
           <Save />
-          <Share />
+            {!IS_REACT_COMPONENT && configStore.uiConfig.share_icon && <Share />}
           <Screenshot />
           <DarkLightTheme />
           <Fullscreen enter={fullscreenHandle.enter} exit={fullscreenHandle.exit} active={fullscreenHandle.active} />
